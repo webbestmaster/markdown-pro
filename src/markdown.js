@@ -1,9 +1,9 @@
 // @flow
 
-import {parseHeader} from './parser/header';
+import {parseLine, parseLineData} from './parser/parse-line';
 
 export function markdown(mdInput: string): string {
-    const mdLineList = mdInput.split('\n').map(parseHeader);
+    const mdLineList = mdInput.split('\n').map(parseLine).map(parseLineData);
 
     return mdLineList.join('\n');
 }

@@ -1,5 +1,7 @@
 // @flow
 
+import type {LineDataType} from '../parse-line';
+
 const headerMap = {
     '###### ': 'h6',
     '##### ': 'h5',
@@ -11,8 +13,10 @@ const headerMap = {
 
 const headerMapKey = Object.keys(headerMap).sort((keyA: string, keyB: string): number => keyB.length - keyA.length);
 
-export function parseHeader(mayBeHeader: string): string {
-    const trimmedMayBeHeader = mayBeHeader.trim().replace(/\s+/g, ' ');
+export function parseHeader(lineData: LineDataType): string {
+    const {line} = lineData;
+
+    const trimmedMayBeHeader = line.trim().replace(/\s+/g, ' ');
     const headerMapKeyLength = headerMapKey.length;
 
     // eslint-disable-next-line no-loops/no-loops
@@ -24,5 +28,7 @@ export function parseHeader(mayBeHeader: string): string {
         }
     }
 
-    return mayBeHeader;
+    console.error('Can not parse header', lineData);
+
+    return line;
 }
