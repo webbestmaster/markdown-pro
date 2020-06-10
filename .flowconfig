@@ -1,0 +1,22 @@
+[ignore]
+./dist
+<PROJECT_ROOT>/node_modules
+
+[include]
+#./flow-typed/**/
+
+[libs]
+
+[lints]
+all=warn
+
+[options]
+#all=true
+# make "include_warnings=true"
+include_warnings=false
+suppress_comment=\\(.\\|\n\\)*\\$FlowFixMe
+module.use_strict=true
+munge_underscores=true
+module.file_ext=.js
+module.file_ext=.css
+module.file_ext=.scss
