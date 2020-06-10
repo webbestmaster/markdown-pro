@@ -1,0 +1,22 @@
+#IDE
+/.idea
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# npm
+node_modules
+package-lock.json
+
+# dist
+/dist
+
+# flow css
+*.css.flow
+*.scss.flow
+
+# report
+/flow-coverage
+
