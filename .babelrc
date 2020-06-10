@@ -32,7 +32,7 @@
                     "babel-plugin-flow-runtime",
                     {
                         "warn": false,
-                        "optInOnly": true,
+                        "optInOnly": false,
                         "assert": true,
                         "annotate": true
                     }
