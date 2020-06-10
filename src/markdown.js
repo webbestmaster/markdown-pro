@@ -1,10 +1,11 @@
 // @flow
 
-export function markdown(mdInput: string): string {
-    console.log('mdInput');
-    console.log(mdInput);
+import {parseHeader} from './parser/header';
 
-    return mdInput;
+export function markdown(mdInput: string): string {
+    const mdLineList = mdInput.split('\n').map(parseHeader);
+
+    return mdLineList.join('\n');
 }
 
 markdown('11');

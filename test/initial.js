@@ -6,6 +6,7 @@ import {describe, it} from 'mocha';
 
 import {markdown} from '../src/markdown';
 
+import {fixtureHeader} from './fixture';
 
 describe('Array', () => {
     describe('indexOf()', () => {
@@ -16,11 +17,11 @@ describe('Array', () => {
         });
     });
 
-    describe('initial()', () => {
-        it('should return -1 when the value is not present', () => {
-            const mdString = 'you shall not pass!';
+    describe('Header', () => {
+        it('Should parse headers', () => {
+            console.log(markdown(fixtureHeader.input));
 
-            assert(markdown(mdString) === mdString, 'Error');
+            assert(markdown(fixtureHeader.input) === fixtureHeader.output, 'Parse header with error');
         });
     });
 });
