@@ -34,6 +34,34 @@ export function getIsUlItem(lineData: LineDataType): boolean {
     return selectorULItemList.includes(lineData.selector);
 }
 
+function getSiblingItem(
+    lineData: LineDataType,
+    lineDataList: Array<LineDataType>,
+    direction: number
+): LineDataType | null {
+    const index = lineDataList.indexOf(lineData);
+
+    if (index === -1) {
+        return null;
+    }
+
+    const siblingIndex = index + direction;
+
+    const siblingItem = siblingIndex in lineDataList ? lineDataList[siblingIndex] : null;
+
+    if (!siblingItem) {
+        return null;
+    }
+
+    const newDirection = direction + direction / Math.abs(direction); // -4 => -5, 4 => 5
+
+    if (siblingItem.trimmedLine === emptyString) {
+        return getSiblingItem(lineData, lineDataList, newDirection);
+    }
+
+    return siblingItem;
+}
+
 export function renderChildList(lineDataList: Array<LineDataType>): string {
     return lineDataList.map(renderLineData).join(emptyString);
 }
@@ -44,9 +72,9 @@ export function renderLineData(
     lineDataIndex: number,
     lineDataList: Array<LineDataType>
 ): string {
-    const {selector, childList, trimmedLine} = lineData;
+    const {selector, childList, lineContent} = lineData;
 
-    if (trimmedLine === emptyString && childList.length === 0) {
+    if (lineContent === emptyString && childList.length === 0) {
         return emptyString;
     }
 
@@ -56,33 +84,24 @@ export function renderLineData(
     if (isHeader) {
         const headerTag = selector.length - 1;
 
-        return `
-            <h${headerTag} data-selector="${selector}">
-            ${trimmedLine}
-            ${renderChildList(childList)}
-            </h${headerTag}>
-        `;
+        return `<h${headerTag} data-selector="${selector}">${lineContent}${renderChildList(childList)}</h${headerTag}>`;
     }
 
     if (isUlItem) {
-        const prevItem = lineDataIndex === 0 ? null : lineDataList[lineDataIndex - 1];
+        const prevItem = getSiblingItem(lineData, lineDataList, -1);
         const isFirstItem = !prevItem || !getIsUlItem(prevItem);
-        const nextItem = lineDataIndex === lineDataList.length - 1 ? null : lineDataList[lineDataIndex + 1];
+        const nextItem = getSiblingItem(lineData, lineDataList, 1);
         const isLastItem = !nextItem || !getIsUlItem(nextItem);
 
-        return `
-            ${isFirstItem ? '<ul>' : ''}
-            <li data-selector="${selector}">
-            ${trimmedLine}
-            ${renderChildList(childList)}
-            </li>
-            ${isLastItem ? '</ul>' : ''}
-        `;
+        const prefix = isFirstItem ? '<ul>' : '';
+        const postfix = isLastItem ? '</ul>' : '';
+
+        return `${prefix}<li data-selector="${selector}">${lineContent}${renderChildList(childList)}</li>${postfix}`;
     }
 
-    if (trimmedLine === emptyString) {
+    if (lineContent === emptyString) {
         return renderChildList(childList);
     }
 
-    return `<p>${trimmedLine}${renderChildList(childList)}</p>`;
+    return `<p>${lineContent}${renderChildList(childList)}</p>`;
 }

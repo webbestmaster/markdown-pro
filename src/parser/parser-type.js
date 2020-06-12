@@ -22,6 +22,7 @@ export type LineDataType = {|
     +selector: SelectorType,
     +line: string,
     +trimmedLine: string,
+    +lineContent: string,
     +childList: Array<LineDataType>,
     // isFirst: boolean,
     // isLast: boolean,
