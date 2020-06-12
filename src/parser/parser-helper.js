@@ -34,14 +34,17 @@ export function getIsUlItem(lineData: LineDataType): boolean {
     return selectorULItemList.includes(lineData.selector);
 }
 
+export function renderChildList(lineDataList: Array<LineDataType>): string {
+    return lineDataList.map(renderLineData).join(emptyString);
+}
+
 // eslint-disable-next-line complexity
 export function renderLineData(
     lineData: LineDataType,
     lineDataIndex: number,
     lineDataList: Array<LineDataType>
 ): string {
-    const {selector, childList, line} = lineData;
-    const trimmedLine = line.trim();
+    const {selector, childList, trimmedLine} = lineData;
 
     if (trimmedLine === emptyString && childList.length === 0) {
         return emptyString;
@@ -55,8 +58,8 @@ export function renderLineData(
 
         return `
             <h${headerTag} data-selector="${selector}">
-            ${line}
-            ${childList.map(renderLineData).join('\n')}
+            ${trimmedLine}
+            ${renderChildList(childList)}
             </h${headerTag}>
         `;
     }
@@ -70,21 +73,16 @@ export function renderLineData(
         return `
             ${isFirstItem ? '<ul>' : ''}
             <li data-selector="${selector}">
-            ${line}
-            ${childList.map(renderLineData).join('\n')}
+            ${trimmedLine}
+            ${renderChildList(childList)}
             </li>
             ${isLastItem ? '</ul>' : ''}
         `;
     }
 
     if (trimmedLine === emptyString) {
-        return childList.map(renderLineData).join('\n');
+        return renderChildList(childList);
     }
 
-    return `
-        <p>
-        ${line}
-        ${childList.map(renderLineData).join('\n')}
-        </p>
-    `;
+    return `<p>${trimmedLine}${renderChildList(childList)}</p>`;
 }

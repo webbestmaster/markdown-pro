@@ -32,20 +32,21 @@ export function parseLine(
 
     const selector = isEmptyString ? emptyString : getSelector(line, spaceCount);
 
-    const lineData = {
-        childList: [],
+    const lineData: LineDataType = {
         lineIndex,
         spaceCount,
         selector,
         line: isEmptyString ? emptyString : line,
-        isFirst: true,
-        isLast: true,
+        trimmedLine,
+        childList: [],
+        // isFirst: true,
+        // isLast: true,
     };
 
     const parentLineData = getParent(lineData, savedLineDataList);
-    const {childList} = parentLineData;
+    // const {childList} = parentLineData;
 
-    const prevChild = childList.length === 0 ? null : childList[childList.length - 1];
+    // const prevChild = childList.length === 0 ? null : childList[childList.length - 1];
 
     // const prevItem = lineIndex === 0 ? null : savedLineDataList[lineIndex - 1];
 
@@ -56,10 +57,12 @@ export function parseLine(
     }
 */
 
+    /*
     if (prevChild) {
         prevChild.isLast = false;
         lineData.isFirst = false;
     }
+*/
 
     parentLineData.childList.push(lineData);
     savedLineDataList.push(lineData);

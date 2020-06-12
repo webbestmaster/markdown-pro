@@ -1,19 +1,22 @@
 // @flow
 
+/* global document, setTimeout */
+
 import {parseLine} from './parser/parse-line';
 import type {LineDataType} from './parser/parser-type';
 import {emptyString, selectorNoTagWrapper} from './parser/parser-const';
-import {renderLineData} from './parser/parser-helper';
+import {renderChildList, renderLineData} from './parser/parser-helper';
 
 export function markdown(mdInput: string): string {
     const mainParent: LineDataType = {
-        childList: [],
         lineIndex: -1,
         spaceCount: -1,
         selector: selectorNoTagWrapper,
         line: emptyString,
-        isFirst: true,
-        isLast: true,
+        trimmedLine: '',
+        childList: [],
+        // isFirst: true,
+        // isLast: true,
     };
     const structuredLineDataList: Array<LineDataType> = [mainParent];
     const savedLineDataList: Array<LineDataType> = [mainParent];
@@ -24,15 +27,18 @@ export function markdown(mdInput: string): string {
 
     console.log(structuredLineDataList);
 
-    return renderLineData(structuredLineDataList[0], 0, structuredLineDataList);
+    return renderChildList(structuredLineDataList);
+
+    // return renderLineData(structuredLineDataList[0], 0, structuredLineDataList);
 
     // return htmlLineList.join('\n');
 }
 
 const result = markdown(`
+    time to mark down
+        I ma here
 
-
-    ### unordered list
+### unordered list
 
 
 + Create a list by starting a line with
@@ -60,8 +66,13 @@ const result = markdown(`
 + Very easy!
 `);
 
-/*
 setTimeout(() => {
-    document.querySelector('.js-app-wrapper').innerHTML = result;
+    const wrapper = document.querySelector('.js-app-wrapper');
+
+    if (!wrapper) {
+        console.error('.js-app-wrapper is not define');
+        return;
+    }
+
+    wrapper.innerHTML = result;
 }, 1e3);
-*/

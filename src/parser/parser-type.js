@@ -21,7 +21,8 @@ export type LineDataType = {|
     +spaceCount: number,
     +selector: SelectorType,
     +line: string,
+    +trimmedLine: string,
     +childList: Array<LineDataType>,
-    isFirst: boolean,
-    isLast: boolean,
+    // isFirst: boolean,
+    // isLast: boolean,
 |};
