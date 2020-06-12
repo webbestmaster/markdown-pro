@@ -1,7 +1,7 @@
 // @flow
 
 import type {LineDataType} from './parser-type';
-import {emptyString, selectorHeaderList} from './parser-const';
+import {emptyString, selectorHeaderList, selectorULItemList} from './parser-const';
 
 export function cleanLine(line: string): string {
     return line.trim().replace(/\s+/g, ' ');
@@ -26,6 +26,54 @@ export function getParent(lineData: LineDataType, lineDataList: Array<LineDataTy
     return lineData;
 }
 
-export function isHeader(lineData: LineDataType): boolean {
+export function getIsHeader(lineData: LineDataType): boolean {
     return selectorHeaderList.includes(lineData.selector);
+}
+
+export function getIsUlItem(lineData: LineDataType): boolean {
+    return selectorULItemList.includes(lineData.selector);
+}
+
+// eslint-disable-next-line complexity
+export function renderLineData(
+    lineData: LineDataType,
+    lineDataIndex: number,
+    lineDataList: Array<LineDataType>
+): string {
+    const isHeader = getIsHeader(lineData);
+    const isUlItem = getIsUlItem(lineData);
+
+    if (isHeader) {
+        const headerTag = lineData.selector.length - 1;
+
+        return `
+            <h${headerTag} data-selector="${lineData.selector}">
+            ${lineData.line}
+            ${lineData.childList.map(renderLineData).join('\n')}
+            </h${headerTag}>
+        `;
+    }
+
+    if (isUlItem) {
+        const prevItem = lineDataIndex === 0 ? null : lineDataList[lineDataIndex - 1];
+        const isFirstItem = !prevItem || !getIsUlItem(prevItem);
+        const nextItem = lineDataIndex === lineDataList.length - 1 ? null : lineDataList[lineDataIndex + 1];
+        const isLastItem = !nextItem || !getIsUlItem(nextItem);
+
+        return `
+            ${isFirstItem ? '<ul>' : ''}
+            <li data-selector="${lineData.selector}">
+            ${lineData.line}
+            ${lineData.childList.map(renderLineData).join('\n')}
+            </li>
+            ${isLastItem ? '</ul>' : ''}
+        `;
+    }
+
+    return `
+        <ul data-selector="${lineData.selector}">
+        ${lineData.line}
+        ${lineData.childList.map(renderLineData).join('\n')}
+        </ul>
+    `;
 }

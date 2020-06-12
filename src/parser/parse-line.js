@@ -1,6 +1,6 @@
 // @flow
 
-import {getParent} from './parser-helper';
+import {getIsUlItem, getParent} from './parser-helper';
 import type {LineDataType, SelectorType} from './parser-type';
 import {emptyString, selectorHeaderList, selectorList} from './parser-const';
 import {parseHeader} from './tag/header';
@@ -46,6 +46,15 @@ export function parseLine(
     const {childList} = parentLineData;
 
     const prevChild = childList.length === 0 ? null : childList[childList.length - 1];
+
+    // const prevItem = lineIndex === 0 ? null : savedLineDataList[lineIndex - 1];
+
+    /*
+    // remove all empty string between li tag
+    if (isEmptyString && prevItem && getIsUlItem(prevItem)) {
+        return lineData;
+    }
+*/
 
     if (prevChild) {
         prevChild.isLast = false;

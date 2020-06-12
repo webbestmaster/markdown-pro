@@ -3,6 +3,7 @@
 import {parseLine, parseLineData} from './parser/parse-line';
 import type {LineDataType} from './parser/parser-type';
 import {emptyString, selectorNoTagWrapper} from './parser/parser-const';
+import {renderLineData} from './parser/parser-helper';
 
 export function markdown(mdInput: string): string {
     const mainParent: LineDataType = {
@@ -17,19 +18,18 @@ export function markdown(mdInput: string): string {
     const structuredLineDataList: Array<LineDataType> = [mainParent];
     const savedLineDataList: Array<LineDataType> = [mainParent];
 
-    const mdLineList = mdInput
-        .split('\n')
-        .map((line: string, lineIndex: number, allLineList: Array<string>): LineDataType => {
-            return parseLine(line, lineIndex, allLineList, structuredLineDataList, savedLineDataList);
-        })
-        .map(parseLineData);
+    mdInput.split('\n').forEach((line: string, lineIndex: number, allLineList: Array<string>) => {
+        parseLine(line, lineIndex, allLineList, structuredLineDataList, savedLineDataList);
+    });
 
     console.log(structuredLineDataList);
 
-    return mdLineList.join('\n');
+    return renderLineData(structuredLineDataList[0], 0, structuredLineDataList);
+
+    // return htmlLineList.join('\n');
 }
 
-markdown(`
+const result = markdown(`
 ### unordered list
 + Create a list by starting a line with
 + Sub-lists are made by indenting 2 spaces:
@@ -48,3 +48,9 @@ markdown(`
     - Nulla volutpat aliquam velit
 + Very easy!
 `);
+
+/*
+setTimeout(() => {
+    document.querySelector('.js-app-wrapper').innerHTML = result;
+}, 1e3);
+*/
