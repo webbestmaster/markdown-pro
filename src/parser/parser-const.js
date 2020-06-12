@@ -11,6 +11,7 @@ import type {
 } from './parser-type';
 
 export const emptyString = '';
+export const space = ' ';
 
 export const selectorHeaderList: Array<SelectorHeaderType> = ['# ', '## ', '### ', '#### ', '##### ', '###### '];
 export const selectorULItemList: Array<SelectorUlItemType> = ['+ ', '- ', '* '];

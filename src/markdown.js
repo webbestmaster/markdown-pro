@@ -16,6 +16,7 @@ export function markdown(mdInput: string): string {
         trimmedLine: '',
         lineContent: '',
         childList: [],
+        additionalLineList: [],
         // isFirst: true,
         // isLast: true,
     };
@@ -26,13 +27,9 @@ export function markdown(mdInput: string): string {
         parseLine(line, lineIndex, allLineList, structuredLineDataList, savedLineDataList);
     });
 
-    console.log(structuredLineDataList);
+    console.log(renderChildList(structuredLineDataList));
 
     return renderChildList(structuredLineDataList);
-
-    // return renderLineData(structuredLineDataList[0], 0, structuredLineDataList);
-
-    // return htmlLineList.join('\n');
 }
 
 const result = markdown(`
@@ -41,14 +38,16 @@ const result = markdown(`
 
 ### unordered list
 
-
 + Create a list by starting a line with
 + Sub-lists are made by indenting 2 spaces:
   - Marker character change forces new list start:
     * Ac tristique libero volutpat at
         ### inner header
-    + Facilisis in pretium nisl aliquet
-    - Nulla volutpat aliquam velit
+    * Facilisis in pretium nisl aliquet
+addtional line 1
+    addtional line 2
+        addtional line 3
+    * Nulla volutpat aliquam velit
 
 
 + Very easy!

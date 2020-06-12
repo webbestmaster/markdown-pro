@@ -1,7 +1,7 @@
 // @flow
 
 import type {LineDataType} from './parser-type';
-import {emptyString, selectorHeaderList, selectorULItemList} from './parser-const';
+import {emptyString, selectorHeaderList, selectorULItemList, space} from './parser-const';
 
 export function cleanLine(line: string): string {
     return line.trim().replace(/\s+/g, ' ');
@@ -67,13 +67,23 @@ export function renderChildList(lineDataList: Array<LineDataType>): string {
     return lineDataList.map(renderLineData).join(emptyString);
 }
 
-// eslint-disable-next-line complexity
+export function renderAdditionalLineList(lineContentList: Array<string>): string {
+    if (lineContentList.length === 0) {
+        return emptyString;
+    }
+
+    return space + lineContentList.join(space);
+}
+
+// eslint-disable-next-line complexity, max-statements
 export function renderLineData(
     lineData: LineDataType,
     lineDataIndex: number,
     lineDataList: Array<LineDataType>
 ): string {
-    const {selector, childList, lineContent} = lineData;
+    const {selector, childList, lineContent, additionalLineList} = lineData;
+    const additionLineListRender = renderAdditionalLineList(additionalLineList);
+    const childListRender = renderChildList(childList);
 
     if (lineContent === emptyString && childList.length === 0) {
         return emptyString;
@@ -85,24 +95,26 @@ export function renderLineData(
     if (isHeader) {
         const headerTag = selector.length - 1;
 
-        return `<h${headerTag} data-selector="${selector}">${lineContent}${renderChildList(childList)}</h${headerTag}>`;
+        return `<h${headerTag}>${lineContent}${additionLineListRender}${childListRender}</h${headerTag}>`;
     }
 
     if (isUlItem) {
         const prevItem = getSiblingItem(lineData, lineDataList, -1);
-        const isFirstItem = !prevItem || !getIsUlItem(prevItem);
+        const isFirstItem = !prevItem || prevItem.selector !== selector;
         const nextItem = getSiblingItem(lineData, lineDataList, 1);
-        const isLastItem = !nextItem || !getIsUlItem(nextItem);
+        const isLastItem = !nextItem || nextItem.selector !== selector;
 
         const prefix = isFirstItem ? '<ul>' : '';
         const postfix = isLastItem ? '</ul>' : '';
 
-        return `${prefix}<li data-selector="${selector}">${lineContent}${renderChildList(childList)}</li>${postfix}`;
+        return `${prefix}<li>${lineContent}${additionLineListRender}${childListRender}</li>${postfix}`;
     }
 
     if (lineContent === emptyString) {
-        return renderChildList(childList);
+        return additionLineListRender + childListRender;
     }
 
-    return `<p>${lineContent}${renderChildList(childList)}</p>`;
+    console.log(lineData);
+
+    return `<p>${lineContent}${additionLineListRender}${childListRender}</p>`;
 }

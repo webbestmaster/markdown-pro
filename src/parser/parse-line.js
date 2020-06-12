@@ -21,7 +21,7 @@ export function parseLine(
     allLineList: Array<string>,
     structuredLineDataList: Array<LineDataType>,
     savedLineDataList: Array<LineDataType>
-): LineDataType {
+) {
     const trimmedLine = line.trim();
     const isEmptyString = trimmedLine === emptyString;
     const rawSpaceCount = isEmptyString
@@ -41,14 +41,23 @@ export function parseLine(
         trimmedLine,
         lineContent,
         childList: [],
+        additionalLineList: [],
         // isFirst: true,
         // isLast: true,
     };
+
+    if (lineData.selector === emptyString && lineContent.length > 0) {
+        const prevItemIndex = savedLineDataList.length - 1;
+        const prevItem = prevItemIndex in savedLineDataList ? savedLineDataList[prevItemIndex] : null;
+
+        if (prevItem && prevItem.lineContent.length > 0) {
+            prevItem.additionalLineList.push(lineContent);
+            return;
+        }
+    }
 
     const parentLineData = getParent(lineData, savedLineDataList);
 
     parentLineData.childList.push(lineData);
     savedLineDataList.push(lineData);
-
-    return lineData;
 }

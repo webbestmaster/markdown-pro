@@ -24,6 +24,8 @@ export type LineDataType = {|
     +trimmedLine: string,
     +lineContent: string,
     +childList: Array<LineDataType>,
+    +additionalLineList: Array<string>,
+    // +isAdditional: boolean,
     // isFirst: boolean,
     // isLast: boolean,
 |};
