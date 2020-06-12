@@ -1,6 +1,6 @@
 // @flow
 
-import {parseLine, parseLineData} from './parser/parse-line';
+import {parseLine} from './parser/parse-line';
 import type {LineDataType} from './parser/parser-type';
 import {emptyString, selectorNoTagWrapper} from './parser/parser-const';
 import {renderLineData} from './parser/parser-helper';
@@ -30,16 +30,27 @@ export function markdown(mdInput: string): string {
 }
 
 const result = markdown(`
-### unordered list
+
+
+    ### unordered list
+
+
 + Create a list by starting a line with
 + Sub-lists are made by indenting 2 spaces:
   - Marker character change forces new list start:
     * Ac tristique libero volutpat at
-
+        ### inner header
     + Facilisis in pretium nisl aliquet
     - Nulla volutpat aliquam velit
 + Very easy!
+
+
+
 ### unordered list 2
+
+
+
+
 + Create a list by starting a line with 2
 + Sub-lists are made by indenting 2 spaces:
   - Marker character change forces new list start:

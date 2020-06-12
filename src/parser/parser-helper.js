@@ -40,16 +40,23 @@ export function renderLineData(
     lineDataIndex: number,
     lineDataList: Array<LineDataType>
 ): string {
+    const {selector, childList, line} = lineData;
+    const trimmedLine = line.trim();
+
+    if (trimmedLine === emptyString && childList.length === 0) {
+        return emptyString;
+    }
+
     const isHeader = getIsHeader(lineData);
     const isUlItem = getIsUlItem(lineData);
 
     if (isHeader) {
-        const headerTag = lineData.selector.length - 1;
+        const headerTag = selector.length - 1;
 
         return `
-            <h${headerTag} data-selector="${lineData.selector}">
-            ${lineData.line}
-            ${lineData.childList.map(renderLineData).join('\n')}
+            <h${headerTag} data-selector="${selector}">
+            ${line}
+            ${childList.map(renderLineData).join('\n')}
             </h${headerTag}>
         `;
     }
@@ -62,18 +69,22 @@ export function renderLineData(
 
         return `
             ${isFirstItem ? '<ul>' : ''}
-            <li data-selector="${lineData.selector}">
-            ${lineData.line}
-            ${lineData.childList.map(renderLineData).join('\n')}
+            <li data-selector="${selector}">
+            ${line}
+            ${childList.map(renderLineData).join('\n')}
             </li>
             ${isLastItem ? '</ul>' : ''}
         `;
     }
 
+    if (trimmedLine === emptyString) {
+        return childList.map(renderLineData).join('\n');
+    }
+
     return `
-        <ul data-selector="${lineData.selector}">
-        ${lineData.line}
-        ${lineData.childList.map(renderLineData).join('\n')}
-        </ul>
+        <p>
+        ${line}
+        ${childList.map(renderLineData).join('\n')}
+        </p>
     `;
 }

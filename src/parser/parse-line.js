@@ -66,18 +66,3 @@ export function parseLine(
 
     return lineData;
 }
-
-export function parseLineData(lineData: LineDataType): string {
-    const {selector, spaceCount, line} = lineData;
-
-    // string has spaces only OR empty string
-    if (spaceCount === -1) {
-        return line;
-    }
-
-    if (selectorHeaderList.includes(selector)) {
-        return parseHeader(lineData);
-    }
-
-    return line;
-}
