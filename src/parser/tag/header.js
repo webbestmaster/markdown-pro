@@ -1,8 +1,8 @@
 // @flow
 
-import type {LineDataType} from '../parse-line';
-import type {SelectorHeaderType} from '../parser-type';
+import type {LineDataType, SelectorHeaderType} from '../parser-type';
 import {cleanLine} from '../parser-helper';
+import {emptyString} from '../parser-const';
 
 const headerMap: {[key: SelectorHeaderType]: string} = {
     '###### ': 'h6',
@@ -16,7 +16,7 @@ const headerMap: {[key: SelectorHeaderType]: string} = {
 const headerMapKey = Object.keys(headerMap).sort((keyA: string, keyB: string): number => keyB.length - keyA.length);
 
 function makeHtmlHeader(cleanHeader: string, key: SelectorHeaderType): string {
-    const headerContent = cleanHeader.replace(key, '');
+    const headerContent = cleanHeader.replace(key, emptyString);
     const headerTag = headerMap[key];
     // todo: add styling for headerContent here
 

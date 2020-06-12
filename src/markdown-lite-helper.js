@@ -2,6 +2,8 @@
 
 // styling
 
+import {emptyString} from './parser/parser-const';
+
 type StyleConfigType = {|
     +tagName: string,
     +patterList: Array<string>,
@@ -65,7 +67,7 @@ function wrapMdByPattern(mdString: string, tagName: string, pattern: string): st
         resultList.push(pattern + part);
     }
 
-    return resultList.join('');
+    return resultList.join(emptyString);
 }
 
 function wrapMdByPatternList(mdString: string, tagName: string, patternList: Array<string>): string {

@@ -52,12 +52,12 @@ function getLinePrefix(line: string): MdlPrefixType {
         }
     }
 
-    return '';
+    return emptyString;
 }
 
 function lineToMdlLine(rawLine: string): MdlLineType {
     const prefix = getLinePrefix(rawLine);
-    const text = rawLine.replace(prefix, '').trim().replace(/\s+/g, ' ');
+    const text = rawLine.replace(prefix, emptyString).trim().replace(/\s+/g, ' ');
 
     return {prefix, text};
 }

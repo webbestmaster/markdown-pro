@@ -29,6 +29,6 @@ const webpackConfig = {
     devServer: require('./webpack/setting/dev-server').devServer,
 };
 
-webpackConfig.plugins.push(new BundleAnalyzerPlugin());
+// webpackConfig.plugins.push(new BundleAnalyzerPlugin());
 
 module.exports = webpackConfig;

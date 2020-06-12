@@ -6,22 +6,21 @@ import {describe, it} from 'mocha';
 
 import {markdown} from '../src/markdown';
 
-import {fixtureHeader} from './fixture';
+import {fixtureHeader, unorderedList} from './fixture';
 
 describe('Array', () => {
-    describe('indexOf()', () => {
-        it('should return -1 when the value is not present', () => {
-            const array: Array<number> = [1, 2, 3];
-
-            assert(!array.includes(4), '-1');
+    describe('Header', () => {
+        it('Should parse headers', () => {
+            assert(markdown(fixtureHeader.input) === fixtureHeader.output, 'Parse header with error');
         });
     });
 
-    describe('Header', () => {
-        it('Should parse headers', () => {
-            console.log(markdown(fixtureHeader.input));
+    describe.only('Unordered list', () => {
+        it('Should parse unordered list', () => {
+            console.log('markdown(unorderedList.input)');
+            console.log(markdown(unorderedList.input));
 
-            assert(markdown(fixtureHeader.input) === fixtureHeader.output, 'Parse header with error');
+            assert(markdown(unorderedList.input) === unorderedList.output, 'Parse unordered with error');
         });
     });
 });

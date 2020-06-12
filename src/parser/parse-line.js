@@ -1,14 +1,9 @@
 // @flow
 
-import type {SelectorType} from './parser-type';
-import {selectorHeaderList, selectorList} from './parser-const';
+import {getParent} from './parser-helper';
+import type {LineDataType, SelectorType} from './parser-type';
+import {emptyString, selectorHeaderList, selectorList} from './parser-const';
 import {parseHeader} from './tag/header';
-
-export type LineDataType = {|
-    +spaceCount: number,
-    +selector: SelectorType,
-    +line: string,
-|};
 
 function getSelector(line: string, spaceCount: number): SelectorType {
     // eslint-disable-next-line no-loops/no-loops
@@ -17,14 +12,50 @@ function getSelector(line: string, spaceCount: number): SelectorType {
             return selector;
         }
     }
-    return '';
+    return emptyString;
 }
 
-export function parseLine(line: string): LineDataType {
-    const spaceCount = line.search(/\S/);
-    const selector = getSelector(line, spaceCount);
+// eslint-disable-next-line complexity
+export function parseLine(
+    line: string,
+    lineIndex: number,
+    allLineList: Array<string>,
+    structuredLineDataList: Array<LineDataType>,
+    savedLineDataList: Array<LineDataType>
+): LineDataType {
+    const trimmedLine = line.trim();
+    const isEmptyString = trimmedLine === emptyString;
+    const rawSpaceCount = isEmptyString
+        ? savedLineDataList[savedLineDataList.length - 1].spaceCount
+        : line.search(/\S/);
+    const spaceCount = rawSpaceCount < 0 ? 0 : rawSpaceCount;
 
-    return {spaceCount, selector, line};
+    const selector = isEmptyString ? emptyString : getSelector(line, spaceCount);
+
+    const lineData = {
+        childList: [],
+        lineIndex,
+        spaceCount,
+        selector,
+        line: isEmptyString ? emptyString : line,
+        isFirst: true,
+        isLast: true,
+    };
+
+    const parentLineData = getParent(lineData, savedLineDataList);
+    const {childList} = parentLineData;
+
+    const prevChild = childList.length === 0 ? null : childList[childList.length - 1];
+
+    if (prevChild) {
+        prevChild.isLast = false;
+        lineData.isFirst = false;
+    }
+
+    parentLineData.childList.push(lineData);
+    savedLineDataList.push(lineData);
+
+    return lineData;
 }
 
 export function parseLineData(lineData: LineDataType): string {
@@ -38,8 +69,6 @@ export function parseLineData(lineData: LineDataType): string {
     if (selectorHeaderList.includes(selector)) {
         return parseHeader(lineData);
     }
-
-    console.log(selector);
 
     return line;
 }
