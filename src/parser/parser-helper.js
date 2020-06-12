@@ -34,6 +34,7 @@ export function getIsUlItem(lineData: LineDataType): boolean {
     return selectorULItemList.includes(lineData.selector);
 }
 
+// eslint-disable-next-line complexity
 function getSiblingItem(
     lineData: LineDataType,
     lineDataList: Array<LineDataType>,
@@ -53,9 +54,9 @@ function getSiblingItem(
         return null;
     }
 
-    const newDirection = direction + direction / Math.abs(direction); // -4 => -5, 4 => 5
-
     if (siblingItem.trimmedLine === emptyString) {
+        const newDirection = direction + (direction >= 0 ? 1 : -1);
+
         return getSiblingItem(lineData, lineDataList, newDirection);
     }
 
