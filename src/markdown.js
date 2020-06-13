@@ -56,9 +56,6 @@ addtional line 1
 
 ### unordered list 2
 
-
-
-
 + Create a list by starting a line with 2
 + Sub-lists are made by indenting 2 spaces:
   - Marker character change forces new list start:
@@ -70,6 +67,21 @@ addtional line 1
 
 
     - Nulla volutpat aliquam velit
++ Very easy!
+
+### ordered list 3
+
+1. Create a list by starting a line with 2
+1. Sub-lists are made by indenting 2 spaces:
+  1. Marker character change forces new list start:
+    1. Ac tristique libero volutpat at
+
+
+    + Facilisis in pretium nisl aliquet
+
+
+
+    1. Nulla volutpat aliquam velit
 + Very easy!
 `);
 

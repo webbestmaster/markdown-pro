@@ -1,7 +1,7 @@
 // @flow
 
 import type {LineDataType} from './parser-type';
-import {emptyString, selectorHeaderList, selectorULItemList, space} from './parser-const';
+import {emptyString, selectorHeaderList, selectorOLItemList, selectorULItemList, space} from './parser-const';
 
 export function cleanLine(line: string): string {
     return line.trim().replace(/\s+/g, ' ');
@@ -32,6 +32,10 @@ export function getIsHeader(lineData: LineDataType): boolean {
 
 export function getIsUlItem(lineData: LineDataType): boolean {
     return selectorULItemList.includes(lineData.selector);
+}
+
+export function getIsOlItem(lineData: LineDataType): boolean {
+    return selectorOLItemList.includes(lineData.selector);
 }
 
 // eslint-disable-next-line complexity
@@ -75,7 +79,7 @@ export function renderAdditionalLineList(lineContentList: Array<string>): string
     return space + lineContentList.join(space);
 }
 
-// eslint-disable-next-line complexity, max-statements
+// eslint-disable-next-line complexity, sonarjs/cognitive-complexity, max-statements
 export function renderLineData(
     lineData: LineDataType,
     lineDataIndex: number,
@@ -91,6 +95,7 @@ export function renderLineData(
 
     const isHeader = getIsHeader(lineData);
     const isUlItem = getIsUlItem(lineData);
+    const isOlItem = getIsOlItem(lineData);
 
     if (isHeader) {
         const headerTag = selector.length - 1;
@@ -99,6 +104,7 @@ export function renderLineData(
     }
 
     if (isUlItem) {
+        // TODO: refactor ul and ol together
         const prevItem = getSiblingItem(lineData, lineDataList, -1);
         const isFirstItem = !prevItem || prevItem.selector !== selector;
         const nextItem = getSiblingItem(lineData, lineDataList, 1);
@@ -106,6 +112,19 @@ export function renderLineData(
 
         const prefix = isFirstItem ? '<ul>' : '';
         const postfix = isLastItem ? '</ul>' : '';
+
+        return `${prefix}<li>${lineContent}${additionLineListRender}${childListRender}</li>${postfix}`;
+    }
+
+    if (isOlItem) {
+        // TODO: refactor ul and ol together
+        const prevItem = getSiblingItem(lineData, lineDataList, -1);
+        const isFirstItem = !prevItem || prevItem.selector !== selector;
+        const nextItem = getSiblingItem(lineData, lineDataList, 1);
+        const isLastItem = !nextItem || nextItem.selector !== selector;
+
+        const prefix = isFirstItem ? '<ol>' : '';
+        const postfix = isLastItem ? '</ol>' : '';
 
         return `${prefix}<li>${lineContent}${additionLineListRender}${childListRender}</li>${postfix}`;
     }
