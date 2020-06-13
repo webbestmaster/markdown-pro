@@ -1,3 +1,4 @@
+/*
 // @flow
 
 import type {LineDataType, SelectorHeaderType} from '../parser-type';
@@ -42,3 +43,4 @@ export function parseHeader(lineData: LineDataType): string {
 
     return line;
 }
+*/

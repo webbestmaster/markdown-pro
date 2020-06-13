@@ -4,14 +4,14 @@
 export type SelectorNoTagWrapperType = '1234567890';
 export type SelectorHeaderType = '# ' | '## ' | '### ' | '#### ' | '##### ' | '###### ';
 export type SelectorUlItemType = '+ ' | '- ' | '* ';
-export type SelectorOlItemType = '0. ' | '1. ';
+export type SelectorOlNumericItemType = '0. ';
 export type SelectorParagraphType = '';
 
 export type SelectorType =
     | SelectorNoTagWrapperType
     | SelectorHeaderType
     | SelectorUlItemType
-    | SelectorOlItemType
+    | SelectorOlNumericItemType
     | SelectorParagraphType;
 
 // export type PositionInListType = 'first' | 'last' | 'single';

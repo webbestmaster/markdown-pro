@@ -1,3 +1,4 @@
+/*
 // @flow
 
 import type {LineDataType} from '../parser-type';
@@ -47,3 +48,4 @@ export function groupUl(lineDataList: Array<LineDataType>): Array<LineDataType> 
 
     return resultLineDataList;
 }
+*/

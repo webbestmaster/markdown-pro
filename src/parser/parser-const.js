@@ -2,7 +2,7 @@
 
 import type {
     SelectorHeaderType,
-    SelectorOlItemType,
+    SelectorOlNumericItemType,
     SelectorParagraphType,
     SelectorType,
     SelectorUlItemType,
@@ -15,14 +15,18 @@ export const space = ' ';
 
 export const selectorHeaderList: Array<SelectorHeaderType> = ['# ', '## ', '### ', '#### ', '##### ', '###### '];
 export const selectorULItemList: Array<SelectorUlItemType> = ['+ ', '- ', '* '];
-export const selectorOLItemList: Array<SelectorOlItemType> = ['0. ', '1. '];
-export const selectorParagraphList: Array<SelectorParagraphType> = [''];
+// export const selectorOLItemList: Array<SelectorOlNumericItemType> = ['0. ', '1. '];
+// export const selectorParagraphList: Array<SelectorParagraphType> = [''];
+
+export const olNumericItemSelector: SelectorOlNumericItemType = '0. ';
+export const olNumericItemRegExp = /^\d+\.\s/;
 
 export const selectorList: Array<SelectorType> = [
     ...selectorHeaderList,
     ...selectorULItemList,
-    ...selectorOLItemList,
-    ...selectorParagraphList,
+    olNumericItemSelector,
+    // ...selectorOLItemList,
+    // ...selectorParagraphList,
 ].sort((itemA: SelectorType, itemB: SelectorType): number => itemB.length - itemA.length);
 
 /*

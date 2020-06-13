@@ -1,7 +1,7 @@
 // @flow
 
 import type {LineDataType} from './parser-type';
-import {emptyString, selectorHeaderList, selectorOLItemList, selectorULItemList, space} from './parser-const';
+import {emptyString, olNumericItemSelector, selectorHeaderList, selectorULItemList, space} from './parser-const';
 
 export function cleanLine(line: string): string {
     return line.trim().replace(/\s+/g, ' ');
@@ -35,7 +35,7 @@ export function getIsUlItem(lineData: LineDataType): boolean {
 }
 
 export function getIsOlItem(lineData: LineDataType): boolean {
-    return selectorOLItemList.includes(lineData.selector);
+    return olNumericItemSelector === lineData.selector;
 }
 
 // eslint-disable-next-line complexity

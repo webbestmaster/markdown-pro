@@ -2,15 +2,20 @@
 
 import {getParent} from './parser-helper';
 import type {LineDataType, SelectorType} from './parser-type';
-import {emptyString, selectorList} from './parser-const';
+import {emptyString, olNumericItemRegExp, olNumericItemSelector, selectorList} from './parser-const';
 
-function getSelector(line: string, spaceCount: number): SelectorType {
+function getSelector(trimmedLine: string): SelectorType {
     // eslint-disable-next-line no-loops/no-loops
     for (const selector of selectorList) {
-        if (line.indexOf(selector, spaceCount) === spaceCount) {
+        if (trimmedLine.indexOf(selector) === 0) {
             return selector;
         }
     }
+
+    if (trimmedLine.search(olNumericItemRegExp) === 0) {
+        return olNumericItemSelector;
+    }
+
     return emptyString;
 }
 
@@ -29,9 +34,11 @@ export function parseLine(
         : line.search(/\S/);
     const spaceCount = rawSpaceCount < 0 ? 0 : rawSpaceCount;
 
-    const selector = isEmptyString ? emptyString : getSelector(line, spaceCount);
+    const selector = isEmptyString ? emptyString : getSelector(trimmedLine);
 
-    const lineContent = trimmedLine.replace(selector, emptyString).trim();
+    const lineContentReplacer = selector === olNumericItemSelector ? olNumericItemRegExp : selector;
+
+    const lineContent = trimmedLine.replace(lineContentReplacer, emptyString).trim();
 
     const lineData: LineDataType = {
         lineIndex,
