@@ -5,8 +5,8 @@
 import {init} from './init';
 
 const defaultMarkdown = `
-    time to mark down
-        I ma here
+    A. time to mark down
+    A. I ma here
 
 ### unordered list
 

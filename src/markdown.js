@@ -4,14 +4,14 @@
 
 import {parseLine} from './parser/parse-line';
 import type {LineDataType} from './parser/parser-type';
-import {emptyString, selectorNoTagWrapper} from './parser/parser-const';
-import {renderChildList, renderLineData} from './parser/parser-helper';
+import {emptyString} from './parser/parser-const';
+import {renderChildList} from './parser/parser-helper';
 
 export function markdown(mdInput: string): string {
     const mainParent: LineDataType = {
         lineIndex: -1,
         spaceCount: -1,
-        selector: selectorNoTagWrapper,
+        selector: emptyString,
         line: emptyString,
         trimmedLine: '',
         lineContent: '',

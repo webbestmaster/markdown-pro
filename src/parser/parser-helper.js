@@ -1,10 +1,33 @@
 // @flow
 
-import type {LineDataType} from './parser-type';
-import {emptyString, olNumericItemSelector, selectorHeaderList, selectorULItemList, space} from './parser-const';
+import type {LineDataType, OlAttributeType, SelectorType} from './parser-type';
+import {
+    emptyString,
+    olNumericItemSelector,
+    olNumericType,
+    oLParseDataList,
+    selectorHeaderList,
+    selectorULItemList,
+    space,
+} from './parser-const';
 
 export function cleanLine(line: string): string {
     return line.trim().replace(/\s+/g, ' ');
+}
+
+function getOlTypeBySelector(dataLineSelector: SelectorType): OlAttributeType {
+    // eslint-disable-next-line no-loops/no-loops
+    for (const oLParseData of oLParseDataList) {
+        const {selector, olAttributeType} = oLParseData;
+
+        if (dataLineSelector === selector) {
+            return olAttributeType;
+        }
+    }
+
+    console.error('Can not detect ol type by selector', dataLineSelector);
+
+    return olNumericType;
 }
 
 export function getParent(lineData: LineDataType, lineDataList: Array<LineDataType>): LineDataType {
@@ -35,11 +58,20 @@ export function getIsUlItem(lineData: LineDataType): boolean {
 }
 
 export function getIsOlItem(lineData: LineDataType): boolean {
-    return olNumericItemSelector === lineData.selector;
+    // eslint-disable-next-line no-loops/no-loops
+    for (const oLParseData of oLParseDataList) {
+        const {selector, regExpSearchSelector} = oLParseData;
+
+        if (selector === lineData.selector) {
+            return true;
+        }
+    }
+
+    return false;
 }
 
 // eslint-disable-next-line complexity
-function getSiblingItem(
+function searchSiblingItem(
     lineData: LineDataType,
     lineDataList: Array<LineDataType>,
     direction: number
@@ -61,10 +93,17 @@ function getSiblingItem(
     if (siblingItem.trimmedLine === emptyString) {
         const newDirection = direction + (direction >= 0 ? 1 : -1);
 
-        return getSiblingItem(lineData, lineDataList, newDirection);
+        return searchSiblingItem(lineData, lineDataList, newDirection);
     }
 
     return siblingItem;
+}
+
+function getIsEdgeLine(lineData: LineDataType, lineDataList: Array<LineDataType>, direction: number): boolean {
+    const {selector} = lineData;
+    const foundItem = searchSiblingItem(lineData, lineDataList, direction);
+
+    return !foundItem || foundItem.selector !== selector;
 }
 
 export function renderChildList(lineDataList: Array<LineDataType>): string {
@@ -104,12 +143,8 @@ export function renderLineData(
     }
 
     if (isUlItem) {
-        // TODO: refactor ul and ol together
-        const prevItem = getSiblingItem(lineData, lineDataList, -1);
-        const isFirstItem = !prevItem || prevItem.selector !== selector;
-        const nextItem = getSiblingItem(lineData, lineDataList, 1);
-        const isLastItem = !nextItem || nextItem.selector !== selector;
-
+        const isFirstItem = getIsEdgeLine(lineData, lineDataList, -1);
+        const isLastItem = getIsEdgeLine(lineData, lineDataList, 1);
         const prefix = isFirstItem ? '<ul>' : '';
         const postfix = isLastItem ? '</ul>' : '';
 
@@ -117,13 +152,9 @@ export function renderLineData(
     }
 
     if (isOlItem) {
-        // TODO: refactor ul and ol together
-        const prevItem = getSiblingItem(lineData, lineDataList, -1);
-        const isFirstItem = !prevItem || prevItem.selector !== selector;
-        const nextItem = getSiblingItem(lineData, lineDataList, 1);
-        const isLastItem = !nextItem || nextItem.selector !== selector;
-
-        const prefix = isFirstItem ? '<ol>' : '';
+        const isFirstItem = getIsEdgeLine(lineData, lineDataList, -1);
+        const isLastItem = getIsEdgeLine(lineData, lineDataList, 1);
+        const prefix = isFirstItem ? `<ol type="${getOlTypeBySelector(lineData.selector)}">` : '';
         const postfix = isLastItem ? '</ol>' : '';
 
         return `${prefix}<li>${lineContent}${additionLineListRender}${childListRender}</li>${postfix}`;

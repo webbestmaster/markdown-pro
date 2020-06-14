@@ -1,22 +1,51 @@
 // @flow
 
-import {getParent} from './parser-helper';
-import type {LineDataType, SelectorType} from './parser-type';
-import {emptyString, olNumericItemRegExp, olNumericItemSelector, selectorList} from './parser-const';
+import {cleanLine, getParent} from './parser-helper';
+import type {LineDataType, SelectorType, ShortLineInfoType} from './parser-type';
+import {
+    emptyString,
+    olBigAlphabetItemRegExp,
+    olBigAlphabetItemSelector,
+    olBigRomanNumberItemRegExp,
+    olBigRomanNumberItemSelector,
+    olNumericItemRegExp,
+    olNumericItemSelector,
+    olNumericType,
+    oLParseDataList,
+    olSmallAlphabetItemRegExp,
+    olSmallAlphabetItemSelector,
+    olSmallRomanNumberItemRegExp,
+    olSmallRomanNumberItemSelector,
+    selectorList,
+} from './parser-const';
 
-function getSelector(trimmedLine: string): SelectorType {
+function getSelector(trimmedLine: string): ShortLineInfoType {
     // eslint-disable-next-line no-loops/no-loops
     for (const selector of selectorList) {
         if (trimmedLine.indexOf(selector) === 0) {
-            return selector;
+            return {
+                selector,
+                lineContent: cleanLine(trimmedLine.replace(selector, emptyString)),
+            };
         }
     }
 
-    if (trimmedLine.search(olNumericItemRegExp) === 0) {
-        return olNumericItemSelector;
+    // eslint-disable-next-line no-loops/no-loops
+    for (const oLParseData of oLParseDataList) {
+        const {selector, regExpSearchSelector} = oLParseData;
+
+        if (trimmedLine.search(regExpSearchSelector) === 0) {
+            return {
+                selector,
+                lineContent: cleanLine(trimmedLine.replace(regExpSearchSelector, emptyString)),
+            };
+        }
     }
 
-    return emptyString;
+    return {
+        selector: emptyString,
+        lineContent: trimmedLine,
+    };
 }
 
 // eslint-disable-next-line complexity
@@ -34,11 +63,12 @@ export function parseLine(
         : line.search(/\S/);
     const spaceCount = rawSpaceCount < 0 ? 0 : rawSpaceCount;
 
-    const selector = isEmptyString ? emptyString : getSelector(trimmedLine);
-
-    const lineContentReplacer = selector === olNumericItemSelector ? olNumericItemRegExp : selector;
-
-    const lineContent = trimmedLine.replace(lineContentReplacer, emptyString).trim();
+    const {selector, lineContent} = isEmptyString
+        ? {
+            selector: emptyString,
+            lineContent: emptyString,
+        }
+        : getSelector(trimmedLine);
 
     const lineData: LineDataType = {
         lineIndex,

@@ -3,11 +3,18 @@
 import type {
     SelectorHeaderType,
     SelectorOlNumericItemType,
-    SelectorParagraphType,
     SelectorType,
     SelectorUlItemType,
-    // PositionInListType,
-    SelectorNoTagWrapperType,
+    SelectorOlBigAlphabetItemType,
+    SelectorOlSmallAlphabetItemType,
+    SelectorOlBigRomanNumberItemType,
+    SelectorOlSmallRomanNumberItemType,
+    OlTypeNumericType,
+    OlTypeBigAlphabetType,
+    OlTypeSmallAlphabetType,
+    OlTypeBigRomanNumberType,
+    OlTypeSmallRomanNumberType,
+    OlParseDataType,
 } from './parser-type';
 
 export const emptyString = '';
@@ -15,27 +22,61 @@ export const space = ' ';
 
 export const selectorHeaderList: Array<SelectorHeaderType> = ['# ', '## ', '### ', '#### ', '##### ', '###### '];
 export const selectorULItemList: Array<SelectorUlItemType> = ['+ ', '- ', '* '];
-// export const selectorOLItemList: Array<SelectorOlNumericItemType> = ['0. ', '1. '];
-// export const selectorParagraphList: Array<SelectorParagraphType> = [''];
 
 export const olNumericItemSelector: SelectorOlNumericItemType = '0. ';
 export const olNumericItemRegExp = /^\d+\.\s/;
+export const olNumericType: OlTypeNumericType = '1';
+
+export const olBigAlphabetItemSelector: SelectorOlBigAlphabetItemType = 'A. ';
+export const olBigAlphabetItemRegExp = /^[A-Z]+\.\s/;
+export const olBigAlphabetType: OlTypeBigAlphabetType = 'A';
+
+export const olSmallAlphabetItemSelector: SelectorOlSmallAlphabetItemType = 'a. ';
+export const olSmallAlphabetItemRegExp = /^[a-z]+\.\s/;
+export const olSmallAlphabetType: OlTypeSmallAlphabetType = 'a';
+
+export const olBigRomanNumberItemSelector: SelectorOlBigRomanNumberItemType = 'I. ';
+export const olBigRomanNumberItemRegExp = /^[CDILMVX]+\.\s/;
+export const olBigRomanNumberType: OlTypeBigRomanNumberType = 'I';
+
+export const olSmallRomanNumberItemSelector: SelectorOlSmallRomanNumberItemType = 'i. ';
+export const olSmallRomanNumberItemRegExp = /^[cdilmvx]+\.\s/;
+export const olSmallRomanNumberType: OlTypeSmallRomanNumberType = 'i';
+
+export const oLParseDataList: Array<OlParseDataType> = [
+    {
+        selector: olNumericItemSelector,
+        regExpSearchSelector: olNumericItemRegExp,
+        olAttributeType: olNumericType,
+    },
+    {
+        selector: olBigAlphabetItemSelector,
+        regExpSearchSelector: olBigAlphabetItemRegExp,
+        olAttributeType: olBigAlphabetType,
+    },
+    {
+        selector: olSmallAlphabetItemSelector,
+        regExpSearchSelector: olSmallAlphabetItemRegExp,
+        olAttributeType: olSmallAlphabetType,
+    },
+    {
+        selector: olBigRomanNumberItemSelector,
+        regExpSearchSelector: olBigRomanNumberItemRegExp,
+        olAttributeType: olBigRomanNumberType,
+    },
+    {
+        selector: olSmallRomanNumberItemSelector,
+        regExpSearchSelector: olSmallRomanNumberItemRegExp,
+        olAttributeType: olSmallRomanNumberType,
+    },
+];
 
 export const selectorList: Array<SelectorType> = [
     ...selectorHeaderList,
     ...selectorULItemList,
     olNumericItemSelector,
-    // ...selectorOLItemList,
-    // ...selectorParagraphList,
+    olBigAlphabetItemSelector,
+    olSmallAlphabetItemSelector,
+    olBigRomanNumberItemSelector,
+    olSmallRomanNumberItemSelector,
 ].sort((itemA: SelectorType, itemB: SelectorType): number => itemB.length - itemA.length);
-
-/*
-export const positionInListMap: {[key: PositionInListType]: PositionInListType} = {
-    first: 'first',
-    last: 'last',
-    single: 'single',
-};
-*/
-
-// TODO: come up with a good value
-export const selectorNoTagWrapper: SelectorNoTagWrapperType = '1234567890';
