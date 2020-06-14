@@ -13,7 +13,7 @@ const {
 
 const webpackConfig = {
     // entry: ['./www/css/root.scss', './www/js/root.js'],
-    entry: ['./src/markdown.js'],
+    entry: ['./www/root.scss', './www/root.js'],
     output: {
         path: path.join(cwd, pathToDist),
         publicPath: `${isDevelopment || isBuildServer ? '' : pathToStaticFileFolder}/`,

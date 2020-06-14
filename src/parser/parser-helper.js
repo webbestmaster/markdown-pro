@@ -133,7 +133,5 @@ export function renderLineData(
         return additionLineListRender + childListRender;
     }
 
-    console.log(lineData);
-
     return `<p>${lineContent}${additionLineListRender}${childListRender}</p>`;
 }
