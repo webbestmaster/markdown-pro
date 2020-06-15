@@ -5,56 +5,39 @@
 import {init} from './init';
 
 const defaultMarkdown = `
-    A. time to mark down
-    A. I ma here
+## Support headers h1-h6
 
-### unordered list
+Lorem ipsum dolor sit amet, consectetur adipisicing elit.
 
-+ Create a list by starting a line with
-+ Sub-lists are made by indenting 2 spaces:
-  - Marker character change forces new list start:
-    * Ac tristique libero volutpat at
-        ### inner header
-    * Facilisis in pretium nisl aliquet
-addtional line 1
-    addtional line 2
-        addtional line 3
-    * Nulla volutpat aliquam velit
+Alias animi autem beatae, ex fuga harum in laborum libero nam tempore!
+Autem et iure nobis non nostrum quaerat quisquam sunt totam!
 
+### Unordered list
++ Create a unordered list by starting a line with \`+ \`, \`- \` or \`* \`
++ Sub-lists are made by indenting space(s):
+    + Lorem ipsum dolor
+    + Alias animi autem beatae
 
-+ Very easy!
+### Ordered list
+5. Create a Numeric list
+1. by starting a line with
+2. any number(s) with dot, for example: \`1. \`
 
+A. Create a Big Alphabet list
+O. by starting a line with
+P. any Big Letter(s) with dot, for example: \`A. \`
+Q. PS: avoid Roman number - I, V, X, L, C, D, M
 
+a. The same rule
+o. for Small Alphabet list
+q. PS: avoid Roman number - i, v, x, l, c, d, m
 
-### unordered list 2
+I. Create a Big Roman Number list
+II. by starting a line with
+V. any Big Roman Number(s) with dot, for example: \`I. \`
 
-+ Create a list by starting a line with 2
-+ Sub-lists are made by indenting 2 spaces:
-  - Marker character change forces new list start:
-    * Ac tristique libero volutpat at
-
-
-    + Facilisis in pretium nisl aliquet
-
-
-
-    - Nulla volutpat aliquam velit
-+ Very easy!
-
-### ordered list 3
-
-1. Create a list by starting a line with 2
-1. Sub-lists are made by indenting 2 spaces:
-  1. Marker character change forces new list start:
-    1. Ac tristique libero volutpat at
-
-
-    + Facilisis in pretium nisl aliquet
-
-
-
-    1. Nulla volutpat aliquam velit
-+ Very easy!
+i. The same rule
+v. for Small Roman Number list
 `;
 
 const input = document.querySelector('.js-input');

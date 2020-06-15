@@ -27,14 +27,6 @@ export const olNumericItemSelector: SelectorOlNumericItemType = '0. ';
 export const olNumericItemRegExp = /^\d+\.\s/;
 export const olNumericType: OlTypeNumericType = '1';
 
-export const olBigAlphabetItemSelector: SelectorOlBigAlphabetItemType = 'A. ';
-export const olBigAlphabetItemRegExp = /^[A-Z]+\.\s/;
-export const olBigAlphabetType: OlTypeBigAlphabetType = 'A';
-
-export const olSmallAlphabetItemSelector: SelectorOlSmallAlphabetItemType = 'a. ';
-export const olSmallAlphabetItemRegExp = /^[a-z]+\.\s/;
-export const olSmallAlphabetType: OlTypeSmallAlphabetType = 'a';
-
 export const olBigRomanNumberItemSelector: SelectorOlBigRomanNumberItemType = 'I. ';
 export const olBigRomanNumberItemRegExp = /^[CDILMVX]+\.\s/;
 export const olBigRomanNumberType: OlTypeBigRomanNumberType = 'I';
@@ -43,21 +35,19 @@ export const olSmallRomanNumberItemSelector: SelectorOlSmallRomanNumberItemType 
 export const olSmallRomanNumberItemRegExp = /^[cdilmvx]+\.\s/;
 export const olSmallRomanNumberType: OlTypeSmallRomanNumberType = 'i';
 
+export const olBigAlphabetItemSelector: SelectorOlBigAlphabetItemType = 'A. ';
+export const olBigAlphabetItemRegExp = /^[A-Z]+\.\s/;
+export const olBigAlphabetType: OlTypeBigAlphabetType = 'A';
+
+export const olSmallAlphabetItemSelector: SelectorOlSmallAlphabetItemType = 'a. ';
+export const olSmallAlphabetItemRegExp = /^[a-z]+\.\s/;
+export const olSmallAlphabetType: OlTypeSmallAlphabetType = 'a';
+
 export const oLParseDataList: Array<OlParseDataType> = [
     {
         selector: olNumericItemSelector,
         regExpSearchSelector: olNumericItemRegExp,
         olAttributeType: olNumericType,
-    },
-    {
-        selector: olBigAlphabetItemSelector,
-        regExpSearchSelector: olBigAlphabetItemRegExp,
-        olAttributeType: olBigAlphabetType,
-    },
-    {
-        selector: olSmallAlphabetItemSelector,
-        regExpSearchSelector: olSmallAlphabetItemRegExp,
-        olAttributeType: olSmallAlphabetType,
     },
     {
         selector: olBigRomanNumberItemSelector,
@@ -68,6 +58,16 @@ export const oLParseDataList: Array<OlParseDataType> = [
         selector: olSmallRomanNumberItemSelector,
         regExpSearchSelector: olSmallRomanNumberItemRegExp,
         olAttributeType: olSmallRomanNumberType,
+    },
+    {
+        selector: olBigAlphabetItemSelector,
+        regExpSearchSelector: olBigAlphabetItemRegExp,
+        olAttributeType: olBigAlphabetType,
+    },
+    {
+        selector: olSmallAlphabetItemSelector,
+        regExpSearchSelector: olSmallAlphabetItemRegExp,
+        olAttributeType: olSmallAlphabetType,
     },
 ];
 
