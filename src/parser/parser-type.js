@@ -1,6 +1,8 @@
 // @flow
 
 export type SelectorHeaderType = '# ' | '## ' | '### ' | '#### ' | '##### ' | '###### ';
+export type SelectorBlockquoteType = '> ';
+
 export type SelectorUlItemType = '+ ' | '- ' | '* ';
 
 export type SelectorOlNumericItemType = '0. ';
@@ -31,7 +33,12 @@ export type SelectorOlItemType =
 
 export type SelectorParagraphType = '';
 
-export type SelectorType = SelectorHeaderType | SelectorUlItemType | SelectorOlItemType | SelectorParagraphType;
+export type SelectorType =
+    | SelectorHeaderType
+    | SelectorUlItemType
+    | SelectorOlItemType
+    | SelectorParagraphType
+    | SelectorBlockquoteType;
 
 export type LineDataType = {|
     +lineIndex: number,

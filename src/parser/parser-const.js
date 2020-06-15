@@ -1,26 +1,29 @@
 // @flow
 
 import type {
+    OlParseDataType,
+    OlTypeBigAlphabetType,
+    OlTypeBigRomanNumberType,
+    OlTypeNumericType,
+    OlTypeSmallAlphabetType,
+    OlTypeSmallRomanNumberType,
+    SelectorBlockquoteType,
     SelectorHeaderType,
+    SelectorOlBigAlphabetItemType,
+    SelectorOlBigRomanNumberItemType,
     SelectorOlNumericItemType,
+    SelectorOlSmallAlphabetItemType,
+    SelectorOlSmallRomanNumberItemType,
     SelectorType,
     SelectorUlItemType,
-    SelectorOlBigAlphabetItemType,
-    SelectorOlSmallAlphabetItemType,
-    SelectorOlBigRomanNumberItemType,
-    SelectorOlSmallRomanNumberItemType,
-    OlTypeNumericType,
-    OlTypeBigAlphabetType,
-    OlTypeSmallAlphabetType,
-    OlTypeBigRomanNumberType,
-    OlTypeSmallRomanNumberType,
-    OlParseDataType,
 } from './parser-type';
 
 export const emptyString = '';
 export const space = ' ';
 
 export const selectorHeaderList: Array<SelectorHeaderType> = ['# ', '## ', '### ', '#### ', '##### ', '###### '];
+export const selectorBlockquoteList: Array<SelectorBlockquoteType> = ['> '];
+
 export const selectorULItemList: Array<SelectorUlItemType> = ['+ ', '- ', '* '];
 
 export const olNumericItemSelector: SelectorOlNumericItemType = '0. ';
@@ -74,9 +77,10 @@ export const oLParseDataList: Array<OlParseDataType> = [
 export const selectorList: Array<SelectorType> = [
     ...selectorHeaderList,
     ...selectorULItemList,
-    olNumericItemSelector,
-    olBigAlphabetItemSelector,
-    olSmallAlphabetItemSelector,
-    olBigRomanNumberItemSelector,
-    olSmallRomanNumberItemSelector,
+    ...selectorBlockquoteList,
+    // olNumericItemSelector,
+    // olBigRomanNumberItemSelector,
+    // olSmallRomanNumberItemSelector,
+    // olBigAlphabetItemSelector,
+    // olSmallAlphabetItemSelector,
 ].sort((itemA: SelectorType, itemB: SelectorType): number => itemB.length - itemA.length);

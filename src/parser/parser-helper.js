@@ -3,9 +3,9 @@
 import type {LineDataType, OlAttributeType, SelectorType} from './parser-type';
 import {
     emptyString,
-    olNumericItemSelector,
     olNumericType,
     oLParseDataList,
+    selectorBlockquoteList,
     selectorHeaderList,
     selectorULItemList,
     space,
@@ -60,14 +60,16 @@ export function getIsUlItem(lineData: LineDataType): boolean {
 export function getIsOlItem(lineData: LineDataType): boolean {
     // eslint-disable-next-line no-loops/no-loops
     for (const oLParseData of oLParseDataList) {
-        const {selector, regExpSearchSelector} = oLParseData;
-
-        if (selector === lineData.selector) {
+        if (oLParseData.selector === lineData.selector) {
             return true;
         }
     }
 
     return false;
+}
+
+export function getIsBlockquote(lineData: LineDataType): boolean {
+    return selectorBlockquoteList.includes(lineData.selector);
 }
 
 // eslint-disable-next-line complexity
@@ -132,17 +134,17 @@ export function renderLineData(
         return emptyString;
     }
 
-    const isHeader = getIsHeader(lineData);
-    const isUlItem = getIsUlItem(lineData);
-    const isOlItem = getIsOlItem(lineData);
-
-    if (isHeader) {
+    if (getIsHeader(lineData)) {
         const headerTag = selector.length - 1;
 
         return `<h${headerTag}>${lineContent}${additionLineListRender}${childListRender}</h${headerTag}>`;
     }
 
-    if (isUlItem) {
+    if (getIsBlockquote(lineData)) {
+        return `<blockquote>${lineContent}${additionLineListRender}${childListRender}</blockquote>`;
+    }
+
+    if (getIsUlItem(lineData)) {
         const isFirstItem = getIsEdgeLine(lineData, lineDataList, -1);
         const isLastItem = getIsEdgeLine(lineData, lineDataList, 1);
         const prefix = isFirstItem ? '<ul>' : '';
@@ -151,7 +153,7 @@ export function renderLineData(
         return `${prefix}<li>${lineContent}${additionLineListRender}${childListRender}</li>${postfix}`;
     }
 
-    if (isOlItem) {
+    if (getIsOlItem(lineData)) {
         const isFirstItem = getIsEdgeLine(lineData, lineDataList, -1);
         const isLastItem = getIsEdgeLine(lineData, lineDataList, 1);
         const prefix = isFirstItem ? `<ol type="${getOlTypeBySelector(lineData.selector)}">` : '';

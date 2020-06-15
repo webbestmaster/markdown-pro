@@ -38,6 +38,11 @@ V. any Big Roman Number(s) with dot, for example: \`I. \`
 
 i. The same rule
 v. for Small Roman Number list
+
+### My favorite blockquote
+
+> One Markdown, One Specification, One Blockquote
+
 `;
 
 const input = document.querySelector('.js-input');

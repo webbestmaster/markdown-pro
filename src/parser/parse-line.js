@@ -1,23 +1,8 @@
 // @flow
 
 import {cleanLine, getParent} from './parser-helper';
-import type {LineDataType, SelectorType, ShortLineInfoType} from './parser-type';
-import {
-    emptyString,
-    olBigAlphabetItemRegExp,
-    olBigAlphabetItemSelector,
-    olBigRomanNumberItemRegExp,
-    olBigRomanNumberItemSelector,
-    olNumericItemRegExp,
-    olNumericItemSelector,
-    olNumericType,
-    oLParseDataList,
-    olSmallAlphabetItemRegExp,
-    olSmallAlphabetItemSelector,
-    olSmallRomanNumberItemRegExp,
-    olSmallRomanNumberItemSelector,
-    selectorList,
-} from './parser-const';
+import type {LineDataType, ShortLineInfoType} from './parser-type';
+import {emptyString, oLParseDataList, selectorList} from './parser-const';
 
 function getSelector(trimmedLine: string): ShortLineInfoType {
     // eslint-disable-next-line no-loops/no-loops
