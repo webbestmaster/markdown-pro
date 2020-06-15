@@ -5,7 +5,7 @@
 import {parseLine} from './parser/parse-line';
 import type {LineDataType} from './parser/parser-type';
 import {emptyString} from './parser/parser-const';
-import {renderChildList} from './parser/parser-helper';
+import {renderChildList} from './render/render';
 
 export function markdown(mdInput: string): string {
     const mainParent: LineDataType = {

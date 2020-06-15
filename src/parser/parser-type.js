@@ -2,6 +2,7 @@
 
 export type SelectorHeaderType = '# ' | '## ' | '### ' | '#### ' | '##### ' | '###### ';
 export type SelectorBlockquoteType = '> ';
+export type SelectorLineType = '---' | '***' | '___';
 
 export type SelectorUlItemType = '+ ' | '- ' | '* ';
 
@@ -38,16 +39,25 @@ export type SelectorType =
     | SelectorUlItemType
     | SelectorOlItemType
     | SelectorParagraphType
-    | SelectorBlockquoteType;
+    | SelectorBlockquoteType
+    | SelectorLineType;
 
 export type LineDataType = {|
+    // order number of line, start with 0
     +lineIndex: number,
+    // left spaces before any content
     +spaceCount: number,
+    // selector to render as html, example - '###'
     +selector: SelectorType,
+    // full line with all symbols, example - '### this is line'
     +line: string,
+    // trimmed line
     +trimmedLine: string,
+    // trimmed line without selector, example - 'this is line'
     +lineContent: string,
+    // line children
     +childList: Array<LineDataType>,
+    // additional line list
     +additionalLineList: Array<string>,
 |};
 

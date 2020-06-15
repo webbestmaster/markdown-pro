@@ -9,6 +9,7 @@ import type {
     OlTypeSmallRomanNumberType,
     SelectorBlockquoteType,
     SelectorHeaderType,
+    SelectorLineType,
     SelectorOlBigAlphabetItemType,
     SelectorOlBigRomanNumberItemType,
     SelectorOlNumericItemType,
@@ -23,6 +24,7 @@ export const space = ' ';
 
 export const selectorHeaderList: Array<SelectorHeaderType> = ['# ', '## ', '### ', '#### ', '##### ', '###### '];
 export const selectorBlockquoteList: Array<SelectorBlockquoteType> = ['> '];
+export const selectorLineList: Array<SelectorLineType> = ['---', '***', '___'];
 
 export const selectorULItemList: Array<SelectorUlItemType> = ['+ ', '- ', '* '];
 
@@ -75,12 +77,8 @@ export const oLParseDataList: Array<OlParseDataType> = [
 ];
 
 export const selectorList: Array<SelectorType> = [
+    // ...selectorLineList,
     ...selectorHeaderList,
     ...selectorULItemList,
     ...selectorBlockquoteList,
-    // olNumericItemSelector,
-    // olBigRomanNumberItemSelector,
-    // olSmallRomanNumberItemSelector,
-    // olBigAlphabetItemSelector,
-    // olSmallAlphabetItemSelector,
 ].sort((itemA: SelectorType, itemB: SelectorType): number => itemB.length - itemA.length);

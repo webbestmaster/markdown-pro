@@ -5,12 +5,15 @@
 import {init} from './init';
 
 const defaultMarkdown = `
-## Support headers h1-h6
+## Welcome
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+Markdown - easy to use!
 
-Alias animi autem beatae, ex fuga harum in laborum libero nam tempore!
-Autem et iure nobis non nostrum quaerat quisquam sunt totam!
+-----
+
+To make line use \`---\`, \`***\` or \`___\`.
+
+***
 
 ### Unordered list
 + Create a unordered list by starting a line with \`+ \`, \`- \` or \`* \`

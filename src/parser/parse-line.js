@@ -1,16 +1,28 @@
 // @flow
 
-import {cleanLine, getParent} from './parser-helper';
+import {cleanLine, getIsAllSymbolsEqual} from './util/string';
+import {getParent} from './util/navigation';
 import type {LineDataType, ShortLineInfoType} from './parser-type';
-import {emptyString, oLParseDataList, selectorList} from './parser-const';
+import {emptyString, oLParseDataList, selectorLineList, selectorList} from './parser-const';
 
-function getSelector(trimmedLine: string): ShortLineInfoType {
+// eslint-disable-next-line complexity
+function getShortInfo(trimmedLine: string): ShortLineInfoType {
     // eslint-disable-next-line no-loops/no-loops
     for (const selector of selectorList) {
-        if (trimmedLine.indexOf(selector) === 0) {
+        if (trimmedLine.startsWith(selector)) {
             return {
                 selector,
                 lineContent: cleanLine(trimmedLine.replace(selector, emptyString)),
+            };
+        }
+    }
+
+    // eslint-disable-next-line no-loops/no-loops
+    for (const lineSelector of selectorLineList) {
+        if (trimmedLine.startsWith(lineSelector) && getIsAllSymbolsEqual(trimmedLine)) {
+            return {
+                selector: lineSelector,
+                lineContent: emptyString,
             };
         }
     }
@@ -29,7 +41,7 @@ function getSelector(trimmedLine: string): ShortLineInfoType {
 
     return {
         selector: emptyString,
-        lineContent: trimmedLine,
+        lineContent: cleanLine(trimmedLine),
     };
 }
 
@@ -47,13 +59,12 @@ export function parseLine(
         ? savedLineDataList[savedLineDataList.length - 1].spaceCount
         : line.search(/\S/);
     const spaceCount = rawSpaceCount < 0 ? 0 : rawSpaceCount;
+    const defaultSelectorData: ShortLineInfoType = {
+        selector: emptyString,
+        lineContent: emptyString,
+    };
 
-    const {selector, lineContent} = isEmptyString
-        ? {
-            selector: emptyString,
-            lineContent: emptyString,
-        }
-        : getSelector(trimmedLine);
+    const {selector, lineContent} = isEmptyString ? defaultSelectorData : getShortInfo(trimmedLine);
 
     const lineData: LineDataType = {
         lineIndex,
@@ -64,8 +75,6 @@ export function parseLine(
         lineContent,
         childList: [],
         additionalLineList: [],
-        // isFirst: true,
-        // isLast: true,
     };
 
     if (lineData.selector === emptyString && lineContent.length > 0) {
