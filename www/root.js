@@ -4,7 +4,7 @@
 
 import {init} from './init';
 
-const defaultMarkdown = `
+let defaultMarkdown = `
 ## Welcome
 
 Markdown - easy to use!
@@ -46,6 +46,13 @@ v. for Small Roman Number list
 
 > One Markdown, One Specification, One Blockquote
 
+`;
+
+defaultMarkdown += '```bash\n$ npm i markdown\n   $ sudo be happy\n```';
+
+defaultMarkdown += `
+
+The end of text.
 `;
 
 const input = document.querySelector('.js-input');

@@ -3,7 +3,7 @@
 /* global document, setTimeout */
 
 import {parseLine} from './parser/parse-line';
-import type {LineDataType} from './parser/parser-type';
+import type {DocumentMetaType, LineDataType} from './parser/parser-type';
 import {emptyString} from './parser/parser-const';
 import {renderChildList} from './render/render';
 
@@ -22,9 +22,12 @@ export function markdown(mdInput: string): string {
     };
     const structuredLineDataList: Array<LineDataType> = [mainParent];
     const savedLineDataList: Array<LineDataType> = [mainParent];
+    const documentMeta: DocumentMetaType = {
+        codeLineData: null,
+    };
 
     mdInput.split('\n').forEach((line: string, lineIndex: number, allLineList: Array<string>) => {
-        parseLine(line, lineIndex, allLineList, structuredLineDataList, savedLineDataList);
+        parseLine(line, lineIndex, allLineList, structuredLineDataList, savedLineDataList, documentMeta);
     });
 
     return renderChildList(structuredLineDataList);

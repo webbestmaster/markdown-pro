@@ -2,8 +2,8 @@
 
 import {cleanLine, getIsAllSymbolsEqual} from './util/string';
 import {getParent} from './util/navigation';
-import type {LineDataType, ShortLineInfoType} from './parser-type';
-import {emptyString, oLParseDataList, selectorLineList, selectorList} from './parser-const';
+import type {DocumentMetaType, LineDataType, ShortLineInfoType} from './parser-type';
+import {emptyString, oLParseDataList, selectorCodeList, selectorLineList, selectorList} from './parser-const';
 
 // eslint-disable-next-line complexity
 function getShortInfo(trimmedLine: string): ShortLineInfoType {
@@ -45,13 +45,14 @@ function getShortInfo(trimmedLine: string): ShortLineInfoType {
     };
 }
 
-// eslint-disable-next-line complexity
+// eslint-disable-next-line complexity, max-params, max-statements, sonarjs/cognitive-complexity
 export function parseLine(
     line: string,
     lineIndex: number,
     allLineList: Array<string>,
     structuredLineDataList: Array<LineDataType>,
-    savedLineDataList: Array<LineDataType>
+    savedLineDataList: Array<LineDataType>,
+    documentMeta: DocumentMetaType
 ) {
     const trimmedLine = line.trim();
     const isEmptyString = trimmedLine === emptyString;
@@ -76,6 +77,23 @@ export function parseLine(
         childList: [],
         additionalLineList: [],
     };
+
+    if (selectorCodeList.includes(selector)) {
+        if (documentMeta.codeLineData && lineContent === emptyString) {
+            // eslint-disable-next-line no-param-reassign
+            documentMeta.codeLineData = null;
+            return;
+        }
+        // eslint-disable-next-line no-param-reassign
+        documentMeta.codeLineData = lineData;
+    }
+
+    const {codeLineData} = documentMeta;
+
+    if (codeLineData && codeLineData !== lineData) {
+        codeLineData.additionalLineList.push(lineData.line);
+        return;
+    }
 
     if (lineData.selector === emptyString && lineContent.length > 0) {
         const prevItemIndex = savedLineDataList.length - 1;

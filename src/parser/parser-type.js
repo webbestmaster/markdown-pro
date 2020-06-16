@@ -3,6 +3,7 @@
 export type SelectorHeaderType = '# ' | '## ' | '### ' | '#### ' | '##### ' | '###### ';
 export type SelectorBlockquoteType = '> ';
 export type SelectorLineType = '---' | '***' | '___';
+export type SelectorCodeType = '```';
 
 export type SelectorUlItemType = '+ ' | '- ' | '* ';
 
@@ -40,7 +41,8 @@ export type SelectorType =
     | SelectorOlItemType
     | SelectorParagraphType
     | SelectorBlockquoteType
-    | SelectorLineType;
+    | SelectorLineType
+    | SelectorCodeType;
 
 export type LineDataType = {|
     // order number of line, start with 0
@@ -70,4 +72,8 @@ export type OlParseDataType = {|
 export type ShortLineInfoType = {|
     +selector: SelectorType,
     +lineContent: string,
+|};
+
+export type DocumentMetaType = {|
+    codeLineData: LineDataType | null,
 |};

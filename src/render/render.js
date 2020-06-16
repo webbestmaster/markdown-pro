@@ -2,7 +2,7 @@
 
 import type {LineDataType, OlAttributeType, SelectorType} from '../parser/parser-type';
 import {emptyString, olNumericType, oLParseDataList, space} from '../parser/parser-const';
-import {getIsBlockquote, getIsHeader, getIsLine, getIsOlItem, getIsUlItem} from '../parser/util/is-tag';
+import {getIsBlockquote, getIsCode, getIsHeader, getIsLine, getIsOlItem, getIsUlItem} from '../parser/util/is-tag';
 import {getIsEdgeLine} from '../parser/util/navigation';
 
 function getOlTypeBySelector(dataLineSelector: SelectorType): OlAttributeType {
@@ -48,6 +48,10 @@ export function renderLineData(
 
     if (lineContent === emptyString && childList.length === 0) {
         return emptyString;
+    }
+
+    if (getIsCode(lineData)) {
+        return `<code lang="${lineContent}">${additionalLineList.join('\n')}</code>`;
     }
 
     if (getIsHeader(lineData)) {
