@@ -1,1 +1,37 @@
 // markdown
+
+$main-font-family: 'Helvetica', 'MS Trebuchet', sans-serif;
+$main-monospace-font-family: 'Lucida Console', 'Monaco', monospace;
+$main-font-size: 16px;
+$main-line-height: 1.4;
+$main-text-color: #212121;
+//$main-background-text-color: #fdf8e3;
+$main-background-text-color: #f0ece3;
+
+.markdown_wrapper {
+    background-color: $main-background-text-color;
+    display: block;
+
+    // reset
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    ol,
+    ul,
+    li,
+    p,
+    hr,
+    blockquote,
+    code {
+        color: $main-text-color;
+        display: block;
+        font-size: $main-font-size;
+        line-height: $main-line-height;
+        margin: 0;
+        outline: 0;
+        padding: 0;
+    }
+}

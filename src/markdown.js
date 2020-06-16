@@ -6,6 +6,7 @@ import {parseLine} from './parser/parse-line';
 import type {DocumentMetaType, LineDataType} from './parser/parser-type';
 import {emptyString} from './parser/parser-const';
 import {renderChildList} from './render/render';
+import markdownStyle from './markdown.scss';
 
 export function markdown(mdInput: string): string {
     const mainParent: LineDataType = {
@@ -30,5 +31,5 @@ export function markdown(mdInput: string): string {
         parseLine(line, lineIndex, allLineList, structuredLineDataList, savedLineDataList, documentMeta);
     });
 
-    return renderChildList(structuredLineDataList);
+    return `<div class="${markdownStyle.markdown_wrapper}">${renderChildList(structuredLineDataList)}</div>`;
 }
