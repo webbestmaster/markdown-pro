@@ -48,7 +48,7 @@ v. for Small Roman Number list
 
 `;
 
-defaultMarkdown += '```bash\n$ npm i markdown\n   $ sudo be happy\n```';
+defaultMarkdown += '```bash\n$ npm i markdown\n$ sudo be happy\n```';
 
 defaultMarkdown += `
 
