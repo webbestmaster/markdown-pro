@@ -10,6 +10,8 @@ import {
     selectorULItemList,
 } from '../parser-const';
 
+import {htmlPairTag, htmlSingleTag} from './string';
+
 export function getIsHeader(lineData: LineDataType): boolean {
     return selectorHeaderList.includes(lineData.selector);
 }
@@ -39,4 +41,10 @@ export function getIsCode(lineData: LineDataType): boolean {
 
 export function getIsBlockquote(lineData: LineDataType): boolean {
     return selectorBlockquoteList.includes(lineData.selector);
+}
+
+export function getIsStartWithHtml(lineData: LineDataType): boolean {
+    const {trimmedLine} = lineData;
+
+    return trimmedLine.search(htmlPairTag) === 0 || trimmedLine.search(htmlSingleTag) === 0;
 }

@@ -9,6 +9,11 @@ let defaultMarkdown = `
 
 Markdown - easy to use!
 
+<p>use any html tags</p>
+<p>ever
+multi
+line</p>
+
 -----
 
 To make line use \`---\`, \`***\` or \`___\`.

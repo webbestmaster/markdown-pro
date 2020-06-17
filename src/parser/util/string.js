@@ -9,3 +9,6 @@ export function getIsAllSymbolsEqual(line: string): boolean {
 
     return line.split(firstSymbol).join('').length === 0;
 }
+
+export const htmlPairTag = /<(\w+)[^>]*>[\S\s]*?<\/\1>/;
+export const htmlSingleTag = /<\w+[^>]*?\s*\/>/;
