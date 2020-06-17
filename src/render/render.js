@@ -20,6 +20,12 @@ function getOlTypeBySelector(dataLineSelector: SelectorType): OlAttributeType {
     return olNumericType;
 }
 
+function getOlStart(trimmedLine: string): string {
+    const dotIndex = trimmedLine.indexOf('.');
+
+    return trimmedLine.slice(0, dotIndex);
+}
+
 export function renderChildList(lineDataList: Array<LineDataType>): string {
     return lineDataList.map(renderLineData).join(emptyString);
 }
@@ -76,7 +82,9 @@ export function renderLineData(
     if (getIsOlItem(lineData)) {
         const isFirstItem = getIsEdgeLine(lineData, lineDataList, -1);
         const isLastItem = getIsEdgeLine(lineData, lineDataList, 1);
-        const prefix = isFirstItem ? `<ol type="${getOlTypeBySelector(lineData.selector)}">` : '';
+        const prefix = isFirstItem
+            ? `<ol type="${getOlTypeBySelector(lineData.selector)}" start="${getOlStart(trimmedLine)}">`
+            : '';
         const postfix = isLastItem ? '</ol>' : '';
 
         return `${prefix}<li>${lineContent}${additionLineListRender}${childListRender}</li>${postfix}`;

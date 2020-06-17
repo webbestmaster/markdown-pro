@@ -26,12 +26,12 @@ To make line use \`---\`, \`***\` or \`___\`.
 1. by starting a line with
 2. any number(s) with dot, for example: \`1. \`
 
-A. Create a Big Alphabet list
+B. Create a Big Alphabet list
 O. by starting a line with
 P. any Big Letter(s) with dot, for example: \`A. \`
 Q. PS: avoid Roman number - I, V, X, L, C, D, M
 
-a. The same rule
+f. The same rule
 o. for Small Alphabet list
 q. PS: avoid Roman number - i, v, x, l, c, d, m
 
@@ -39,7 +39,7 @@ I. Create a Big Roman Number list
 II. by starting a line with
 V. any Big Roman Number(s) with dot, for example: \`I. \`
 
-i. The same rule
+ii. The same rule
 v. for Small Roman Number list
 
 ### My favorite blockquote
