@@ -61,6 +61,8 @@ export type LineDataType = {|
     +childList: Array<LineDataType>,
     // additional line list
     +additionalLineList: Array<string>,
+    // make \n => <br/>
+    +useLineBreak: boolean,
 |};
 
 export type OlParseDataType = {|
@@ -76,4 +78,5 @@ export type ShortLineInfoType = {|
 
 export type DocumentMetaType = {|
     codeLineData: LineDataType | null,
+    +useLineBreak: boolean,
 |};

@@ -7,7 +7,12 @@ Markdown - easy to use!
 Multi
 Line</p>
 
-Use `\` at the end of line \
+Use option `useLineBreak` to
+break
+line
+everywhere.
+
+Or use `\` at the end of line \
 to break it.
 
 -----

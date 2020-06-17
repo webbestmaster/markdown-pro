@@ -7,8 +7,15 @@ import type {DocumentMetaType, LineDataType} from './parser/parser-type';
 import {emptyString} from './parser/parser-const';
 import {renderChildList} from './render/render';
 import markdownStyle from './markdown.scss';
+import type {MarkdownConfigShallowType, MarkdownConfigType} from './markdown-type';
+import {defaultMarkdownConfig} from './markdown-const';
 
-export function markdown(mdInput: string): string {
+export function markdown(mdInput: string, config: MarkdownConfigShallowType = defaultMarkdownConfig): string {
+    const markdownConfig: MarkdownConfigType = {
+        ...defaultMarkdownConfig,
+        ...config,
+    };
+
     const mainParent: LineDataType = {
         lineIndex: -1,
         spaceCount: -1,
@@ -18,6 +25,7 @@ export function markdown(mdInput: string): string {
         lineContent: '',
         childList: [],
         additionalLineList: [],
+        useLineBreak: markdownConfig.useLineBreak,
         // isFirst: true,
         // isLast: true,
     };
@@ -25,6 +33,7 @@ export function markdown(mdInput: string): string {
     const savedLineDataList: Array<LineDataType> = [mainParent];
     const documentMeta: DocumentMetaType = {
         codeLineData: null,
+        useLineBreak: markdownConfig.useLineBreak,
     };
 
     mdInput.split('\n').forEach((line: string, lineIndex: number, allLineList: Array<string>) => {

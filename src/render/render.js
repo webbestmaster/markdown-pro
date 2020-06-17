@@ -1,7 +1,7 @@
 // @flow
 
 import type {LineDataType, OlAttributeType, SelectorType} from '../parser/parser-type';
-import {emptyString, olNumericType, oLParseDataList, space} from '../parser/parser-const';
+import {breakLineTag, emptyString, olNumericType, oLParseDataList, space} from '../parser/parser-const';
 import {
     getIsBlockquote,
     getIsCode,
@@ -12,7 +12,7 @@ import {
     getIsUlItem,
 } from '../parser/util/is-tag';
 import {getIsEdgeLine} from '../parser/util/navigation';
-import {addBreakLine} from '../parser/util/string';
+import {addBreakLine, breakLineRegExp, getHasEndBreakLine} from '../parser/util/string';
 
 function getOlTypeBySelector(dataLineSelector: SelectorType): OlAttributeType {
     // eslint-disable-next-line no-loops/no-loops
@@ -39,12 +39,44 @@ export function renderChildList(lineDataList: Array<LineDataType>): string {
     return lineDataList.map(renderLineData).map(addBreakLine).join(emptyString);
 }
 
-export function renderAdditionalLineList(lineContentList: Array<string>): string {
-    if (lineContentList.length === 0) {
+// eslint-disable-next-line complexity
+function renderAdditionalLineList(lineData: LineDataType): string {
+    const {additionalLineList, useLineBreak} = lineData;
+
+    if (additionalLineList.length === 0) {
         return emptyString;
     }
 
-    return space + lineContentList.map(addBreakLine).join(space);
+    const hasParentEndBreakLine = getHasEndBreakLine(lineData.lineContent, useLineBreak);
+    const prefix = hasParentEndBreakLine ? breakLineTag : space;
+    const additionalLineListLength = additionalLineList.length;
+    const additionalLineLastIndex = additionalLineListLength - 1;
+    const lineResult: Array<string> = new Array<string>(additionalLineListLength).fill('');
+
+    // eslint-disable-next-line no-loops/no-loops
+    for (let lineIndex = 0; lineIndex < additionalLineListLength; lineIndex += 1) {
+        const additionalLine = additionalLineList[lineIndex];
+        const hasBreakLine = getHasEndBreakLine(additionalLine, useLineBreak);
+
+        if (hasBreakLine) {
+            const additionalLineWithoutBreakLine = additionalLine.replace(breakLineRegExp, emptyString);
+
+            if (lineIndex === additionalLineLastIndex) {
+                lineResult[lineIndex] = additionalLineWithoutBreakLine;
+            } else {
+                lineResult[lineIndex] = additionalLineWithoutBreakLine + breakLineTag;
+            }
+        } else {
+            // eslint-disable-next-line no-lonely-if
+            if (lineIndex === additionalLineLastIndex) {
+                lineResult[lineIndex] = additionalLine;
+            } else {
+                lineResult[lineIndex] = additionalLine + space;
+            }
+        }
+    }
+
+    return prefix + lineResult.join(emptyString);
 }
 
 // eslint-disable-next-line complexity, sonarjs/cognitive-complexity, max-statements
@@ -54,7 +86,7 @@ export function renderLineData(
     lineDataList: Array<LineDataType>
 ): string {
     const {selector, childList, lineContent, additionalLineList, trimmedLine} = lineData;
-    const additionLineListRender = renderAdditionalLineList(additionalLineList);
+    const additionLineListRender = renderAdditionalLineList(lineData);
     const childListRender = renderChildList(childList);
     const fullLineContent = `${addBreakLine(lineContent)}${additionLineListRender}${childListRender}`;
 

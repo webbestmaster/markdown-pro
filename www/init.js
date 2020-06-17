@@ -8,7 +8,7 @@ export function init(input: HTMLTextAreaElement, output: HTMLDivElement, outputD
     function handleInput() {
         const inputValue = input.value;
 
-        const markdownHtml = markdown(inputValue);
+        const markdownHtml = markdown(inputValue, {useLineBreak: false});
 
         // eslint-disable-next-line no-param-reassign
         output.innerHTML = markdownHtml;
