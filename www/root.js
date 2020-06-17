@@ -3,65 +3,7 @@
 /* global document, Event, HTMLTextAreaElement, HTMLDivElement, HTMLPreElement */
 
 import {init} from './init';
-
-let defaultMarkdown = `
-## Welcome
-
-Markdown - easy to use!
-
-<p>use any html tags</p>
-<p>ever
-multi
-line</p>
-
-Use \`\\\` at the end of line \\
-to break it.
-
------
-
-To make line use \`---\`, \`***\` or \`___\`.
-
-***
-
-### Unordered list
-+ Create a unordered list by starting a line with \`+ \`, \`- \` or \`* \`
-+ Sub-lists are made by indenting space(s):
-    + Lorem ipsum dolor
-    + Alias animi autem beatae
-
-### Ordered list
-5. Create a Numeric list
-1. by starting a line with
-2. any number(s) with dot, for example: \`1. \`
-
-B. Create a Big Alphabet list
-O. by starting a line with
-P. any Big Letter(s) with dot, for example: \`A. \`
-Q. PS: avoid Roman number - I, V, X, L, C, D, M
-
-f. The same rule
-o. for Small Alphabet list
-q. PS: avoid Roman number - i, v, x, l, c, d, m
-
-I. Create a Big Roman Number list
-II. by starting a line with
-V. any Big Roman Number(s) with dot, for example: \`I. \`
-
-ii. The same rule
-v. for Small Roman Number list
-
-### My favorite blockquote
-
-> One Markdown, One Specification, One Blockquote
-
-`;
-
-defaultMarkdown += '```bash\n$ npm i markdown\n$ sudo be happy\n```';
-
-defaultMarkdown += `
-
-The end of text.
-`;
+import defaultMarkdown from './index.md';
 
 const input = document.querySelector('.js-input');
 const output = document.querySelector('.js-output');

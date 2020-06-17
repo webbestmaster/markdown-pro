@@ -93,4 +93,8 @@ module.exports.rules = [
             postCssLoader,
         ],
     },
+    {
+        test: /\.(txt|md)$/i,
+        use: 'raw-loader',
+    },
 ];
