@@ -46,12 +46,12 @@ export function renderLineData(
         return '<hr/>';
     }
 
-    if (lineContent === emptyString && childList.length === 0) {
-        return emptyString;
-    }
-
     if (getIsCode(lineData)) {
         return `<code lang="${lineContent}">${additionalLineList.join('\n')}</code>`;
+    }
+
+    if (lineContent === emptyString && childList.length === 0) {
+        return emptyString;
     }
 
     if (getIsHeader(lineData)) {
