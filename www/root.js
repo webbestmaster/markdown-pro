@@ -14,6 +14,9 @@ Markdown - easy to use!
 multi
 line</p>
 
+Use \`\\\` at the end of line \\
+to break it.
+
 -----
 
 To make line use \`---\`, \`***\` or \`___\`.

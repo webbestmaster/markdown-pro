@@ -10,5 +10,9 @@ export function getIsAllSymbolsEqual(line: string): boolean {
     return line.split(firstSymbol).join('').length === 0;
 }
 
+export function addBreakLine(line: string): string {
+    return line.replace(/\\$/g, '<br/>');
+}
+
 export const htmlPairTag = /<(\w+)[^>]*>[\S\s]*?<\/\1>/;
 export const htmlSingleTag = /<\w+[^>]*?\s*\/>/;

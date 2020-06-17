@@ -12,6 +12,7 @@ import {
     getIsUlItem,
 } from '../parser/util/is-tag';
 import {getIsEdgeLine} from '../parser/util/navigation';
+import {addBreakLine} from '../parser/util/string';
 
 function getOlTypeBySelector(dataLineSelector: SelectorType): OlAttributeType {
     // eslint-disable-next-line no-loops/no-loops
@@ -35,7 +36,7 @@ function getOlStart(trimmedLine: string): string {
 }
 
 export function renderChildList(lineDataList: Array<LineDataType>): string {
-    return lineDataList.map(renderLineData).join(emptyString);
+    return lineDataList.map(renderLineData).map(addBreakLine).join(emptyString);
 }
 
 export function renderAdditionalLineList(lineContentList: Array<string>): string {
@@ -43,7 +44,7 @@ export function renderAdditionalLineList(lineContentList: Array<string>): string
         return emptyString;
     }
 
-    return space + lineContentList.join(space);
+    return space + lineContentList.map(addBreakLine).join(space);
 }
 
 // eslint-disable-next-line complexity, sonarjs/cognitive-complexity, max-statements
@@ -55,6 +56,7 @@ export function renderLineData(
     const {selector, childList, lineContent, additionalLineList, trimmedLine} = lineData;
     const additionLineListRender = renderAdditionalLineList(additionalLineList);
     const childListRender = renderChildList(childList);
+    const fullLineContent = `${addBreakLine(lineContent)}${additionLineListRender}${childListRender}`;
 
     if (getIsLine(lineData)) {
         return '<hr/>';
@@ -71,11 +73,11 @@ export function renderLineData(
     if (getIsHeader(lineData)) {
         const headerTag = selector.length - 1;
 
-        return `<h${headerTag}>${lineContent}${additionLineListRender}${childListRender}</h${headerTag}>`;
+        return `<h${headerTag}>${fullLineContent}</h${headerTag}>`;
     }
 
     if (getIsBlockquote(lineData)) {
-        return `<blockquote>${lineContent}${additionLineListRender}${childListRender}</blockquote>`;
+        return `<blockquote>${fullLineContent}</blockquote>`;
     }
 
     if (getIsUlItem(lineData)) {
@@ -84,7 +86,7 @@ export function renderLineData(
         const prefix = isFirstItem ? '<ul>' : '';
         const postfix = isLastItem ? '</ul>' : '';
 
-        return `${prefix}<li>${lineContent}${additionLineListRender}${childListRender}</li>${postfix}`;
+        return `${prefix}<li>${fullLineContent}</li>${postfix}`;
     }
 
     if (getIsOlItem(lineData)) {
@@ -95,12 +97,12 @@ export function renderLineData(
             : '';
         const postfix = isLastItem ? '</ol>' : '';
 
-        return `${prefix}<li>${lineContent}${additionLineListRender}${childListRender}</li>${postfix}`;
+        return `${prefix}<li>${fullLineContent}</li>${postfix}`;
     }
 
     if (lineContent === emptyString || getIsStartWithHtml(lineData)) {
-        return `${lineContent}${additionLineListRender}${childListRender}`;
+        return fullLineContent;
     }
 
-    return `<p>${lineContent}${additionLineListRender}${childListRender}</p>`;
+    return `<p>${fullLineContent}</p>`;
 }
