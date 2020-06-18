@@ -36,7 +36,7 @@ function imageReplacer(matchedString: string, alt: mixed, src: string, title: mi
     return `<img loading="lazy" src="${src}"${altAttrValue}${titleAttrValue}/>`;
 }
 
-const findImageRegExpGlobal = /!\[([\S\s]*?)]\((\S+)(?:\s+"([\S\s]+?)")?\)/g;
+const findImageRegExpGlobal = /!\[([\S\s]*?)]\((\S+?)(?:\s+"([\S\s]+?)")?\)/g;
 
 export function makeImage(html: string): string {
     return html.replace(findImageRegExpGlobal, imageReplacer);
@@ -44,4 +44,16 @@ export function makeImage(html: string): string {
 
 export function isImageListOnly(lineContent: string): boolean {
     return lineContent.replace(findImageRegExpGlobal, '').trim() === emptyString;
+}
+
+const findLinkRegExpGlobal = /\[([\S\s]*?)]\((\S+?)\)/g;
+
+function linkReplacer(matchedString: string, linkText: string, href: string): string {
+    const text = linkText.length > 0 ? linkText : href;
+
+    return `<a href="${href}">${text}</a>`;
+}
+
+export function makeLink(html: string): string {
+    return html.replace(findLinkRegExpGlobal, linkReplacer);
 }

@@ -18,6 +18,7 @@ import {
     getHasEndBreakLine,
     isImageListOnly,
     makeImage,
+    makeLink,
     removeEndBreakLine,
 } from '../parser/util/string';
 
@@ -97,6 +98,7 @@ export function renderLineData(
     const childListRender = renderChildList(childList);
     const fullLineContent = `${removeEndBreakLine(lineContent)}${additionLineListRender}${childListRender}`;
     const fullLineContentImage = makeImage(fullLineContent);
+    const fullLineContentImageLink = makeLink(fullLineContentImage);
 
     if (getIsLine(lineData)) {
         return '<hr/>';
@@ -113,11 +115,11 @@ export function renderLineData(
     if (getIsHeader(lineData)) {
         const headerTag = selector.length - 1;
 
-        return `<h${headerTag}>${fullLineContentImage}</h${headerTag}>`;
+        return `<h${headerTag}>${fullLineContentImageLink}</h${headerTag}>`;
     }
 
     if (getIsBlockquote(lineData)) {
-        return `<blockquote>${fullLineContentImage}</blockquote>`;
+        return `<blockquote>${fullLineContentImageLink}</blockquote>`;
     }
 
     if (getIsUlItem(lineData)) {
@@ -126,7 +128,7 @@ export function renderLineData(
         const prefix = isFirstItem ? '<ul>' : '';
         const postfix = isLastItem ? '</ul>' : '';
 
-        return `${prefix}<li>${fullLineContentImage}</li>${postfix}`;
+        return `${prefix}<li>${fullLineContentImageLink}</li>${postfix}`;
     }
 
     if (getIsOlItem(lineData)) {
@@ -137,12 +139,12 @@ export function renderLineData(
             : '';
         const postfix = isLastItem ? '</ol>' : '';
 
-        return `${prefix}<li>${fullLineContentImage}</li>${postfix}`;
+        return `${prefix}<li>${fullLineContentImageLink}</li>${postfix}`;
     }
 
     if (lineContent === emptyString || getIsStartWithHtml(lineData) || isImageListOnly(lineContent)) {
-        return fullLineContentImage;
+        return fullLineContentImageLink;
     }
 
-    return `<p>${fullLineContentImage}</p>`;
+    return `<p>${fullLineContentImageLink}</p>`;
 }

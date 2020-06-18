@@ -14,6 +14,7 @@ $main-line-height: 1.4;
     h5,
     h6,
     p,
+    a,
     hr,
     blockquote,
     code,
@@ -28,6 +29,16 @@ $main-line-height: 1.4;
 
         &:first-child {
             margin-top: 0;
+        }
+    }
+
+    a {
+        color: #0366d6;
+        display: initial;
+        text-decoration: underline;
+
+        &:hover {
+            text-decoration: none;
         }
     }
 

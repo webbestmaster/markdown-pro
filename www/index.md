@@ -27,6 +27,10 @@ To make line use `---`, `***` or `___`.
 ![Minion](https://placekitten.com/110/110)
 ![Stormtroopocat](https://placekitten.com/120/120 "The Stormtroopocat")
 
+### Links
+
+You can use like this [link](http://example.com) or like this [](http://example.com).
+
 ### Unordered list
 + Create a unordered list by starting a line with `+ `, `- ` or `* `
 + Sub-lists are made by indenting space(s):
