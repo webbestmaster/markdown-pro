@@ -96,9 +96,11 @@ export function renderLineData(
     const {selector, childList, lineContent, additionalLineList, trimmedLine} = lineData;
     const additionLineListRender = renderAdditionalLineList(lineData);
     const childListRender = renderChildList(childList);
-    const fullLineContent = `${removeEndBreakLine(lineContent)}${additionLineListRender}${childListRender}`;
-    const fullLineContentImage = makeImage(fullLineContent);
-    const fullLineContentImageLink = makeLink(fullLineContentImage);
+
+    let fullLineContent = `${removeEndBreakLine(lineContent)}${additionLineListRender}${childListRender}`;
+
+    fullLineContent = makeImage(fullLineContent);
+    fullLineContent = makeLink(fullLineContent);
 
     if (getIsLine(lineData)) {
         return '<hr/>';
@@ -115,11 +117,11 @@ export function renderLineData(
     if (getIsHeader(lineData)) {
         const headerTag = selector.length - 1;
 
-        return `<h${headerTag}>${fullLineContentImageLink}</h${headerTag}>`;
+        return `<h${headerTag}>${fullLineContent}</h${headerTag}>`;
     }
 
     if (getIsBlockquote(lineData)) {
-        return `<blockquote>${fullLineContentImageLink}</blockquote>`;
+        return `<blockquote>${fullLineContent}</blockquote>`;
     }
 
     if (getIsUlItem(lineData)) {
@@ -128,7 +130,7 @@ export function renderLineData(
         const prefix = isFirstItem ? '<ul>' : '';
         const postfix = isLastItem ? '</ul>' : '';
 
-        return `${prefix}<li>${fullLineContentImageLink}</li>${postfix}`;
+        return `${prefix}<li>${fullLineContent}</li>${postfix}`;
     }
 
     if (getIsOlItem(lineData)) {
@@ -139,12 +141,12 @@ export function renderLineData(
             : '';
         const postfix = isLastItem ? '</ol>' : '';
 
-        return `${prefix}<li>${fullLineContentImageLink}</li>${postfix}`;
+        return `${prefix}<li>${fullLineContent}</li>${postfix}`;
     }
 
     if (lineContent === emptyString || getIsStartWithHtml(lineData) || isImageListOnly(lineContent)) {
-        return fullLineContentImageLink;
+        return fullLineContent;
     }
 
-    return `<p>${fullLineContentImageLink}</p>`;
+    return `<p>${fullLineContent}</p>`;
 }
