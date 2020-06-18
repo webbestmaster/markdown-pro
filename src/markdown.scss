@@ -16,7 +16,8 @@ $main-line-height: 1.4;
     p,
     hr,
     blockquote,
-    code {
+    code,
+    img {
         color: inherit;
         display: block;
         font-family: inherit;
@@ -120,5 +121,10 @@ $main-line-height: 1.4;
         padding: 9px;
         white-space: pre;
         word-break: break-all;
+    }
+
+    img {
+        display: initial;
+        margin-bottom: 8px;
     }
 }

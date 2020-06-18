@@ -12,7 +12,14 @@ import {
     getIsUlItem,
 } from '../parser/util/is-tag';
 import {getIsEdgeLine} from '../parser/util/navigation';
-import {addBreakLine, breakLineRegExp, getHasEndBreakLine} from '../parser/util/string';
+import {
+    addBreakLine,
+    breakLineRegExp,
+    getHasEndBreakLine,
+    isImageListOnly,
+    makeImage,
+    removeEndBreakLine,
+} from '../parser/util/string';
 
 function getOlTypeBySelector(dataLineSelector: SelectorType): OlAttributeType {
     // eslint-disable-next-line no-loops/no-loops
@@ -88,7 +95,8 @@ export function renderLineData(
     const {selector, childList, lineContent, additionalLineList, trimmedLine} = lineData;
     const additionLineListRender = renderAdditionalLineList(lineData);
     const childListRender = renderChildList(childList);
-    const fullLineContent = `${addBreakLine(lineContent)}${additionLineListRender}${childListRender}`;
+    const fullLineContent = `${removeEndBreakLine(lineContent)}${additionLineListRender}${childListRender}`;
+    const fullLineContentImage = makeImage(fullLineContent);
 
     if (getIsLine(lineData)) {
         return '<hr/>';
@@ -105,11 +113,11 @@ export function renderLineData(
     if (getIsHeader(lineData)) {
         const headerTag = selector.length - 1;
 
-        return `<h${headerTag}>${fullLineContent}</h${headerTag}>`;
+        return `<h${headerTag}>${fullLineContentImage}</h${headerTag}>`;
     }
 
     if (getIsBlockquote(lineData)) {
-        return `<blockquote>${fullLineContent}</blockquote>`;
+        return `<blockquote>${fullLineContentImage}</blockquote>`;
     }
 
     if (getIsUlItem(lineData)) {
@@ -118,7 +126,7 @@ export function renderLineData(
         const prefix = isFirstItem ? '<ul>' : '';
         const postfix = isLastItem ? '</ul>' : '';
 
-        return `${prefix}<li>${fullLineContent}</li>${postfix}`;
+        return `${prefix}<li>${fullLineContentImage}</li>${postfix}`;
     }
 
     if (getIsOlItem(lineData)) {
@@ -129,12 +137,12 @@ export function renderLineData(
             : '';
         const postfix = isLastItem ? '</ol>' : '';
 
-        return `${prefix}<li>${fullLineContent}</li>${postfix}`;
+        return `${prefix}<li>${fullLineContentImage}</li>${postfix}`;
     }
 
-    if (lineContent === emptyString || getIsStartWithHtml(lineData)) {
-        return fullLineContent;
+    if (lineContent === emptyString || getIsStartWithHtml(lineData) || isImageListOnly(lineContent)) {
+        return fullLineContentImage;
     }
 
-    return `<p>${fullLineContent}</p>`;
+    return `<p>${fullLineContentImage}</p>`;
 }

@@ -21,6 +21,12 @@ To make line use `---`, `***` or `___`.
 
 ***
 
+### Images
+
+![](https://placekitten.com/100/100)
+![Minion](https://placekitten.com/110/110)
+![Stormtroopocat](https://placekitten.com/120/120 "The Stormtroopocat")
+
 ### Unordered list
 + Create a unordered list by starting a line with `+ `, `- ` or `* `
 + Sub-lists are made by indenting space(s):
