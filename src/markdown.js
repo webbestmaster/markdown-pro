@@ -6,7 +6,6 @@ import {parseLine} from './parser/parse-line';
 import type {DocumentMetaType, LineDataType} from './parser/parser-type';
 import {emptyString} from './parser/parser-const';
 import {renderChildList} from './render/render';
-import markdownStyle from './markdown.scss';
 import type {MarkdownConfigShallowType, MarkdownConfigType} from './markdown-type';
 import {defaultMarkdownConfig} from './markdown-const';
 
@@ -40,5 +39,13 @@ export function markdown(mdInput: string, config: MarkdownConfigShallowType = de
         parseLine(line, lineIndex, allLineList, structuredLineDataList, savedLineDataList, documentMeta);
     });
 
-    return `<div class="${markdownStyle.markdown_wrapper}">${renderChildList(structuredLineDataList)}</div>`;
+    const {wrapperClassName: wrapperClassNameConfig} = markdownConfig;
+    const {wrapperClassName: wrapperClassNameDefault} = defaultMarkdownConfig;
+
+    const fullWrapperClassName
+        = wrapperClassNameConfig === wrapperClassNameDefault
+            ? wrapperClassNameDefault
+            : `${wrapperClassNameDefault} ${wrapperClassNameConfig}`;
+
+    return `<div class="${fullWrapperClassName}">${renderChildList(structuredLineDataList)}</div>`;
 }
