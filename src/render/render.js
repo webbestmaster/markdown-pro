@@ -98,11 +98,10 @@ export function renderLineData(
     const additionLineListRender = renderAdditionalLineList(lineData);
     const childListRender = renderChildList(childList);
 
-    let fullLineContent = `${removeEndBreakLine(lineContent)}${additionLineListRender}${childListRender}`;
+    let fullLineContent = makePairTag(removeEndBreakLine(lineContent) + additionLineListRender) + childListRender;
 
     fullLineContent = makeImage(fullLineContent);
     fullLineContent = makeLink(fullLineContent);
-    fullLineContent = makePairTag(fullLineContent);
 
     if (getIsLine(lineData)) {
         return '<hr/>';

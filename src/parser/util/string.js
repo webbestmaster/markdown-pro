@@ -59,17 +59,58 @@ export function makeLink(html: string): string {
     return html.replace(findLinkRegExpGlobal, linkReplacer);
 }
 
+function canBeWrapper(html: string): boolean {
+    const openTagList = html.match(/<[^/]*?>/g) || []; // open tags
+    const closeTagList = html.match(/<\/\S*?>/g) || []; // close tags
+
+    return openTagList.length === closeTagList.length;
+}
+
 function appPairTag(html: string, pairTagSelector: PairTagSelectorType): string {
     const {selector, openTag, closeTag} = pairTagSelector;
 
     const chunkList = html.split(selector);
-    const chunkListLength = chunkList.length;
 
-    return chunkList
+    // no selector include
+    if (chunkList.length === 1) {
+        return html;
+    }
+
+    const validatedChunkList: Array<string> = [];
+
+    let candidate = '';
+
+    let isTagOpen = false;
+
+    // eslint-disable-next-line no-loops/no-loops
+    for (const chunk of chunkList) {
+        if (isTagOpen) {
+            candidate += chunk;
+            if (canBeWrapper(candidate)) {
+                validatedChunkList.push(candidate);
+                isTagOpen = false;
+                candidate = '';
+            }
+        } else {
+            validatedChunkList.push(chunk);
+            isTagOpen = true;
+        }
+    }
+
+    return validatedChunkList
         .map((chunk: string, chunkIndex: number): string => {
-            return chunk;
+            if (chunkIndex % 2 === 0) {
+                return chunk;
+            }
+
+            // check for unclosed 'tag'
+            if (validatedChunkList.length - 1 === chunkIndex) {
+                return selector + chunk;
+            }
+
+            return openTag + chunk + closeTag;
         })
-        .join('');
+        .join(emptyString);
 }
 
 export function makePairTag(html: string): string {
@@ -79,5 +120,5 @@ export function makePairTag(html: string): string {
         result = appPairTag(result, pairTagSelector);
     });
 
-    return html;
+    return result;
 }
