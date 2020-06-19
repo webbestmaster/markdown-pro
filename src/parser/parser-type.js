@@ -80,3 +80,9 @@ export type DocumentMetaType = {|
     codeLineData: LineDataType | null,
     +useLineBreak: boolean,
 |};
+
+export type PairTagSelectorType = {|
+    +selector: string,
+    +openTag: string,
+    +closeTag: string,
+|};

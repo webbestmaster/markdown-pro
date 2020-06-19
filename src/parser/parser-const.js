@@ -7,6 +7,7 @@ import type {
     OlTypeNumericType,
     OlTypeSmallAlphabetType,
     OlTypeSmallRomanNumberType,
+    PairTagSelectorType,
     SelectorBlockquoteType,
     SelectorCodeType,
     SelectorHeaderType,
@@ -86,3 +87,27 @@ export const selectorList: Array<SelectorType> = [
     ...selectorCodeList,
     ...selectorBlockquoteList,
 ].sort((itemA: SelectorType, itemB: SelectorType): number => itemB.length - itemA.length);
+
+const pairTagSelectorStrong: PairTagSelectorType = {selector: '**', openTag: '<b>', closeTag: '</b>'};
+const pairTagSelectorUnderline: PairTagSelectorType = {selector: '__', openTag: '<u>', closeTag: '</u>'};
+const pairTagSelectorStrike: PairTagSelectorType = {selector: '~~', openTag: '<strike>', closeTag: '</strike>'};
+const pairTagSelectorItalic1: PairTagSelectorType = {selector: '_', openTag: '<i>', closeTag: '</i>'};
+const pairTagSelectorItalic2: PairTagSelectorType = {selector: '*', openTag: '<i>', closeTag: '</i>'};
+const pairTagSelectorSub: PairTagSelectorType = {selector: '~', openTag: '<sub>', closeTag: '</sub>'};
+const pairTagSelectorSup: PairTagSelectorType = {selector: '^', openTag: '<sup>', closeTag: '</sup>'};
+const pairTagSelectorInlineCode: PairTagSelectorType = {
+    selector: '`',
+    openTag: '<code data-type="inline">',
+    closeTag: '</code>',
+};
+
+export const pairTagSelectorList: Array<PairTagSelectorType> = [
+    pairTagSelectorStrong,
+    pairTagSelectorUnderline,
+    pairTagSelectorStrike,
+    pairTagSelectorItalic1,
+    pairTagSelectorItalic2,
+    pairTagSelectorSub,
+    pairTagSelectorSup,
+    pairTagSelectorInlineCode,
+];
