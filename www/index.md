@@ -21,6 +21,10 @@ To make line use `---`, `***` or `___`.
 
 ***
 
+### Styles
+
+Use __for an underline__ text;
+
 ### Images
 
 ![](https://placekitten.com/100/100)

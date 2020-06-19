@@ -19,6 +19,7 @@ import {
     isImageListOnly,
     makeImage,
     makeLink,
+    makePairTag,
     removeEndBreakLine,
 } from '../parser/util/string';
 
@@ -101,6 +102,7 @@ export function renderLineData(
 
     fullLineContent = makeImage(fullLineContent);
     fullLineContent = makeLink(fullLineContent);
+    fullLineContent = makePairTag(fullLineContent);
 
     if (getIsLine(lineData)) {
         return '<hr/>';

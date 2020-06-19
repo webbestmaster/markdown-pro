@@ -1,6 +1,7 @@
 // @flow
 
-import {emptyString} from '../parser-const';
+import {emptyString, pairTagSelectorList} from '../parser-const';
+import type {PairTagSelectorType} from '../parser-type';
 
 export function cleanLine(line: string): string {
     return line.trim().replace(/\s+/g, ' ');
@@ -56,4 +57,27 @@ function linkReplacer(matchedString: string, linkText: string, href: string): st
 
 export function makeLink(html: string): string {
     return html.replace(findLinkRegExpGlobal, linkReplacer);
+}
+
+function appPairTag(html: string, pairTagSelector: PairTagSelectorType): string {
+    const {selector, openTag, closeTag} = pairTagSelector;
+
+    const chunkList = html.split(selector);
+    const chunkListLength = chunkList.length;
+
+    return chunkList
+        .map((chunk: string, chunkIndex: number): string => {
+            return chunk;
+        })
+        .join('');
+}
+
+export function makePairTag(html: string): string {
+    let result = html;
+
+    pairTagSelectorList.forEach((pairTagSelector: PairTagSelectorType) => {
+        result = appPairTag(result, pairTagSelector);
+    });
+
+    return html;
 }
