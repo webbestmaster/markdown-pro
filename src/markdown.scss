@@ -1,6 +1,7 @@
-/* stylelint-disable no-descending-specificity */
+/* stylelint-disable no-descending-specificity, selector-no-qualifying-type */
+
 $main-monospace-font-family: 'Lucida Console', 'Monaco', monospace;
-$main-font-size: 16px;
+$main-font-size: 14px;
 $main-line-height: 1.4;
 
 .markdown_wrapper {
@@ -40,6 +41,38 @@ $main-line-height: 1.4;
         &:hover {
             text-decoration: none;
         }
+    }
+
+    b {
+        font-weight: bold;
+    }
+
+    u {
+        text-decoration: underline;
+    }
+
+    i {
+        font-style: italic;
+    }
+
+    strike {
+        text-decoration-line: line-through;
+    }
+
+    sub,
+    sup {
+        font-size: 75%;
+        line-height: 0;
+        position: relative;
+        vertical-align: baseline;
+    }
+
+    sub {
+        bottom: -0.25em;
+    }
+
+    sup {
+        top: -0.5em;
     }
 
     hr {
@@ -132,6 +165,15 @@ $main-line-height: 1.4;
         padding: 9px;
         white-space: pre;
         word-break: break-all;
+
+        &[data-type='inline'] {
+            background-color: #f9f2f4;
+            border-radius: 4px;
+            color: #c7254e;
+            display: inline;
+            font-size: 90%;
+            padding: 2px 4px;
+        }
     }
 
     img {

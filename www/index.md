@@ -16,14 +16,28 @@ Or use `\` at the end of line \
 to break it.
 
 -----
-
 To make line use `---`, `***` or `___`.
-
 ***
+
 
 ### Styles
 
-Use __for an underline__ text;
+**This is bold text**
+
+__This is underline text__
+
+*This is italic text*
+
+_This is italic text_
+
+~~This is strikethrough text~~
+
+
+### Subscript/Superscript
+
+- 19^th^
+- H~2~O
+
 
 ### Images
 
@@ -31,17 +45,22 @@ Use __for an underline__ text;
 ![Minion](https://placekitten.com/110/110)
 ![Stormtroopocat](https://placekitten.com/120/120 "The Stormtroopocat")
 
+
 ### Links
 
 You can use like this [link](http://example.com) or like this [](http://example.com).
 
+
 ### Unordered list
+
 + Create a unordered list by starting a line with `+ `, `- ` or `* `
 + Sub-lists are made by indenting space(s):
     + Lorem ipsum dolor
     + Alias animi autem beatae
 
+
 ### Ordered list
+
 5. Create a Numeric list
 1. by starting a line with
 2. any number(s) with dot, for example: `1. `
@@ -62,6 +81,7 @@ V. any Big Roman Number(s) with dot, for example: `I. `
 ii. The same rule
 v. for Small Roman Number list
 
+
 ### My favorite blockquote
 
 > One Markdown, One Specification, One Blockquote
@@ -71,4 +91,5 @@ $ npm i markdown
 $ sudo be happy
 ```
 
-The end of text.
+
+Thanks for your reading!
