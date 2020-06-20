@@ -9,8 +9,7 @@ import {
     selectorLineList,
     selectorULItemList,
 } from '../parser-const';
-
-import {htmlPairTag, htmlSingleTag} from './string';
+import {htmlPairTag, htmlSingleTag} from '../../render/render-helper';
 
 export function getIsHeader(lineData: LineDataType): boolean {
     return selectorHeaderList.includes(lineData.selector);

@@ -2,14 +2,6 @@
 
 import {type LineDataType} from '../parser/parser-type';
 import {
-    addBreakLine,
-    isImageListOnly,
-    makeImage,
-    makeLink,
-    makePairTag,
-    removeEndBreakLine,
-} from '../parser/util/string';
-import {
     getIsBlockquote,
     getIsCode,
     getIsHeader,
@@ -21,7 +13,17 @@ import {
 import {emptyString} from '../parser/parser-const';
 import {getIsEdgeLine} from '../parser/util/navigation';
 
-import {getOlStart, getOlTypeBySelector, renderAdditionalLineList} from './render-helper';
+import {
+    addBreakLine,
+    getOlStart,
+    getOlTypeBySelector,
+    isImageListOnly,
+    makeImage,
+    makeLink,
+    makePairTag,
+    removeEndBreakLine,
+    renderAdditionalLineList,
+} from './render-helper';
 
 export function renderChildList(lineDataList: Array<LineDataType>): string {
     return lineDataList.map(renderLineData).map(addBreakLine).join(emptyString);
