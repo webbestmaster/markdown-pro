@@ -66,7 +66,7 @@ function canBeWrapper(html: string): boolean {
     return openTagList.length === closeTagList.length;
 }
 
-function appPairTag(html: string, pairTagSelector: PairTagSelectorType): string {
+function addPairTag(html: string, pairTagSelector: PairTagSelectorType): string {
     const {selector, openTag, closeTag} = pairTagSelector;
 
     const chunkList = html.split(selector);
@@ -117,7 +117,7 @@ export function makePairTag(html: string): string {
     let result = html;
 
     pairTagSelectorList.forEach((pairTagSelector: PairTagSelectorType) => {
-        result = appPairTag(result, pairTagSelector);
+        result = addPairTag(result, pairTagSelector);
     });
 
     return result;
