@@ -20,10 +20,10 @@ import {
     isImageListOnly,
     makeImage,
     makeLink,
-    makePairTag,
     removeEndBreakLine,
     renderAdditionalLineList,
 } from './render-helper';
+import {makePairTag} from './render-pair-tag';
 
 export function renderChildList(lineDataList: Array<LineDataType>): string {
     return lineDataList.map(renderLineData).map(addBreakLine).join(emptyString);
@@ -39,10 +39,12 @@ export function renderLineData(
     const additionLineListRender = renderAdditionalLineList(lineData);
     const childListRender = renderChildList(childList);
 
-    let fullLineContent = makePairTag(removeEndBreakLine(lineContent) + additionLineListRender) + childListRender;
+    let fullLineContent = removeEndBreakLine(lineContent) + additionLineListRender;
 
     fullLineContent = makeImage(fullLineContent);
     fullLineContent = makeLink(fullLineContent);
+    fullLineContent = makePairTag(fullLineContent);
+    fullLineContent += childListRender;
 
     if (getIsLine(lineData)) {
         return '<hr/>';

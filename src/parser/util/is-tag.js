@@ -9,7 +9,6 @@ import {
     selectorLineList,
     selectorULItemList,
 } from '../parser-const';
-import {htmlPairTag, htmlSingleTag} from '../../render/render-helper';
 
 export function getIsHeader(lineData: LineDataType): boolean {
     return selectorHeaderList.includes(lineData.selector);
@@ -41,6 +40,9 @@ export function getIsCode(lineData: LineDataType): boolean {
 export function getIsBlockquote(lineData: LineDataType): boolean {
     return selectorBlockquoteList.includes(lineData.selector);
 }
+
+const htmlPairTag = /<(\w+)[^>]*>[\S\s]*?<\/\1>/;
+const htmlSingleTag = /<\w+[^>]*?\s*\/>/;
 
 export function getIsStartWithHtml(lineData: LineDataType): boolean {
     const {trimmedLine} = lineData;
