@@ -37,8 +37,8 @@ _This is italic text_
 
 ### Subscript/Superscript
 
-- 19^th^
-- H~2~O
+- 25^th^
+- C~2~H~5~OH
 
 
 ### Images
