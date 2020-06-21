@@ -26,11 +26,13 @@ To make line use `---`, `***` or `___`.
 
 __This is underline text__
 
-*This is italic text*
-
 _This is italic text_
 
+*This is italic text __too__*
+
 ~~This is strikethrough text~~
+
+*__**~~Combine styles!~~**__*
 
 
 ### Subscript/Superscript
@@ -44,6 +46,8 @@ _This is italic text_
 ![](https://placekitten.com/100/100)
 ![Minion](https://placekitten.com/110/110)
 ![Stormtroopocat](https://placekitten.com/120/120 "The Stormtroopocat")
+
+Also, use image ![](https://placekitten.com/100/25) inline.
 
 
 ### Links

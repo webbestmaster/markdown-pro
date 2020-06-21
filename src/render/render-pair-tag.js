@@ -1,90 +1,108 @@
 // @flow
 
 import type {PairTagSelectorType} from '../parser/parser-type';
-import {emptyString, pairTagSelectorList} from '../parser/parser-const';
+import {pairTagSelectorList} from '../parser/parser-const';
 
-type StringPartNameType = 'open-tag' | 'close-tag' | 'self-close-tag' | 'text';
+type PairNumberArrayType = [number, number];
 
-const stringPartNameMap: {+[key: string]: StringPartNameType} = {
-    openTag: 'open-tag',
-    closeTag: 'close-tag',
-    selfCloseTag: 'self-close-tag',
-    text: 'text',
-};
+const tagSelectorRegExpGlobal = /(<\w+[\S\s]*?>)|(<\/\w+?>)|(<\w+[\S\s]*?\/>)/g;
 
-type StringPartType = {|
-    +content: string,
-    +type: StringPartNameType,
-    +tagName: string,
-|};
+function harArrayOverflow(arrayA: PairNumberArrayType, arrayB: PairNumberArrayType): boolean {
+    const [startA, endA] = arrayA;
+    const [startB, endB] = arrayB;
 
-/*
-function getTagTextList(html: string): Array<StringPartType> {
-
-
+    return !(endA < startB || endB < startA);
 }
-*/
 
-function canBeWrapper(html: string): boolean {
-    const openTagList = html.match(/<[^/]*?>/g) || []; // open tags
-    const closeTagList = html.match(/<\/\S*?>/g) || []; // close tags
+function getTagIndexList(html: string): Array<PairNumberArrayType> {
+    const resultList: Array<PairNumberArrayType> = [];
+    const matchList = [...html.matchAll(tagSelectorRegExpGlobal)];
 
-    return openTagList.length === closeTagList.length;
+    // eslint-disable-next-line no-loops/no-loops
+    for (const matched of matchList) {
+        const start = matched.index;
+        const end = start + matched[0].length - 1;
+
+        resultList.push([start, end]);
+    }
+
+    return resultList;
+}
+
+function getSelectorIndexList(html: string, selector: string): Array<number> {
+    const resultList: Array<number> = [];
+    const selectorLength = selector.length;
+
+    if (selectorLength === 0) {
+        console.error('Selector is empty string');
+        return resultList;
+    }
+
+    let indexOf: number = html.indexOf(selector, 0);
+
+    // eslint-disable-next-line no-loops/no-loops
+    while (indexOf !== -1) {
+        resultList.push(indexOf);
+        indexOf = html.indexOf(selector, indexOf + selectorLength);
+    }
+
+    if (resultList.length % 2 === 1) {
+        return resultList.slice(0, -1);
+    }
+
+    return resultList;
 }
 
 function addPairTag(html: string, pairTagSelector: PairTagSelectorType): string {
     const {selector, openTag, closeTag} = pairTagSelector;
+    const selectorLength = selector.length;
 
-    const chunkList = html.split(selector);
-
-    // no selector include
-    if (chunkList.length === 1) {
+    if (!html.includes(selector)) {
         return html;
     }
 
-    const validatedChunkList: Array<string> = [];
+    const tagPairIndexList = getTagIndexList(html);
 
-    let candidate = '';
+    const selectorIndexList = getSelectorIndexList(html, selector).filter((selectorIndex: number): boolean => {
+        // eslint-disable-next-line no-loops/no-loops
+        for (const tagPairIndex of tagPairIndexList) {
+            const selectorStart = selectorIndex;
+            const selectorEnd = selectorIndex + selectorLength - 1;
 
-    let isTagOpen = false;
-
-    // eslint-disable-next-line no-loops/no-loops
-    for (const chunk of chunkList) {
-        if (isTagOpen) {
-            candidate += chunk;
-            if (canBeWrapper(candidate)) {
-                validatedChunkList.push(candidate);
-                isTagOpen = false;
-                candidate = '';
+            if (harArrayOverflow(tagPairIndex, [selectorStart, selectorEnd])) {
+                return false;
             }
-        } else {
-            validatedChunkList.push(chunk);
-            isTagOpen = true;
         }
+
+        return true;
+    });
+
+    const selectorIndexListLength = selectorIndexList.length;
+
+    if (selectorIndexListLength === 0) {
+        return html;
     }
 
-    return validatedChunkList
-        .map((chunk: string, chunkIndex: number): string => {
-            if (chunkIndex % 2 === 0) {
-                return chunk;
-            }
+    let resultTagPairedList: string = html.slice(0, selectorIndexList[0]);
 
-            // check for unclosed 'tag'
-            if (validatedChunkList.length - 1 === chunkIndex) {
-                return selector + chunk;
-            }
+    // eslint-disable-next-line no-loops/no-loops
+    for (let selectorIndexInList = 1; selectorIndexInList <= selectorIndexListLength; selectorIndexInList += 1) {
+        const selectorIndex = selectorIndexList[selectorIndexInList];
+        const htmlPath = html.slice(selectorIndexList[selectorIndexInList - 1] + selectorLength, selectorIndex);
 
-            return openTag + chunk + closeTag;
-        })
-        .join(emptyString);
+        resultTagPairedList += selectorIndexInList % 2 === 1 ? openTag + htmlPath + closeTag : htmlPath;
+    }
+
+    return resultTagPairedList;
 }
 
 export function makePairTag(html: string): string {
-    let result = '';
+    let result = html;
 
-    pairTagSelectorList.forEach((pairTagSelector: PairTagSelectorType) => {
+    // eslint-disable-next-line no-loops/no-loops
+    for (const pairTagSelector of pairTagSelectorList) {
         result = addPairTag(result, pairTagSelector);
-    });
+    }
 
-    return html;
+    return result;
 }

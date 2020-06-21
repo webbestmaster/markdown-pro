@@ -1,7 +1,5 @@
 // @flow
 
-/* global document, setTimeout */
-
 import {parseLine} from './parser/parse-line';
 import type {DocumentMetaType, LineDataType} from './parser/parser-type';
 import {emptyString} from './parser/parser-const';
