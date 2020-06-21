@@ -3,6 +3,28 @@
 import type {PairTagSelectorType} from '../parser/parser-type';
 import {emptyString, pairTagSelectorList} from '../parser/parser-const';
 
+type StringPartNameType = 'open-tag' | 'close-tag' | 'self-close-tag' | 'text';
+
+const stringPartNameMap: {+[key: string]: StringPartNameType} = {
+    openTag: 'open-tag',
+    closeTag: 'close-tag',
+    selfCloseTag: 'self-close-tag',
+    text: 'text',
+};
+
+type StringPartType = {|
+    +content: string,
+    +type: StringPartNameType,
+    +tagName: string,
+|};
+
+/*
+function getTagTextList(html: string): Array<StringPartType> {
+
+
+}
+*/
+
 function canBeWrapper(html: string): boolean {
     const openTagList = html.match(/<[^/]*?>/g) || []; // open tags
     const closeTagList = html.match(/<\/\S*?>/g) || []; // close tags
@@ -57,16 +79,12 @@ function addPairTag(html: string, pairTagSelector: PairTagSelectorType): string 
         .join(emptyString);
 }
 
-/*
-    return result;
+export function makePairTag(html: string): string {
+    let result = '';
 
     pairTagSelectorList.forEach((pairTagSelector: PairTagSelectorType) => {
         result = addPairTag(result, pairTagSelector);
     });
 
-    return result;
-*/
-
-export function makePairTag(html: string): string {
     return html;
 }

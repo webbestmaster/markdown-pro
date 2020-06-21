@@ -5,7 +5,18 @@ export function cleanLine(line: string): string {
 }
 
 export function getIsAllSymbolsEqual(line: string): boolean {
+    if (line.length === 0) {
+        return true;
+    }
+
     const [firstSymbol] = line;
 
-    return line.split(firstSymbol).join('').length === 0;
+    // eslint-disable-next-line no-loops/no-loops
+    for (const char of line) {
+        if (char !== firstSymbol) {
+            return false;
+        }
+    }
+
+    return true;
 }
