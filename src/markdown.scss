@@ -1,11 +1,17 @@
 /* stylelint-disable no-descending-specificity, selector-no-qualifying-type */
 
+$main-monospace-family: 'Helvetica Neue', helvetica, arial, sans-serif;
 $main-monospace-font-family: 'Lucida Console', 'Monaco', monospace;
-$main-font-size: 14px;
+$main-font-size: 16px;
+$main-font-color: #212121;
 $main-line-height: 1.4;
 
 .markdown_wrapper {
+    color: $main-font-color;
     display: block;
+    font-family: $main-monospace-family;
+    font-size: $main-font-size;
+    line-height: $main-line-height;
 
     h1,
     h2,
@@ -19,11 +25,11 @@ $main-line-height: 1.4;
     blockquote,
     code,
     img {
-        color: inherit;
+        //color: inherit;
         display: block;
-        font-family: inherit;
-        font-size: $main-font-size;
-        line-height: $main-line-height;
+        //font-family: inherit;
+        //font-size: inherit;
+        //line-height: inherit;
         margin: 0;
         padding: 0;
 
@@ -61,7 +67,7 @@ $main-line-height: 1.4;
     sub,
     sup {
         font-size: 75%;
-        line-height: 0;
+        //line-height: 0;
         position: relative;
         vertical-align: baseline;
     }
@@ -135,8 +141,8 @@ $main-line-height: 1.4;
 
     ul,
     ol {
-        color: inherit;
-        font-family: inherit;
+        //color: inherit;
+        //font-family: inherit;
         font-size: $main-font-size;
         line-height: $main-line-height;
         margin: 0 0 10px;
