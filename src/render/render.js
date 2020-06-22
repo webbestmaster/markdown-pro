@@ -51,7 +51,7 @@ export function renderLineData(
     }
 
     if (getIsCode(lineData)) {
-        return `<code lang="${lineContent}">${additionalLineList.join('\n')}</code>`;
+        return `<code data-lang="${lineContent}">${additionalLineList.join('\n')}</code>`;
     }
 
     if (lineContent === emptyString && childList.length === 0) {
