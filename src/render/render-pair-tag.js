@@ -29,7 +29,10 @@ function getTagIndexList(html: string): Array<PairNumberArrayType> {
     return resultList;
 }
 
-function getSelectorIndexList(html: string, selector: string): Array<number> {
+// eslint-disable-next-line complexity, max-statements
+function getSelectorIndexList(html: string, pairTagSelector: PairTagSelectorType): Array<number> {
+    const {selector, equal} = pairTagSelector;
+
     const resultList: Array<number> = [];
     const selectorLength = selector.length;
 
@@ -38,12 +41,30 @@ function getSelectorIndexList(html: string, selector: string): Array<number> {
         return resultList;
     }
 
+    let slicedHtml: string = '';
+
     let indexOf: number = html.indexOf(selector, 0);
 
     // eslint-disable-next-line no-loops/no-loops
     while (indexOf !== -1) {
-        resultList.push(indexOf);
-        indexOf = html.indexOf(selector, indexOf + selectorLength);
+        slicedHtml = html.slice(indexOf);
+
+        const equalSymbolsMatch = slicedHtml.match(equal);
+
+        if (!equalSymbolsMatch) {
+            console.error('equalSymbolsLine is not found');
+            return [];
+        }
+
+        const [equalSymbolLine] = equalSymbolsMatch;
+        const equalSymbolLineLength = equalSymbolLine.length;
+
+        if (equalSymbolLineLength === selectorLength) {
+            resultList.push(indexOf);
+        }
+
+        // slicedHtml = slicedHtml.slice(selectorLength);
+        indexOf = html.indexOf(selector, indexOf + equalSymbolLineLength);
     }
 
     if (resultList.length % 2 === 1) {
@@ -63,7 +84,10 @@ function addPairTag(html: string, pairTagSelector: PairTagSelectorType): string 
 
     const tagPairIndexList = getTagIndexList(html);
 
-    const selectorIndexList = getSelectorIndexList(html, selector).filter((selectorIndex: number): boolean => {
+    let selectorIndexList: Array<number> = getSelectorIndexList(html, pairTagSelector);
+
+    // remove indexes into tags, f.e. - <a href="http://ex__am__ple.com">text</a>
+    selectorIndexList = selectorIndexList.filter((selectorIndex: number): boolean => {
         // eslint-disable-next-line no-loops/no-loops
         for (const tagPairIndex of tagPairIndexList) {
             const selectorStart = selectorIndex;
@@ -88,9 +112,9 @@ function addPairTag(html: string, pairTagSelector: PairTagSelectorType): string 
     // eslint-disable-next-line no-loops/no-loops
     for (let selectorIndexInList = 1; selectorIndexInList <= selectorIndexListLength; selectorIndexInList += 1) {
         const selectorIndex = selectorIndexList[selectorIndexInList];
-        const htmlPath = html.slice(selectorIndexList[selectorIndexInList - 1] + selectorLength, selectorIndex);
+        const htmlPart = html.slice(selectorIndexList[selectorIndexInList - 1] + selectorLength, selectorIndex);
 
-        resultTagPairedList += selectorIndexInList % 2 === 1 ? openTag + htmlPath + closeTag : htmlPath;
+        resultTagPairedList += selectorIndexInList % 2 === 1 ? openTag + htmlPart + closeTag : htmlPart;
     }
 
     return resultTagPairedList;

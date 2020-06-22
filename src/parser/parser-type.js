@@ -85,4 +85,5 @@ export type PairTagSelectorType = {|
     +selector: string,
     +openTag: string,
     +closeTag: string,
+    +equal: RegExp,
 |};
