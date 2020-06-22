@@ -41,15 +41,11 @@ function getSelectorIndexList(html: string, pairTagSelector: PairTagSelectorType
         return resultList;
     }
 
-    let slicedHtml: string = '';
-
     let indexOf: number = html.indexOf(selector, 0);
 
     // eslint-disable-next-line no-loops/no-loops
     while (indexOf !== -1) {
-        slicedHtml = html.slice(indexOf);
-
-        const equalSymbolsMatch = slicedHtml.match(equal);
+        const equalSymbolsMatch = html.slice(indexOf).match(equal);
 
         if (!equalSymbolsMatch) {
             console.error('equalSymbolsLine is not found');
@@ -63,7 +59,6 @@ function getSelectorIndexList(html: string, pairTagSelector: PairTagSelectorType
             resultList.push(indexOf);
         }
 
-        // slicedHtml = slicedHtml.slice(selectorLength);
         indexOf = html.indexOf(selector, indexOf + equalSymbolLineLength);
     }
 
