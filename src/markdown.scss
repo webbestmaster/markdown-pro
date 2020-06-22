@@ -1,15 +1,15 @@
 /* stylelint-disable no-descending-specificity, selector-no-qualifying-type */
 
-$main-monospace-family: 'Helvetica Neue', helvetica, arial, sans-serif;
+//$main-font-family: 'Helvetica Neue', helvetica, arial, sans-serif;
 $main-monospace-font-family: 'Lucida Console', 'Monaco', monospace;
 $main-font-size: 16px;
-$main-font-color: #212121;
+//$main-font-color: #212121;
 $main-line-height: 1.4;
 
 .markdown_wrapper {
-    color: $main-font-color;
+    color: inherit;
     display: block;
-    font-family: $main-monospace-family;
+    font-family: inherit;
     font-size: $main-font-size;
     line-height: $main-line-height;
 

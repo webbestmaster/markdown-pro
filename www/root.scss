@@ -1,5 +1,14 @@
 /* stylelint-disable selector-pseudo-class-no-unknown */
 
+$main-font-family: 'Helvetica Neue', helvetica, arial, sans-serif;
+$main-font-color: #212121;
+
+body {
+    color: $main-font-color;
+    font-family: $main-font-family;
+    line-height: 1.4;
+}
+
 :global {
     .header {
         padding-bottom: 16px;
