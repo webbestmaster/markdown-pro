@@ -13,6 +13,7 @@ import {fixtureHeader} from './fixture/header';
 import {fixtureParagraph} from './fixture/paragraph';
 import {fixtureHtml} from './fixture/html';
 import {fixtureLine} from './fixture/line';
+import {fixturePairTag} from './fixture/pair-tag';
 
 function mdDoNoBreakLine(input: string): string {
     // use default config
@@ -50,5 +51,10 @@ describe('Markdown-pro test', () => {
     it('Line', () => {
         assert(mdDoNoBreakLine(fixtureLine.input) === fixtureLine.outputDoNotBreakLine);
         assert(mdUseBreakLine(fixtureLine.input) === fixtureLine.outputUseBreakLine);
+    });
+
+    it('Pair tag', () => {
+        assert(mdDoNoBreakLine(fixturePairTag.input) === fixturePairTag.outputDoNotBreakLine);
+        assert(mdUseBreakLine(fixturePairTag.input) === fixturePairTag.outputUseBreakLine);
     });
 });
