@@ -28,6 +28,10 @@ const webpackConfig = {
     devServer: require('./webpack/setting/dev-server').devServer,
 };
 
+if (isProduction) {
+    webpackConfig.output.libraryTarget = 'commonjs2';
+}
+
 // webpackConfig.plugins.push(new BundleAnalyzerPlugin());
 
 module.exports = webpackConfig;

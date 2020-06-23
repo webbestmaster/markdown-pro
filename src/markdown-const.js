@@ -1,9 +1,9 @@
 // @flow
 
 import type {MarkdownConfigType} from './markdown-type';
-// import markdownStyle from './markdown.scss';
+import markdownStyle from './markdown.scss';
 
 export const defaultMarkdownConfig: MarkdownConfigType = {
     useLineBreak: false,
-    wrapperClassName: 'markdown_wrapper',
+    wrapperClassName: markdownStyle.markdown_wrapper,
 };
