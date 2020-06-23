@@ -4,11 +4,17 @@ import assert from 'assert';
 
 import {describe, it} from 'mocha';
 
-import {markdown} from '../src/markdown';
+import markdownPro, {markdown} from '../dist';
 
 import {fixtureHeader, unorderedList} from './fixture';
 
 describe('Array', () => {
+    describe('Imports', () => {
+        it('import markdownPro === import {markdown}', () => {
+            assert(markdownPro === markdown, 'markdownPro !== {markdown}');
+        });
+    });
+
     describe('Header', () => {
         it('Should parse headers', () => {
             assert(markdown(fixtureHeader.input) === fixtureHeader.output, 'Parse header with error');

@@ -1,10 +1,12 @@
 // @flow
 
-import {markdown} from '../src/markdown';
+import markdownPro, {markdown} from '../src/markdown';
 
 import {formatHtml} from './util';
 
 export function init(input: HTMLTextAreaElement, output: HTMLDivElement, outputDebug: HTMLPreElement) {
+    console.log('markdownPro === markdown', markdownPro === markdown);
+
     function handleInput() {
         const inputValue = input.value;
 

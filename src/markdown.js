@@ -47,3 +47,6 @@ export function markdown(mdInput: string, config: MarkdownConfigShallowType = de
 
     return `<div class="${fullWrapperClassName}">${renderChildList(structuredLineDataList)}</div>`;
 }
+
+// eslint-disable-next-line import/no-default-export
+export default markdown;
