@@ -28,7 +28,7 @@ const pluginList = [
         exclude: /node_modules/,
     }),
     new DuplicatePackageCheckerPlugin(),
-    new CleanWebpackPlugin(),
+    // new CleanWebpackPlugin(),
     new webpack.DefinePlugin(definePluginParameters),
     new ScriptExtHtmlWebpackPlugin({defaultAttribute: 'defer'}),
     new MiniCssExtractPlugin({

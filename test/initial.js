@@ -5,28 +5,31 @@ import assert from 'assert';
 import {describe, it} from 'mocha';
 
 import markdownPro, {markdown} from '../dist';
+import type {MarkdownConfigShallowType} from '../src/markdown-type';
 
-import {fixtureHeader, unorderedList} from './fixture';
+import {fixtureHeader} from './fixture/header';
+import {unwrap} from './util';
 
-describe('Array', () => {
-    describe('Imports', () => {
-        it('import markdownPro === import {markdown}', () => {
-            assert(markdownPro === markdown, 'markdownPro !== {markdown}');
-        });
+function mdDoNoBreakLine(input: string): string {
+    // use default config
+    return unwrap(markdown(input));
+}
+
+function mdUseBreakLine(input: string): string {
+    const configUseBreakLine: MarkdownConfigShallowType = {
+        useLineBreak: true,
+    };
+
+    return unwrap(markdown(input, configUseBreakLine));
+}
+
+describe('Markdown-pro test', () => {
+    it('Import', () => {
+        assert(markdownPro === markdown, 'markdownPro !== {markdown}');
     });
 
-    describe('Header', () => {
-        it('Should parse headers', () => {
-            assert(markdown(fixtureHeader.input) === fixtureHeader.output, 'Parse header with error');
-        });
-    });
-
-    describe.only('Unordered list', () => {
-        it('Should parse unordered list', () => {
-            console.log('markdown(unorderedList.input)');
-            console.log(markdown(unorderedList.input));
-
-            assert(markdown(unorderedList.input) === unorderedList.output, 'Parse unordered with error');
-        });
+    it('Header', () => {
+        assert(mdDoNoBreakLine(fixtureHeader.input) === fixtureHeader.outputDoNotBreakLine);
+        assert(mdUseBreakLine(fixtureHeader.input) === fixtureHeader.outputUseBreakLine);
     });
 });
