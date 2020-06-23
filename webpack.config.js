@@ -12,12 +12,11 @@ const {
 } = require('./webpack/config');
 
 const webpackConfig = {
-    // entry: ['./www/css/root.scss', './www/js/root.js'],
-    entry: ['./www/root.scss', './www/root.js'],
+    entry: isDevelopment ? ['./www/root.scss', './www/root.js'] : ['./src/markdown.scss', './src/markdown.js'],
     output: {
         path: path.join(cwd, pathToDist),
         publicPath: `${isDevelopment || isBuildServer ? '' : pathToStaticFileFolder}/`,
-        filename: isDevelopment ? '[name].js' : '[name].[hash:6].js',
+        filename: isDevelopment ? '[name].js' : 'index.js',
         chunkFilename: isDevelopment ? '[name].chunk.js' : '[name].[hash:6].chunk.js',
     },
 

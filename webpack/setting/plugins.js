@@ -23,29 +23,18 @@ const definePluginParameters = {
 
 // const staticFilesList = ['favicon.ico', 'robots.txt', 'ads.txt', 'gss-0.9.xsl', 'asset'];
 
-module.exports.plugins = [
+const pluginList = [
     new CircularDependencyPlugin({
         exclude: /node_modules/,
     }),
     new DuplicatePackageCheckerPlugin(),
     new CleanWebpackPlugin(),
     new webpack.DefinePlugin(definePluginParameters),
-    new HtmlWebpackPlugin({
-        template: './www/index.html',
-        minify: {
-            collapseWhitespace: isProduction,
-            removeComments: isProduction,
-            minifyCSS: isProduction,
-            minifyJS: isProduction,
-        },
-        hash: true,
-        filename: './index.html',
-    }),
     new ScriptExtHtmlWebpackPlugin({defaultAttribute: 'defer'}),
     new MiniCssExtractPlugin({
         // Options similar to the same options in webpackOptions.output
         // both options are optional
-        filename: isDevelopment ? '[name].css' : '[name].[hash:6].css',
+        filename: isDevelopment ? '[name].css' : 'index.css',
         chunkFilename: isDevelopment ? '[id].css' : '[id].[hash:6].css',
     }),
     // new CopyWebpackPlugin({
@@ -59,3 +48,21 @@ module.exports.plugins = [
     }),
     // new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en/),
 ];
+
+if (isDevelopment) {
+    pluginList.push(
+        new HtmlWebpackPlugin({
+            template: './www/index.html',
+            minify: {
+                collapseWhitespace: isProduction,
+                removeComments: isProduction,
+                minifyCSS: isProduction,
+                minifyJS: isProduction,
+            },
+            hash: true,
+            filename: './index.html',
+        })
+    );
+}
+
+module.exports.plugins = pluginList;
