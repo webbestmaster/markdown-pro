@@ -1,5 +1,14 @@
 // @flow
 
 export function unwrap(html: string): string {
-    return html.replace(/^<div class="[\S\s]+?">/, '').replace(/<\/div>$/, '');
+    const content = html
+        // remove begin
+        .replace(/^<div class="[\S\s]+?">/, '')
+        // remove end
+        .replace(/<\/div>$/, '');
+
+    console.log('\n---> input:', html);
+    console.log('---> output:', content);
+
+    return content;
 }
