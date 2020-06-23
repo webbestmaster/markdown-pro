@@ -16,6 +16,7 @@ import {fixtureLine} from './fixture/line';
 import {fixturePairTag} from './fixture/pair-tag';
 import {fixtureUnorderedList} from './fixture/unordered-list';
 import {fixtureOrderedList} from './fixture/ordered-list';
+import {fixtureBlockquote} from './fixture/blockquote';
 
 function mdDoNoBreakLine(input: string): string {
     // use default config
@@ -68,5 +69,10 @@ describe('Markdown-pro test', () => {
     it('Ordered List', () => {
         assert(mdDoNoBreakLine(fixtureOrderedList.input) === fixtureOrderedList.outputDoNotBreakLine);
         assert(mdUseBreakLine(fixtureOrderedList.input) === fixtureOrderedList.outputUseBreakLine);
+    });
+
+    it('Blockquote', () => {
+        assert(mdDoNoBreakLine(fixtureBlockquote.input) === fixtureBlockquote.outputDoNotBreakLine);
+        assert(mdUseBreakLine(fixtureBlockquote.input) === fixtureBlockquote.outputUseBreakLine);
     });
 });
