@@ -91,7 +91,7 @@ v. for Small Roman Number list
 > One Markdown, One Specification, One Blockquote
 
 ```bash
-$ npm i markdown
+$ npm i markdown-pro
 $ sudo be happy
 ```
 
