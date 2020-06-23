@@ -7,8 +7,7 @@ export function unwrap(html: string): string {
         // remove end
         .replace(/<\/div>$/, '');
 
-    console.log('\n---> input:', html);
-    console.log('---> output:', content);
+    console.log('---> unwrap output:', content);
 
     return content;
 }
