@@ -4,8 +4,7 @@ import assert from 'assert';
 
 import {describe, it} from 'mocha';
 
-import markdownPro, {markdown} from '../dist';
-// import markdownPro, {markdown} from '../src/markdown';
+import markdownPro, {markdown} from '../src/markdown';
 import type {MarkdownConfigShallowType} from '../src/markdown-type';
 
 import {unwrap} from './util';

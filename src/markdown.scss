@@ -1,11 +1,11 @@
-/* stylelint-disable no-descending-specificity, selector-no-qualifying-type */
+/* stylelint-disable no-descending-specificity, selector-no-qualifying-type, selector-max-compound-selectors, selector-pseudo-class-no-unknown */
 
 //$main-font-family: 'Helvetica Neue', helvetica, arial, sans-serif;
 $main-monospace-font-family: 'Lucida Console', 'Monaco', monospace;
 $main-font-size: 16px;
 $main-line-height: 1.4;
 
-.markdown_wrapper {
+:global .md-pro {
     display: block;
 
     h1,
@@ -135,8 +135,6 @@ $main-line-height: 1.4;
 
     ul,
     ol {
-        //color: inherit;
-        //font-family: inherit;
         font-size: $main-font-size;
         line-height: $main-line-height;
         margin: 0 0 10px;
