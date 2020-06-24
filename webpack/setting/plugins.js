@@ -8,7 +8,7 @@ const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack
 const {UnusedFilesWebpackPlugin} = require('unused-files-webpack-plugin');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
 
-const {isProduction, isDevelopment} = require('./../config');
+const {isProduction, isDevelopment, isBuildLib, isBuildSite} = require('./../config');
 
 // const date = new Date();
 
@@ -21,14 +21,14 @@ const definePluginParameters = {
     // IS_DEVELOPMENT: JSON.stringify(IS_DEVELOPMENT)
 };
 
-// const staticFilesList = ['favicon.ico', 'robots.txt', 'ads.txt', 'gss-0.9.xsl', 'asset'];
+const staticFilesList = isBuildSite ? ['favicon.ico'] : [];
 
 const pluginList = [
     new CircularDependencyPlugin({
         exclude: /node_modules/,
     }),
     new DuplicatePackageCheckerPlugin(),
-    // new CleanWebpackPlugin(),
+    new CleanWebpackPlugin(),
     new webpack.DefinePlugin(definePluginParameters),
     new ScriptExtHtmlWebpackPlugin({defaultAttribute: 'defer'}),
     new MiniCssExtractPlugin({
@@ -37,9 +37,6 @@ const pluginList = [
         filename: isDevelopment ? '[name].css' : 'style.css',
         chunkFilename: isDevelopment ? '[id].css' : '[id].[hash:6].css',
     }),
-    // new CopyWebpackPlugin({
-    //     patterns: staticFilesList.map(pathToFle => ({from: `./www/${pathToFle}`, to: `./${pathToFle}`})),
-    // }),
     new UnusedFilesWebpackPlugin({
         patterns: ['www/**/*.*'],
         globOptions: {
@@ -49,7 +46,7 @@ const pluginList = [
     // new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en/),
 ];
 
-if (isDevelopment) {
+if (isBuildSite) {
     pluginList.push(
         new HtmlWebpackPlugin({
             template: './www/index.html',
@@ -61,6 +58,9 @@ if (isDevelopment) {
             },
             hash: true,
             filename: './index.html',
+        }),
+        new CopyWebpackPlugin({
+            patterns: staticFilesList.map(pathToFle => ({from: `./www/${pathToFle}`, to: `./${pathToFle}`})),
         })
     );
 }

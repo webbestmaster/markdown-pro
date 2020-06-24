@@ -9,13 +9,16 @@ const {
     pathToDist,
     cwd,
     isBuildServer,
+    isBuildLib,
+    isBuildSite,
 } = require('./webpack/config');
 
 const webpackConfig = {
-    entry: isDevelopment ? ['./www/root.scss', './www/root.js'] : ['./src/markdown.scss', './src/markdown.js'],
+    entry: isBuildLib ? ['./src/markdown.scss', './src/markdown.js'] : ['./www/root.scss', './www/root.js'],
     output: {
         path: path.join(cwd, pathToDist),
-        publicPath: `${isDevelopment || isBuildServer ? '' : pathToStaticFileFolder}/`,
+        // publicPath: `${isDevelopment || isBuildServer ? '' : pathToStaticFileFolder}/`,
+        publicPath: '',
         filename: isDevelopment ? '[name].js' : 'index.js',
         chunkFilename: isDevelopment ? '[name].chunk.js' : '[name].[hash:6].chunk.js',
     },
@@ -28,7 +31,7 @@ const webpackConfig = {
     devServer: require('./webpack/setting/dev-server').devServer,
 };
 
-if (isProduction) {
+if (isProduction && isBuildLib) {
     webpackConfig.output.libraryTarget = 'commonjs2';
 }
 

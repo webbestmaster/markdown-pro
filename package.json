@@ -19,9 +19,10 @@
   },
   "homepage": "https://github.com/webbestmaster/markdown#readme",
   "scripts": {
-    "start": "webpack-dev-server --progress --no-inline",
-    "start:hot": "webpack-dev-server --progress --hot",
-    "build": "cross-env NODE_ENV=production webpack --mode=production --progress",
+    "start-site": "cross-env BUILD_TYPE=site webpack-dev-server --progress --no-inline",
+    "start-site:hot": "cross-env BUILD_TYPE=site webpack-dev-server --progress --hot",
+    "build-site": "cross-env NODE_ENV=production BUILD_TYPE=site webpack --mode=production --progress",
+    "build-lib": "cross-env NODE_ENV=production BUILD_TYPE=lib webpack --mode=production --progress",
     "check": "npm run eslint; npm run stylelint; npm run flow;",
     "check:fix": "npm run prettier; npm run eslint:fix; npm run stylelint:fix; npm run flow;",
     "eslint": "eslint .",
