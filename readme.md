@@ -1,6 +1,6 @@
 # markdown-pro
 
-<!-- TODO: add live demo __[Live demo](https://markdown-it.github.io)__ -->
+__[Live demo](http://webbestmaster.github.io/markdown-pro)__
 
 ## Install
 
