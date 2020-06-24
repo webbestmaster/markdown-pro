@@ -19,4 +19,5 @@ package-lock.json
 
 # report
 /flow-coverage
-
+/coverage/
+/.nyc_output/
