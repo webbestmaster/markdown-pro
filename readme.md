@@ -1,4 +1,4 @@
-# markdown-pro
+# Markdown-pro
 
 **[Live demo](http://webbestmaster.github.io/markdown-pro)**
 
