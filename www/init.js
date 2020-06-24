@@ -1,16 +1,21 @@
 // @flow
 
-import markdownPro from 'markdown-pro';
-import markdownProStyle from 'markdown-pro/dist/style.css';
-// import markdownPro, {markdown} from '../src/markdown';
+// import markdownPro from 'markdown-pro';
+// import markdownProStyle from 'markdown-pro/dist/style.css';
+import markdownPro, {markdown} from '../src/markdown';
 
 import {formatHtml} from './util';
 
-export function init(input: HTMLTextAreaElement, output: HTMLDivElement, outputDebug: HTMLPreElement) {
+export function init(
+    textArea: HTMLTextAreaElement,
+    output: HTMLDivElement,
+    outputDebug: HTMLPreElement,
+    useLineBreak: HTMLInputElement
+) {
     function handleInput() {
-        const inputValue = input.value;
+        const inputValue = textArea.value;
 
-        const markdownHtml = markdownPro(inputValue, {useLineBreak: false, wrapperClassName: 'test-class'});
+        const markdownHtml = markdownPro(inputValue, {useLineBreak: useLineBreak.checked});
 
         // eslint-disable-next-line no-param-reassign
         output.innerHTML = markdownHtml;
@@ -18,5 +23,6 @@ export function init(input: HTMLTextAreaElement, output: HTMLDivElement, outputD
         outputDebug.textContent = formatHtml(markdownHtml);
     }
 
-    input.addEventListener('input', handleInput, false);
+    textArea.addEventListener('input', handleInput, false);
+    useLineBreak.addEventListener('change', handleInput, false);
 }

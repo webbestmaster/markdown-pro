@@ -1,32 +1,23 @@
 /* stylelint-disable selector-pseudo-class-no-unknown */
 
+@import './src/markdown';
+
 $main-font-family: 'Helvetica Neue', helvetica, arial, sans-serif;
 $main-font-color: #212121;
 
+html,
 body {
     color: $main-font-color;
     font-family: $main-font-family;
     line-height: 1.4;
+    margin: 0;
+    padding: 0;
 }
 
 :global {
-    .header {
-        padding-bottom: 16px;
-    }
-
     .main-wrapper {
         display: block;
-        padding: 8px;
-
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6,
-        p {
-            margin: 0;
-        }
+        padding: 16px;
     }
 
     .text-area {
@@ -40,7 +31,7 @@ body {
         min-height: 50vh;
         padding: 8px;
         resize: vertical;
-        width: calc(100% / 3 - 8px);
+        width: calc(100% / 2 - 8px);
     }
 
     .text-area-list {
@@ -49,5 +40,11 @@ body {
         flex-direction: row;
         justify-content: space-between;
         width: 100%;
+    }
+
+    .setting-label {
+        cursor: pointer;
+        margin: 0;
+        padding: 5px 0;
     }
 }

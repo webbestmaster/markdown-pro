@@ -1,6 +1,6 @@
 ## Welcome
 
-Markdown - easy to use!
+Markdown pro - easy to use!
 
 <p>Use any html tags</p>
 <p>Ever
@@ -15,7 +15,7 @@ everywhere.
 Or use `\` at the end of line \
 to break it.
 
------
+---
 To make line use `---`, `***` or `___`.
 ***
 
@@ -43,9 +43,9 @@ _This is italic text_
 
 ### Images
 
-![](https://placekitten.com/100/100)
-![Minion](https://placekitten.com/110/110)
 ![Stormtroopocat](https://placekitten.com/120/120 "The Stormtroopocat")
+![Minion](https://placekitten.com/110/110)
+![](https://placekitten.com/100/100)
 
 Also, use image ![](https://placekitten.com/100/25) inline.
 
@@ -57,7 +57,7 @@ You can use like this [link](http://example.com) or like this [](http://example.
 
 ### Unordered list
 
-+ Create a unordered list by starting a line with `+`, `-` or `*`
++ Create an unordered list by starting a line with `+`, `-` or `*`
 + Sub-lists are made by indenting space(s):
     + Lorem ipsum dolor
     + Alias animi autem beatae
