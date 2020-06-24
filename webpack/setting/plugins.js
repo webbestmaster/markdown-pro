@@ -34,7 +34,7 @@ const pluginList = [
     new MiniCssExtractPlugin({
         // Options similar to the same options in webpackOptions.output
         // both options are optional
-        filename: isDevelopment ? '[name].css' : 'index.css',
+        filename: isDevelopment ? '[name].css' : 'style.css',
         chunkFilename: isDevelopment ? '[id].css' : '[id].[hash:6].css',
     }),
     // new CopyWebpackPlugin({
