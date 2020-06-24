@@ -1,4 +1,4 @@
-# Markdown-pro
+# Markdown-pro (6bk gzip)
 
 **[Live demo](http://webbestmaster.github.io/markdown-pro)**
 
