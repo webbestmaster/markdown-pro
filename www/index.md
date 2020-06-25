@@ -101,10 +101,10 @@ v. for Small Roman Number list
 
 > One Markdown, One Specification, One Blockquote
 
+
+### Code
+
 ```bash
 $ npm i markdown-pro
 $ sudo be happy
 ```
-
-
-Thanks for your reading!
