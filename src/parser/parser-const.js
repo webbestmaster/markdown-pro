@@ -144,14 +144,15 @@ const pairTagSelectorBoldAndItalic: PairTagSelectorType = {
     equal: /\*+/,
 };
 
+// more long selectors should be first
 export const pairTagSelectorList: Array<PairTagSelectorType> = [
+    pairTagSelectorBoldAndItalic,
     pairTagSelectorBold,
     pairTagSelectorUnderline,
-    pairTagSelectorStrike,
     pairTagSelectorItalic1,
     pairTagSelectorItalic2,
+    pairTagSelectorStrike,
     pairTagSelectorSub,
     pairTagSelectorSup,
     pairTagSelectorInlineCode,
-    pairTagSelectorBoldAndItalic,
 ];
