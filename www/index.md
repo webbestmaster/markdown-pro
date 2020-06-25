@@ -97,7 +97,7 @@ ii. The same rule
 v. for Small Roman Number list
 
 
-### My favorite blockquote
+### Blockquote
 
 > One Markdown, One Specification, One Blockquote
 
