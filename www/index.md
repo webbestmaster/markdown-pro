@@ -20,7 +20,7 @@ To make line use `---`, `***` or `___`.
 ***
 
 
-### Styles
+### Emphasis
 
 **This is bold text**
 
@@ -63,7 +63,7 @@ You can use like this [link](http://example.com) or like this [](http://example.
     + Alias animi autem beatae
 
 
-### Ordered list
+### Ordered lists
 
 5. Create a Numeric list
 1. by starting a line with
