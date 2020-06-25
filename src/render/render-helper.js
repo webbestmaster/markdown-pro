@@ -37,6 +37,15 @@ export function makeImage(html: string): string {
     return html.replace(findImageRegExpGlobal, imageReplacer);
 }
 
+const findCheckboxCheckedRegExoGlobal = /\[x]/gi;
+const findCheckboxUncheckedRegExoGlobal = /\[\s]/g;
+
+export function makeCheckbox(html: string): string {
+    return html
+        .replace(findCheckboxCheckedRegExoGlobal, '<input type="checkbox" checked="checked" disabled="disabled"/>')
+        .replace(findCheckboxUncheckedRegExoGlobal, '<input type="checkbox" disabled="disabled"/>');
+}
+
 export function isImageListOnly(lineContent: string): boolean {
     return lineContent.replace(findImageRegExpGlobal, '').trim() === emptyString;
 }

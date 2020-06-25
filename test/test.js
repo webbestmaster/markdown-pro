@@ -19,6 +19,7 @@ import {fixtureOrderedList} from './fixture/ordered-list';
 import {fixtureBlockquote} from './fixture/blockquote';
 import {fixtureCode} from './fixture/code';
 import {fixtureImage} from './fixture/image';
+import {fixtureCheckbox} from './fixture/checkbox';
 import {fixtureLink} from './fixture/link';
 
 function mdDoNoBreakLine(input: string): string {
@@ -77,6 +78,11 @@ describe('Markdown-pro test', () => {
     it('Image', () => {
         assert(mdDoNoBreakLine(fixtureImage.input) === fixtureImage.outputDoNotBreakLine);
         assert(mdUseBreakLine(fixtureImage.input) === fixtureImage.outputUseBreakLine);
+    });
+
+    it('Checkbox', () => {
+        assert(mdDoNoBreakLine(fixtureCheckbox.input) === fixtureCheckbox.outputDoNotBreakLine);
+        assert(mdUseBreakLine(fixtureCheckbox.input) === fixtureCheckbox.outputUseBreakLine);
     });
 
     it('Link', () => {

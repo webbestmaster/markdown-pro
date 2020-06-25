@@ -18,6 +18,7 @@ import {
     getOlStart,
     getOlTypeBySelector,
     isImageListOnly,
+    makeCheckbox,
     makeImage,
     makeLink,
     removeEndBreakLine,
@@ -44,6 +45,7 @@ export function renderLineData(
     fullLineContent = makeImage(fullLineContent);
     fullLineContent = makeLink(fullLineContent);
     fullLineContent = makePairTag(fullLineContent);
+    fullLineContent = makeCheckbox(fullLineContent);
     fullLineContent += childListRender;
 
     if (getIsLine(lineData)) {
