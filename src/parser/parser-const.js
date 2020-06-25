@@ -88,7 +88,7 @@ export const selectorList: Array<SelectorType> = [
     ...selectorBlockquoteList,
 ].sort((itemA: SelectorType, itemB: SelectorType): number => itemB.length - itemA.length);
 
-const pairTagSelectorStrong: PairTagSelectorType = {
+const pairTagSelectorBold: PairTagSelectorType = {
     selector: '**',
     openTag: '<b>',
     closeTag: '</b>',
@@ -137,8 +137,15 @@ const pairTagSelectorInlineCode: PairTagSelectorType = {
     equal: /`+/,
 };
 
+const pairTagSelectorBoldAndItalic: PairTagSelectorType = {
+    selector: '***',
+    openTag: '<b><i>',
+    closeTag: '</i></b>',
+    equal: /\*+/,
+};
+
 export const pairTagSelectorList: Array<PairTagSelectorType> = [
-    pairTagSelectorStrong,
+    pairTagSelectorBold,
     pairTagSelectorUnderline,
     pairTagSelectorStrike,
     pairTagSelectorItalic1,
@@ -146,4 +153,5 @@ export const pairTagSelectorList: Array<PairTagSelectorType> = [
     pairTagSelectorSub,
     pairTagSelectorSup,
     pairTagSelectorInlineCode,
+    pairTagSelectorBoldAndItalic,
 ];

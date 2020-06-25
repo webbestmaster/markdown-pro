@@ -30,6 +30,8 @@ _This is italic text_
 
 *This is italic text __too__*
 
+***This is bold and italic text***
+
 ~~This is strikethrough text~~
 
 *__**~~Combine styles!~~**__*
