@@ -1,6 +1,6 @@
 {
   "name": "markdown-pro",
-  "version": "0.0.22",
+  "version": "0.0.23",
   "description": "Markdown-pro - professional markdown parser.",
   "keywords": [
     "markdown",
@@ -10,14 +10,14 @@
   "main": "dist/index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/webbestmaster/markdown.git"
+    "url": "git+https://github.com/webbestmaster/markdown-pro.git"
   },
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/webbestmaster/markdown/issues"
+    "url": "https://github.com/webbestmaster/markdown-pro/issues"
   },
-  "homepage": "https://github.com/webbestmaster/markdown#readme",
+  "homepage": "https://github.com/webbestmaster/markdown-pro#readme",
   "scripts": {
     "start-site": "cross-env BUILD_TYPE=site webpack-dev-server --progress --no-inline",
     "start-site:hot": "cross-env BUILD_TYPE=site webpack-dev-server --progress --hot",
