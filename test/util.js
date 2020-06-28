@@ -33,9 +33,15 @@ function getScrollPosition(node: HTMLElement): ScrollPositionType {
 }
 
 export function syncScroll(fromNode: HTMLElement, toNode: HTMLElement) {
+    const minScrollDeltaHeight = 5;
     const fromScroll = getScrollPosition(fromNode);
     const toScroll = getScrollPosition(toNode);
 
-    // eslint-disable-next-line no-param-reassign
-    toNode.scrollTop = fromScroll.scrollTopGoal * (toScroll.scrollHeight - toScroll.clientHeight);
+    const newTopPosition = fromScroll.scrollTopGoal * (toScroll.scrollHeight - toScroll.clientHeight);
+
+    if (Math.abs(newTopPosition - toScroll.scrollTop) < minScrollDeltaHeight) {
+        return;
+    }
+
+    toNode.scrollTo(0, newTopPosition);
 }

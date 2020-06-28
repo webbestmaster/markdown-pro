@@ -45,9 +45,9 @@ _This is italic text_
 
 ### Images
 
-![Stormtroopocat](https://placekitten.com/120/120 "The Stormtroopocat")
-![Minion](https://placekitten.com/110/110)
 ![](https://placekitten.com/100/100)
+![Cat](https://placekitten.com/110/110)
+![One more cat](https://placekitten.com/120/120 "The one more cat")
 
 Also, use image ![](https://placekitten.com/100/25) inline.
 

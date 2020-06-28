@@ -38,8 +38,8 @@ export function init(
 
     textArea.addEventListener('input', handleInput, false);
 
-    textArea.addEventListener('wheel', handleScroll, false);
-    output.addEventListener('wheel', handleScroll, false);
+    textArea.addEventListener('scroll', handleScroll, {passive: true});
+    output.addEventListener('scroll', handleScroll, {passive: true});
 
     useLineBreak.addEventListener('change', handleInput, false);
 }
