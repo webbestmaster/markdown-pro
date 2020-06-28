@@ -25,7 +25,6 @@ $main-line-height: 1.4;
         font-size: $main-font-size;
         line-height: $main-line-height;
         margin: 0;
-        overflow: auto;
         padding: 0;
         word-break: break-word;
 
@@ -166,6 +165,7 @@ $main-line-height: 1.4;
         display: block;
         font-family: $main-monospace-font-family;
         margin: 0 0 10px;
+        overflow: auto;
         padding: 9px;
         white-space: pre;
         word-break: break-all;
