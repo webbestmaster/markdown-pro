@@ -4,6 +4,8 @@
 // import markdownProStyle from 'markdown-pro/dist/style.css';
 import markdownPro, {markdown} from '../src/markdown';
 
+import {syncScroll} from '../test/util';
+
 import {formatHtml} from './util';
 
 export function init(
@@ -23,6 +25,21 @@ export function init(
         outputDebug.textContent = formatHtml(markdownHtml);
     }
 
+    function handleScroll(evt: Event) {
+        // $FlowFixMe
+        const element: HTMLElement = evt.currentTarget;
+
+        if (element === textArea) {
+            syncScroll(textArea, output);
+        } else {
+            syncScroll(output, textArea);
+        }
+    }
+
     textArea.addEventListener('input', handleInput, false);
+
+    textArea.addEventListener('wheel', handleScroll, false);
+    output.addEventListener('wheel', handleScroll, false);
+
     useLineBreak.addEventListener('change', handleInput, false);
 }

@@ -3,7 +3,7 @@
 /* global document, Event, HTMLTextAreaElement, HTMLDivElement, HTMLPreElement, HTMLInputElement */
 
 import {init} from './init';
-import defaultMarkdown from './index.md';
+import defaultMarkdown from './demo.md';
 
 const input = document.querySelector('.js-input');
 const output = document.querySelector('.js-output');
