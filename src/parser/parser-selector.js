@@ -21,10 +21,6 @@ import type {
     SelectorUlItemType,
 } from './parser-type';
 
-export const emptyString = '';
-export const space = ' ';
-export const breakLineTag = '<br/>';
-
 export const selectorHeaderList: Array<SelectorHeaderType> = ['# ', '## ', '### ', '#### ', '##### ', '###### '];
 export const selectorBlockquoteList: Array<SelectorBlockquoteType> = ['> '];
 export const selectorLineList: Array<SelectorLineType> = ['---', '***', '___'];

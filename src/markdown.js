@@ -2,7 +2,7 @@
 
 import {parseLine} from './parser/parse-line';
 import type {DocumentMetaType, LineDataType} from './parser/parser-type';
-import {emptyString} from './parser/parser-const';
+import {emptyString} from './render/render-const';
 import {renderChildList} from './render/render';
 import type {MarkdownConfigShallowType, MarkdownConfigType} from './markdown-type';
 import {defaultMarkdownConfig} from './markdown-const';

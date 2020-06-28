@@ -1,9 +1,11 @@
 // @flow
 
+import {emptyString} from '../render/render-const';
+
 import {cleanLine, getIsAllSymbolsEqual} from './util/string';
 import {getParent} from './util/navigation';
 import type {DocumentMetaType, LineDataType, ShortLineInfoType} from './parser-type';
-import {emptyString, oLParseDataList, selectorCodeList, selectorLineList, selectorList} from './parser-const';
+import {oLParseDataList, selectorCodeList, selectorLineList, selectorList} from './parser-selector';
 
 // eslint-disable-next-line complexity
 function getShortInfo(trimmedLine: string): ShortLineInfoType {
@@ -107,6 +109,12 @@ export function parseLine(
     }
 
     const parentLineData = getParent(lineData, savedLineDataList);
+
+    if (!parentLineData) {
+        // this string should not be test covered
+        console.error('Parent not found');
+        return;
+    }
 
     parentLineData.childList.push(lineData);
     savedLineDataList.push(lineData);

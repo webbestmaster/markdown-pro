@@ -1,7 +1,7 @@
 // @flow
 
 import type {PairTagSelectorType} from '../parser/parser-type';
-import {pairTagSelectorList} from '../parser/parser-const';
+import {pairTagSelectorList} from '../parser/parser-selector';
 
 type PairNumberArrayType = [number, number];
 
@@ -37,6 +37,7 @@ function getSelectorIndexList(html: string, pairTagSelector: PairTagSelectorType
     const selectorLength = selector.length;
 
     if (selectorLength === 0) {
+        // this string should not be test covered
         console.error('Selector is empty string');
         return resultList;
     }
@@ -48,6 +49,7 @@ function getSelectorIndexList(html: string, pairTagSelector: PairTagSelectorType
         const equalSymbolsMatch = html.slice(indexOf).match(equal);
 
         if (!equalSymbolsMatch) {
+            // this string should not be test covered
             console.error('equalSymbolsLine is not found');
             return [];
         }

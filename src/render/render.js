@@ -10,8 +10,10 @@ import {
     getIsStartWithHtml,
     getIsUlItem,
 } from '../parser/util/is-tag';
-import {emptyString} from '../parser/parser-const';
+
 import {getIsEdgeLine} from '../parser/util/navigation';
+
+import {emptyString} from './render-const';
 
 import {
     addBreakLine,

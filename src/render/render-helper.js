@@ -1,14 +1,9 @@
 // @flow
 
-import type {LineDataType, OlAttributeType, PairTagSelectorType, SelectorType} from '../parser/parser-type';
-import {
-    breakLineTag,
-    emptyString,
-    olNumericType,
-    oLParseDataList,
-    pairTagSelectorList,
-    space,
-} from '../parser/parser-const';
+import type {LineDataType, OlAttributeType, SelectorType} from '../parser/parser-type';
+import {olNumericType, oLParseDataList} from '../parser/parser-selector';
+
+import {breakLineTag, emptyString, space} from './render-const';
 
 export const breakLineRegExp = /\s*?\\$/;
 
@@ -25,8 +20,8 @@ export function getHasEndBreakLine(lineContent: string, useLineBreak: boolean): 
 }
 
 function imageReplacer(matchedString: string, alt: mixed, src: string, title: mixed): string {
-    const titleAttrValue = typeof title === 'string' ? ' title="' + title + '"' : '';
-    const altAttrValue = typeof alt === 'string' ? ' alt="' + alt + '"' : '';
+    const titleAttrValue = typeof title === 'string' && title.trim() ? ' title="' + title + '"' : '';
+    const altAttrValue = typeof alt === 'string' && alt.trim() ? ' alt="' + alt + '"' : '';
 
     return `<img loading="lazy" src="${src}"${altAttrValue}${titleAttrValue}/>`;
 }
@@ -72,6 +67,7 @@ export function getOlTypeBySelector(dataLineSelector: SelectorType): OlAttribute
         }
     }
 
+    // this string should not be test covered
     console.error('Can not detect ol type by selector', dataLineSelector);
 
     return olNumericType;

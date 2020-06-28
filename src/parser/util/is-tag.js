@@ -8,7 +8,7 @@ import {
     selectorHeaderList,
     selectorLineList,
     selectorULItemList,
-} from '../parser-const';
+} from '../parser-selector';
 
 export function getIsHeader(lineData: LineDataType): boolean {
     return selectorHeaderList.includes(lineData.selector);

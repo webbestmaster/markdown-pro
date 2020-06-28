@@ -1,7 +1,7 @@
 // @flow
 
 import type {LineDataType} from '../parser-type';
-import {emptyString} from '../parser-const';
+import {emptyString} from '../../render/render-const';
 
 // eslint-disable-next-line complexity
 function searchSiblingItem(
@@ -12,6 +12,8 @@ function searchSiblingItem(
     const index = lineDataList.indexOf(lineData);
 
     if (index === -1) {
+        // this string should not be test covered
+        console.error('lineDataList should contain lineData');
         return null;
     }
 
@@ -39,7 +41,7 @@ export function getIsEdgeLine(lineData: LineDataType, lineDataList: Array<LineDa
     return !foundItem || foundItem.selector !== selector;
 }
 
-export function getParent(lineData: LineDataType, lineDataList: Array<LineDataType>): LineDataType {
+export function getParent(lineData: LineDataType, lineDataList: Array<LineDataType>): LineDataType | null {
     const linaDataListLength = lineDataList.length;
 
     // eslint-disable-next-line no-loops/no-loops
@@ -51,9 +53,8 @@ export function getParent(lineData: LineDataType, lineDataList: Array<LineDataTy
         }
     }
 
-    console.error('No way!');
+    // this string should not be test covered
+    console.error('Parent not found');
 
-    console.log(lineData);
-
-    return lineData;
+    return null;
 }
