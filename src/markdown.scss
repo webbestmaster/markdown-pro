@@ -25,7 +25,9 @@ $main-line-height: 1.4;
         font-size: $main-font-size;
         line-height: $main-line-height;
         margin: 0;
+        overflow: auto;
         padding: 0;
+        word-break: break-word;
 
         &:first-child {
             margin-top: 0;
