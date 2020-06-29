@@ -1,10 +1,12 @@
 // @flow
 
+/* global window */
+
 // import markdownPro from 'markdown-pro';
 // import markdownProStyle from 'markdown-pro/dist/style.css';
 import markdownPro, {markdown} from '../src/markdown';
 
-import {syncScroll} from '../test/util';
+import {syncScroll, updateScrollPositionCache} from '../test/util';
 
 import {formatHtml} from './util';
 
@@ -14,6 +16,11 @@ export function init(
     outputDebug: HTMLPreElement,
     useLineBreak: HTMLInputElement
 ) {
+    function refreshResult() {
+        updateScrollPositionCache([textArea, output]);
+        syncScroll(textArea, output);
+    }
+
     function handleInput() {
         const inputValue = textArea.value;
 
@@ -23,6 +30,7 @@ export function init(
         output.innerHTML = markdownHtml;
         // eslint-disable-next-line no-param-reassign
         outputDebug.textContent = formatHtml(markdownHtml);
+        refreshResult();
     }
 
     function handleScroll(evt: Event) {
@@ -42,4 +50,6 @@ export function init(
     output.addEventListener('scroll', handleScroll, {passive: true});
 
     useLineBreak.addEventListener('change', handleInput, false);
+
+    window.addEventListener('resize', refreshResult, false);
 }
