@@ -4,11 +4,9 @@
 
 // import markdownPro from 'markdown-pro';
 // import markdownProStyle from 'markdown-pro/dist/style.css';
-import markdownPro, {markdown} from '../src/markdown';
+import markdownPro from '../src/markdown';
 
-import {syncScroll, updateScrollPositionCache} from '../test/util';
-
-import {formatHtml} from './util';
+import {formatHtml, syncScroll, updateScrollPositionCache} from './util';
 
 export function init(
     textArea: HTMLTextAreaElement,
