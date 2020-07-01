@@ -21,7 +21,7 @@ import {fixtureCode} from './fixture/code';
 import {fixtureImage} from './fixture/image';
 import {fixtureCheckbox} from './fixture/checkbox';
 import {fixtureLink} from './fixture/link';
-import {fixtureMix1} from './fixture/mix-1';
+// import {fixtureMix1} from './fixture/mix-1';
 
 function mdDoNoBreakLine(input: string): string {
     // use default config
@@ -46,7 +46,6 @@ describe('Markdown-pro test', () => {
         assert(mdUseBreakLine(fixtureHeader.input) === fixtureHeader.outputUseBreakLine);
     });
 
-/*
     it('Paragraph', () => {
         assert(mdDoNoBreakLine(fixtureParagraph.input) === fixtureParagraph.outputDoNotBreakLine);
         assert(mdUseBreakLine(fixtureParagraph.input) === fixtureParagraph.outputUseBreakLine);
@@ -102,8 +101,8 @@ describe('Markdown-pro test', () => {
         assert(mdUseBreakLine(fixtureCode.input) === fixtureCode.outputUseBreakLine);
     });
 
-    it('Mix 1', () => {
-        assert(mdDoNoBreakLine(fixtureMix1.input) === fixtureMix1.outputDoNotBreakLine);
-        assert(mdUseBreakLine(fixtureMix1.input) === fixtureMix1.outputUseBreakLine);
-    });*/
+    // it('Mix 1', () => {
+    //     assert(mdDoNoBreakLine(fixtureMix1.input) === fixtureMix1.outputDoNotBreakLine);
+    //     assert(mdUseBreakLine(fixtureMix1.input) === fixtureMix1.outputUseBreakLine);
+    // });
 });
