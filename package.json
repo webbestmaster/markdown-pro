@@ -18,6 +18,10 @@
     "url": "https://github.com/webbestmaster/markdown-pro/issues"
   },
   "homepage": "https://github.com/webbestmaster/markdown-pro#readme",
+  "engines": {
+    "node": ">=14.4.0",
+    "npm": ">=6.14.5"
+  },
   "scripts": {
     "start-demo": "cross-env BUILD_TYPE=site webpack-dev-server --progress --no-inline",
     "start-demo:hot": "cross-env BUILD_TYPE=site webpack-dev-server --progress --hot",
