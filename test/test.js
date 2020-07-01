@@ -41,7 +41,6 @@ describe('Markdown-pro test', () => {
         assert(markdownPro === markdown, 'markdownPro !== {markdown}');
     });
 
-
     it('Header', () => {
         assert(mdDoNoBreakLine(fixtureHeader.input) === fixtureHeader.outputDoNotBreakLine);
         assert(mdUseBreakLine(fixtureHeader.input) === fixtureHeader.outputUseBreakLine);
