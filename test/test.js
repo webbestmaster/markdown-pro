@@ -42,11 +42,12 @@ describe('Markdown-pro test', () => {
     });
 
 
-/*    it('Header', () => {
+    it('Header', () => {
         assert(mdDoNoBreakLine(fixtureHeader.input) === fixtureHeader.outputDoNotBreakLine);
         assert(mdUseBreakLine(fixtureHeader.input) === fixtureHeader.outputUseBreakLine);
     });
 
+/*
     it('Paragraph', () => {
         assert(mdDoNoBreakLine(fixtureParagraph.input) === fixtureParagraph.outputDoNotBreakLine);
         assert(mdUseBreakLine(fixtureParagraph.input) === fixtureParagraph.outputUseBreakLine);

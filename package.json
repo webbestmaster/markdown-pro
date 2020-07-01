@@ -43,7 +43,7 @@
     "pre-commit-hook": "npm run eslint && npm run stylelint && npm run flow",
     "test": "babel-node node_modules/.bin/_mocha ./test/",
     "test-coverage": "nyc --reporter=html --reporter=text babel-node node_modules/.bin/_mocha ./test/",
-    "coveralls": "nyc --reporter=lcov --check-coverage --functions=90 --branches=90 babel-node node_modules/.bin/_mocha ./test/"
+    "coveralls": "nyc --reporter=lcov babel-node node_modules/.bin/_mocha ./test/"
   },
   "dependencies": {},
   "devDependencies": {
