@@ -1,5 +1,8 @@
 # Markdown-pro (6bk gzip)
 
+[![Build Status](https://travis-ci.org/webbestmaster/markdown-pro.svg?branch=master)](https://travis-ci.org/webbestmaster/markdown-pro.svg?branch=master)
+
+
 **[Live demo](http://webbestmaster.github.io/markdown-pro)**
 
 ## Install
