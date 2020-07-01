@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/webbestmaster/markdown-pro.svg?branch=master)](https://travis-ci.org/github/webbestmaster/markdown-pro)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/webbestmaster/markdown-pro/blob/master/license)
 [![npm version](https://img.shields.io/npm/v/markdown-pro.svg?style=flat)](https://www.npmjs.com/package/markdown-pro)
+[![install size](https://packagephobia.now.sh/badge?p=markdown-pro)](https://packagephobia.now.sh/result?p=markdown-pro)
 
 
 **[Live demo](http://webbestmaster.github.io/markdown-pro)**
