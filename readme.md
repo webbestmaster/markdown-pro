@@ -1,6 +1,6 @@
 # Markdown-pro (6bk gzip)
 
-[![Build Status](https://travis-ci.org/webbestmaster/markdown-pro.svg?branch=master)](https://travis-ci.org/webbestmaster/markdown-pro.svg?branch=master)
+[![Build Status](https://travis-ci.org/webbestmaster/markdown-pro.svg?branch=master)](https://travis-ci.org/github/webbestmaster/markdown-pro)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/webbestmaster/markdown-pro/blob/master/license)
 
 **[Live demo](http://webbestmaster.github.io/markdown-pro)**
