@@ -30,7 +30,7 @@ function getTagIndexList(html: string): Array<PairNumberArrayType> {
 }
 
 // eslint-disable-next-line complexity, max-statements
-function getSelectorIndexList(html: string, pairTagSelector: PairTagSelectorType): Array<number> {
+export function getSelectorIndexList(html: string, pairTagSelector: PairTagSelectorType): Array<number> {
     const {selector, equal} = pairTagSelector;
 
     const resultList: Array<number> = [];
@@ -42,26 +42,21 @@ function getSelectorIndexList(html: string, pairTagSelector: PairTagSelectorType
         return resultList;
     }
 
-    let indexOf: number = html.indexOf(selector, 0);
+    let indexOfSelector: number = html.indexOf(selector, 0);
 
     // eslint-disable-next-line no-loops/no-loops
-    while (indexOf !== -1) {
-        const equalSymbolsMatch = html.slice(indexOf).match(equal);
+    while (indexOfSelector !== -1) {
+        const equalSymbolsMatch = html.slice(indexOfSelector).match(equal);
 
-        if (!equalSymbolsMatch) {
-            // this string should not be test covered
-            console.error('equalSymbolsLine is not found');
-            return [];
-        }
-
+        // $FlowFixMe
         const [equalSymbolLine] = equalSymbolsMatch;
         const equalSymbolLineLength = equalSymbolLine.length;
 
         if (equalSymbolLineLength === selectorLength) {
-            resultList.push(indexOf);
+            resultList.push(indexOfSelector);
         }
 
-        indexOf = html.indexOf(selector, indexOf + equalSymbolLineLength);
+        indexOfSelector = html.indexOf(selector, indexOfSelector + equalSymbolLineLength);
     }
 
     if (resultList.length % 2 === 1) {

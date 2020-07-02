@@ -55,7 +55,7 @@ export function parseLine(
     structuredLineDataList: Array<LineDataType>,
     savedLineDataList: Array<LineDataType>,
     documentMeta: DocumentMetaType
-) {
+): boolean {
     const trimmedLine = line.trim();
     const isEmptyString = trimmedLine === emptyString;
     const rawSpaceCount = isEmptyString
@@ -85,7 +85,7 @@ export function parseLine(
         if (documentMeta.codeLineData && lineContent === emptyString) {
             // eslint-disable-next-line no-param-reassign
             documentMeta.codeLineData = null;
-            return;
+            return true;
         }
         // eslint-disable-next-line no-param-reassign
         documentMeta.codeLineData = lineData;
@@ -95,16 +95,16 @@ export function parseLine(
 
     if (codeLineData && codeLineData !== lineData) {
         codeLineData.additionalLineList.push(lineData.line);
-        return;
+        return true;
     }
 
     if (lineData.selector === emptyString && lineContent.length > 0) {
         const prevItemIndex = savedLineDataList.length - 1;
-        const prevItem = prevItemIndex in savedLineDataList ? savedLineDataList[prevItemIndex] : null;
+        const prevItem = savedLineDataList[prevItemIndex];
 
         if (prevItem && prevItem.lineContent.length > 0) {
             prevItem.additionalLineList.push(lineContent);
-            return;
+            return true;
         }
     }
 
@@ -113,9 +113,11 @@ export function parseLine(
     if (!parentLineData) {
         // this string should not be test covered
         console.error('Parent not found');
-        return;
+        return false;
     }
 
     parentLineData.childList.push(lineData);
     savedLineDataList.push(lineData);
+
+    return true;
 }

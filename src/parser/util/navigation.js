@@ -4,7 +4,7 @@ import type {LineDataType} from '../parser-type';
 import {emptyString} from '../../render/render-const';
 
 // eslint-disable-next-line complexity
-function searchSiblingItem(
+export function searchSiblingItem(
     lineData: LineDataType,
     lineDataList: Array<LineDataType>,
     direction: number
