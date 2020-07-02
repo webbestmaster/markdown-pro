@@ -7,8 +7,8 @@
 [![Dependencies](https://david-dm.org/webbestmaster/markdown-pro.svg?)](https://david-dm.org/webbestmaster/markdown-pro)
 ![Maintenance](https://img.shields.io/maintenance/yes/2020)
 ![GitHub last commit](https://img.shields.io/github/last-commit/webbestmaster/markdown-pro)
-![npm](https://img.shields.io/npm/dm/markdown-pro)
-![Website](https://img.shields.io/website?url=http%3A%2F%2Fwebbestmaster.github.io%2Fmarkdown-pro%2F)
+[![npm](https://img.shields.io/npm/dm/markdown-pro)](https://www.npmjs.com/package/markdown-pro)
+[![Website](https://img.shields.io/website?url=http%3A%2F%2Fwebbestmaster.github.io%2Fmarkdown-pro%2F)](http://webbestmaster.github.io/markdown-pro/)
 [![install size](https://packagephobia.now.sh/badge?p=markdown-pro)](https://packagephobia.now.sh/result?p=markdown-pro)
 
 
