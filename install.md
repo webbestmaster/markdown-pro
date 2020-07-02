@@ -24,5 +24,5 @@ Open .babelrc
 
 ```
 "optInOnly": false, // check types in run time
-"optInOnly": true, // DO NOT check types in run time
+"optInOnly": true, // do not check types in run time
 ```
