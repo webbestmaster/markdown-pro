@@ -4,8 +4,8 @@
   "description": "Markdown-pro - professional markdown parser.",
   "keywords": [
     "markdown",
-    "parser",
-    "markdown-pro"
+    "markdown-pro",
+    "parser"
   ],
   "main": "dist/index.js",
   "repository": {
