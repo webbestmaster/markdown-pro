@@ -21,3 +21,6 @@ package-lock.json
 /flow-coverage
 /coverage/
 /.nyc_output/
+
+# coveralls
+/.coveralls.yml
