@@ -7,7 +7,7 @@ import {describe, it} from 'mocha';
 import markdownPro, {markdown} from '../src/markdown';
 import type {MarkdownConfigShallowType} from '../src/markdown-type';
 
-import {unwrap} from './util';
+import {stringReverse, unwrap} from './util';
 
 import {fixtureHeader} from './fixture/header';
 import {fixtureParagraph} from './fixture/paragraph';
@@ -102,13 +102,24 @@ describe('Markdown-pro test', () => {
     });
 
     it('Code highlight', () => {
+        function codeHighlight(langName: string, code: string): string {
+            if (langName !== fixtureCodeHighlight.langName) {
+                throw new Error('codeHighlight: wrong langName');
+            }
+
+            if (code !== fixtureCodeHighlight.code) {
+                throw new Error('codeHighlight: wrong code');
+            }
+
+            return stringReverse(code);
+        }
+
         const configDoNotBreakLine: MarkdownConfigShallowType = {
-            codeHighlight: fixtureCodeHighlight.codeHighlight,
-            useLineBreak: false,
+            codeHighlight,
         };
 
         const configUseBreakLine: MarkdownConfigShallowType = {
-            codeHighlight: fixtureCodeHighlight.codeHighlight,
+            codeHighlight,
             useLineBreak: true,
         };
 
