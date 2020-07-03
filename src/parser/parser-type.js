@@ -79,6 +79,7 @@ export type ShortLineInfoType = {|
 export type DocumentMetaType = {|
     codeLineData: LineDataType | null,
     +useLineBreak: boolean,
+    +codeHighlight: (langName: string, code: string) => string,
 |};
 
 export type PairTagSelectorType = {|

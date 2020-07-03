@@ -31,6 +31,7 @@ export function markdown(mdInput: string, config: MarkdownConfigShallowType = de
     const documentMeta: DocumentMetaType = {
         codeLineData: null,
         useLineBreak: markdownConfig.useLineBreak,
+        codeHighlight: markdownConfig.codeHighlight,
     };
 
     mdInput.split('\n').forEach((line: string, lineIndex: number, allLineList: Array<string>) => {

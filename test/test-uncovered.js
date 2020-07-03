@@ -14,6 +14,7 @@ import {emptyString} from '../src/render/render-const';
 import {getOlTypeBySelector} from '../src/render/render-helper';
 import {olNumericType, selectorList} from '../src/parser/parser-selector';
 import {getSelectorIndexList} from '../src/render/render-pair-tag';
+import {defaultMarkdownConfig} from '../src/markdown-const';
 
 import {defaultLineData} from './fixture/default-data';
 
@@ -24,6 +25,7 @@ describe('Markdown-pro test:uncovered', () => {
         const documentMeta: DocumentMetaType = {
             codeLineData: null,
             useLineBreak: false,
+            codeHighlight: defaultMarkdownConfig.codeHighlight,
         };
 
         assert(parseLine('', 0, [], [], savedDataList, documentMeta) === false);
