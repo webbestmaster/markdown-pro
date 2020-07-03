@@ -4,6 +4,7 @@ declare module 'markdown-pro' {
     declare export type MarkdownConfigType = {|
         +useLineBreak?: boolean,
         +wrapperClassName?: string,
+        +parseLink?: boolean,
         +codeHighlight?: (langName: string, code: string) => string,
     |};
 

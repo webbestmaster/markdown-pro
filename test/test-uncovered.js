@@ -25,6 +25,7 @@ describe('Markdown-pro test:uncovered', () => {
         const documentMeta: DocumentMetaType = {
             codeLineData: null,
             useLineBreak: false,
+            parseLink: true,
             codeHighlight: defaultMarkdownConfig.codeHighlight,
         };
 

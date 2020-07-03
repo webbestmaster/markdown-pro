@@ -22,6 +22,7 @@ import {fixtureImage} from './fixture/image';
 import {fixtureCheckbox} from './fixture/checkbox';
 import {fixtureLink} from './fixture/link';
 import {fixtureMix1} from './fixture/mix-1';
+import {fixtureDoNotParseLink, fixtureParseLink} from './fixture/parse-link';
 
 function mdDoNoBreakLine(input: string): string {
     // use default config
@@ -130,6 +131,31 @@ describe('Markdown-pro test', () => {
         assert(
             unwrap(markdown(fixtureCodeHighlight.input, configUseBreakLine))
                 === fixtureCodeHighlight.outputUseBreakLine
+        );
+    });
+
+    it('Parse link', () => {
+        assert(mdDoNoBreakLine(fixtureParseLink.input) === fixtureParseLink.outputDoNotBreakLine);
+        assert(mdUseBreakLine(fixtureParseLink.input) === fixtureParseLink.outputUseBreakLine);
+    });
+
+    it('Do NOT parse link', () => {
+        const configDoNotBreakLine: MarkdownConfigShallowType = {
+            parseLink: false,
+        };
+
+        const configUseBreakLine: MarkdownConfigShallowType = {
+            parseLink: false,
+            useLineBreak: true,
+        };
+
+        assert(
+            unwrap(markdown(fixtureDoNotParseLink.input, configDoNotBreakLine))
+                === fixtureDoNotParseLink.outputDoNotBreakLine
+        );
+        assert(
+            unwrap(markdown(fixtureDoNotParseLink.input, configUseBreakLine))
+                === fixtureDoNotParseLink.outputUseBreakLine
         );
     });
 

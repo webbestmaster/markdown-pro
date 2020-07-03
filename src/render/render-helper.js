@@ -57,10 +57,6 @@ export function makeLink(html: string): string {
     return html.replace(findLinkRegExpGlobal, linkReplacer);
 }
 
-export function makeLinkFromText(html: string): string {
-    return html;
-}
-
 export function getOlTypeBySelector(dataLineSelector: SelectorType): OlAttributeType {
     // eslint-disable-next-line no-loops/no-loops
     for (const oLParseData of oLParseDataList) {

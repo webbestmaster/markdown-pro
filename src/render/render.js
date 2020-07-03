@@ -23,10 +23,10 @@ import {
     makeCheckbox,
     makeImage,
     makeLink,
-    makeLinkFromText,
     removeEndBreakLine,
     renderAdditionalLineList,
 } from './render-helper';
+import {makeLinkFromText} from './render-link';
 import {makePairTag} from './render-pair-tag';
 
 export function renderChildList(lineDataList: Array<LineDataType>): string {
@@ -39,7 +39,7 @@ export function renderLineData(
     lineDataIndex: number,
     lineDataList: Array<LineDataType>
 ): string {
-    const {selector, childList, lineContent, additionalLineList, trimmedLine, codeHighlight} = lineData;
+    const {selector, childList, lineContent, additionalLineList, trimmedLine, codeHighlight, parseLink} = lineData;
     const additionLineListRender = renderAdditionalLineList(lineData);
     const childListRender = renderChildList(childList);
 
@@ -47,7 +47,9 @@ export function renderLineData(
 
     fullLineContent = makeImage(fullLineContent);
     fullLineContent = makeLink(fullLineContent);
-    fullLineContent = makeLinkFromText(fullLineContent);
+    if (parseLink) {
+        fullLineContent = makeLinkFromText(fullLineContent);
+    }
     fullLineContent = makeCheckbox(fullLineContent);
     fullLineContent = makePairTag(fullLineContent);
     fullLineContent += childListRender;

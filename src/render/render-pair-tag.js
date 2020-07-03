@@ -3,31 +3,7 @@
 import type {PairTagSelectorType} from '../parser/parser-type';
 import {pairTagSelectorList} from '../parser/parser-selector';
 
-type PairNumberArrayType = [number, number];
-
-const tagSelectorRegExpGlobal = /(<\w+[\S\s]*?>)|(<\/\w+?>)|(<\w+[\S\s]*?\/>)/g;
-
-function harArrayOverflow(arrayA: PairNumberArrayType, arrayB: PairNumberArrayType): boolean {
-    const [startA, endA] = arrayA;
-    const [startB, endB] = arrayB;
-
-    return !(endA < startB || endB < startA);
-}
-
-function getTagIndexList(html: string): Array<PairNumberArrayType> {
-    const resultList: Array<PairNumberArrayType> = [];
-    const matchList = [...html.matchAll(tagSelectorRegExpGlobal)];
-
-    // eslint-disable-next-line no-loops/no-loops
-    for (const matched of matchList) {
-        const start = matched.index;
-        const end = start + matched[0].length - 1;
-
-        resultList.push([start, end]);
-    }
-
-    return resultList;
-}
+import {getTagIndexList, harArrayOverflow} from './render-util';
 
 // eslint-disable-next-line complexity, max-statements
 export function getSelectorIndexList(html: string, pairTagSelector: PairTagSelectorType): Array<number> {

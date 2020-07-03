@@ -31,9 +31,10 @@ import markdownProStyle from 'markdown-pro/dist/style.css';
 const htmlCode = markdownPro('# Markdown Pro'); // <h1>Markdown Pro</h1>
 
 const config = {
-    useLineBreak: true, // Convert '\n' into <br/>, default: false, optional
+    useLineBreak: true, // convert '\n' into <br/>, default: false, optional
     wrapperClassName: 'my-markdown-pro', // add css class into wrapper, default: '', optional
-    codeHighlight: function (langNme, code) { // langNme: string, code: string
+    parseLink: true, // https://exmaple.com -> <a href="https://exmaple.com">https://exmaple.com</a>, default: true, optional
+    codeHighlight: function (langNme, code) { // langNme: string, code: string, optional
         return yourHighlightFunction(langNme, code);
     }
 };

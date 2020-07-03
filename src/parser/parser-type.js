@@ -63,6 +63,8 @@ export type LineDataType = {|
     +additionalLineList: Array<string>,
     // make \n => <br/>
     +useLineBreak: boolean,
+    // https://exmaple.com -> <a href="https://exmaple.com">https://exmaple.com</a>
+    +parseLink: boolean,
     // code highlight
     +codeHighlight: (langName: string, code: string) => string,
 |};
@@ -81,6 +83,7 @@ export type ShortLineInfoType = {|
 export type DocumentMetaType = {|
     codeLineData: LineDataType | null,
     +useLineBreak: boolean,
+    +parseLink: boolean,
     +codeHighlight: (langName: string, code: string) => string,
 |};
 
