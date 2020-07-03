@@ -1,5 +1,7 @@
 // @flow
 
+/* global setTimeout, clearTimeout */
+
 // get from stackoverflow
 // https://stackoverflow.com/questions/3913355/how-to-format-tidy-beautify-in-javascript
 export function formatHtml(html: string): string {
@@ -76,4 +78,39 @@ export function syncScroll(fromNode: HTMLElement, toNode: HTMLElement) {
     }
 
     toNode.scrollTo(0, newTopPosition);
+}
+
+// $FlowFixMe
+export function debounce<FuncType>(wrappedFunction: FuncType, waitInMs: number, isImmediate?: boolean): FuncType {
+    let timeout: TimeoutID | null = null;
+
+    // $FlowFixMe
+    return function debouncedFunction() {
+        // eslint-disable-next-line consistent-this, babel/no-invalid-this
+        const context = this;
+        const argumentList = [...arguments];
+
+        // eslint-disable-next-line unicorn/consistent-function-scoping
+        function callLater() {
+            timeout = null;
+
+            if (!isImmediate) {
+                // $FlowFixMe
+                Reflect.apply(wrappedFunction, context, argumentList);
+            }
+        }
+
+        const isCallNow = isImmediate && !timeout;
+
+        clearTimeout(timeout);
+
+        timeout = setTimeout(callLater, waitInMs);
+
+        if (!isCallNow) {
+            return;
+        }
+
+        // $FlowFixMe
+        Reflect.apply(wrappedFunction, context, argumentList);
+    };
 }

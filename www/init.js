@@ -6,7 +6,7 @@
 // import markdownProStyle from 'markdown-pro/dist/style.css';
 import markdownPro from '../src/markdown';
 
-import {formatHtml, syncScroll, updateScrollPositionCache} from './util';
+import {debounce, formatHtml, syncScroll, updateScrollPositionCache} from './util';
 
 export function init(
     textArea: HTMLTextAreaElement,
@@ -46,6 +46,14 @@ export function init(
 
     textArea.addEventListener('scroll', handleScroll, {passive: true});
     output.addEventListener('scroll', handleScroll, {passive: true});
+    output.addEventListener(
+        'scroll',
+        debounce((evt: Event) => {
+            updateScrollPositionCache([textArea, output]);
+            handleScroll(evt);
+        }, 200),
+        {passive: true}
+    );
 
     useLineBreak.addEventListener('change', handleInput, false);
 
