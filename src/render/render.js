@@ -23,6 +23,7 @@ import {
     makeCheckbox,
     makeImage,
     makeLink,
+    makeLinkFromText,
     removeEndBreakLine,
     renderAdditionalLineList,
 } from './render-helper';
@@ -46,8 +47,9 @@ export function renderLineData(
 
     fullLineContent = makeImage(fullLineContent);
     fullLineContent = makeLink(fullLineContent);
-    fullLineContent = makePairTag(fullLineContent);
+    fullLineContent = makeLinkFromText(fullLineContent);
     fullLineContent = makeCheckbox(fullLineContent);
+    fullLineContent = makePairTag(fullLineContent);
     fullLineContent += childListRender;
 
     if (getIsLine(lineData)) {
