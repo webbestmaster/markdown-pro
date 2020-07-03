@@ -22,9 +22,7 @@ export function markdown(mdInput: string, config: MarkdownConfigShallowType = de
         lineContent: '',
         childList: [],
         additionalLineList: [],
-        useLineBreak: markdownConfig.useLineBreak,
-        parseLink: markdownConfig.parseLink,
-        codeHighlight: markdownConfig.codeHighlight,
+        config: markdownConfig,
         // isFirst: true,
         // isLast: true,
     };
@@ -32,9 +30,7 @@ export function markdown(mdInput: string, config: MarkdownConfigShallowType = de
     const savedLineDataList: Array<LineDataType> = [mainParent];
     const documentMeta: DocumentMetaType = {
         codeLineData: null,
-        useLineBreak: markdownConfig.useLineBreak,
-        parseLink: markdownConfig.parseLink,
-        codeHighlight: markdownConfig.codeHighlight,
+        config: markdownConfig,
     };
 
     mdInput.split('\n').forEach((line: string, lineIndex: number, allLineList: Array<string>) => {

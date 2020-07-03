@@ -79,9 +79,10 @@ export function getOlStart(trimmedLine: string): string {
     return trimmedLine.slice(0, dotIndex);
 }
 
-// eslint-disable-next-line complexity
+// eslint-disable-next-line complexity, max-statements
 export function renderAdditionalLineList(lineData: LineDataType): string {
-    const {additionalLineList, useLineBreak} = lineData;
+    const {additionalLineList, config} = lineData;
+    const {useLineBreak} = config;
 
     if (additionalLineList.length === 0) {
         return emptyString;

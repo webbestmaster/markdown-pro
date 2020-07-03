@@ -39,7 +39,8 @@ export function renderLineData(
     lineDataIndex: number,
     lineDataList: Array<LineDataType>
 ): string {
-    const {selector, childList, lineContent, additionalLineList, trimmedLine, codeHighlight, parseLink} = lineData;
+    const {selector, childList, lineContent, trimmedLine, additionalLineList, config} = lineData;
+    const {codeHighlight, parseLink} = config;
     const additionLineListRender = renderAdditionalLineList(lineData);
     const childListRender = renderChildList(childList);
 

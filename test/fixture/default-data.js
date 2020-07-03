@@ -13,7 +13,5 @@ export const defaultLineData: LineDataType = {
     lineContent: '',
     childList: [],
     additionalLineList: [],
-    useLineBreak: false,
-    parseLink: true,
-    codeHighlight: defaultMarkdownConfig.codeHighlight,
+    config: defaultMarkdownConfig,
 };

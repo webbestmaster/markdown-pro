@@ -1,5 +1,7 @@
 // @flow
 
+import type {MarkdownConfigType} from '../markdown-type';
+
 export type SelectorHeaderType = '# ' | '## ' | '### ' | '#### ' | '##### ' | '###### ';
 export type SelectorBlockquoteType = '> ';
 export type SelectorLineType = '---' | '***' | '___';
@@ -61,12 +63,7 @@ export type LineDataType = {|
     +childList: Array<LineDataType>,
     // additional line list
     +additionalLineList: Array<string>,
-    // make \n => <br/>
-    +useLineBreak: boolean,
-    // https://exmaple.com -> <a href="https://exmaple.com">https://exmaple.com</a>
-    +parseLink: boolean,
-    // code highlight
-    +codeHighlight: (langName: string, code: string) => string,
+    +config: MarkdownConfigType,
 |};
 
 export type OlParseDataType = {|
@@ -82,9 +79,7 @@ export type ShortLineInfoType = {|
 
 export type DocumentMetaType = {|
     codeLineData: LineDataType | null,
-    +useLineBreak: boolean,
-    +parseLink: boolean,
-    +codeHighlight: (langName: string, code: string) => string,
+    +config: MarkdownConfigType,
 |};
 
 export type PairTagSelectorType = {|
