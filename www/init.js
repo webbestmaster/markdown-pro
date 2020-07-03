@@ -12,7 +12,8 @@ export function init(
     textArea: HTMLTextAreaElement,
     output: HTMLDivElement,
     outputDebug: HTMLPreElement,
-    useLineBreak: HTMLInputElement
+    useLineBreak: HTMLInputElement,
+    parseLink: HTMLInputElement
 ) {
     function refreshResult() {
         updateScrollPositionCache([textArea, output]);
@@ -22,7 +23,10 @@ export function init(
     function handleInput() {
         const inputValue = textArea.value;
 
-        const markdownHtml = markdownPro(inputValue, {useLineBreak: useLineBreak.checked});
+        const markdownHtml = markdownPro(inputValue, {
+            useLineBreak: useLineBreak.checked,
+            parseLink: parseLink.checked,
+        });
 
         // eslint-disable-next-line no-param-reassign
         output.innerHTML = markdownHtml;
@@ -56,6 +60,7 @@ export function init(
     );
 
     useLineBreak.addEventListener('change', handleInput, false);
+    parseLink.addEventListener('change', handleInput, false);
 
     window.addEventListener('resize', refreshResult, false);
 }
