@@ -79,6 +79,7 @@ export function parseLine(
         childList: [],
         additionalLineList: [],
         useLineBreak: documentMeta.useLineBreak,
+        codeHighlight: documentMeta.codeHighlight,
     };
 
     if (selectorCodeList.includes(selector)) {

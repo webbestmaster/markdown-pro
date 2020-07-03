@@ -38,7 +38,7 @@ export function renderLineData(
     lineDataIndex: number,
     lineDataList: Array<LineDataType>
 ): string {
-    const {selector, childList, lineContent, additionalLineList, trimmedLine} = lineData;
+    const {selector, childList, lineContent, additionalLineList, trimmedLine, codeHighlight} = lineData;
     const additionLineListRender = renderAdditionalLineList(lineData);
     const childListRender = renderChildList(childList);
 
@@ -55,7 +55,7 @@ export function renderLineData(
     }
 
     if (getIsCode(lineData)) {
-        return `<code data-lang="${lineContent}">${additionalLineList.join('\n')}</code>`;
+        return `<code data-lang="${lineContent}">${codeHighlight(lineContent, additionalLineList.join('\n'))}</code>`;
     }
 
     if (lineContent === emptyString && childList.length === 0) {

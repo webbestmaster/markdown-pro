@@ -63,6 +63,8 @@ export type LineDataType = {|
     +additionalLineList: Array<string>,
     // make \n => <br/>
     +useLineBreak: boolean,
+    // code highlight
+    +codeHighlight: (langName: string, code: string) => string,
 |};
 
 export type OlParseDataType = {|

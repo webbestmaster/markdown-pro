@@ -23,6 +23,7 @@ export function markdown(mdInput: string, config: MarkdownConfigShallowType = de
         childList: [],
         additionalLineList: [],
         useLineBreak: markdownConfig.useLineBreak,
+        codeHighlight: defaultMarkdownConfig.codeHighlight,
         // isFirst: true,
         // isLast: true,
     };

@@ -11,3 +11,7 @@ export function unwrap(html: string): string {
 
     return content;
 }
+
+export function stringReverse(someString: string): string {
+    return someString.split('').reverse().join('');
+}

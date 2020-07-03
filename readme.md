@@ -33,6 +33,9 @@ const htmlCode = markdownPro('# Markdown Pro'); // <h1>Markdown Pro</h1>
 const config = {
     useLineBreak: true, // Convert '\n' into <br/>, default: false, optional
     wrapperClassName: 'my-markdown-pro', // add css class into wrapper, default: '', optional
+    highlight: function (langNme, code) { // code highlight
+        return yourHighlightFunction(langNme, code);
+    }
 };
 
 const htmlCodeConfigured = markdownPro('# Markdown Pro', config);

@@ -2,6 +2,7 @@
 
 import type {LineDataType} from '../../src/parser/parser-type';
 import {selectorList} from '../../src/parser/parser-selector';
+import {defaultMarkdownConfig} from '../../src/markdown-const';
 
 export const defaultLineData: LineDataType = {
     lineIndex: 0,
@@ -13,4 +14,5 @@ export const defaultLineData: LineDataType = {
     childList: [],
     additionalLineList: [],
     useLineBreak: false,
+    codeHighlight: defaultMarkdownConfig.codeHighlight,
 };

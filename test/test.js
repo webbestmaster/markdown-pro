@@ -17,7 +17,7 @@ import {fixturePairTag} from './fixture/pair-tag';
 import {fixtureUnorderedList} from './fixture/unordered-list';
 import {fixtureOrderedList} from './fixture/ordered-list';
 import {fixtureBlockquote} from './fixture/blockquote';
-import {fixtureCode} from './fixture/code';
+import {fixtureCode, fixtureCodeHighlight} from './fixture/code';
 import {fixtureImage} from './fixture/image';
 import {fixtureCheckbox} from './fixture/checkbox';
 import {fixtureLink} from './fixture/link';
@@ -99,6 +99,27 @@ describe('Markdown-pro test', () => {
     it('Code', () => {
         assert(mdDoNoBreakLine(fixtureCode.input) === fixtureCode.outputDoNotBreakLine);
         assert(mdUseBreakLine(fixtureCode.input) === fixtureCode.outputUseBreakLine);
+    });
+
+    it('Code highlight', () => {
+        const configDoNotBreakLine: MarkdownConfigShallowType = {
+            codeHighlight: fixtureCodeHighlight.codeHighlight,
+            useLineBreak: false,
+        };
+
+        const configUseBreakLine: MarkdownConfigShallowType = {
+            codeHighlight: fixtureCodeHighlight.codeHighlight,
+            useLineBreak: true,
+        };
+
+        assert(
+            unwrap(markdown(fixtureCodeHighlight.input, configDoNotBreakLine))
+                === fixtureCodeHighlight.outputDoNotBreakLine
+        );
+        assert(
+            unwrap(markdown(fixtureCodeHighlight.input, configUseBreakLine))
+                === fixtureCodeHighlight.outputUseBreakLine
+        );
     });
 
     it('Mix 1', () => {
