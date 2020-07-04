@@ -219,9 +219,9 @@ Html:
 
 #### Code
 
-```
-&#x60;&#x60;&#x60;bash  ->  <code data-lang="bash">
+<code>
+```bash  ->  <code data-lang="bash">
 $ npm i markdown-pro    ->  $ npm i markdown-pro
 $ sudo be happy         ->  $ sudo be happy
-&#x60;&#x60;&#x60;      ->  </code>
-```
+```      ->  </code>
+</code>
