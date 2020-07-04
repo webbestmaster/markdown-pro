@@ -219,9 +219,7 @@ Html:
 
 #### Code
 
-<code>
-```bash  ->  <code data-lang="bash">
+<pre><code>```bash                 ->  &lt;code data-lang="bash"&gt;
 $ npm i markdown-pro    ->  $ npm i markdown-pro
 $ sudo be happy         ->  $ sudo be happy
-```      ->  </code>
-</code>
+```                     ->  &lt;&#47;code&gt;</code></pre>
