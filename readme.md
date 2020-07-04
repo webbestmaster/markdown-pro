@@ -47,6 +47,17 @@ const htmlCodeConfigured = markdownPro('# Markdown Pro', config);
 ```
 
 
+### Typing Flow
+
+Use `./flow-typed/markdown-pro.js`.
+
+
+### Typing TypeScript
+
+Use `./@types/index.d.ts`.
+
+
+
 ### Reference
 
 
