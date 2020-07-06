@@ -1,6 +1,5 @@
 // @flow
 
-import {type LineDataType} from '../parser/parser-type';
 import {
     getIsBlockquote,
     getIsCode,
@@ -11,10 +10,8 @@ import {
     getIsTable,
     getIsUlItem,
 } from '../parser/util/is-tag';
-
+import {type LineDataType} from '../parser/parser-type';
 import {getIsEdgeLine} from '../parser/util/navigation';
-
-import {emptyString} from './render-const';
 
 import {
     addBreakLine,
@@ -27,6 +24,7 @@ import {
     removeEndBreakLine,
     renderAdditionalLineList,
 } from './render-helper';
+import {emptyString} from './render-const';
 import {makeLinkFromText} from './render-link';
 import {makePairTag} from './render-pair-tag';
 import {renderTable} from './render-table/render-table';
@@ -62,7 +60,7 @@ export function renderLineData(
     }
 
     if (getIsTable(lineData)) {
-        return renderTable(lineData, renderLineData);
+        return renderTable(lineData);
     }
 
     if (getIsCode(lineData)) {

@@ -1,11 +1,31 @@
 // @flow
 
-import type {SelectorType} from '../../parser/parser-type';
+import type {LineDataType, SelectorType} from '../../parser/parser-type';
 import {filterEmptyString} from '../../parser/util/string';
 import {emptyString} from '../render-const';
 
-import type {CellAlignType} from './render-table-type';
+import {makeCheckbox, makeImage, makeLink} from '../render-helper';
+import {makeLinkFromText} from '../render-link';
+import {makePairTag} from '../render-pair-tag';
+
 import {cellAlignTypeMap} from './render-table-const';
+import type {CellAlignType} from './render-table-type';
+
+export function renderTableCellContent(lineData: LineDataType, line: string): string {
+    const {config} = lineData;
+    const {parseLink} = config;
+
+    let fullLineContent = makeImage(line);
+
+    fullLineContent = makeLink(fullLineContent);
+    if (parseLink) {
+        fullLineContent = makeLinkFromText(fullLineContent);
+    }
+    fullLineContent = makeCheckbox(fullLineContent);
+    fullLineContent = makePairTag(fullLineContent);
+
+    return fullLineContent.trim();
+}
 
 export function isTableDivideLine(line: string): boolean {
     return line.replace(/[\s:|-]/g, '') === emptyString;

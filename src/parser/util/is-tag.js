@@ -4,10 +4,10 @@ import type {LineDataType} from '../parser-type';
 import {
     oLParseDataList,
     selectorBlockquoteList,
-    selectorTableList,
     selectorCodeList,
     selectorHeaderList,
     selectorLineList,
+    selectorTableList,
     selectorULItemList,
 } from '../parser-selector';
 

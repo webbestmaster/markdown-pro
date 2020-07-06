@@ -21,8 +21,9 @@ import {fixtureCode, fixtureCodeHighlight, fixtureCodeHighlightNoLang} from './f
 import {fixtureImage} from './fixture/image';
 import {fixtureCheckbox} from './fixture/checkbox';
 import {fixtureLink} from './fixture/link';
-import {fixtureMix1} from './fixture/mix-1';
+import {fixtureTable1, fixtureTable2, fixtureTable3} from './fixture/table';
 import {fixtureDoNotParseLink, fixtureParseLink} from './fixture/parse-link';
+import {fixtureMix1} from './fixture/mix-1';
 
 function mdDoNoBreakLine(input: string): string {
     return markdown(input, {useWrapper: false});
@@ -187,6 +188,12 @@ describe('Markdown-pro test', () => {
             markdown(fixtureDoNotParseLink.input, configDoNotBreakLine) === fixtureDoNotParseLink.outputDoNotBreakLine
         );
         assert(markdown(fixtureDoNotParseLink.input, configUseBreakLine) === fixtureDoNotParseLink.outputUseBreakLine);
+    });
+
+    it('fixtureTable', () => {
+        assert(mdDoNoBreakLine(fixtureTable1.input) === fixtureTable1.output);
+        assert(mdDoNoBreakLine(fixtureTable2.input) === fixtureTable2.output);
+        assert(markdown(fixtureTable3.input, {...fixtureTable3.config, useWrapper: false}) === fixtureTable3.output);
     });
 
     it('Mix 1', () => {

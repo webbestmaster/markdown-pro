@@ -118,7 +118,7 @@ export function parseLine(
         const prevItemIndex = savedLineDataList.length - 1;
         const prevItem = savedLineDataList[prevItemIndex];
 
-        if (prevItem && prevItem.lineContent.length > 0) {
+        if (prevItem && prevItem.lineContent.length > 0 && !selectorTableList.includes(prevItem.selector)) {
             prevItem.additionalLineList.push(lineContent);
             return true;
         }
