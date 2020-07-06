@@ -60,7 +60,9 @@ export function renderLineData(
     }
 
     if (getIsCode(lineData)) {
-        return `<code data-lang="${lineContent}">${codeHighlight(lineContent, additionalLineList.join('\n'))}</code>`;
+        const codeText = codeHighlight(lineContent, additionalLineList.join('\n'));
+
+        return lineContent ? `<code data-lang="${lineContent}">${codeText}</code>` : `<code>${codeText}</code>`;
     }
 
     if (lineContent === emptyString && childList.length === 0) {

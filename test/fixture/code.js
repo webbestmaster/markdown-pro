@@ -34,9 +34,25 @@ And simple text after.
     langName: fixtureCodeLangName,
     code: fixtureCodeTextCode,
     outputDoNotBreakLine:
-        '<h3>I ❤️ Coding Highlight:</h3><code data-lang="bash">yppah eb odus $\n'
-        + 'orp-nwodkram i mpn $</code><p>And simple text after.</p>',
+        '<h3>I ❤️ Coding Highlight:</h3><code data-lang="bash">yppah eb odus $\norp-nwodkram i mpn $</code><p>And simple text after.</p>',
     outputUseBreakLine:
-        '<h3>I ❤️ Coding Highlight:</h3><code data-lang="bash">yppah eb odus $\n'
-        + 'orp-nwodkram i mpn $</code><p>And simple text after.</p>',
+        '<h3>I ❤️ Coding Highlight:</h3><code data-lang="bash">yppah eb odus $\norp-nwodkram i mpn $</code><p>And simple text after.</p>',
+};
+
+export const fixtureCodeHighlightNoLang = {
+    input: `
+    ### I ❤️ Coding Highlight:
+
+\`\`\`
+${fixtureCodeTextCode}
+\`\`\`
+
+And simple text after.
+`,
+    langName: '',
+    code: fixtureCodeTextCode,
+    outputDoNotBreakLine:
+        '<h3>I ❤️ Coding Highlight:</h3><code>yppah eb odus $\norp-nwodkram i mpn $</code><p>And simple text after.</p>',
+    outputUseBreakLine:
+        '<h3>I ❤️ Coding Highlight:</h3><code>yppah eb odus $\norp-nwodkram i mpn $</code><p>And simple text after.</p>',
 };

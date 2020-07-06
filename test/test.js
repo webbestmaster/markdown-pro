@@ -17,7 +17,7 @@ import {fixturePairTag} from './fixture/pair-tag';
 import {fixtureUnorderedList} from './fixture/unordered-list';
 import {fixtureOrderedList} from './fixture/ordered-list';
 import {fixtureBlockquote} from './fixture/blockquote';
-import {fixtureCode, fixtureCodeHighlight} from './fixture/code';
+import {fixtureCode, fixtureCodeHighlight, fixtureCodeHighlightNoLang} from './fixture/code';
 import {fixtureImage} from './fixture/image';
 import {fixtureCheckbox} from './fixture/checkbox';
 import {fixtureLink} from './fixture/link';
@@ -131,6 +131,38 @@ describe('Markdown-pro test', () => {
         assert(
             unwrap(markdown(fixtureCodeHighlight.input, configUseBreakLine))
                 === fixtureCodeHighlight.outputUseBreakLine
+        );
+    });
+
+    it('Code highlight: no lang', () => {
+        function codeHighlight(langName: string, code: string): string {
+            if (langName !== fixtureCodeHighlightNoLang.langName) {
+                throw new Error('codeHighlight - no lang: wrong langName');
+            }
+
+            if (code !== fixtureCodeHighlightNoLang.code) {
+                throw new Error('codeHighlight - no lang: wrong code');
+            }
+
+            return stringReverse(code);
+        }
+
+        const configDoNotBreakLine: MarkdownConfigShallowType = {
+            codeHighlight,
+        };
+
+        const configUseBreakLine: MarkdownConfigShallowType = {
+            codeHighlight,
+            useLineBreak: true,
+        };
+
+        assert(
+            unwrap(markdown(fixtureCodeHighlightNoLang.input, configDoNotBreakLine))
+                === fixtureCodeHighlightNoLang.outputDoNotBreakLine
+        );
+        assert(
+            unwrap(markdown(fixtureCodeHighlightNoLang.input, configUseBreakLine))
+                === fixtureCodeHighlightNoLang.outputUseBreakLine
         );
     });
 
