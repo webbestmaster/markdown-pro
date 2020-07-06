@@ -62,7 +62,7 @@ export function renderLineData(
     }
 
     if (getIsTable(lineData)) {
-        return renderTable(lineData);
+        return renderTable(lineData, renderLineData);
     }
 
     if (getIsCode(lineData)) {

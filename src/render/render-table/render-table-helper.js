@@ -2,9 +2,14 @@
 
 import type {SelectorType} from '../../parser/parser-type';
 import {filterEmptyString} from '../../parser/util/string';
+import {emptyString} from '../render-const';
 
 import type {CellAlignType} from './render-table-type';
 import {cellAlignTypeMap} from './render-table-const';
+
+export function isTableDivideLine(line: string): boolean {
+    return line.replace(/[\s:|-]/g, '') === emptyString;
+}
 
 export function lineToAlign(divideRaw: string): CellAlignType {
     const alignMark = ':';
