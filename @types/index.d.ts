@@ -4,6 +4,7 @@ declare module 'markdown-pro' {
         wrapperClassName?: string,
         parseLink?: boolean,
         codeHighlight?: (langName: string, code: string) => string,
+        useWrapper?: boolean,
     };
 
     export default function markdownPro(mdInput: string, config?: MarkdownConfigType): string;

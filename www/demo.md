@@ -102,6 +102,17 @@ v. for Small Roman Number list
 > One Markdown, One Specification, One Blockquote
 
 
+### Table
+
+Table with different cell align
+| Left | Center  | Right  | Default (left) |
+| :--- | :-----: | -----: | -------------- |
+| beep |   123   | xyz    | 1              |
+| boop | 3388450 | tuv    | 2              |
+| foo  |  10106  | qrstuv | 3              |
+| bar  |    45   | lmno   | 4              |
+
+
 ### Code
 
 ```bash

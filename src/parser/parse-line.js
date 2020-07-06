@@ -5,7 +5,7 @@ import {emptyString} from '../render/render-const';
 import {cleanLine, getIsAllSymbolsEqual} from './util/string';
 import {getParent} from './util/navigation';
 import type {DocumentMetaType, LineDataType, ShortLineInfoType} from './parser-type';
-import {oLParseDataList, selectorCodeList, selectorLineList, selectorList} from './parser-selector';
+import {oLParseDataList, selectorCodeList, selectorLineList, selectorList, selectorTableList} from './parser-selector';
 
 // eslint-disable-next-line complexity
 function getShortInfo(trimmedLine: string): ShortLineInfoType {
@@ -96,6 +96,22 @@ export function parseLine(
     if (codeLineData && codeLineData !== lineData) {
         codeLineData.additionalLineList.push(lineData.line);
         return true;
+    }
+
+    if (selectorTableList.includes(selector)) {
+        if (documentMeta.tableLineData) {
+            // append new line in current block
+            // eslint-disable-next-line no-param-reassign
+            documentMeta.tableLineData.additionalLineList.push(lineData.line);
+            return true;
+        }
+        // create new block
+        // eslint-disable-next-line no-param-reassign
+        documentMeta.tableLineData = lineData;
+    } else {
+        // close table block
+        // eslint-disable-next-line no-param-reassign
+        documentMeta.tableLineData = null;
     }
 
     if (lineData.selector === emptyString && lineContent.length > 0) {

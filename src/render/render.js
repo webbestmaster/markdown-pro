@@ -8,6 +8,7 @@ import {
     getIsLine,
     getIsOlItem,
     getIsStartWithHtml,
+    getIsTable,
     getIsUlItem,
 } from '../parser/util/is-tag';
 
@@ -28,6 +29,7 @@ import {
 } from './render-helper';
 import {makeLinkFromText} from './render-link';
 import {makePairTag} from './render-pair-tag';
+import {renderTable} from './render-table/render-table';
 
 export function renderChildList(lineDataList: Array<LineDataType>): string {
     return lineDataList.map(renderLineData).map(addBreakLine).join(emptyString);
@@ -57,6 +59,10 @@ export function renderLineData(
 
     if (getIsLine(lineData)) {
         return '<hr/>';
+    }
+
+    if (getIsTable(lineData)) {
+        return renderTable(lineData);
     }
 
     if (getIsCode(lineData)) {

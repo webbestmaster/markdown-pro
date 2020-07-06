@@ -7,4 +7,5 @@ export const defaultMarkdownConfig: MarkdownConfigType = {
     wrapperClassName: 'md-pro',
     parseLink: true,
     codeHighlight: (langName: string, code: string): string => code,
+    useWrapper: true,
 };

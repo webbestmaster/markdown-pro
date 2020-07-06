@@ -4,6 +4,7 @@ import type {LineDataType} from '../parser-type';
 import {
     oLParseDataList,
     selectorBlockquoteList,
+    selectorTableList,
     selectorCodeList,
     selectorHeaderList,
     selectorLineList,
@@ -31,6 +32,10 @@ export function getIsOlItem(lineData: LineDataType): boolean {
 
 export function getIsLine(lineData: LineDataType): boolean {
     return selectorLineList.includes(lineData.selector);
+}
+
+export function getIsTable(lineData: LineDataType): boolean {
+    return selectorTableList.includes(lineData.selector);
 }
 
 export function getIsCode(lineData: LineDataType): boolean {

@@ -1,5 +1,15 @@
 // @flow
 
+import {emptyString} from '../../render/render-const';
+
+export function filterEmptyString(line: string): boolean {
+    return line.trim() !== emptyString;
+}
+
+export function isTableDivideLine(line: string): boolean {
+    return line.replace(/[\s:|-]/g, '') === emptyString;
+}
+
 export function cleanLine(line: string): string {
     return line.trim().replace(/\s+/g, ' ');
 }

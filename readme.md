@@ -40,7 +40,9 @@ const config = {
     // langNme: string, code: string, optional
     codeHighlight: function (langNme, code) {
         return yourHighlightFunction(langNme, code);
-    }
+    },
+    // use wrapper <div class="md-pro">...</div>, default: true, optional
+    useWrapper: true,
 };
 
 const htmlCodeConfigured = markdownPro('# Markdown Pro', config);

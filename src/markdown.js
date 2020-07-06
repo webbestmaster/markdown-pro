@@ -41,12 +41,18 @@ export function markdown(mdInput: string, config: MarkdownConfigShallowType = de
     const {wrapperClassName: wrapperClassNameConfig} = markdownConfig;
     const {wrapperClassName: wrapperClassNameDefault} = defaultMarkdownConfig;
 
+    const htmlContent = renderChildList(structuredLineDataList);
+
+    if (markdownConfig.useWrapper === false) {
+        return htmlContent;
+    }
+
     const fullWrapperClassName
         = wrapperClassNameConfig === wrapperClassNameDefault
             ? wrapperClassNameDefault
             : `${wrapperClassNameDefault} ${wrapperClassNameConfig}`;
 
-    return `<div class="${fullWrapperClassName}">${renderChildList(structuredLineDataList)}</div>`;
+    return `<div class="${fullWrapperClassName}">${htmlContent}</div>`;
 }
 
 // eslint-disable-next-line import/no-default-export

@@ -5,6 +5,7 @@ export type MarkdownConfigShallowType = {|
     +wrapperClassName?: string,
     +parseLink?: boolean,
     +codeHighlight?: (langName: string, code: string) => string,
+    +useWrapper?: boolean,
 |};
 
 export type MarkdownConfigType = {|
@@ -16,4 +17,6 @@ export type MarkdownConfigType = {|
     +parseLink: boolean,
     // code highlight
     +codeHighlight: (langName: string, code: string) => string,
+    // use wrapper <div class="md-pro">...</div>
+    +useWrapper: boolean,
 |};
