@@ -7,7 +7,7 @@ import {describe, it} from 'mocha';
 import markdownPro, {markdown} from '../src/markdown';
 import type {MarkdownConfigShallowType} from '../src/markdown-type';
 
-import {stringReverse, unwrap} from './util';
+import {stringReverse} from './util';
 
 import {fixtureHeader} from './fixture/header';
 import {fixtureParagraph} from './fixture/paragraph';
@@ -25,16 +25,16 @@ import {fixtureMix1} from './fixture/mix-1';
 import {fixtureDoNotParseLink, fixtureParseLink} from './fixture/parse-link';
 
 function mdDoNoBreakLine(input: string): string {
-    // use default config
-    return unwrap(markdown(input));
+    return markdown(input, {useWrapper: false});
 }
 
 function mdUseBreakLine(input: string): string {
     const configUseBreakLine: MarkdownConfigShallowType = {
         useLineBreak: true,
+        useWrapper: false,
     };
 
-    return unwrap(markdown(input, configUseBreakLine));
+    return markdown(input, configUseBreakLine);
 }
 
 describe('Markdown-pro test', () => {
@@ -117,21 +117,19 @@ describe('Markdown-pro test', () => {
 
         const configDoNotBreakLine: MarkdownConfigShallowType = {
             codeHighlight,
+            useWrapper: false,
         };
 
         const configUseBreakLine: MarkdownConfigShallowType = {
             codeHighlight,
             useLineBreak: true,
+            useWrapper: false,
         };
 
         assert(
-            unwrap(markdown(fixtureCodeHighlight.input, configDoNotBreakLine))
-                === fixtureCodeHighlight.outputDoNotBreakLine
+            markdown(fixtureCodeHighlight.input, configDoNotBreakLine) === fixtureCodeHighlight.outputDoNotBreakLine
         );
-        assert(
-            unwrap(markdown(fixtureCodeHighlight.input, configUseBreakLine))
-                === fixtureCodeHighlight.outputUseBreakLine
-        );
+        assert(markdown(fixtureCodeHighlight.input, configUseBreakLine) === fixtureCodeHighlight.outputUseBreakLine);
     });
 
     it('Code highlight: no lang', () => {
@@ -149,19 +147,21 @@ describe('Markdown-pro test', () => {
 
         const configDoNotBreakLine: MarkdownConfigShallowType = {
             codeHighlight,
+            useWrapper: false,
         };
 
         const configUseBreakLine: MarkdownConfigShallowType = {
             codeHighlight,
             useLineBreak: true,
+            useWrapper: false,
         };
 
         assert(
-            unwrap(markdown(fixtureCodeHighlightNoLang.input, configDoNotBreakLine))
+            markdown(fixtureCodeHighlightNoLang.input, configDoNotBreakLine)
                 === fixtureCodeHighlightNoLang.outputDoNotBreakLine
         );
         assert(
-            unwrap(markdown(fixtureCodeHighlightNoLang.input, configUseBreakLine))
+            markdown(fixtureCodeHighlightNoLang.input, configUseBreakLine)
                 === fixtureCodeHighlightNoLang.outputUseBreakLine
         );
     });
@@ -174,21 +174,19 @@ describe('Markdown-pro test', () => {
     it('Do NOT parse link', () => {
         const configDoNotBreakLine: MarkdownConfigShallowType = {
             parseLink: false,
+            useWrapper: false,
         };
 
         const configUseBreakLine: MarkdownConfigShallowType = {
             parseLink: false,
             useLineBreak: true,
+            useWrapper: false,
         };
 
         assert(
-            unwrap(markdown(fixtureDoNotParseLink.input, configDoNotBreakLine))
-                === fixtureDoNotParseLink.outputDoNotBreakLine
+            markdown(fixtureDoNotParseLink.input, configDoNotBreakLine) === fixtureDoNotParseLink.outputDoNotBreakLine
         );
-        assert(
-            unwrap(markdown(fixtureDoNotParseLink.input, configUseBreakLine))
-                === fixtureDoNotParseLink.outputUseBreakLine
-        );
+        assert(markdown(fixtureDoNotParseLink.input, configUseBreakLine) === fixtureDoNotParseLink.outputUseBreakLine);
     });
 
     it('Mix 1', () => {

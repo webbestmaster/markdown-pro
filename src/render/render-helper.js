@@ -117,5 +117,5 @@ export function renderAdditionalLineList(lineData: LineDataType): string {
         }
     }
 
-    return (prefix + lineResult.join(emptyString)).trim();
+    return prefix + lineResult.join(emptyString);
 }
