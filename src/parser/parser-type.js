@@ -5,6 +5,7 @@ import type {MarkdownConfigType} from '../markdown-type';
 export type SelectorHeaderType = '# ' | '## ' | '### ' | '#### ' | '##### ' | '###### ';
 export type SelectorBlockquoteType = '> ';
 export type SelectorLineType = '---' | '***' | '___';
+export type SelectorTableType = '|';
 export type SelectorCodeType = '```';
 
 export type SelectorUlItemType = '+ ' | '- ' | '* ';
@@ -44,6 +45,7 @@ export type SelectorType =
     | SelectorParagraphType
     | SelectorBlockquoteType
     | SelectorLineType
+    | SelectorTableType
     | SelectorCodeType;
 
 export type LineDataType = {|
@@ -78,6 +80,7 @@ export type ShortLineInfoType = {|
 |};
 
 export type DocumentMetaType = {|
+    tableLineData: LineDataType | null,
     codeLineData: LineDataType | null,
     +config: MarkdownConfigType,
 |};

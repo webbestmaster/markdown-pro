@@ -23,6 +23,7 @@ describe('Markdown-pro test:uncovered', () => {
         const savedDataList: Array<LineDataType> = [defaultLineData];
 
         const documentMeta: DocumentMetaType = {
+            tableLineData: null,
             codeLineData: null,
             config: defaultMarkdownConfig,
         };

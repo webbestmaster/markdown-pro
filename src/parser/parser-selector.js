@@ -17,6 +17,7 @@ import type {
     SelectorOlNumericItemType,
     SelectorOlSmallAlphabetItemType,
     SelectorOlSmallRomanNumberItemType,
+    SelectorTableType,
     SelectorType,
     SelectorUlItemType,
 } from './parser-type';
@@ -24,6 +25,7 @@ import type {
 export const selectorHeaderList: Array<SelectorHeaderType> = ['# ', '## ', '### ', '#### ', '##### ', '###### '];
 export const selectorBlockquoteList: Array<SelectorBlockquoteType> = ['> '];
 export const selectorLineList: Array<SelectorLineType> = ['---', '***', '___'];
+export const selectorTableList: Array<SelectorTableType> = ['|'];
 export const selectorCodeList: Array<SelectorCodeType> = ['```'];
 
 export const selectorULItemList: Array<SelectorUlItemType> = ['+ ', '- ', '* '];
@@ -80,6 +82,7 @@ export const selectorList: Array<SelectorType> = [
     // ...selectorLineList,
     ...selectorHeaderList,
     ...selectorULItemList,
+    ...selectorTableList,
     ...selectorCodeList,
     ...selectorBlockquoteList,
 ].sort((itemA: SelectorType, itemB: SelectorType): number => itemB.length - itemA.length);

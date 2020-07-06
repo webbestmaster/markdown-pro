@@ -29,6 +29,7 @@ export function markdown(mdInput: string, config: MarkdownConfigShallowType = de
     const structuredLineDataList: Array<LineDataType> = [mainParent];
     const savedLineDataList: Array<LineDataType> = [mainParent];
     const documentMeta: DocumentMetaType = {
+        tableLineData: null,
         codeLineData: null,
         config: markdownConfig,
     };
