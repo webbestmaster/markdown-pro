@@ -19,9 +19,11 @@ $main-line-height: 1.4;
     hr,
     blockquote,
     code,
+    table,
+    th,
+    td,
     img {
         color: inherit;
-        display: block;
         font-size: $main-font-size;
         line-height: $main-line-height;
         margin: 0;
@@ -35,7 +37,6 @@ $main-line-height: 1.4;
 
     a {
         color: #0366d6;
-        display: initial;
         text-decoration: underline;
 
         &:hover {
@@ -121,7 +122,6 @@ $main-line-height: 1.4;
     }
 
     img {
-        display: initial;
         margin-bottom: 8px;
         max-width: 100%;
     }
@@ -148,6 +148,34 @@ $main-line-height: 1.4;
     ul ol,
     ol ol {
         margin-bottom: 0;
+    }
+
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+        margin-bottom: 20px;
+        max-width: 100%;
+        width: 100%;
+    }
+
+    tbody {
+        tr:nth-child(odd) {
+            background-color: #f9f9f9;
+        }
+    }
+
+    th,
+    td {
+        font-weight: normal;
+        padding: 8px;
+    }
+
+    th {
+        vertical-align: bottom;
+    }
+
+    td {
+        border-top: 1px solid #ddd;
     }
 
     blockquote {
