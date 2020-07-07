@@ -55,6 +55,10 @@ body {
         width: calc(100% / 2 - 8px);
     }
 
+    .text-area-input {
+        font-family: 'Lucida Console', 'Monaco', monospace;
+    }
+
     .setting-label {
         cursor: pointer;
         margin: 0;
