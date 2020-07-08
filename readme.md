@@ -123,8 +123,13 @@ Image ![](https://placekitten.com/100/25) inline   ->  Image <img src="https://p
 #### Checkboxes
 
 ```
+// big "X" to check checkbox
 [X] checked    ->  <input type="checkbox" checked="checked" disabled="disabled"/> checked
+
+// small "x" to check checkbox
 [x] checked    ->  <input type="checkbox" checked="checked" disabled="disabled"/> checked
+
+// single space (" ") to uncheck checkbox
 [ ] unchecked  ->  <input type="checkbox" disabled="disabled"/> unchecked
 ```
 
