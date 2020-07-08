@@ -4,11 +4,17 @@
 
 export const fixtureLink = {
     input: `
-    ### Links
-
-You can use like this [link](http://example.com) or like this [](http://example.com).`,
+You can use like this [link](http://example.com)
+or [](http://example.com)
+or http://example.com
+or http://example.com/
+or http://example.com/path/to/page
+or http://example.com/path/to/page/
+or (http://example.com/path/to/page)
+or (http://example.com/path/to/page/)
+`,
     outputDoNotBreakLine:
-        '<h3>Links</h3><p>You can use like this <a href="http://example.com">link</a> or like this <a href="http://example.com">http://example.com</a>.</p>',
+        '<p>You can use like this <a href="http://example.com">link</a> or <a href="http://example.com">http://example.com</a> or <a href="http://example.com">http://example.com</a> or <a href="http://example.com/">http://example.com/</a> or <a href="http://example.com/path/to/page">http://example.com/path/to/page</a> or <a href="http://example.com/path/to/page/">http://example.com/path/to/page/</a> or (<a href="http://example.com/path/to/page">http://example.com/path/to/page</a>) or (<a href="http://example.com/path/to/page/">http://example.com/path/to/page/</a>)</p>',
     outputUseBreakLine:
-        '<h3>Links</h3><p>You can use like this <a href="http://example.com">link</a> or like this <a href="http://example.com">http://example.com</a>.</p>',
+        '<p>You can use like this <a href="http://example.com">link</a><br/>or <a href="http://example.com">http://example.com</a><br/>or <a href="http://example.com">http://example.com</a><br/>or <a href="http://example.com/">http://example.com/</a><br/>or <a href="http://example.com/path/to/page">http://example.com/path/to/page</a><br/>or <a href="http://example.com/path/to/page/">http://example.com/path/to/page/</a><br/>or (<a href="http://example.com/path/to/page">http://example.com/path/to/page</a>)<br/>or (<a href="http://example.com/path/to/page/">http://example.com/path/to/page/</a>)</p>',
 };

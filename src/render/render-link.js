@@ -2,7 +2,7 @@
 
 import {getLinkIndexList, getTagIndexList, harArrayListOverflow} from './render-util';
 
-const linkTextRegExpGlobal = /(https?:\/\/[\w.]+\.\w+)/gi;
+const linkTextRegExpGlobal = /(https?:\/\/[\w.]+\.\w+[\w+/]*)/gi;
 
 export function makeLinkFromText(html: string): string {
     const linkPairIndexList = getLinkIndexList(html);
