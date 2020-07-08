@@ -223,6 +223,42 @@ Html:
 ```
 
 
+### Table
+
+Markdown:
+```
+| Left | Center | Right  |
+| :--- | :----: | -----: |
+| beep | 123    | abc    |
+| boop | 456    | def    |
+```
+
+Html:
+```
+<table>
+    <thead>
+        <tr>
+            <th align="left">Left</th>
+            <th align="center">Center</th>
+            <th align="right">Right</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td align="left">beep</td>
+            <td align="center">123</td>
+            <td align="right">abc</td>
+        </tr>
+        <tr>
+            <td align="left">boop</td>
+            <td align="center">456</td>
+            <td align="right">def</td>
+        </tr>
+    </tbody>
+</table>
+```
+
+
 #### Blockquote
 
 ```
