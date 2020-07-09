@@ -97,6 +97,24 @@ ii. The same rule
 v. for Small Roman Number list
 
 
+### Footnote
+
+Footnote 1 link[^first].
+
+Footnote 2 link[^second].
+
+Inline footnote^[Text of inline footnote] definition.
+
+Duplicated footnote reference[^second].
+
+[^first]: Footnote **can have markup**
+and
+multiple
+paragraphs.
+
+[^second]: Footnote text.
+
+
 ### Blockquote
 
 > One Markdown, One Specification, One Blockquote
