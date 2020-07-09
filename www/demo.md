@@ -99,11 +99,11 @@ v. for Small Roman Number list
 
 ### Footnote
 
-Footnote 1 link[^first].
+Footnote 1 link[^first]. // before "[^" should be non space symbol
 
 Footnote 2 link[^second].
 
-Inline footnote^[Text of inline footnote] definition.
+Inline footnote^[Text of inline footnote] definition. before "^[" should be non space symbol
 
 Duplicated footnote reference[^second].
 
@@ -112,7 +112,7 @@ and
 multiple
 paragraphs.
 
-[^second]: Footnote text.
+[^second]: Footnote text. // line should be started with "[^"
 
 
 ### Blockquote
