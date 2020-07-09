@@ -5,7 +5,11 @@
   "keywords": [
     "markdown",
     "markdown-pro",
-    "parser"
+    "parser",
+    "typescript",
+    "ts",
+    "flow",
+    "flowjs"
   ],
   "main": "./dist/index.js",
   "types": "./@types/index.d.ts",
