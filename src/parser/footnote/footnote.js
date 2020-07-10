@@ -33,3 +33,19 @@ export function getFootnoteList(lineContent: string): Array<FootnoteType> {
 
     return matchedList.map(matchToFootnote);
 }
+
+export function fromToFootnoteList(fromList: Array<FootnoteType>, toList: Array<FootnoteType>) {
+    // eslint-disable-next-line no-loops/no-loops
+    for (const fromItem of fromList) {
+        const {id} = fromItem;
+        const candidateToExtend = toList.find((toItem: FootnoteType): boolean => toItem.id === id);
+
+        if (candidateToExtend) {
+            if (!candidateToExtend.descriptionLineData) {
+                candidateToExtend.descriptionLineData = fromItem.descriptionLineData;
+            }
+        } else {
+            toList.push(fromItem);
+        }
+    }
+}

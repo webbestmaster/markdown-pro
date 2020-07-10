@@ -6,7 +6,7 @@ import {cleanLine, getIsAllSymbolsEqual} from './util/string';
 import {getParent} from './util/navigation';
 import type {DocumentMetaType, LineDataType, ShortLineInfoType} from './parser-type';
 import {oLParseDataList, selectorCodeList, selectorLineList, selectorList, selectorTableList} from './parser-selector';
-import {getFootnoteList} from './footnote/footnote';
+import {fromToFootnoteList, getFootnoteList} from './footnote/footnote';
 
 // eslint-disable-next-line complexity
 function getShortInfo(trimmedLine: string): ShortLineInfoType {
@@ -99,10 +99,9 @@ export function parseLine(
         return true;
     }
 
-    const footnoteList = getFootnoteList(lineContent);
+    const newFootnoteList = getFootnoteList(lineContent);
 
-    console.log('footnoteList');
-    console.log(footnoteList);
+    fromToFootnoteList(newFootnoteList, documentMeta.footnoteList);
 
     if (selectorTableList.includes(selector)) {
         if (documentMeta.tableLineData) {

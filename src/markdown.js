@@ -44,6 +44,8 @@ export function markdown(mdInput: string, config: MarkdownConfigShallowType = de
 
     const htmlContent = renderChildList(structuredLineDataList);
 
+    console.log(documentMeta);
+
     if (markdownConfig.useWrapper === false) {
         return htmlContent;
     }
