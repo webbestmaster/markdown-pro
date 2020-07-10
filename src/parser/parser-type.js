@@ -79,10 +79,19 @@ export type ShortLineInfoType = {|
     +lineContent: string,
 |};
 
+export type FootnoteTypeType = 'inline' | 'super';
+
+export type FootnoteType = {|
+    +id: string,
+    +type: FootnoteTypeType,
+    descriptionLineData: LineDataType | null,
+|};
+
 export type DocumentMetaType = {|
     tableLineData: LineDataType | null,
     codeLineData: LineDataType | null,
     +config: MarkdownConfigType,
+    +footnoteList: Array<FootnoteType>,
 |};
 
 export type PairTagSelectorType = {|

@@ -32,6 +32,7 @@ export function markdown(mdInput: string, config: MarkdownConfigShallowType = de
         tableLineData: null,
         codeLineData: null,
         config: markdownConfig,
+        footnoteList: [],
     };
 
     mdInput.split('\n').forEach((line: string, lineIndex: number, allLineList: Array<string>) => {

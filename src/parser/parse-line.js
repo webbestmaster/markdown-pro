@@ -6,6 +6,7 @@ import {cleanLine, getIsAllSymbolsEqual} from './util/string';
 import {getParent} from './util/navigation';
 import type {DocumentMetaType, LineDataType, ShortLineInfoType} from './parser-type';
 import {oLParseDataList, selectorCodeList, selectorLineList, selectorList, selectorTableList} from './parser-selector';
+import {getFootnoteList} from './footnote/footnote';
 
 // eslint-disable-next-line complexity
 function getShortInfo(trimmedLine: string): ShortLineInfoType {
@@ -61,7 +62,7 @@ export function parseLine(
     const rawSpaceCount = isEmptyString
         ? savedLineDataList[savedLineDataList.length - 1].spaceCount
         : line.search(/\S/);
-    const spaceCount = rawSpaceCount < 0 ? 0 : rawSpaceCount;
+    const spaceCount = Math.max(0, rawSpaceCount);
     const defaultSelectorData: ShortLineInfoType = {
         selector: emptyString,
         lineContent: emptyString,
@@ -97,6 +98,11 @@ export function parseLine(
         codeLineData.additionalLineList.push(lineData.line);
         return true;
     }
+
+    const footnoteList = getFootnoteList(lineContent);
+
+    console.log('footnoteList');
+    console.log(footnoteList);
 
     if (selectorTableList.includes(selector)) {
         if (documentMeta.tableLineData) {
