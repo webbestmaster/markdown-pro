@@ -125,12 +125,12 @@ paragraphs.
 ### Table
 
 Table with different cell aligns
-| Left     | Center   | Right  | Default (left)          |
-| :------- | :------: | -----: | ----------------------- |
-| [ ] beep | _123_    | abc    | `:---` - left           |
-| [X] boop | `let a`  | def    | `:--:` - center         |
-| [ ] foo  | **bold** | 123    | `---:` - right          |
-| [x] bar  | H~2~0    | 456    | `----` - default (left) |
+| Left     | Center   | Right         | Default (left)          |
+| :------- | :------: | ------------: | ----------------------- |
+| [ ] beep | _123_    | abc^[fn text] | `:---` - left           |
+| [X] boop | `let a`  | link[^first]  | `:--:` - center         |
+| [ ] foo  | **bold** | 123           | `---:` - right          |
+| [x] bar  | H~2~0    | 456           | `----` - default (left) |
 
 
 ### Code
