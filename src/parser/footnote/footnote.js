@@ -1,11 +1,13 @@
 // @flow
 
 import {type FootnoteType} from '../parser-type';
+import type {DocumentMetaType, LineDataType} from '../parser-type';
 
-import {footnoteTypeMap} from './footnote-const';
+import {findFootnoteMarkGlobalRegExp, footnotePrefix, footnoteTypeMap} from './footnote-const';
+import {getFootnoteById, getFootnoteMarkId, getIsFootnoteDescription} from './footnote-helper';
 
 function matchToFootnote(match: string): FootnoteType {
-    const id = match.slice(3, -1);
+    const id = getFootnoteMarkId(match);
     const descriptionLineData = null;
 
     if (match.indexOf('[^') === 1) {
@@ -25,7 +27,7 @@ function matchToFootnote(match: string): FootnoteType {
 }
 
 export function getFootnoteList(lineContent: string): Array<FootnoteType> {
-    const matchedList = lineContent.match(/\S\[\^[^\]]+?]|\S\^\[[^\]]+?]/g);
+    const matchedList = lineContent.match(findFootnoteMarkGlobalRegExp);
 
     if (!matchedList) {
         return [];
@@ -48,4 +50,47 @@ export function fromToFootnoteList(fromList: Array<FootnoteType>, toList: Array<
             toList.push(fromItem);
         }
     }
+}
+
+export function addLineData(lineData: LineDataType, toList: Array<FootnoteType>) {
+    const {lineContent} = lineData;
+    const rawMatchId = lineContent.match(/\[\^[^\]]+?]:/);
+
+    if (!rawMatchId) {
+        return;
+    }
+
+    const [rawId] = rawMatchId;
+
+    const id = rawId.slice(2, -2).trim();
+
+    const footnote = getFootnoteById(id, toList);
+
+    if (footnote) {
+        footnote.descriptionLineData = lineData;
+        return;
+    }
+
+    toList.push({
+        id,
+        type: footnoteTypeMap.super,
+        descriptionLineData: lineData,
+    });
+}
+
+export function makeFootnoteSuper(fullLineContent: string, documentMeta: DocumentMetaType): string {
+    return fullLineContent.replace(findFootnoteMarkGlobalRegExp, (match: string): string => {
+        const [firstLetter] = match;
+        const {footnoteList} = documentMeta;
+        const id = getFootnoteMarkId(match);
+
+        const footnote = getFootnoteById(id, footnoteList);
+
+        if (!footnote) {
+            console.error('Can not find footnote by id: ' + id);
+            return match;
+        }
+
+        return `${firstLetter}<a href="#${id}"><sup>[${footnoteList.indexOf(footnote) + 1}]</sup></a>`;
+    });
 }

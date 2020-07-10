@@ -42,7 +42,7 @@ export function markdown(mdInput: string, config: MarkdownConfigShallowType = de
     const {wrapperClassName: wrapperClassNameConfig} = markdownConfig;
     const {wrapperClassName: wrapperClassNameDefault} = defaultMarkdownConfig;
 
-    const htmlContent = renderChildList(structuredLineDataList);
+    const htmlContent = renderChildList(structuredLineDataList, documentMeta);
 
     console.log(documentMeta);
 

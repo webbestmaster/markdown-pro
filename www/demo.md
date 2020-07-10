@@ -103,6 +103,8 @@ Footnote 1 link[^first]. // before "[^" should be non space symbol
 
 Footnote 2 link[^second].
 
+Footnote 1 link[^first] and 2 link[^second].
+
 Inline footnote^[Text of inline footnote] definition. before "^[" should be non space symbol
 
 Duplicated footnote reference[^second].

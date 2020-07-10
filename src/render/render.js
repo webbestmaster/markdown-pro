@@ -12,6 +12,9 @@ import {
 } from '../parser/util/is-tag';
 import {type LineDataType} from '../parser/parser-type';
 import {getIsEdgeLine} from '../parser/util/navigation';
+import {getIsFootnoteDescription} from '../parser/footnote/footnote-helper';
+import {makeFootnoteSuper} from '../parser/footnote/footnote';
+import type {DocumentMetaType} from '../parser/parser-type';
 
 import {
     addBreakLine,
@@ -29,23 +32,30 @@ import {makeLinkFromText} from './render-link';
 import {makePairTag} from './render-pair-tag';
 import {renderTable} from './render-table/render-table';
 
-export function renderChildList(lineDataList: Array<LineDataType>): string {
-    return lineDataList.map(renderLineData).map(addBreakLine).join(emptyString);
+export function renderChildList(lineDataList: Array<LineDataType>, documentMeta: DocumentMetaType): string {
+    return lineDataList
+        .map((lineData: LineDataType, lineDataIndex: number): string => {
+            return renderLineData(lineData, lineDataIndex, lineDataList, documentMeta);
+        })
+        .map(addBreakLine)
+        .join(emptyString);
 }
 
 // eslint-disable-next-line complexity, sonarjs/cognitive-complexity, max-statements
 export function renderLineData(
     lineData: LineDataType,
     lineDataIndex: number,
-    lineDataList: Array<LineDataType>
+    lineDataList: Array<LineDataType>,
+    documentMeta: DocumentMetaType
 ): string {
     const {selector, childList, lineContent, trimmedLine, additionalLineList, config} = lineData;
     const {codeHighlight, parseLink} = config;
     const additionLineListRender = renderAdditionalLineList(lineData);
-    const childListRender = renderChildList(childList);
+    const childListRender = renderChildList(childList, documentMeta);
 
     let fullLineContent = removeEndBreakLine(lineContent) + additionLineListRender;
 
+    fullLineContent = makeFootnoteSuper(fullLineContent, documentMeta);
     fullLineContent = makeImage(fullLineContent);
     fullLineContent = makeLink(fullLineContent);
     if (parseLink) {
@@ -55,12 +65,16 @@ export function renderLineData(
     fullLineContent = makePairTag(fullLineContent);
     fullLineContent += childListRender;
 
+    if (getIsFootnoteDescription(lineContent)) {
+        return '';
+    }
+
     if (getIsLine(lineData)) {
         return '<hr/>';
     }
 
     if (getIsTable(lineData)) {
-        return renderTable(lineData);
+        return renderTable(lineData, documentMeta);
     }
 
     if (getIsCode(lineData)) {
