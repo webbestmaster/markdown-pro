@@ -84,6 +84,7 @@ export type FootnoteTypeType = 'inline' | 'super';
 export type FootnoteType = {|
     +id: string,
     +type: FootnoteTypeType,
+    +inlineLineContent: string,
     descriptionLineData: LineDataType | null,
 |};
 

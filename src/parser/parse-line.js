@@ -139,12 +139,10 @@ export function parseLine(
     }
 
     parentLineData.childList.push(lineData);
+    savedLineDataList.push(lineData);
 
     if (getIsFootnoteDescription(lineContent)) {
         addLineData(lineData, documentMeta.footnoteList);
-        console.log(documentMeta.footnoteList);
-    } else {
-        savedLineDataList.push(lineData);
     }
 
     return true;

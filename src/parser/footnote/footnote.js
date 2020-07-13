@@ -3,17 +3,19 @@
 import {type FootnoteType} from '../parser-type';
 import type {DocumentMetaType, LineDataType} from '../parser-type';
 
-import {findFootnoteMarkGlobalRegExp, footnotePrefix, footnoteTypeMap} from './footnote-const';
-import {getFootnoteById, getFootnoteMarkId, getIsFootnoteDescription} from './footnote-helper';
+import {findFootnoteMarkGlobalRegExp, footnoteTypeMap} from './footnote-const';
+import {getFootnoteById, getFootnoteInlineLineContent, getFootnoteMarkId} from './footnote-helper';
 
 function matchToFootnote(match: string): FootnoteType {
     const id = getFootnoteMarkId(match);
     const descriptionLineData = null;
+    const inlineLineContent = getFootnoteInlineLineContent(match);
 
     if (match.indexOf('[^') === 1) {
         return {
             id,
             descriptionLineData,
+            inlineLineContent,
             type: footnoteTypeMap.super,
         };
     }
@@ -22,6 +24,7 @@ function matchToFootnote(match: string): FootnoteType {
     return {
         id,
         descriptionLineData,
+        inlineLineContent,
         type: footnoteTypeMap.inline,
     };
 }
@@ -74,6 +77,7 @@ export function addLineData(lineData: LineDataType, toList: Array<FootnoteType>)
     toList.push({
         id,
         type: footnoteTypeMap.super,
+        inlineLineContent: lineData.lineContent,
         descriptionLineData: lineData,
     });
 }
