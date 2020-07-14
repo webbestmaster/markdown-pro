@@ -56,7 +56,7 @@ export function renderLineData(
     let fullLineContent = removeEndBreakLine(lineContent) + additionLineListRender;
 
     fullLineContent = makeFootnoteSuper(fullLineContent, documentMeta);
-    fullLineContent = makeImage(fullLineContent);
+    fullLineContent = makeImage(fullLineContent, documentMeta);
     fullLineContent = makeLink(fullLineContent);
     if (parseLink) {
         fullLineContent = makeLinkFromText(fullLineContent);

@@ -17,7 +17,7 @@ export function renderTableCellContent(lineData: LineDataType, line: string, doc
 
     let fullLineContent = makeFootnoteSuper(line, documentMeta);
 
-    fullLineContent = makeImage(fullLineContent);
+    fullLineContent = makeImage(fullLineContent, documentMeta);
 
     fullLineContent = makeLink(fullLineContent);
     if (parseLink) {

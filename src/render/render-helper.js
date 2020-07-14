@@ -1,7 +1,9 @@
 // @flow
 
-import type {LineDataType, OlAttributeType, SelectorType} from '../parser/parser-type';
+import type {DocumentMetaType, LineDataType, OlAttributeType, SelectorType} from '../parser/parser-type';
 import {olNumericType, oLParseDataList} from '../parser/parser-selector';
+
+import {hasProperty} from '../parser/util/is';
 
 import {breakLineTag, emptyString, space} from './render-const';
 
@@ -26,10 +28,31 @@ function imageReplacer(matchedString: string, alt: mixed, src: string, title: mi
     return `<img loading="lazy" src="${src}"${altAttrValue}${titleAttrValue}/>`;
 }
 
-const findImageRegExpGlobal = /!\[([\S\s]*?)]\((\S+?)(?:\s+"([\S\s]+?)")?\)/g;
+function imageReplacerVariable(
+    matchedString: string,
+    alt: mixed,
+    srcVariable: string,
+    documentMeta: DocumentMetaType
+): string {
+    const altAttrValue = typeof alt === 'string' && alt.trim() ? ' alt="' + alt + '"' : '';
+    const {variable} = documentMeta;
 
-export function makeImage(html: string): string {
-    return html.replace(findImageRegExpGlobal, imageReplacer);
+    if (hasProperty(variable, srcVariable)) {
+        return `<img loading="lazy" src="${variable[srcVariable].value}"${altAttrValue}/>`;
+    }
+
+    return `<img loading="lazy" src="${srcVariable}"${altAttrValue}/>`;
+}
+
+const findImageRegExpGlobal = /!\[([\S\s]*?)]\((\S+?)(?:\s+"([\S\s]+?)")?\)/g;
+const findImageVariableRegExpGlobal = /!\[([\S\s]*?)]\[([\S\s]+?)]/g;
+
+export function makeImage(html: string, documentMeta: DocumentMetaType): string {
+    return html
+        .replace(findImageRegExpGlobal, imageReplacer)
+        .replace(findImageVariableRegExpGlobal, (matchedString: string, alt: mixed, srcVariable: string): string => {
+            return imageReplacerVariable(matchedString, alt, srcVariable, documentMeta);
+        });
 }
 
 const findCheckboxCheckedRegExoGlobal = /\[x]/gi;
