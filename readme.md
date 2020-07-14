@@ -310,3 +310,17 @@ Html:
 $ npm i markdown-pro    ->  $ npm i markdown-pro
 $ sudo be happy         ->  $ sudo be happy
 ```                     ->  &lt;&#47;code&gt;</code></pre>
+
+
+### Variables
+
+```
+[image-variable]: https://placekitten.com/100/100
+[url variable]: http://example.com
+
+![][image-variable]      ->  <img loading="lazy" src="https://placekitten.com/100/100"/>
+![cat][image-variable]   ->  <img loading="lazy" src="https://placekitten.com/100/100" alt="cat"/>
+
+[][url variable]         ->  <a href="http://example.com">http://example.com</a>
+[to site][url variable]  ->  <a href="http://example.com">to site</a>
+```

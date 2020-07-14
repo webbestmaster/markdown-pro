@@ -75,8 +75,6 @@ export function markdown(mdInput: string, config: MarkdownConfigShallowType = de
             ? wrapperClassNameDefault
             : `${wrapperClassNameDefault} ${wrapperClassNameConfig}`;
 
-    console.log(documentMeta.variable);
-
     return `<div class="${fullWrapperClassName}">${fullContent}</div>`;
 }
 
