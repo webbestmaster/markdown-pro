@@ -1,13 +1,3 @@
-### Variables
-
-[image-variable]: https://placekitten.com/100/100
-[url variable]: https://placekitten.com/100/100
-
-![][image-variable]
-
-[][url variable]
-
-
 ## Welcome
 
 Markdown pro - easy to use!
@@ -153,3 +143,15 @@ Table with different cell aligns
 $ npm i markdown-pro
 $ sudo be happy
 ```
+
+
+### Variables
+
+[image-variable]: https://placekitten.com/100/100
+[url variable]: http://example.com
+
+![][image-variable]
+![cat][image-variable]
+
+[][url variable]
+[to site][url variable]

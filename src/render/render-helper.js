@@ -69,6 +69,7 @@ export function isImageListOnly(lineContent: string): boolean {
 }
 
 const findLinkRegExpGlobal = /\[([\S\s]*?)]\((\S+?)(?:\s+"([\S\s]+?)")?\)/g;
+const findLinkVariableRegExpGlobal = /\[([\S\s]*?)]\[([\S\s]+?)]/g;
 
 function linkReplacer(matchedString: string, linkText: string, href: string, title: mixed): string {
     const titleAttrValue = typeof title === 'string' && title.trim() ? ' title="' + title + '"' : '';
@@ -77,8 +78,35 @@ function linkReplacer(matchedString: string, linkText: string, href: string, tit
     return `<a href="${href}"${titleAttrValue}>${text}</a>`;
 }
 
-export function makeLink(html: string): string {
-    return html.replace(findLinkRegExpGlobal, linkReplacer);
+function linkReplacerVariable(
+    matchedString: string,
+    linkText: string,
+    hrefVariable: string,
+    documentMeta: DocumentMetaType
+): string {
+    const {variable} = documentMeta;
+
+    if (hasProperty(variable, hrefVariable)) {
+        const href = variable[hrefVariable].value;
+        const textVariable = linkText.length > 0 ? linkText : href;
+
+        return `<a href="${href}">${textVariable}</a>`;
+    }
+
+    const text = linkText.length > 0 ? linkText : hrefVariable;
+
+    return `<a href="${hrefVariable}">${text}</a>`;
+}
+
+export function makeLink(html: string, documentMeta: DocumentMetaType): string {
+    return html
+        .replace(findLinkRegExpGlobal, linkReplacer)
+        .replace(
+            findLinkVariableRegExpGlobal,
+            (matchedString: string, linkText: string, hrefVariable: string): string => {
+                return linkReplacerVariable(matchedString, linkText, hrefVariable, documentMeta);
+            }
+        );
 }
 
 export function getOlTypeBySelector(dataLineSelector: SelectorType): OlAttributeType {

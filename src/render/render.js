@@ -57,7 +57,7 @@ export function renderLineData(
 
     fullLineContent = makeFootnoteSuper(fullLineContent, documentMeta);
     fullLineContent = makeImage(fullLineContent, documentMeta);
-    fullLineContent = makeLink(fullLineContent);
+    fullLineContent = makeLink(fullLineContent, documentMeta);
     if (parseLink) {
         fullLineContent = makeLinkFromText(fullLineContent);
     }

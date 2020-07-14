@@ -15,11 +15,11 @@ export function renderTableCellContent(lineData: LineDataType, line: string, doc
     const {config} = lineData;
     const {parseLink} = config;
 
-    let fullLineContent = makeFootnoteSuper(line, documentMeta);
+    let fullLineContent = '';
 
+    fullLineContent = makeFootnoteSuper(line, documentMeta);
     fullLineContent = makeImage(fullLineContent, documentMeta);
-
-    fullLineContent = makeLink(fullLineContent);
+    fullLineContent = makeLink(fullLineContent, documentMeta);
     if (parseLink) {
         fullLineContent = makeLinkFromText(fullLineContent);
     }
