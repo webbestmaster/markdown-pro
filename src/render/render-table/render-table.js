@@ -59,11 +59,7 @@ function renderTableRow(
         .map((cellContent: string, cellIndex: number): string => {
             const align = alignList[cellIndex] || cellAlignTypeMap.default;
 
-            return `<${cellName} align="${align}">${renderTableCellContent(
-                lineData,
-                cellContent,
-                documentMeta
-            )}</${cellName}>`;
+            return `<${cellName} align="${align}">${renderTableCellContent(cellContent, documentMeta)}</${cellName}>`;
         })
         .join(emptyString);
 }

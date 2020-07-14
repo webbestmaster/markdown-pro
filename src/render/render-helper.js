@@ -2,7 +2,6 @@
 
 import type {DocumentMetaType, LineDataType, OlAttributeType, SelectorType} from '../parser/parser-type';
 import {olNumericType, oLParseDataList} from '../parser/parser-selector';
-
 import {hasProperty} from '../parser/util/is';
 
 import {breakLineTag, emptyString, space} from './render-const';

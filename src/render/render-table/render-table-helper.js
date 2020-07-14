@@ -1,32 +1,15 @@
 // @flow
 
-import type {DocumentMetaType, LineDataType, SelectorType} from '../../parser/parser-type';
+import type {DocumentMetaType, SelectorType} from '../../parser/parser-type';
 import {filterEmptyString} from '../../parser/util/string';
 import {emptyString} from '../render-const';
-import {makeCheckbox, makeImage, makeLink} from '../render-helper';
-import {makeLinkFromText} from '../render-link';
-import {makePairTag} from '../render-pair-tag';
-import {makeFootnoteSuper} from '../../parser/footnote/footnote';
+import {renderInlineHtml} from '../render';
 
 import {cellAlignTypeMap} from './render-table-const';
 import type {CellAlignType} from './render-table-type';
 
-export function renderTableCellContent(lineData: LineDataType, line: string, documentMeta: DocumentMetaType): string {
-    const {config} = lineData;
-    const {parseLink} = config;
-
-    let fullLineContent = '';
-
-    fullLineContent = makeFootnoteSuper(line, documentMeta);
-    fullLineContent = makeImage(fullLineContent, documentMeta);
-    fullLineContent = makeLink(fullLineContent, documentMeta);
-    if (parseLink) {
-        fullLineContent = makeLinkFromText(fullLineContent);
-    }
-    fullLineContent = makeCheckbox(fullLineContent);
-    fullLineContent = makePairTag(fullLineContent);
-
-    return fullLineContent.trim();
+export function renderTableCellContent(line: string, documentMeta: DocumentMetaType): string {
+    return renderInlineHtml(line, documentMeta).trim();
 }
 
 export function isTableDivideLine(line: string): boolean {

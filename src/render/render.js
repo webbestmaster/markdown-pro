@@ -10,11 +10,11 @@ import {
     getIsTable,
     getIsUlItem,
 } from '../parser/util/is-tag';
-import {type LineDataType} from '../parser/parser-type';
+import {type DocumentMetaType, type LineDataType} from '../parser/parser-type';
+
 import {getIsEdgeLine} from '../parser/util/navigation';
 import {getIsFootnoteDescription} from '../parser/footnote/footnote-helper';
 import {makeFootnoteSuper} from '../parser/footnote/footnote';
-import type {DocumentMetaType} from '../parser/parser-type';
 
 import {
     addBreakLine,
@@ -41,19 +41,11 @@ export function renderChildList(lineDataList: Array<LineDataType>, documentMeta:
         .join(emptyString);
 }
 
-// eslint-disable-next-line complexity, sonarjs/cognitive-complexity, max-statements
-export function renderLineData(
-    lineData: LineDataType,
-    lineDataIndex: number,
-    lineDataList: Array<LineDataType>,
-    documentMeta: DocumentMetaType
-): string {
-    const {selector, childList, lineContent, trimmedLine, additionalLineList, config} = lineData;
-    const {codeHighlight, parseLink} = config;
-    const additionLineListRender = renderAdditionalLineList(lineData);
-    const childListRender = renderChildList(childList, documentMeta);
+export function renderInlineHtml(html: string, documentMeta: DocumentMetaType): string {
+    const {config} = documentMeta;
+    const {parseLink} = config;
 
-    let fullLineContent = removeEndBreakLine(lineContent) + additionLineListRender;
+    let fullLineContent = html;
 
     fullLineContent = makeFootnoteSuper(fullLineContent, documentMeta);
     fullLineContent = makeImage(fullLineContent, documentMeta);
@@ -63,6 +55,26 @@ export function renderLineData(
     }
     fullLineContent = makeCheckbox(fullLineContent);
     fullLineContent = makePairTag(fullLineContent);
+
+    return fullLineContent;
+}
+
+// eslint-disable-next-line complexity, sonarjs/cognitive-complexity, max-statements
+export function renderLineData(
+    lineData: LineDataType,
+    lineDataIndex: number,
+    lineDataList: Array<LineDataType>,
+    documentMeta: DocumentMetaType
+): string {
+    const {selector, childList, lineContent, trimmedLine, additionalLineList, config} = lineData;
+    const {codeHighlight} = config;
+    const additionLineListRender = renderAdditionalLineList(lineData);
+    const childListRender = renderChildList(childList, documentMeta);
+
+    let fullLineContent = removeEndBreakLine(lineContent) + additionLineListRender;
+
+    fullLineContent = renderInlineHtml(fullLineContent, documentMeta);
+
     fullLineContent += childListRender;
 
     if (getIsFootnoteDescription(lineContent)) {

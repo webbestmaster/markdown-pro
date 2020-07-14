@@ -1,7 +1,7 @@
 // @flow
 
-import {type FootnoteType} from '../parser-type';
 import type {DocumentMetaType, LineDataType} from '../parser-type';
+import {type FootnoteType} from '../parser-type';
 
 import {findFootnoteMarkGlobalRegExp, footnoteTypeMap} from './footnote-const';
 import {getFootnoteById, getFootnoteInlineLineContent, getFootnoteMarkId} from './footnote-helper';
