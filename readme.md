@@ -264,6 +264,36 @@ Html:
 ```
 
 
+### Footnote
+
+Markdown:
+```
+Footnote 1 link[^first].
+
+Inline footnote^[Text of inline footnote] definition.
+
+[^first]: Footnote definition.
+```
+
+Html:
+```
+<p>Footnote 1 link<a href="#first"><sup>[1]</sup></a>.</p>
+
+<p>Inline footnote<a href="#text-of-inline-footnote"><sup>[2]</sup></a> definition.</p>
+
+<hr/>
+
+<ol type="1">
+	<li id="first">
+		<p>Footnote definition.</p>
+	</li>
+	<li id="text-of-inline-footnote">
+		<p>Text of inline footnote</p>
+	</li>
+</ol>
+```
+
+
 #### Blockquote
 
 ```
