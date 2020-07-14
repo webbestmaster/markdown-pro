@@ -5,13 +5,7 @@ import assert from 'assert';
 import {describe, it} from 'mocha';
 
 import {parseLine} from '../src/parser/parse-line';
-import type {
-    DocumentMetaType,
-    FootnoteType,
-    LineDataType,
-    PairTagSelectorType,
-    SelectorType,
-} from '../src/parser/parser-type';
+import type {DocumentMetaType, FootnoteType, LineDataType, PairTagSelectorType} from '../src/parser/parser-type';
 import {searchSiblingItem} from '../src/parser/util/navigation';
 
 import {getIsAllSymbolsEqual} from '../src/parser/util/string';
@@ -21,8 +15,6 @@ import {getOlTypeBySelector} from '../src/render/render-helper';
 import {olNumericType, selectorHeaderList, selectorList} from '../src/parser/parser-selector';
 import {getSelectorIndexList} from '../src/render/render-pair-tag';
 import {defaultMarkdownConfig} from '../src/markdown-const';
-
-import type {MarkdownConfigType} from '../src/markdown-type';
 import {addLineData} from '../src/parser/footnote/footnote';
 
 import {defaultLineData} from './fixture/default-data';
