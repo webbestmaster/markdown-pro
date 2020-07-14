@@ -21,15 +21,11 @@ import {
     getOlStart,
     getOlTypeBySelector,
     isImageListOnly,
-    makeCheckbox,
-    makeImage,
-    makeLink,
     removeEndBreakLine,
     renderAdditionalLineList,
+    renderInlineHtml,
 } from './render-helper';
 import {emptyString} from './render-const';
-import {makeLinkFromText} from './render-link';
-import {makePairTag} from './render-pair-tag';
 import {renderTable} from './render-table/render-table';
 
 export function renderChildList(lineDataList: Array<LineDataType>, documentMeta: DocumentMetaType): string {
@@ -39,24 +35,6 @@ export function renderChildList(lineDataList: Array<LineDataType>, documentMeta:
         })
         .map(addBreakLine)
         .join(emptyString);
-}
-
-export function renderInlineHtml(html: string, documentMeta: DocumentMetaType): string {
-    const {config} = documentMeta;
-    const {parseLink} = config;
-
-    let fullLineContent = html;
-
-    fullLineContent = makeFootnoteSuper(fullLineContent, documentMeta);
-    fullLineContent = makeImage(fullLineContent, documentMeta);
-    fullLineContent = makeLink(fullLineContent, documentMeta);
-    if (parseLink) {
-        fullLineContent = makeLinkFromText(fullLineContent);
-    }
-    fullLineContent = makeCheckbox(fullLineContent);
-    fullLineContent = makePairTag(fullLineContent);
-
-    return fullLineContent;
 }
 
 // eslint-disable-next-line complexity, sonarjs/cognitive-complexity, max-statements

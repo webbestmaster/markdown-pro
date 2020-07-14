@@ -3,8 +3,11 @@
 import type {DocumentMetaType, LineDataType, OlAttributeType, SelectorType} from '../parser/parser-type';
 import {olNumericType, oLParseDataList} from '../parser/parser-selector';
 import {hasProperty} from '../parser/util/is';
+import {makeFootnoteSuper} from '../parser/footnote/footnote';
 
 import {breakLineTag, emptyString, space} from './render-const';
+import {makeLinkFromText} from './render-link';
+import {makePairTag} from './render-pair-tag';
 
 export const breakLineRegExp = /\s*?\\$/;
 
@@ -169,4 +172,19 @@ export function renderAdditionalLineList(lineData: LineDataType): string {
     }
 
     return prefix + lineResult.join(emptyString);
+}
+
+export function renderInlineHtml(html: string, documentMeta: DocumentMetaType): string {
+    const {config} = documentMeta;
+    const {parseLink} = config;
+
+    let fullLineContent = makeFootnoteSuper(html, documentMeta);
+
+    fullLineContent = makeImage(fullLineContent, documentMeta);
+    fullLineContent = makeLink(fullLineContent, documentMeta);
+    if (parseLink) {
+        fullLineContent = makeLinkFromText(fullLineContent);
+    }
+    fullLineContent = makeCheckbox(fullLineContent);
+    return makePairTag(fullLineContent);
 }

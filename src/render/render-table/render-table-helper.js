@@ -3,7 +3,7 @@
 import type {DocumentMetaType, SelectorType} from '../../parser/parser-type';
 import {filterEmptyString} from '../../parser/util/string';
 import {emptyString} from '../render-const';
-import {renderInlineHtml} from '../render';
+import {renderInlineHtml} from '../render-helper';
 
 import {cellAlignTypeMap} from './render-table-const';
 import type {CellAlignType} from './render-table-type';
