@@ -284,12 +284,12 @@ Html:
 <hr/>
 
 <ol type="1">
-	<li id="first">
-		<p>Footnote definition.</p>
-	</li>
-	<li id="text-of-inline-footnote">
-		<p>Text of inline footnote</p>
-	</li>
+    <li id="first">
+        <p>Footnote definition.</p>
+    </li>
+    <li id="text-of-inline-footnote">
+        <p>Text of inline footnote</p>
+    </li>
 </ol>
 ```
 
