@@ -45,12 +45,13 @@ export function isImageListOnly(lineContent: string): boolean {
     return lineContent.replace(findImageRegExpGlobal, '').trim() === emptyString;
 }
 
-const findLinkRegExpGlobal = /\[([\S\s]*?)]\((\S+?)\)/g;
+const findLinkRegExpGlobal = /\[([\S\s]*?)]\((\S+?)(?:\s+"([\S\s]+?)")?\)/g;
 
-function linkReplacer(matchedString: string, linkText: string, href: string): string {
+function linkReplacer(matchedString: string, linkText: string, href: string, title: mixed): string {
+    const titleAttrValue = typeof title === 'string' && title.trim() ? ' title="' + title + '"' : '';
     const text = linkText.length > 0 ? linkText : href;
 
-    return `<a href="${href}">${text}</a>`;
+    return `<a href="${href}"${titleAttrValue}>${text}</a>`;
 }
 
 export function makeLink(html: string): string {

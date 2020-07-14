@@ -63,7 +63,11 @@ Also, use image ![](https://placekitten.com/100/25) inline.
 
 ### Links
 
-You can use like this [link](http://example.com), like this [](http://example.com) or just http://like.this (last method is configurable).
+You can use like this [link](http://example.com),
+like this [](http://example.com "go to site"),
+like this [go to site](http://example.com "go to site again"),
+like this [](http://example.com)
+or http://like.this even (last method is configurable).
 
 
 ### Unordered list
