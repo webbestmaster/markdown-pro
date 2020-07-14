@@ -90,11 +90,6 @@ export function makeFootnoteSuper(fullLineContent: string, documentMeta: Documen
 
         const footnote = getFootnoteById(id, footnoteList);
 
-        if (!footnote) {
-            console.error('Can not find footnote by id: ' + id);
-            return match;
-        }
-
         return `${firstLetter}<a href="#${id}"><sup>[${footnoteList.indexOf(footnote) + 1}]</sup></a>`;
     });
 }
