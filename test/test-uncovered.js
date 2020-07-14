@@ -36,6 +36,7 @@ describe('Markdown-pro test:uncovered', () => {
             codeLineData: null,
             config: defaultMarkdownConfig,
             footnoteList: [],
+            variable: {},
         };
 
         assert(parseLine('', 0, [], [], savedDataList, documentMeta) === false);

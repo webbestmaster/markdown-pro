@@ -88,11 +88,19 @@ export type FootnoteType = {|
     descriptionLineData: LineDataType | null,
 |};
 
+export type VariableType = {|
+    +key: string,
+    +value: string,
+|};
+
 export type DocumentMetaType = {|
     tableLineData: LineDataType | null,
     codeLineData: LineDataType | null,
     +config: MarkdownConfigType,
     +footnoteList: Array<FootnoteType>,
+    variable: {
+        [key: string]: VariableType,
+    },
 |};
 
 export type PairTagSelectorType = {|

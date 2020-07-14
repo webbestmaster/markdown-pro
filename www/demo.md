@@ -1,3 +1,13 @@
+### Variables
+
+[image-variable]: https://placekitten.com/100/100
+[url variable]: https://placekitten.com/100/100
+
+![][image-variable]
+
+[][url variable]
+
+
 ## Welcome
 
 Markdown pro - easy to use!

@@ -40,6 +40,7 @@ export function markdown(mdInput: string, config: MarkdownConfigShallowType = de
         codeLineData: null,
         config: markdownConfig,
         footnoteList: [],
+        variable: {},
     };
 
     mdInput.split('\n').forEach((line: string, lineIndex: number, allLineList: Array<string>) => {
@@ -73,6 +74,8 @@ export function markdown(mdInput: string, config: MarkdownConfigShallowType = de
         = wrapperClassNameConfig === wrapperClassNameDefault
             ? wrapperClassNameDefault
             : `${wrapperClassNameDefault} ${wrapperClassNameConfig}`;
+
+    console.log(documentMeta.variable);
 
     return `<div class="${fullWrapperClassName}">${fullContent}</div>`;
 }

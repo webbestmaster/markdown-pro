@@ -8,6 +8,7 @@ import type {DocumentMetaType, LineDataType, ShortLineInfoType} from './parser-t
 import {oLParseDataList, selectorCodeList, selectorLineList, selectorList, selectorTableList} from './parser-selector';
 import {addLineData, fromToFootnoteList, getFootnoteList} from './footnote/footnote';
 import {getIsFootnoteDescription} from './footnote/footnote-helper';
+import {getVariableData} from './util/variable';
 
 // eslint-disable-next-line complexity
 function getShortInfo(trimmedLine: string): ShortLineInfoType {
@@ -120,11 +121,19 @@ export function parseLine(
         documentMeta.tableLineData = null;
     }
 
+    const variableData = getVariableData(lineContent);
+
     if (lineData.selector === emptyString && lineContent.length > 0) {
         const prevItemIndex = savedLineDataList.length - 1;
         const prevItem = savedLineDataList[prevItemIndex];
+        const isTable = selectorTableList.includes(prevItem.selector);
 
-        if (prevItem && prevItem.lineContent.length > 0 && !selectorTableList.includes(prevItem.selector)) {
+        if (variableData) {
+            // eslint-disable-next-line no-param-reassign
+            documentMeta.variable[variableData.key] = variableData;
+        }
+
+        if (prevItem && prevItem.lineContent.length > 0 && !isTable && !variableData) {
             prevItem.additionalLineList.push(lineContent);
             return true;
         }
@@ -136,6 +145,10 @@ export function parseLine(
         // this string should not be test covered
         console.error('Parent not found');
         return false;
+    }
+
+    if (variableData) {
+        return true;
     }
 
     parentLineData.childList.push(lineData);
