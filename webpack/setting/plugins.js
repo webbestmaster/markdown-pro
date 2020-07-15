@@ -21,7 +21,19 @@ const definePluginParameters = {
     // IS_DEVELOPMENT: JSON.stringify(IS_DEVELOPMENT)
 };
 
-const staticFilesList = isBuildSite ? ['favicon.ico'] : [];
+const staticFilesLibraryList = [
+    {
+        from: '@types/index.d.ts',
+        to: './index.d.ts',
+    },
+];
+
+const staticFilesSiteList = [
+    {
+        from: './www/favicon.ico',
+        to: './favicon.ico',
+    },
+];
 
 const pluginList = [
     new CircularDependencyPlugin({
@@ -46,6 +58,14 @@ const pluginList = [
     // new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en/),
 ];
 
+if (isBuildLib) {
+    pluginList.push(
+        new CopyWebpackPlugin({
+            patterns: staticFilesLibraryList,
+        })
+    );
+}
+
 if (isBuildSite) {
     pluginList.push(
         new HtmlWebpackPlugin({
@@ -60,7 +80,7 @@ if (isBuildSite) {
             filename: './index.html',
         }),
         new CopyWebpackPlugin({
-            patterns: staticFilesList.map(pathToFle => ({from: `./www/${pathToFle}`, to: `./${pathToFle}`})),
+            patterns: staticFilesSiteList,
         })
     );
 }

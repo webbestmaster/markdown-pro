@@ -12,7 +12,7 @@
     "flowjs"
   ],
   "main": "./dist/index.js",
-  "types": "./@types/index.d.ts",
+  "types": "./dist/index.d.ts",
   "typesVersions": {
     ">=3.1": {
       "*": [
