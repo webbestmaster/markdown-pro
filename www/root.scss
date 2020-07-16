@@ -3,6 +3,7 @@
 @import './src/markdown';
 
 $main-font-family: 'Helvetica Neue', helvetica, arial, sans-serif;
+$main-font-family-monospace: 'Lucida Console', 'Monaco', monospace;
 $main-font-color: #212121;
 
 html,
@@ -22,12 +23,15 @@ body {
         height: 100vh;
         overflow: hidden;
         padding: 16px;
-        //align-items: center;
     }
 
     .top-content {
         display: block;
         flex-shrink: 0;
+
+        .main-header {
+            margin-right: 110px;
+        }
     }
 
     .text-area-list {
@@ -44,7 +48,7 @@ body {
         border: 1px solid #666;
         box-sizing: border-box;
         display: block;
-        font-family: 'Lucida Grande', monospace;
+        font-family: $main-font-family-monospace;
         font-size: 16px;
         line-height: 1.4;
         margin: 0;
@@ -56,12 +60,43 @@ body {
     }
 
     .text-area-input {
-        font-family: 'Lucida Console', 'Monaco', monospace;
+        font-family: $main-font-family-monospace;
     }
 
     .setting-label {
         cursor: pointer;
         margin: 0;
         padding: 5px 0;
+    }
+
+    .github-badge {
+        background-color: #c00;
+        border-bottom: 1px solid #c00;
+        border-top: 1px solid #c00;
+        box-shadow: #888 0 0 17px 0;
+        overflow: hidden;
+        position: fixed;
+        right: -55px;
+        top: 42px;
+        transform: rotate(45deg);
+        z-index: 100;
+    }
+
+    .github-badge-link {
+        border: 1px solid #faa;
+        color: #fff;
+        display: block;
+        font-family: $main-font-family-monospace;
+        font-size: 13px;
+        font-weight: normal;
+        line-height: 13px;
+        padding: 6px 44px;
+        text-align: center;
+        text-decoration: none;
+        text-shadow: 0 0 6px #444;
+
+        &:hover {
+            text-decoration: underline;
+        }
     }
 }
