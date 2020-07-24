@@ -1,4 +1,4 @@
-# Markdown-pro (6bk gzip)
+# Markdown-pro (6kb gzip)
 
 [![Build Status](https://travis-ci.org/webbestmaster/markdown-pro.svg?branch=master)](https://travis-ci.org/github/webbestmaster/markdown-pro)
 [![GitHub license](https://img.shields.io/npm/l/markdown-pro)](https://github.com/webbestmaster/markdown-pro/blob/master/license)
