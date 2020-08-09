@@ -56,8 +56,7 @@ function writeFlowType(pathToFile) {
         },
         function sassRenderCallback(sassRenderError, result) {
             if (sassRenderError) {
-                console.error(sassRenderError.message);
-                return;
+                throw sassRenderError;
             }
 
             const allRawClassNameList = result.css.toString().match(/\.([_a-z]+[\w-_]*)[\s#,.:>{]*/gim);
@@ -71,8 +70,7 @@ function writeFlowType(pathToFile) {
                 getFlowTypeFileContent(allRawClassNameList),
                 function fileWriteCallback(fileWriteError) {
                     if (fileWriteError) {
-                        console.error(fileWriteError.message);
-                        return;
+                        throw fileWriteError;
                     }
 
                     console.log('[css-module-flow-loader]:', pathToFile + '.flow has been updated.');
@@ -85,17 +83,11 @@ function writeFlowType(pathToFile) {
 module.exports = function cssModuleFlowLoader(source) {
     const rootPathFolder = this.rootContext;
 
-    recursive(rootPathFolder, [fileFilter])
-        .then(filePathList => {
-            filePathList.forEach(writeFlowType);
+    (async () => {
+        const filePathList = await recursive(rootPathFolder, [fileFilter]);
 
-            return null;
-        })
-        .catch(recursiveFileFinderError => {
-            console.error(recursiveFileFinderError.message);
-
-            return recursiveFileFinderError;
-        });
+        filePathList.forEach(writeFlowType);
+    })();
 
     return source;
 };
