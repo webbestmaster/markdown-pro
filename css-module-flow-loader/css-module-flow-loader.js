@@ -5,18 +5,18 @@ const recursive = require('recursive-readdir');
 const sass = require('node-sass');
 
 const fileExtensionList = new Set(['.css', '.scss', '.sass']);
-const excludeFolderList = ['node_modules', '.git'];
+const excludeFolderList = new Set(['node_modules', '.git']);
 
-function ignoreFunc(pathToFile, stats) {
+function fileFilter(pathToFile, stats) {
     if (stats.isDirectory()) {
         return false;
     }
 
-    const filePathChunkList = pathToFile.split(path.sep);
+    const filePathChunkList = new Set(pathToFile.split(path.sep));
 
     // eslint-disable-next-line no-loops/no-loops
     for (const excludeFolder of excludeFolderList) {
-        if (filePathChunkList.includes(excludeFolder)) {
+        if (filePathChunkList.has(excludeFolder)) {
             return true;
         }
     }
@@ -36,7 +36,7 @@ ${classListReplaceValue}
 `;
 
 function rawClassNameToFlowProperty(rawClassName) {
-    const className = rawClassName.replace(/[.:{]/g, '').trim();
+    const className = rawClassName.replace(/[\s.:{]/g, '');
 
     return `    +'${className}': string;`;
 }
@@ -60,7 +60,11 @@ function writeFlowType(pathToFile) {
                 return;
             }
 
-            const allRawClassNameList = result.css.toString().match(/\.([_a-z]+[\w-_]*)[\s#,.:>{]*/gim) || [];
+            const allRawClassNameList = result.css.toString().match(/\.([_a-z]+[\w-_]*)[\s#,.:>{]*/gim);
+
+            if (!allRawClassNameList) {
+                return;
+            }
 
             fileSystem.writeFile(
                 result.stats.entry + '.flow',
@@ -78,12 +82,20 @@ function writeFlowType(pathToFile) {
     );
 }
 
-module.exports = async function cssModuleFlowLoader(source) {
+module.exports = function cssModuleFlowLoader(source) {
     const rootPathFolder = this.rootContext;
 
-    const filePathList = await recursive(rootPathFolder, [ignoreFunc]);
+    recursive(rootPathFolder, [fileFilter])
+        .then(filePathList => {
+            filePathList.forEach(writeFlowType);
 
-    filePathList.forEach(writeFlowType);
+            return null;
+        })
+        .catch(recursiveFileFinderError => {
+            console.error(recursiveFileFinderError.message);
+
+            return recursiveFileFinderError;
+        });
 
     return source;
 };
