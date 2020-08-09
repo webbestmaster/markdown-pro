@@ -16,6 +16,7 @@ package-lock.json
 # flow css
 *.css.flow
 *.scss.flow
+*.scss.new.flow
 
 # report
 /flow-coverage

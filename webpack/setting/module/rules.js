@@ -1,5 +1,7 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
+const path = require('path');
+
 const {isProduction, isDevelopment, fileRegExp, pathToLoadedFileFolder} = require('./../../config');
 
 const styleLoader = {
@@ -62,6 +64,10 @@ module.exports.rules = [
         use: [
             cssLoader,
             'css-modules-flow-types-loader',
+            {
+                loader: path.resolve('css-module-flow-loader/css-module-flow-loader.js'),
+                options: {}
+            },
             {
                 loader: 'css-loader',
                 options: {
