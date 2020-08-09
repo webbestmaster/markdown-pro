@@ -1,13 +1,13 @@
 const path = require('path');
 const fileSystem = require('fs');
 
-const recursive = require('recursive-readdir');
+const readDirRecursive = require('recursive-readdir');
 const nodeSass = require('node-sass');
 
 const fileExtensionList = new Set(['.css', '.scss', '.sass']);
 const excludeFolderList = new Set(['node_modules', '.git']);
 
-function fileFilter(pathToFile, stats) {
+function fileExclude(pathToFile, stats) {
     if (stats.isDirectory()) {
         return false;
     }
@@ -49,42 +49,39 @@ function getFlowTypeFileContent(allRawClassNameList) {
     return templateWrapper.replace(classListReplaceValue, uniqClassNameList.join('\n'));
 }
 
-function writeFlowType(pathToFile) {
-    nodeSass.render(
-        {
-            file: pathToFile,
-        },
-        function sassRenderCallback(sassRenderError, result) {
-            if (sassRenderError) {
-                throw sassRenderError;
-            }
+function renderNodeSassCallback(sassRenderError, result) {
+    if (sassRenderError) {
+        throw sassRenderError;
+    }
 
-            const allRawClassNameList = result.css.toString().match(/\.([_a-z]+[\w-_]*)[\s#,.:>{]*/gim);
+    const allRawClassNameList = result.css.toString().match(/\.([_a-z]+[\w-_]*)[\s#,.:>{]*/gim);
 
-            if (!allRawClassNameList) {
-                return;
-            }
+    if (!allRawClassNameList) {
+        return;
+    }
 
-            fileSystem.writeFile(
-                result.stats.entry + '.flow',
-                getFlowTypeFileContent(allRawClassNameList),
-                function fileWriteCallback(fileWriteError) {
-                    if (fileWriteError) {
-                        throw fileWriteError;
-                    }
+    const filePathFlowTyped = result.stats.entry + '.flow';
 
-                    console.log('[css-module-flow-loader]:', pathToFile + '.flow has been updated.');
-                }
-            );
+    function fileWriteCallback(fileWriteError) {
+        if (fileWriteError) {
+            throw fileWriteError;
         }
-    );
+
+        console.log('[css-module-flow-loader]:', filePathFlowTyped, 'has been updated.');
+    }
+
+    fileSystem.writeFile(filePathFlowTyped, getFlowTypeFileContent(allRawClassNameList), fileWriteCallback);
+}
+
+function writeFlowType(pathToFile) {
+    nodeSass.render({file: pathToFile}, renderNodeSassCallback);
 }
 
 module.exports = function cssModuleFlowLoader(source) {
     const rootPathFolder = this.rootContext;
 
     (async () => {
-        const filePathList = await recursive(rootPathFolder, [fileFilter]);
+        const filePathList = await readDirRecursive(rootPathFolder, [fileExclude]);
 
         filePathList.forEach(writeFlowType);
     })();
