@@ -2,7 +2,7 @@ const path = require('path');
 const fileSystem = require('fs');
 
 const recursive = require('recursive-readdir');
-const sass = require('node-sass');
+const nodeSass = require('node-sass');
 
 const fileExtensionList = new Set(['.css', '.scss', '.sass']);
 const excludeFolderList = new Set(['node_modules', '.git']);
@@ -50,7 +50,7 @@ function getFlowTypeFileContent(allRawClassNameList) {
 }
 
 function writeFlowType(pathToFile) {
-    sass.render(
+    nodeSass.render(
         {
             file: pathToFile,
         },
