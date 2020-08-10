@@ -61,7 +61,7 @@ module.exports.rules = [
         test: /\.scss$/,
         use: [
             cssLoader,
-            'css-modules-flow-types-loader',
+            'css-module-flow-loader',
             {
                 loader: 'css-loader',
                 options: {
@@ -80,7 +80,7 @@ module.exports.rules = [
         test: /\.css$/,
         use: [
             cssLoader,
-            'css-modules-flow-types-loader',
+            'css-module-flow-loader',
             {
                 loader: 'css-loader',
                 options: {
