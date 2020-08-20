@@ -53,7 +53,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@babel/core": "^7.11.1",
+    "@babel/core": "^7.11.4",
     "@babel/node": "^7.10.5",
     "@babel/plugin-proposal-export-namespace-from": "^7.10.4",
     "@babel/plugin-proposal-throw-expressions": "^7.10.4",
@@ -93,7 +93,7 @@
     "eslint-plugin-optimize-regex": "^1.2.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-react": "^7.20.6",
-    "eslint-plugin-react-hooks": "^4.0.8",
+    "eslint-plugin-react-hooks": "^4.1.0",
     "eslint-plugin-sonarjs": "^0.5.0",
     "eslint-plugin-unicorn": "^21.0.0",
     "flow-bin": "^0.131.0",
