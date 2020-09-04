@@ -11,8 +11,8 @@
         "selector-pseudo-element-colon-notation": "single",
         "max-nesting-depth": 2,
         "selector-class-pattern": "^[a-z\\-\\d_]+$",
-        "selector-combinator-blacklist": [">", "+", "~", "*"],
+        "selector-combinator-disallowed-list": [">", "+", "~", "*"],
         "selector-max-universal": 0,
-        "selector-pseudo-class-blacklist": ["not"]
+        "selector-pseudo-class-disallowed-list": ["not"]
     }
 }
