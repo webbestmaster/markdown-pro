@@ -9,7 +9,7 @@ import {breakLineTag, emptyString, space} from './render-const';
 import {makeLinkFromText} from './render-link';
 import {makePairTag} from './render-pair-tag';
 
-export const breakLineRegExp = /\s*?\\$/;
+export const breakLineRegExp: RegExp = /\s*?\\$/;
 
 export function addBreakLine(line: string): string {
     return line.replace(breakLineRegExp, '<br/>');

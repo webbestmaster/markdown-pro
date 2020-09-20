@@ -9,4 +9,4 @@ export const footnoteTypeMap: {[key: FootnoteTypeType]: FootnoteTypeType} = {
 
 export const footnotePrefix = 'fn-';
 
-export const findFootnoteMarkGlobalRegExp = /\S\[\^[^\]]+?]|\S\^\[[^\]]+?]/g;
+export const findFootnoteMarkGlobalRegExp: RegExp = /\S\[\^[^\]]+?]|\S\^\[[^\]]+?]/g;

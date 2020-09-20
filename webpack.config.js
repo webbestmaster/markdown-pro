@@ -35,6 +35,6 @@ if (isProduction && isBuildLib) {
     webpackConfig.output.libraryTarget = 'commonjs2';
 }
 
-// webpackConfig.plugins.push(new BundleAnalyzerPlugin());
+webpackConfig.plugins.push(new BundleAnalyzerPlugin());
 
 module.exports = webpackConfig;
