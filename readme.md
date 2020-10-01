@@ -150,7 +150,7 @@ Image ![](https://placekitten.com/100/25) inline   ->  Image <img src="https://p
 [the site](http://example.com "go to site")  ->  <a href="http://example.com" title="go to site">the site</a>
 
 // parse link, configurable
-http://example.com              ->  <a href="http://example.com">http://example.com</a>
+http://example.com                           ->  <a href="http://example.com">http://example.com</a>
 ```
 
 
