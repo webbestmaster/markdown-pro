@@ -6,7 +6,7 @@ import {hasProperty} from '../parser/util/is';
 import {makeFootnoteSuper} from '../parser/footnote/footnote';
 
 import {breakLineTag, emptyString, space} from './render-const';
-import {makeLinkFromText} from './render-link';
+import {makeLinkFromText, makeMailFromText} from './render-link';
 import {makePairTag} from './render-pair-tag';
 
 export const breakLineRegExp: RegExp = /\s*?\\$/;
@@ -70,14 +70,48 @@ export function isImageListOnly(lineContent: string): boolean {
     return lineContent.replace(findImageRegExpGlobal, '').trim() === emptyString;
 }
 
+const findMailRegExpGlobal = /\[([\S\s]*?)]\((\S+?)(?:\s+"([\S\s]+?)")?(?:\s+"([\S\s]+?)")?\)/g;
 const findLinkRegExpGlobal = /\[([\S\s]*?)]\((\S+?)(?:\s+"([\S\s]+?)")?\)/g;
 const findLinkVariableRegExpGlobal = /\[([\S\s]*?)]\[([\S\s]+?)]/g;
+
+function mailReplacer(matchedString: string, linkText: string, href: string, title: mixed, subject: mixed): string {
+    const titleAttrValue = typeof title === 'string' && title.trim() ? ' title="' + title + '"' : '';
+    const subjectValue = typeof subject === 'string' && subject.trim() ? '?subject=' + subject : '';
+    const text = linkText.length > 0 ? linkText : href;
+
+    if (matchedString.includes('@')) {
+        return `<a href="mailto:${href}${subjectValue}"${titleAttrValue}>${text}</a>`;
+    }
+
+    // leave it for link
+    return matchedString;
+}
 
 function linkReplacer(matchedString: string, linkText: string, href: string, title: mixed): string {
     const titleAttrValue = typeof title === 'string' && title.trim() ? ' title="' + title + '"' : '';
     const text = linkText.length > 0 ? linkText : href;
 
     return `<a href="${href}"${titleAttrValue}>${text}</a>`;
+}
+
+function mailReplacerVariable(
+    matchedString: string,
+    linkText: string,
+    hrefVariable: string,
+    documentMeta: DocumentMetaType
+): string {
+    const {variable} = documentMeta;
+
+    if (hasProperty(variable, hrefVariable)) {
+        const href = variable[hrefVariable].value;
+        const textVariable = linkText.length > 0 ? linkText : href;
+
+        return `<a href="${href}">${textVariable}</a>`;
+    }
+
+    const text = linkText.length > 0 ? linkText : hrefVariable;
+
+    return `<a href="${hrefVariable}">${text}</a>`;
 }
 
 function linkReplacerVariable(
@@ -98,6 +132,17 @@ function linkReplacerVariable(
     const text = linkText.length > 0 ? linkText : hrefVariable;
 
     return `<a href="${hrefVariable}">${text}</a>`;
+}
+
+export function makeMail(html: string, documentMeta: DocumentMetaType): string {
+    return html
+        .replace(findMailRegExpGlobal, mailReplacer)
+        .replace(
+            findLinkVariableRegExpGlobal,
+            (matchedString: string, linkText: string, hrefVariable: string): string => {
+                return mailReplacerVariable(matchedString, linkText, hrefVariable, documentMeta);
+            }
+        );
 }
 
 export function makeLink(html: string, documentMeta: DocumentMetaType): string {
@@ -181,10 +226,17 @@ export function renderInlineHtml(html: string, documentMeta: DocumentMetaType): 
     let fullLineContent = makeFootnoteSuper(html, documentMeta);
 
     fullLineContent = makeImage(fullLineContent, documentMeta);
+
+    fullLineContent = makeMail(fullLineContent, documentMeta);
+    if (parseLink) {
+        fullLineContent = makeMailFromText(fullLineContent);
+    }
+
     fullLineContent = makeLink(fullLineContent, documentMeta);
     if (parseLink) {
         fullLineContent = makeLinkFromText(fullLineContent);
     }
+
     fullLineContent = makeCheckbox(fullLineContent);
     return makePairTag(fullLineContent);
 }
