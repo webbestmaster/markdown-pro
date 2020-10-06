@@ -156,9 +156,11 @@ $ sudo be happy
 
 [image-variable]: https://placekitten.com/100/100
 [url variable]: http://example.com
+[email variable]: email@example.com
 
 ![][image-variable]
 ![cat][image-variable]
 
 [][url variable]
 [to site][url variable]
+[send email][email variable]

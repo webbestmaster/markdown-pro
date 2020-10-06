@@ -2,7 +2,7 @@
 
 import type {DocumentMetaType, LineDataType, OlAttributeType, SelectorType} from '../parser/parser-type';
 import {olNumericType, oLParseDataList} from '../parser/parser-selector';
-import {hasProperty} from '../parser/util/is';
+import {hasProperty, hasStringNonEmptySymbols} from '../parser/util/is';
 import {makeFootnoteSuper} from '../parser/footnote/footnote';
 
 import {breakLineTag, emptyString, space} from './render-const';
@@ -24,8 +24,8 @@ export function getHasEndBreakLine(lineContent: string, useLineBreak: boolean): 
 }
 
 function imageReplacer(matchedString: string, alt: mixed, src: string, title: mixed): string {
-    const titleAttrValue = typeof title === 'string' && title.trim() ? ' title="' + title + '"' : '';
-    const altAttrValue = typeof alt === 'string' && alt.trim() ? ' alt="' + alt + '"' : '';
+    const titleAttrValue = hasStringNonEmptySymbols(title) ? ' title="' + title + '"' : '';
+    const altAttrValue = hasStringNonEmptySymbols(alt) ? ' alt="' + alt + '"' : '';
 
     return `<img loading="lazy" src="${src}"${altAttrValue}${titleAttrValue}/>`;
 }
@@ -36,7 +36,7 @@ function imageReplacerVariable(
     srcVariable: string,
     documentMeta: DocumentMetaType
 ): string {
-    const altAttrValue = typeof alt === 'string' && alt.trim() ? ' alt="' + alt + '"' : '';
+    const altAttrValue = hasStringNonEmptySymbols(alt) ? ' alt="' + alt + '"' : '';
     const {variable} = documentMeta;
 
     if (hasProperty(variable, srcVariable)) {
@@ -75,8 +75,8 @@ const findLinkRegExpGlobal = /\[([\S\s]*?)]\((\S+?)(?:\s+"([\S\s]+?)")?\)/g;
 const findLinkVariableRegExpGlobal = /\[([\S\s]*?)]\[([\S\s]+?)]/g;
 
 function mailReplacer(matchedString: string, linkText: string, href: string, title: mixed, subject: mixed): string {
-    const titleAttrValue = typeof title === 'string' && title.trim() ? ' title="' + title + '"' : '';
-    const subjectValue = typeof subject === 'string' && subject.trim() ? '?subject=' + subject : '';
+    const titleAttrValue = hasStringNonEmptySymbols(title) ? ' title="' + title + '"' : '';
+    const subjectValue = hasStringNonEmptySymbols(subject) ? '?subject=' + subject : '';
     const text = linkText.length > 0 ? linkText : href;
 
     if (matchedString.includes('@')) {
@@ -88,30 +88,14 @@ function mailReplacer(matchedString: string, linkText: string, href: string, tit
 }
 
 function linkReplacer(matchedString: string, linkText: string, href: string, title: mixed): string {
-    const titleAttrValue = typeof title === 'string' && title.trim() ? ' title="' + title + '"' : '';
+    const titleAttrValue = hasStringNonEmptySymbols(title) ? ' title="' + title + '"' : '';
     const text = linkText.length > 0 ? linkText : href;
 
     return `<a href="${href}"${titleAttrValue}>${text}</a>`;
 }
 
-function mailReplacerVariable(
-    matchedString: string,
-    linkText: string,
-    hrefVariable: string,
-    documentMeta: DocumentMetaType
-): string {
-    const {variable} = documentMeta;
-
-    if (hasProperty(variable, hrefVariable)) {
-        const href = variable[hrefVariable].value;
-        const textVariable = linkText.length > 0 ? linkText : href;
-
-        return `<a href="${href}">${textVariable}</a>`;
-    }
-
-    const text = linkText.length > 0 ? linkText : hrefVariable;
-
-    return `<a href="${hrefVariable}">${text}</a>`;
+function getMailToPrefix(href: string): string {
+    return href.includes('@') ? 'mailto:' : '';
 }
 
 function linkReplacerVariable(
@@ -126,12 +110,12 @@ function linkReplacerVariable(
         const href = variable[hrefVariable].value;
         const textVariable = linkText.length > 0 ? linkText : href;
 
-        return `<a href="${href}">${textVariable}</a>`;
+        return `<a href="${getMailToPrefix(href)}${href}">${textVariable}</a>`;
     }
 
     const text = linkText.length > 0 ? linkText : hrefVariable;
 
-    return `<a href="${hrefVariable}">${text}</a>`;
+    return `<a href="${getMailToPrefix(hrefVariable)}${hrefVariable}">${text}</a>`;
 }
 
 export function makeMail(html: string, documentMeta: DocumentMetaType): string {
@@ -140,7 +124,7 @@ export function makeMail(html: string, documentMeta: DocumentMetaType): string {
         .replace(
             findLinkVariableRegExpGlobal,
             (matchedString: string, linkText: string, hrefVariable: string): string => {
-                return mailReplacerVariable(matchedString, linkText, hrefVariable, documentMeta);
+                return linkReplacerVariable(matchedString, linkText, hrefVariable, documentMeta);
             }
         );
 }
