@@ -21,8 +21,10 @@ import {fixtureCode, fixtureCodeHighlight, fixtureCodeHighlightNoLang} from './f
 import {fixtureImage} from './fixture/image';
 import {fixtureCheckbox} from './fixture/checkbox';
 import {fixtureLink} from './fixture/link';
+import {fixtureMail} from './fixture/mail';
 import {fixtureTable1, fixtureTable2, fixtureTable3} from './fixture/table';
 import {fixtureDoNotParseLink, fixtureParseLink} from './fixture/parse-link';
+import {fixtureDoNotParseMail, fixtureParseMail} from './fixture/parse-mail';
 import {fixtureMix1} from './fixture/mix-1';
 import {fixtureFootnote} from './fixture/footnote';
 import {fixtureVariable} from './fixture/variables';
@@ -94,6 +96,11 @@ describe('Markdown-pro test', () => {
     it('Link', () => {
         assert(mdDoNotBreakLine(fixtureLink.input) === fixtureLink.outputDoNotBreakLine);
         assert(mdUseBreakLine(fixtureLink.input) === fixtureLink.outputUseBreakLine);
+    });
+
+    it('Mail', () => {
+        assert(mdDoNotBreakLine(fixtureMail.input) === fixtureMail.outputDoNotBreakLine);
+        assert(mdUseBreakLine(fixtureMail.input) === fixtureMail.outputUseBreakLine);
     });
 
     it('Blockquote', () => {
@@ -175,6 +182,11 @@ describe('Markdown-pro test', () => {
         assert(mdUseBreakLine(fixtureParseLink.input) === fixtureParseLink.outputUseBreakLine);
     });
 
+    it('Parse Mail', () => {
+        assert(mdDoNotBreakLine(fixtureParseMail.input) === fixtureParseMail.outputDoNotBreakLine);
+        assert(mdUseBreakLine(fixtureParseMail.input) === fixtureParseMail.outputUseBreakLine);
+    });
+
     it('Do NOT parse link', () => {
         const configDoNotBreakLine: MarkdownConfigShallowType = {
             parseLink: false,
@@ -191,6 +203,24 @@ describe('Markdown-pro test', () => {
             markdown(fixtureDoNotParseLink.input, configDoNotBreakLine) === fixtureDoNotParseLink.outputDoNotBreakLine
         );
         assert(markdown(fixtureDoNotParseLink.input, configUseBreakLine) === fixtureDoNotParseLink.outputUseBreakLine);
+    });
+
+    it('Do NOT parse mail', () => {
+        const configDoNotBreakLine: MarkdownConfigShallowType = {
+            parseLink: false,
+            useWrapper: false,
+        };
+
+        const configUseBreakLine: MarkdownConfigShallowType = {
+            parseLink: false,
+            useLineBreak: true,
+            useWrapper: false,
+        };
+
+        assert(
+            markdown(fixtureDoNotParseMail.input, configDoNotBreakLine) === fixtureDoNotParseMail.outputDoNotBreakLine
+        );
+        assert(markdown(fixtureDoNotParseMail.input, configUseBreakLine) === fixtureDoNotParseMail.outputUseBreakLine);
     });
 
     it('Table', () => {
