@@ -63,17 +63,17 @@ Also, use image ![](https://placekitten.com/100/25) inline.
 
 ### Links and Emails
 
-You can use like this [link](http://example.com), \
-like this [](http://example.com "go to site"), \
-like this [go to site](http://example.com "go to site again"), \
-like this [](http://example.com) \
+You can use like this [link](http://example.com),
+like this [](http://example.com "go to site"),
+like this [go to site](http://example.com "go to site again"),
+like this [](http://example.com)
 or http://like.this even (last method is configurable).
 
-You can use Email this [send a email](my-email@example.com), \
-like this [](my-email@example.com "send a email"), \
-like this [send a email](my-email@example.com "send a email"), \
-like this [send a email with subject](my-email@example.com "send a email" "Subject of Email"), \
-like this [](my-email@example.com) \
+You can use Email this [send a email](my-email@example.com),
+like this [](my-email@example.com "send a email"),
+like this [send a email](my-email@example.com "send a email"),
+like this [send a email with subject](my-email@example.com "send a email" "Subject of Email"),
+like this [](my-email@example.com)
 or my-email@example.com even (last method is configurable).
 
 
