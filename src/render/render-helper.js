@@ -118,26 +118,21 @@ function linkReplacerVariable(
     return `<a href="${getMailToPrefix(hrefVariable)}${hrefVariable}">${text}</a>`;
 }
 
-export function makeMail(html: string, documentMeta: DocumentMetaType): string {
-    return html
-        .replace(findMailRegExpGlobal, mailReplacer)
-        .replace(
-            findLinkVariableRegExpGlobal,
-            (matchedString: string, linkText: string, hrefVariable: string): string => {
-                return linkReplacerVariable(matchedString, linkText, hrefVariable, documentMeta);
-            }
-        );
+function defineVariables(html: string, documentMeta: DocumentMetaType): string {
+    return html.replace(
+        findLinkVariableRegExpGlobal,
+        (matchedString: string, linkText: string, hrefVariable: string): string => {
+            return linkReplacerVariable(matchedString, linkText, hrefVariable, documentMeta);
+        }
+    );
 }
 
-export function makeLink(html: string, documentMeta: DocumentMetaType): string {
-    return html
-        .replace(findLinkRegExpGlobal, linkReplacer)
-        .replace(
-            findLinkVariableRegExpGlobal,
-            (matchedString: string, linkText: string, hrefVariable: string): string => {
-                return linkReplacerVariable(matchedString, linkText, hrefVariable, documentMeta);
-            }
-        );
+export function makeMail(html: string): string {
+    return html.replace(findMailRegExpGlobal, mailReplacer);
+}
+
+export function makeLink(html: string): string {
+    return html.replace(findLinkRegExpGlobal, linkReplacer);
 }
 
 export function getOlTypeBySelector(dataLineSelector: SelectorType): OlAttributeType {
@@ -211,15 +206,17 @@ export function renderInlineHtml(html: string, documentMeta: DocumentMetaType): 
 
     fullLineContent = makeImage(fullLineContent, documentMeta);
 
-    fullLineContent = makeMail(fullLineContent, documentMeta);
+    fullLineContent = makeMail(fullLineContent);
     if (parseLink) {
         fullLineContent = makeMailFromText(fullLineContent);
     }
 
-    fullLineContent = makeLink(fullLineContent, documentMeta);
+    fullLineContent = makeLink(fullLineContent);
     if (parseLink) {
         fullLineContent = makeLinkFromText(fullLineContent);
     }
+
+    fullLineContent = defineVariables(fullLineContent, documentMeta);
 
     fullLineContent = makeCheckbox(fullLineContent);
     return makePairTag(fullLineContent);
