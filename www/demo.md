@@ -61,13 +61,16 @@ Also, use image ![](https://placekitten.com/100/25) inline.
 [x] And one more checkbox
 
 
-### Links and Emails
+### Links
 
 You can use like this [link](http://example.com),
 like this [](http://example.com "go to site"),
 like this [go to site](http://example.com "go to site again"),
 like this [](http://example.com)
 or http://like.this even (last method is configurable).
+
+
+### Emails
 
 You can use Email this [send a email](my-email@example.com),
 like this [](my-email@example.com "send a email"),

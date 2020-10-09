@@ -154,6 +154,20 @@ http://example.com                           ->  <a href="http://example.com">ht
 ```
 
 
+#### Emails
+
+```
+[send a email](my-email@example.com)                                    ->  <a href="mailto:my-email@example.com">send a email</a>
+[](my-email@example.com "send a email")                                 ->  <a href="mailto:my-email@example.com" title="send a email">my-email@example.com</a>
+[send a email](my-email@example.com "send a email")                     ->  <a href="mailto:my-email@example.com" title="send a email">send a email</a>
+[email and subject](my-email@example.com "Link title" "Email subject")  ->  <a href="mailto:my-email@example.com?subject=Email subject" title="Link title">email and subject</a>
+[](my-email@example.com)                                                ->  <a href="mailto:my-email@example.com">my-email@example.com</a>
+
+// parse email, configurable
+my-email@example.com                                                    ->  <a href="mailto:my-email@example.com">my-email@example.com</a>
+```
+
+
 #### Unordered list
 
 Markdown:
