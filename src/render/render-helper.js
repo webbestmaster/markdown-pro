@@ -2,8 +2,9 @@
 
 import type {DocumentMetaType, LineDataType, OlAttributeType, SelectorType} from '../parser/parser-type';
 import {olNumericType, oLParseDataList} from '../parser/parser-selector';
-import {hasProperty, hasStringNonEmptySymbols} from '../parser/util/is';
+import {hasEmailSymbol, hasProperty, hasStringNonEmptySymbols} from '../parser/util/is';
 import {makeFootnoteSuper} from '../parser/footnote/footnote';
+import {mailPrefix} from '../markdown-const';
 
 import {breakLineTag, emptyString, space} from './render-const';
 import {makeLinkFromText, makeMailFromText} from './render-link';
@@ -80,7 +81,7 @@ function mailReplacer(matchedString: string, linkText: string, href: string, tit
     const text = linkText.length > 0 ? linkText : href;
 
     if (matchedString.includes('@')) {
-        return `<a href="mailto:${href}${subjectValue}"${titleAttrValue}>${text}</a>`;
+        return `<a href="${mailPrefix}${href}${subjectValue}"${titleAttrValue}>${text}</a>`;
     }
 
     // leave it for link
@@ -95,7 +96,7 @@ function linkReplacer(matchedString: string, linkText: string, href: string, tit
 }
 
 function getMailToPrefix(href: string): string {
-    return href.includes('@') ? 'mailto:' : '';
+    return hasEmailSymbol(href) ? mailPrefix : '';
 }
 
 function linkReplacerVariable(

@@ -9,3 +9,5 @@ export const defaultMarkdownConfig: MarkdownConfigType = {
     codeHighlight: (langName: string, code: string): string => code,
     useWrapper: true,
 };
+
+export const mailPrefix = 'mailto:';
