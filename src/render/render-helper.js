@@ -80,7 +80,7 @@ function mailReplacer(matchedString: string, linkText: string, href: string, tit
     const subjectValue = hasStringNonEmptySymbols(subject) ? '?subject=' + subject : '';
     const text = linkText.length > 0 ? linkText : href;
 
-    if (matchedString.includes('@')) {
+    if (hasEmailSymbol(matchedString)) {
         return `<a href="${mailPrefix}${href}${subjectValue}"${titleAttrValue}>${text}</a>`;
     }
 
