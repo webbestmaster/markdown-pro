@@ -337,10 +337,12 @@ $ sudo be happy         ->  $ sudo be happy
 ```
 [image-variable]: https://placekitten.com/100/100
 [url variable]: http://example.com
+[email variable]: email@example.com
 
-![][image-variable]      ->  <img loading="lazy" src="https://placekitten.com/100/100"/>
-![cat][image-variable]   ->  <img loading="lazy" src="https://placekitten.com/100/100" alt="cat"/>
+![][image-variable]           ->  <img loading="lazy" src="https://placekitten.com/100/100"/>
+![cat][image-variable]        ->  <img loading="lazy" src="https://placekitten.com/100/100" alt="cat"/>
 
-[][url variable]         ->  <a href="http://example.com">http://example.com</a>
-[to site][url variable]  ->  <a href="http://example.com">to site</a>
+[][url variable]              ->  <a href="http://example.com">http://example.com</a>
+[to site][url variable]       ->  <a href="http://example.com">to site</a>
+[send email][email variable]  ->  <a href="mailto:email@example.com">send email</a>
 ```
