@@ -71,7 +71,7 @@ Use `./@types/index.d.ts`.
 
 
 #### Headers
-```
+```html
 # Header 1       ->  <h1>Header 1</h1>
 ## Header 2      ->  <h2>Header 2</h2>
 ### Header 3     ->  <h3>Header 3</h3>
@@ -83,14 +83,14 @@ Use `./@types/index.d.ts`.
 
 #### Paragraph
 
-```
+```html
 some text -> <p>some text</p>
 ```
 
 
 #### Emphasis
 
-```
+```html
 **This is bold text**               ->  <b>This is bold text</b>
 __This is underline text__          ->  <u>This is underline text</u>
 _This is italic text_               ->  <i>This is italic text</i>
@@ -102,7 +102,7 @@ _This is italic text_               ->  <i>This is italic text</i>
 
 #### Lines
 
-```
+```html
 ---  ->  <hr/>
 ***  ->  <hr/>
 ___  ->  <hr/>
@@ -111,7 +111,7 @@ ___  ->  <hr/>
 
 #### Subscript/Superscript
 
-```
+```html
 25^th^      ->  25<sup>th</sup>
 C~2~H~5~OH  ->  C<sub>2</sub>H<sub>5</sub>OH
 ```
@@ -119,7 +119,7 @@ C~2~H~5~OH  ->  C<sub>2</sub>H<sub>5</sub>OH
 
 #### Images
 
-```
+```html
 ![](https://placekitten.com/100/100)               ->  <img src="https://placekitten.com/100/100"/>
 ![Cat](https://placekitten.com/110/110)            ->  <img src="https://placekitten.com/110/110" alt="Cat"/>
 ![Cat](https://placekitten.com/120/120 "The cat")  ->  <img src="https://placekitten.com/120/120" alt="Cat" title="The cat"/>
@@ -129,7 +129,7 @@ Image ![](https://placekitten.com/100/25) inline   ->  Image <img src="https://p
 
 #### Checkboxes
 
-```
+```html
 // big "X" to check checkbox
 [X] checked    ->  <input type="checkbox" checked="checked" disabled="disabled"/> checked
 
@@ -143,7 +143,7 @@ Image ![](https://placekitten.com/100/25) inline   ->  Image <img src="https://p
 
 #### Links
 
-```
+```html
 [the site](http://example.com)               ->  <a href="http://example.com">the site</a>
 [](http://example.com)                       ->  <a href="http://example.com">http://example.com</a>
 [](http://example.com "go to site")          ->  <a href="http://example.com" title="go to site">http://example.com</a>
@@ -156,7 +156,7 @@ http://example.com                           ->  <a href="http://example.com">ht
 
 #### Emails
 
-```
+```html
 [send a email](my-email@example.com)                                    ->  <a href="mailto:my-email@example.com">send a email</a>
 [](my-email@example.com "send a email")                                 ->  <a href="mailto:my-email@example.com" title="send a email">my-email@example.com</a>
 [send a email](my-email@example.com "send a email")                     ->  <a href="mailto:my-email@example.com" title="send a email">send a email</a>
@@ -179,7 +179,7 @@ Markdown:
 ```
 
 Html:
-```
+```html
 <ul>
     <li>Create an unordered list by starting a line with <code data-type="inline">+</code>, <code data-type="inline">-</code> or <code data-type="inline">*</code></li>
     <li>Sub-lists are made by indenting space(s):
@@ -218,7 +218,7 @@ v. for Small Roman Number list
 ```
 
 Html:
-```
+```html
 <ol type="1" start="5">
     <li>Create a Numeric list</li>
     <li>by starting a line with</li>
@@ -262,7 +262,7 @@ Markdown:
 ```
 
 Html:
-```
+```html
 <table>
     <thead>
         <tr>
@@ -299,7 +299,7 @@ Inline footnote^[Text of inline footnote] definition.
 ```
 
 Html:
-```
+```html
 <p>Footnote 1 link<a href="#first"><sup>[1]</sup></a>.</p>
 
 <p>Inline footnote<a href="#text-of-inline-footnote"><sup>[2]</sup></a> definition.</p>
@@ -319,7 +319,7 @@ Html:
 
 #### Blockquote
 
-```
+```html
 > Markdown-pro  ->  <blockquote>Markdown-pro</blockquote>
 ```
 
@@ -334,7 +334,7 @@ $ sudo be happy         ->  $ sudo be happy
 
 ### Variables
 
-```
+```html
 [image-variable]: https://placekitten.com/100/100
 [url variable]: http://example.com
 [email variable]: email@example.com
