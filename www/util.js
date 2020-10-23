@@ -81,7 +81,11 @@ export function syncScroll(fromNode: HTMLElement, toNode: HTMLElement) {
 }
 
 // $FlowFixMe
-export function debounce<FuncType>(wrappedFunction: FuncType, waitInMs: number, isImmediate?: boolean): FuncType {
+export function debounce<FunctionType>(
+    wrappedFunction: FunctionType,
+    waitInMs: number,
+    isImmediate?: boolean
+): FunctionType {
     let timeout: TimeoutID | null = null;
 
     // $FlowFixMe
