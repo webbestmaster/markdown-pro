@@ -18,14 +18,23 @@ $main-line-height: 1.4;
     h6,
     p,
     a,
+    b,
+    u,
+    i,
+    strike,
     hr,
     blockquote,
     code,
     table,
+    thead,
+    tbody,
+    tr,
     th,
     td,
     img {
         color: inherit;
+        font-size: inherit;
+        line-height: inherit;
         margin: 0;
         padding: 0;
         word-break: break-word;
