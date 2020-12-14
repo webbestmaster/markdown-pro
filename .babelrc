@@ -5,20 +5,5 @@
     ],
     "plugins": [
         "@babel/plugin-transform-strict-mode"
-    ],
-    "env": {
-        "development": {
-            "plugins": [
-                [
-                    "babel-plugin-flow-runtime",
-                    {
-                        "warn": false,
-                        "optInOnly": false,
-                        "assert": true,
-                        "annotate": true
-                    }
-                ]
-            ]
-        }
-    }
+    ]
 }
