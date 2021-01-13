@@ -12,13 +12,13 @@ export function formatHtml(html: string): string {
     let indent: string = '';
 
     html.split(/>\s*</).forEach((element: string) => {
-        if (element.match(/^\/\w/)) {
+        if (/^\/\w/.test(element)) {
             indent = indent.slice(tab.length);
         }
 
         result += indent + '<' + element + '>\r\n';
 
-        if (element.match(/^<?\w[^>]*[^/]$/)) {
+        if (/^<?\w[^>]*[^/]$/.test(element)) {
             indent += tab;
         }
     });

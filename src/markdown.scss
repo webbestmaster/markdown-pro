@@ -22,6 +22,8 @@ $main-line-height: 1.4;
     u,
     i,
     strike,
+    sub,
+    sup,
     hr,
     blockquote,
     code,
@@ -31,6 +33,9 @@ $main-line-height: 1.4;
     tr,
     th,
     td,
+    ul,
+    ol,
+    li,
     img {
         color: inherit;
         font-size: inherit;
