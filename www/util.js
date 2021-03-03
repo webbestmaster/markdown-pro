@@ -90,7 +90,7 @@ export function debounce<FunctionType>(
 
     // $FlowFixMe
     return function debouncedFunction() {
-        // eslint-disable-next-line consistent-this, babel/no-invalid-this
+        // eslint-disable-next-line consistent-this, babel/no-invalid-this, unicorn/no-this-assignment
         const context = this;
         const argumentList = [...arguments];
 
