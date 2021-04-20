@@ -84,7 +84,7 @@ export function addLineData(lineData: LineDataType, toList: Array<FootnoteType>)
 
 export function makeFootnoteSuper(fullLineContent: string, documentMeta: DocumentMetaType): string {
     return fullLineContent.replace(findFootnoteMarkGlobalRegExp, (match: string): string => {
-        const [firstLetter] = match;
+        const firstLetter = match[0];
         const {footnoteList} = documentMeta;
         const id = getFootnoteMarkId(match);
 

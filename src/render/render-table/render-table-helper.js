@@ -19,7 +19,7 @@ export function isTableDivideLine(line: string): boolean {
 export function lineToAlign(divideRaw: string): CellAlignType {
     const alignMark = ':';
     const divide = divideRaw.trim();
-    const [firstChar] = divide;
+    const firstChar = divide[0];
     const lastChar = divide[divide.length - 1];
 
     if (firstChar === lastChar && firstChar === alignMark) {
