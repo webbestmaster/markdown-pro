@@ -33,7 +33,7 @@ npm i markdown-pro
 ```javascript
 import markdownPro from 'markdown-pro';
 // import styles
-import markdownProStyle from 'markdown-pro/dist/style.css';
+import 'markdown-pro/dist/style.css';
 
 const htmlCode = markdownPro('# Markdown Pro'); // <h1>Markdown Pro</h1>
 
