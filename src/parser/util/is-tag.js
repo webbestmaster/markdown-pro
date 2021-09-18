@@ -1,5 +1,3 @@
-// @flow
-
 import type {LineDataType} from '../parser-type';
 import {
     oLParseDataList,

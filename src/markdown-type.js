@@ -1,5 +1,3 @@
-// @flow
-
 export type MarkdownConfigShallowType = {|
     +useLineBreak?: boolean,
     +wrapperClassName?: string,

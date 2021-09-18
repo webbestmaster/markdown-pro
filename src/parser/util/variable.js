@@ -1,5 +1,3 @@
-// @flow
-
 import type {VariableType} from '../parser-type';
 
 /*

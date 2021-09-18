@@ -1,5 +1,3 @@
-// @flow
-
 export type PairNumberArrayType = [number, number];
 
 export function harArrayOverflow(arrayA: PairNumberArrayType, arrayB: PairNumberArrayType): boolean {

@@ -1,5 +1,3 @@
-// @flow
-
 import type {CellAlignType, CellTagNameType} from './render-table-type';
 
 export const cellAlignTypeMap: {[key: string]: CellAlignType} = {

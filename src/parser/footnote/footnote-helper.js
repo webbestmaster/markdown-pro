@@ -1,5 +1,3 @@
-// @flow
-
 import type {FootnoteType} from '../parser-type';
 
 export function getIsFootnoteDescription(lineContent: string): boolean {

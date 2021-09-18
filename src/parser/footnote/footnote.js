@@ -1,5 +1,3 @@
-// @flow
-
 import type {DocumentMetaType, LineDataType} from '../parser-type';
 import {type FootnoteType} from '../parser-type';
 

@@ -1,5 +1,3 @@
-// @flow
-
 /* global window */
 
 // import markdownPro from 'markdown-pro';

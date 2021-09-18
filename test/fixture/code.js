@@ -1,5 +1,3 @@
-// @flow
-
 /* eslint-disable max-len */
 
 const fixtureCodeLangName = 'bash';

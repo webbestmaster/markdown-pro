@@ -1,5 +1,3 @@
-// @flow
-
 import {emptyString} from '../render/render-const';
 
 import {cleanLine, getIsAllSymbolsEqual} from './util/string';

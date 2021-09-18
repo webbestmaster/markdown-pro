@@ -1,5 +1,3 @@
-// @flow
-
 import {mailPrefix} from '../markdown-const';
 
 import {getLinkIndexList, getTagIndexList, harArrayListOverflow} from './render-util';

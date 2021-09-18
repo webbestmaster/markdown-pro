@@ -1,5 +1,3 @@
-// @flow
-
 import type {DocumentMetaType, LineDataType} from '../../parser/parser-type';
 import {filterEmptyString} from '../../parser/util/string';
 import {emptyString} from '../render-const';

@@ -1,16 +1,6 @@
 {
-    "presets": [
-        "@babel/preset-flow"
-    ],
+    "presets": [],
     "plugins": [
         "@babel/plugin-transform-strict-mode"
-    ],
-    "env": {
-        "test": {
-            "presets": [
-                "@babel/preset-env",
-                "@babel/preset-flow"
-            ]
-        }
-    }
+    ]
 }

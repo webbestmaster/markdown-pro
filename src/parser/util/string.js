@@ -1,5 +1,3 @@
-// @flow
-
 import {emptyString} from '../../render/render-const';
 
 export function filterEmptyString(line: string): boolean {

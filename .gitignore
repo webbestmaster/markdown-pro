@@ -1,5 +1,6 @@
 #IDE
-/.idea
+/.idea/
+/.vscode/
 
 # Logs
 logs
@@ -11,16 +12,17 @@ node_modules
 package-lock.json
 
 # dist
-# /dist
-
-# flow css
-*.css.flow
-*.scss.flow
+# /dist/
 
 # report
-/flow-coverage
+/coverage-ts/
+/tsc-check/
 /coverage/
-/.nyc_output/
 
-# coveralls
-/.coveralls.yml
+# style's d.ts
+*.scss.d.ts
+
+# other
+.DS_Store
+
+.env

@@ -1,5 +1,3 @@
-// @flow
-
 /* global setTimeout, clearTimeout */
 
 // get from stackoverflow

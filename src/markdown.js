@@ -1,5 +1,3 @@
-// @flow
-
 import {parseLine} from './parser/parse-line';
 import type {DocumentMetaType, FootnoteType, LineDataType} from './parser/parser-type';
 import {emptyString} from './render/render-const';

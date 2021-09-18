@@ -1,5 +1,3 @@
-// @flow
-
 /* global document, Event, HTMLTextAreaElement, HTMLDivElement, HTMLPreElement, HTMLInputElement */
 
 import {init} from './init';

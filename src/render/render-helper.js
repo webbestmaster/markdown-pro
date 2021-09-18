@@ -1,5 +1,3 @@
-// @flow
-
 import type {DocumentMetaType, LineDataType, OlAttributeType, SelectorType} from '../parser/parser-type';
 import {olNumericType, oLParseDataList} from '../parser/parser-selector';
 import {hasEmailSymbol, hasProperty, hasStringNonEmptySymbols} from '../parser/util/is';
