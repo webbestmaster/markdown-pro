@@ -3,7 +3,7 @@ import assert from 'assert';
 import {describe, it} from 'mocha';
 
 import {parseLine} from '../src/parser/parse-line';
-import type {DocumentMetaType, FootnoteType, LineDataType, PairTagSelectorType} from '../src/parser/parser-type';
+import {DocumentMetaType, FootnoteType, LineDataType, PairTagSelectorType} from '../src/parser/parser-type';
 import {searchSiblingItem} from '../src/parser/util/navigation';
 
 import {getIsAllSymbolsEqual} from '../src/parser/util/string';

@@ -1,4 +1,4 @@
-import type {PairTagSelectorType} from '../parser/parser-type';
+import {PairTagSelectorType} from '../parser/parser-type';
 import {pairTagSelectorList} from '../parser/parser-selector';
 
 import {getTagIndexList, harArrayOverflow} from './render-util';
@@ -22,7 +22,7 @@ export function getSelectorIndexList(html: string, pairTagSelector: PairTagSelec
     while (indexOfSelector !== -1) {
         const equalSymbolsMatch = html.slice(indexOfSelector).match(equal);
 
-        // $FlowFixMe
+        // @ts-ignore
         const [equalSymbolLine] = equalSymbolsMatch;
         const equalSymbolLineLength = equalSymbolLine.length;
 

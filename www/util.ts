@@ -24,12 +24,12 @@ export function formatHtml(html: string): string {
     return result.slice(1, -3);
 }
 
-type ScrollPositionType = {|
-    +scrollHeight: number,
-    +clientHeight: number,
-    +maxScrollTop: number,
-    +node: HTMLElement,
-|};
+type ScrollPositionType = Readonly<{
+    scrollHeight: number,
+    clientHeight: number,
+    maxScrollTop: number,
+    node: HTMLElement,
+}>;
 
 const scrollPositionCacheList: Array<ScrollPositionType> = [];
 
@@ -78,7 +78,7 @@ export function syncScroll(fromNode: HTMLElement, toNode: HTMLElement) {
     toNode.scrollTo(0, newTopPosition);
 }
 
-// $FlowFixMe
+// @ts-ignore
 export function debounce<FunctionType>(
     wrappedFunction: FunctionType,
     waitInMs: number,
@@ -86,7 +86,7 @@ export function debounce<FunctionType>(
 ): FunctionType {
     let timeout: TimeoutID | null = null;
 
-    // $FlowFixMe
+    // @ts-ignore
     return function debouncedFunction() {
         // eslint-disable-next-line consistent-this, babel/no-invalid-this, unicorn/no-this-assignment
         const context = this;
@@ -97,7 +97,7 @@ export function debounce<FunctionType>(
             timeout = null;
 
             if (!isImmediate) {
-                // $FlowFixMe
+                // @ts-ignore
                 Reflect.apply(wrappedFunction, context, argumentList);
             }
         }
@@ -112,7 +112,7 @@ export function debounce<FunctionType>(
             return;
         }
 
-        // $FlowFixMe
+        // @ts-ignore
         Reflect.apply(wrappedFunction, context, argumentList);
     };
 }

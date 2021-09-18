@@ -1,4 +1,4 @@
-import type {VariableType} from '../parser-type';
+import {VariableType} from '../parser-type';
 
 /*
 export function getIsVariableLine(lineContent: string): boolean {

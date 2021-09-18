@@ -47,19 +47,7 @@
     "pre-commit-hook": "npm run check",
     "_postinstall": "cp ./git-hooks/pre-commit ./.git/hooks"
   },
-  "dependencies": {
-    "@types/react": "^17.0.21",
-    "@types/react-dom": "^17.0.9",
-    "@types/react-router": "^5.1.16",
-    "@types/react-router-dom": "^5.1.9",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-localization-library": "^0.0.16",
-    "react-router": "^5.2.1",
-    "react-router-dom": "^5.3.0",
-    "react-router-dom-hook": "^0.0.12",
-    "react-system-hook": "^0.0.13"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.15.5",
     "@babel/plugin-transform-strict-mode": "^7.14.5",
@@ -67,7 +55,6 @@
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.1.0",
     "@types/jest": "^27.0.1",
-    "@types/puppeteer": "^5.4.4",
     "@typescript-eslint/eslint-plugin": "^4.31.1",
     "@typescript-eslint/parser": "^4.31.1",
     "babel-eslint": "^10.1.0",
@@ -100,7 +87,6 @@
     "mini-css-extract-plugin": "^2.3.0",
     "optimize-css-assets-webpack-plugin": "^6.0.1",
     "prettier": "^2.4.1",
-    "puppeteer": "^10.2.0",
     "raw-loader": "^4.0.2",
     "sass": "^1.41.1",
     "sass-loader": "^12.1.0",

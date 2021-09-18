@@ -3,7 +3,7 @@ import assert from 'assert';
 import {describe, it} from 'mocha';
 
 import markdownPro, {markdown} from '../src/markdown';
-import type {MarkdownConfigShallowType} from '../src/markdown-type';
+import {MarkdownConfigShallowType} from '../src/markdown-type';
 
 import {stringReverse} from './util';
 

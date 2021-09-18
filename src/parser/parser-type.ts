@@ -1,4 +1,4 @@
-import type {MarkdownConfigType} from '../markdown-type';
+import {MarkdownConfigType} from '../markdown-type';
 
 export type SelectorHeaderType = '# ' | '## ' | '### ' | '#### ' | '##### ' | '###### ';
 export type SelectorBlockquoteType = '> ';
@@ -46,64 +46,64 @@ export type SelectorType =
     | SelectorTableType
     | SelectorCodeType;
 
-export type LineDataType = {|
+export type LineDataType = Readonly<{
     // order number of line, start with 0
-    +lineIndex: number,
+    lineIndex: number,
     // left spaces before any content
-    +spaceCount: number,
+    spaceCount: number,
     // selector to render as html, example - '###'
-    +selector: SelectorType,
+    selector: SelectorType,
     // full line with all symbols, example - '### this is line'
-    +line: string,
+    line: string,
     // trimmed line
-    +trimmedLine: string,
+    trimmedLine: string,
     // trimmed line without selector, example - 'this is line'
-    +lineContent: string,
+    lineContent: string,
     // line children
-    +childList: Array<LineDataType>,
+    childList: Array<LineDataType>,
     // additional line list
-    +additionalLineList: Array<string>,
-    +config: MarkdownConfigType,
-|};
+    additionalLineList: Array<string>,
+    config: MarkdownConfigType,
+}>;
 
-export type OlParseDataType = {|
-    +selector: SelectorOlItemType,
-    +regExpSearchSelector: RegExp,
-    +olAttributeType: OlAttributeType,
-|};
+export type OlParseDataType = Readonly<{
+    selector: SelectorOlItemType,
+    regExpSearchSelector: RegExp,
+    olAttributeType: OlAttributeType,
+}>;
 
-export type ShortLineInfoType = {|
-    +selector: SelectorType,
-    +lineContent: string,
-|};
+export type ShortLineInfoType = Readonly<{
+    selector: SelectorType,
+    lineContent: string,
+}>;
 
 export type FootnoteTypeType = 'inline' | 'super';
 
-export type FootnoteType = {|
-    +id: string,
-    +type: FootnoteTypeType,
-    +inlineLineContent: string,
+export type FootnoteType = {
+    readonly id: string,
+    readonly type: FootnoteTypeType,
+    readonly inlineLineContent: string,
     descriptionLineData: LineDataType | null,
-|};
+};
 
-export type VariableType = {|
-    +key: string,
-    +value: string,
-|};
+export type VariableType = Readonly<{
+    key: string,
+    value: string,
+}>;
 
-export type DocumentMetaType = {|
+export type DocumentMetaType = {
     tableLineData: LineDataType | null,
     codeLineData: LineDataType | null,
-    +config: MarkdownConfigType,
-    +footnoteList: Array<FootnoteType>,
+    readonly config: MarkdownConfigType,
+    readonly footnoteList: Array<FootnoteType>,
     variable: {
         [key: string]: VariableType,
     },
-|};
+};
 
-export type PairTagSelectorType = {|
-    +selector: string,
-    +openTag: string,
-    +closeTag: string,
-    +equal: RegExp,
-|};
+export type PairTagSelectorType = Readonly<{
+    selector: string,
+    openTag: string,
+    closeTag: string,
+    equal: RegExp,
+}>;

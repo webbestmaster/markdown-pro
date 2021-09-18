@@ -1,4 +1,4 @@
-import type {FootnoteType} from '../parser-type';
+import {FootnoteType} from '../parser-type';
 
 export function getIsFootnoteDescription(lineContent: string): boolean {
     return /^\[\^[^\]]+]:/.test(lineContent);

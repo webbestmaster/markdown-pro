@@ -1,8 +1,8 @@
 import {parseLine} from './parser/parse-line';
-import type {DocumentMetaType, FootnoteType, LineDataType} from './parser/parser-type';
+import {DocumentMetaType, FootnoteType, LineDataType} from './parser/parser-type';
 import {emptyString} from './render/render-const';
 import {renderChildList} from './render/render';
-import type {MarkdownConfigShallowType, MarkdownConfigType} from './markdown-type';
+import {MarkdownConfigShallowType, MarkdownConfigType} from './markdown-type';
 import {defaultMarkdownConfig} from './markdown-const';
 import {getMdFootnoteContent} from './parser/footnote/footnote-helper';
 

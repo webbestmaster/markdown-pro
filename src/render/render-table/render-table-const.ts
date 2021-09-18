@@ -1,4 +1,4 @@
-import type {CellAlignType, CellTagNameType} from './render-table-type';
+import {CellAlignType, CellTagNameType} from './render-table-type';
 
 export const cellAlignTypeMap: {[key: string]: CellAlignType} = {
     left: 'left',

@@ -34,7 +34,7 @@ export function init(
     }
 
     function handleScroll(evt: Event) {
-        // $FlowFixMe
+        // @ts-ignore
         const element: HTMLElement = evt.currentTarget;
 
         if (element === textArea) {

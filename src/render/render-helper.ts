@@ -1,4 +1,4 @@
-import type {DocumentMetaType, LineDataType, OlAttributeType, SelectorType} from '../parser/parser-type';
+import {DocumentMetaType, LineDataType, OlAttributeType, SelectorType} from '../parser/parser-type';
 import {olNumericType, oLParseDataList} from '../parser/parser-selector';
 import {hasEmailSymbol, hasProperty, hasStringNonEmptySymbols} from '../parser/util/is';
 import {makeFootnoteSuper} from '../parser/footnote/footnote';
@@ -169,7 +169,7 @@ export function renderAdditionalLineList(lineData: LineDataType): string {
     const prefix = hasParentEndBreakLine ? breakLineTag : space;
     const additionalLineListLength = additionalLineList.length;
     const additionalLineLastIndex = additionalLineListLength - 1;
-    // $FlowFixMe
+    // @ts-ignore
     const lineResult: Array<string> = Array.from({length: additionalLineListLength}).fill('');
 
     // eslint-disable-next-line no-loops/no-loops

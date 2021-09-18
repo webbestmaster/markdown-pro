@@ -1,4 +1,4 @@
-import type {LineDataType} from '../parser-type';
+import {LineDataType} from '../parser-type';
 import {
     oLParseDataList,
     selectorBlockquoteList,
