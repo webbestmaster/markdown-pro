@@ -1,5 +1,4 @@
 export function hasProperty(object: unknown, propertyName: string): boolean {
-    // @ts-ignore
     return Boolean(object) && Reflect.apply(Object.prototype.hasOwnProperty, object, [propertyName]);
 }
 
