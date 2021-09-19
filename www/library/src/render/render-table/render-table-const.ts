@@ -1,13 +1,13 @@
 import {CellAlignType, CellTagNameType} from './render-table-type';
 
-export const cellAlignTypeMap: {[key: string]: CellAlignType} = {
-    left: 'left',
+export const cellAlignTypeMap: Record<string, CellAlignType> = {
     center: 'center',
-    right: 'right',
     'default': 'left',
+    left: 'left',
+    right: 'right',
 };
 
-export const cellTagNameTypeMap: {[key: string]: CellTagNameType} = {
+export const cellTagNameTypeMap: Record<string, CellTagNameType> = {
     tdCell: 'td',
     thCell: 'th',
 };

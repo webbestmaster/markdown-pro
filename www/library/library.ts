@@ -10,7 +10,10 @@
 // export {useScreenHeight} from './src/screen-height-hook';
 
 import {markdown} from './src/markdown';
+import {MarkdownConfigShallowType} from './src/markdown-type';
+import {defaultMarkdownConfig} from './src/markdown-const';
 
-export {markdown};
+export {markdown, MarkdownConfigShallowType, defaultMarkdownConfig};
+
 // eslint-disable-next-line import/no-default-export
 export default markdown;

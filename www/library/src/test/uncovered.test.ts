@@ -1,19 +1,19 @@
+/* global describe, it */
+
 import assert from 'assert';
 
-import {describe, it} from 'mocha';
+import {parseLine} from '../parser/parse-line';
+import {DocumentMetaType, FootnoteType, LineDataType, PairTagSelectorType} from '../parser/parser-type';
+import {searchSiblingItem} from '../parser/util/navigation';
 
-import {parseLine} from '../src/parser/parse-line';
-import {DocumentMetaType, FootnoteType, LineDataType, PairTagSelectorType} from '../src/parser/parser-type';
-import {searchSiblingItem} from '../src/parser/util/navigation';
+import {getIsAllSymbolsEqual} from '../parser/util/string';
+import {emptyString} from '../render/render-const';
 
-import {getIsAllSymbolsEqual} from '../src/parser/util/string';
-import {emptyString} from '../src/render/render-const';
-
-import {getOlTypeBySelector} from '../src/render/render-helper';
-import {olNumericType, selectorHeaderList, selectorList} from '../src/parser/parser-selector';
-import {getSelectorIndexList} from '../src/render/render-pair-tag';
-import {defaultMarkdownConfig} from '../src/markdown-const';
-import {addLineData} from '../src/parser/footnote/footnote';
+import {getOlTypeBySelector} from '../render/render-helper';
+import {olNumericType, selectorHeaderList, selectorList} from '../parser/parser-selector';
+import {getSelectorIndexList} from '../render/render-pair-tag';
+import {defaultMarkdownConfig} from '../markdown-const';
+import {addLineData} from '../parser/footnote/footnote';
 
 import {defaultLineData} from './fixture/default-data';
 
@@ -22,10 +22,10 @@ describe('Markdown-pro test:uncovered', () => {
         const savedDataList: Array<LineDataType> = [defaultLineData];
 
         const documentMeta: DocumentMetaType = {
-            tableLineData: null,
             codeLineData: null,
             config: defaultMarkdownConfig,
             footnoteList: [],
+            tableLineData: null,
             variable: {},
         };
 
@@ -46,10 +46,10 @@ describe('Markdown-pro test:uncovered', () => {
 
     it('getSelectorIndexList', () => {
         const pairTagSelector: PairTagSelectorType = {
-            selector: '',
-            openTag: '',
             closeTag: '',
             equal: /\s/g,
+            openTag: '',
+            selector: '',
         };
 
         assert(getSelectorIndexList('', pairTagSelector).length === 0);
@@ -57,15 +57,15 @@ describe('Markdown-pro test:uncovered', () => {
 
     it('addLineData', () => {
         const lineData: LineDataType = {
-            lineIndex: 0,
-            spaceCount: 0,
-            selector: selectorHeaderList[0],
-            line: '',
-            trimmedLine: '',
-            lineContent: '',
-            childList: [],
             additionalLineList: [],
+            childList: [],
             config: defaultMarkdownConfig,
+            line: '',
+            lineContent: '',
+            lineIndex: 0,
+            selector: selectorHeaderList[0],
+            spaceCount: 0,
+            trimmedLine: '',
         };
 
         const toList: Array<FootnoteType> = [];

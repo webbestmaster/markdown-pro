@@ -2,11 +2,11 @@ import {MarkdownConfigType} from '../markdown-type';
 
 export type SelectorHeaderType = '# ' | '## ' | '### ' | '#### ' | '##### ' | '###### ';
 export type SelectorBlockquoteType = '> ';
-export type SelectorLineType = '---' | '***' | '___';
+export type SelectorLineType = '___' | '---' | '***';
 export type SelectorTableType = '|';
 export type SelectorCodeType = '```';
 
-export type SelectorUlItemType = '+ ' | '- ' | '* ';
+export type SelectorUlItemType = '- ' | '* ' | '+ ';
 
 export type SelectorOlNumericItemType = '0. ';
 export type SelectorOlBigRomanNumberItemType = 'I. ';
@@ -21,69 +21,69 @@ export type OlTypeBigAlphabetType = 'A';
 export type OlTypeSmallAlphabetType = 'a';
 
 export type OlAttributeType =
-    | OlTypeNumericType
-    | OlTypeBigRomanNumberType
-    | OlTypeSmallRomanNumberType
     | OlTypeBigAlphabetType
-    | OlTypeSmallAlphabetType;
+    | OlTypeBigRomanNumberType
+    | OlTypeNumericType
+    | OlTypeSmallAlphabetType
+    | OlTypeSmallRomanNumberType;
 
 export type SelectorOlItemType =
-    | SelectorOlNumericItemType
-    | SelectorOlBigRomanNumberItemType
-    | SelectorOlSmallRomanNumberItemType
     | SelectorOlBigAlphabetItemType
-    | SelectorOlSmallAlphabetItemType;
+    | SelectorOlBigRomanNumberItemType
+    | SelectorOlNumericItemType
+    | SelectorOlSmallAlphabetItemType
+    | SelectorOlSmallRomanNumberItemType;
 
 export type SelectorParagraphType = '';
 
 export type SelectorType =
+    | SelectorBlockquoteType
+    | SelectorCodeType
     | SelectorHeaderType
-    | SelectorUlItemType
+    | SelectorLineType
     | SelectorOlItemType
     | SelectorParagraphType
-    | SelectorBlockquoteType
-    | SelectorLineType
     | SelectorTableType
-    | SelectorCodeType;
+    | SelectorUlItemType;
 
 export type LineDataType = Readonly<{
-    // order number of line, start with 0
-    lineIndex: number;
-    // left spaces before any content
-    spaceCount: number;
-    // selector to render as html, example - '###'
-    selector: SelectorType;
-    // full line with all symbols, example - '### this is line'
-    line: string;
-    // trimmed line
-    trimmedLine: string;
-    // trimmed line without selector, example - 'this is line'
-    lineContent: string;
-    // line children
-    childList: Array<LineDataType>;
     // additional line list
     additionalLineList: Array<string>;
+    // line children
+    childList: Array<LineDataType>;
     config: MarkdownConfigType;
+    // full line with all symbols, example - '### this is line'
+    line: string;
+    // trimmed line without selector, example - 'this is line'
+    lineContent: string;
+    // order number of line, start with 0
+    lineIndex: number;
+    // selector to render as html, example - '###'
+    selector: SelectorType;
+    // left spaces before any content
+    spaceCount: number;
+    // trimmed line
+    trimmedLine: string;
 }>;
 
 export type OlParseDataType = Readonly<{
-    selector: SelectorOlItemType;
-    regExpSearchSelector: RegExp;
     olAttributeType: OlAttributeType;
+    regExpSearchSelector: RegExp;
+    selector: SelectorOlItemType;
 }>;
 
 export type ShortLineInfoType = Readonly<{
-    selector: SelectorType;
     lineContent: string;
+    selector: SelectorType;
 }>;
 
 export type FootnoteTypeType = 'inline' | 'super';
 
 export type FootnoteType = {
-    readonly id: string;
-    readonly type: FootnoteTypeType;
-    readonly inlineLineContent: string;
     descriptionLineData: LineDataType | null;
+    readonly id: string;
+    readonly inlineLineContent: string;
+    readonly type: FootnoteTypeType;
 };
 
 export type VariableType = Readonly<{
@@ -92,18 +92,18 @@ export type VariableType = Readonly<{
 }>;
 
 export type DocumentMetaType = {
-    tableLineData: LineDataType | null;
     codeLineData: LineDataType | null;
     readonly config: MarkdownConfigType;
     readonly footnoteList: Array<FootnoteType>;
+    tableLineData: LineDataType | null;
     variable: {
         [key: string]: VariableType;
     };
 };
 
 export type PairTagSelectorType = Readonly<{
-    selector: string;
-    openTag: string;
     closeTag: string;
     equal: RegExp;
+    openTag: string;
+    selector: string;
 }>;

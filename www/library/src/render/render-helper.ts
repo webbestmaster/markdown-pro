@@ -8,7 +8,7 @@ import {breakLineTag, emptyString, space} from './render-const';
 import {makeLinkFromText, makeMailFromText} from './render-link';
 import {makePairTag} from './render-pair-tag';
 
-export const breakLineRegExp: RegExp = /\s*?\\$/;
+export const breakLineRegExp = /\s*?\\$/;
 
 export function addBreakLine(line: string): string {
     return line.replace(breakLineRegExp, '<br/>');
@@ -159,13 +159,14 @@ export function getOlStart(trimmedLine: string): string {
 // eslint-disable-next-line complexity, max-statements
 export function renderAdditionalLineList(lineData: LineDataType): string {
     const {additionalLineList, config} = lineData;
+    const {lineContent} = lineData;
     const {useLineBreak} = config;
 
     if (additionalLineList.length === 0) {
         return emptyString;
     }
 
-    const hasParentEndBreakLine = getHasEndBreakLine(lineData.lineContent, useLineBreak);
+    const hasParentEndBreakLine = getHasEndBreakLine(lineContent, useLineBreak);
     const prefix = hasParentEndBreakLine ? breakLineTag : space;
     const additionalLineListLength = additionalLineList.length;
     const additionalLineLastIndex = additionalLineListLength - 1;

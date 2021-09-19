@@ -12,6 +12,8 @@ export function markdown(mdInput: string, config: MarkdownConfigShallowType = de
         ...config,
     };
 
+    const {useWrapper} = markdownConfig;
+
     const markdownFootnoteConfig: MarkdownConfigType = {
         ...defaultMarkdownConfig,
         ...config,
@@ -19,25 +21,25 @@ export function markdown(mdInput: string, config: MarkdownConfigShallowType = de
     };
 
     const mainParent: LineDataType = {
-        lineIndex: -1,
-        spaceCount: -1,
-        selector: emptyString,
-        line: emptyString,
-        trimmedLine: '',
-        lineContent: '',
-        childList: [],
         additionalLineList: [],
+        childList: [],
         config: markdownConfig,
+        line: emptyString,
+        lineContent: '',
+        lineIndex: -1,
+        selector: emptyString,
+        spaceCount: -1,
+        trimmedLine: '',
         // isFirst: true,
         // isLast: true,
     };
     const structuredLineDataList: Array<LineDataType> = [mainParent];
     const savedLineDataList: Array<LineDataType> = [mainParent];
     const documentMeta: DocumentMetaType = {
-        tableLineData: null,
         codeLineData: null,
         config: markdownConfig,
         footnoteList: [],
+        tableLineData: null,
         variable: {},
     };
 
@@ -64,7 +66,7 @@ export function markdown(mdInput: string, config: MarkdownConfigShallowType = de
 
     const fullContent = [mainContent, footnoteDescriptionHtml].join('');
 
-    if (markdownConfig.useWrapper === false) {
+    if (!useWrapper) {
         return fullContent;
     }
 

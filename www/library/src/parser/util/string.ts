@@ -13,7 +13,7 @@ export function getIsAllSymbolsEqual(line: string): boolean {
         return true;
     }
 
-    const firstSymbol = line[0];
+    const [firstSymbol] = line;
 
     // eslint-disable-next-line no-loops/no-loops
     for (const char of line) {

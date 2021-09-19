@@ -1,3 +1,3 @@
-export type CellAlignType = 'left' | 'center' | 'right';
+export type CellAlignType = 'center' | 'left' | 'right';
 
 export type CellTagNameType = 'td' | 'th';

@@ -1,9 +1,8 @@
+/* global describe, it */
+
 import assert from 'assert';
 
-import {describe, it} from 'mocha';
-
-import {markdown} from '../src/markdown';
-import {defaultMarkdownConfig} from '../src/markdown-const';
+import {markdown, defaultMarkdownConfig} from '../../library';
 
 describe('Markdown-pro test:config', () => {
     it('Additional css class', () => {

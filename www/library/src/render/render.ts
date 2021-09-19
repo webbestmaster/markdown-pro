@@ -12,7 +12,7 @@ import {DocumentMetaType, LineDataType} from '../parser/parser-type';
 
 import {getIsEdgeLine} from '../parser/util/navigation';
 import {getIsFootnoteDescription} from '../parser/footnote/footnote-helper';
-import {makeFootnoteSuper} from '../parser/footnote/footnote';
+// import {makeFootnoteSuper} from '../parser/footnote/footnote';
 
 import {
     addBreakLine,
@@ -29,6 +29,7 @@ import {renderTable} from './render-table/render-table';
 export function renderChildList(lineDataList: Array<LineDataType>, documentMeta: DocumentMetaType): string {
     return lineDataList
         .map((lineData: LineDataType, lineDataIndex: number): string => {
+            // eslint-disable-next-line @typescript-eslint/no-use-before-define
             return renderLineData(lineData, lineDataIndex, lineDataList, documentMeta);
         })
         .map(addBreakLine)
@@ -97,8 +98,9 @@ export function renderLineData(
     if (getIsOlItem(lineData)) {
         const isFirstItem = getIsEdgeLine(lineData, lineDataList, -1);
         const isLastItem = getIsEdgeLine(lineData, lineDataList, 1);
+        const {selector: lineDataSelector} = lineData;
         const prefix = isFirstItem
-            ? `<ol type="${getOlTypeBySelector(lineData.selector)}" start="${getOlStart(trimmedLine)}">`
+            ? `<ol type="${getOlTypeBySelector(lineDataSelector)}" start="${getOlStart(trimmedLine)}">`
             : '';
         const postfix = isLastItem ? '</ol>' : '';
 

@@ -1,18 +1,17 @@
-import {DocumentMetaType, LineDataType} from '../parser-type';
-import {FootnoteType} from '../parser-type';
+import {DocumentMetaType, LineDataType, FootnoteType} from '../parser-type';
 
 import {findFootnoteMarkGlobalRegExp, footnoteTypeMap} from './footnote-const';
 import {getFootnoteById, getFootnoteInlineLineContent, getFootnoteMarkId} from './footnote-helper';
 
 function matchToFootnote(match: string): FootnoteType {
     const id = getFootnoteMarkId(match);
-    const descriptionLineData: null = null;
+    const descriptionLineData = null;
     const inlineLineContent = getFootnoteInlineLineContent(match);
 
     if (match.indexOf('[^') === 1) {
         return {
-            id,
             descriptionLineData,
+            id,
             inlineLineContent,
             type: footnoteTypeMap.super,
         };
@@ -20,8 +19,8 @@ function matchToFootnote(match: string): FootnoteType {
 
     // match.indexOf('^[')
     return {
-        id,
         descriptionLineData,
+        id,
         inlineLineContent,
         type: footnoteTypeMap.inline,
     };
@@ -37,15 +36,15 @@ export function getFootnoteList(lineContent: string): Array<FootnoteType> {
     return matchedList.map(matchToFootnote);
 }
 
-export function fromToFootnoteList(fromList: Array<FootnoteType>, toList: Array<FootnoteType>) {
+export function fromToFootnoteList(fromList: Array<FootnoteType>, toList: Array<FootnoteType>): void {
     // eslint-disable-next-line no-loops/no-loops
     for (const fromItem of fromList) {
-        const {id} = fromItem;
+        const {id, descriptionLineData} = fromItem;
         const candidateToExtend = toList.find((toItem: FootnoteType): boolean => toItem.id === id);
 
         if (candidateToExtend) {
             if (!candidateToExtend.descriptionLineData) {
-                candidateToExtend.descriptionLineData = fromItem.descriptionLineData;
+                candidateToExtend.descriptionLineData = descriptionLineData;
             }
         } else {
             toList.push(fromItem);
@@ -53,7 +52,7 @@ export function fromToFootnoteList(fromList: Array<FootnoteType>, toList: Array<
     }
 }
 
-export function addLineData(lineData: LineDataType, toList: Array<FootnoteType>) {
+export function addLineData(lineData: LineDataType, toList: Array<FootnoteType>): void {
     const {lineContent} = lineData;
     const rawMatchId = lineContent.match(/\[\^[^\]]+?]:/);
 
@@ -73,21 +72,22 @@ export function addLineData(lineData: LineDataType, toList: Array<FootnoteType>)
     }
 
     toList.push({
-        id,
-        type: footnoteTypeMap.super,
-        inlineLineContent: lineData.lineContent,
         descriptionLineData: lineData,
+        id,
+        inlineLineContent: lineContent,
+        type: footnoteTypeMap.super,
     });
 }
 
 export function makeFootnoteSuper(fullLineContent: string, documentMeta: DocumentMetaType): string {
     return fullLineContent.replace(findFootnoteMarkGlobalRegExp, (match: string): string => {
-        const firstLetter = match[0];
+        const [firstLetter] = match;
         const {footnoteList} = documentMeta;
         const id = getFootnoteMarkId(match);
 
         const footnote = getFootnoteById(id, footnoteList);
 
+        // @ts-ignore
         return `${firstLetter}<a href="#${id}"><sup>[${footnoteList.indexOf(footnote) + 1}]</sup></a>`;
     });
 }

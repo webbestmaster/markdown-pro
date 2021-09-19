@@ -1,8 +1,8 @@
-/* global window */
+/* global window, HTMLTextAreaElement, HTMLDivElement, HTMLPreElement, HTMLInputElement, HTMLElement, Event */
 
 // import markdownPro from 'markdown-pro';
 // import markdownProStyle from 'markdown-pro/dist/style.css';
-import markdownPro from '../src/markdown';
+import markdownPro from '../www/library/library';
 
 import {debounce, formatHtml, syncScroll, updateScrollPositionCache} from './util';
 
@@ -12,7 +12,7 @@ export function init(
     outputDebug: HTMLPreElement,
     useLineBreak: HTMLInputElement,
     parseLink: HTMLInputElement
-) {
+): void {
     function refreshResult() {
         updateScrollPositionCache([textArea, output]);
         syncScroll(textArea, output);
@@ -22,8 +22,8 @@ export function init(
         const inputValue = textArea.value;
 
         const markdownHtml = markdownPro(inputValue, {
-            useLineBreak: useLineBreak.checked,
             parseLink: parseLink.checked,
+            useLineBreak: useLineBreak.checked,
         });
 
         // eslint-disable-next-line no-param-reassign

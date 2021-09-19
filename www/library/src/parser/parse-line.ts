@@ -14,8 +14,8 @@ function getShortInfo(trimmedLine: string): ShortLineInfoType {
     for (const selector of selectorList) {
         if (trimmedLine.startsWith(selector)) {
             return {
-                selector,
                 lineContent: cleanLine(trimmedLine.replace(selector, emptyString)),
+                selector,
             };
         }
     }
@@ -24,8 +24,8 @@ function getShortInfo(trimmedLine: string): ShortLineInfoType {
     for (const lineSelector of selectorLineList) {
         if (trimmedLine.startsWith(lineSelector) && getIsAllSymbolsEqual(trimmedLine)) {
             return {
-                selector: lineSelector,
                 lineContent: emptyString,
+                selector: lineSelector,
             };
         }
     }
@@ -36,15 +36,15 @@ function getShortInfo(trimmedLine: string): ShortLineInfoType {
 
         if (trimmedLine.search(regExpSearchSelector) === 0) {
             return {
-                selector,
                 lineContent: cleanLine(trimmedLine.replace(regExpSearchSelector, emptyString)),
+                selector,
             };
         }
     }
 
     return {
-        selector: emptyString,
         lineContent: cleanLine(trimmedLine),
+        selector: emptyString,
     };
 }
 
@@ -64,22 +64,22 @@ export function parseLine(
         : line.search(/\S/);
     const spaceCount = Math.max(0, rawSpaceCount);
     const defaultSelectorData: ShortLineInfoType = {
-        selector: emptyString,
         lineContent: emptyString,
+        selector: emptyString,
     };
 
     const {selector, lineContent} = isEmptyString ? defaultSelectorData : getShortInfo(trimmedLine);
 
     const lineData: LineDataType = {
-        lineIndex,
-        spaceCount,
-        selector,
-        line: isEmptyString ? emptyString : line,
-        trimmedLine,
-        lineContent,
-        childList: [],
         additionalLineList: [],
+        childList: [],
         config: documentMeta.config,
+        line: isEmptyString ? emptyString : line,
+        lineContent,
+        lineIndex,
+        selector,
+        spaceCount,
+        trimmedLine,
     };
 
     if (selectorCodeList.includes(selector)) {
@@ -100,14 +100,15 @@ export function parseLine(
     }
 
     const newFootnoteList = getFootnoteList(lineContent);
+    const {footnoteList, tableLineData, variable} = documentMeta;
 
-    fromToFootnoteList(newFootnoteList, documentMeta.footnoteList);
+    fromToFootnoteList(newFootnoteList, footnoteList);
 
     if (selectorTableList.includes(selector)) {
-        if (documentMeta.tableLineData) {
+        if (tableLineData) {
             // append new line in current block
             // eslint-disable-next-line no-param-reassign
-            documentMeta.tableLineData.additionalLineList.push(lineData.line);
+            tableLineData.additionalLineList.push(lineData.line);
             return true;
         }
         // create new block
@@ -128,7 +129,7 @@ export function parseLine(
 
         if (variableData) {
             // eslint-disable-next-line no-param-reassign
-            documentMeta.variable[variableData.key] = variableData;
+            variable[variableData.key] = variableData;
         }
 
         if (prevItem && prevItem.lineContent.length > 0 && !isTable && !variableData) {
@@ -153,7 +154,7 @@ export function parseLine(
     savedLineDataList.push(lineData);
 
     if (getIsFootnoteDescription(lineContent)) {
-        addLineData(lineData, documentMeta.footnoteList);
+        addLineData(lineData, footnoteList);
     }
 
     return true;

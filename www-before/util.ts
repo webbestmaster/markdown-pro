@@ -1,13 +1,13 @@
-/* global setTimeout, clearTimeout */
+/* global NodeJS, setTimeout, clearTimeout, HTMLElement */
 
 // get from stackoverflow
 // https://stackoverflow.com/questions/3913355/how-to-format-tidy-beautify-in-javascript
 export function formatHtml(html: string): string {
-    const tab: string = '\t';
+    const tab = '\t';
 
-    let result: string = '';
+    let result = '';
 
-    let indent: string = '';
+    let indent = '';
 
     html.split(/>\s*</).forEach((element: string) => {
         if (/^\/\w/.test(element)) {
@@ -25,10 +25,10 @@ export function formatHtml(html: string): string {
 }
 
 type ScrollPositionType = Readonly<{
-    scrollHeight: number;
     clientHeight: number;
     maxScrollTop: number;
     node: HTMLElement;
+    scrollHeight: number;
 }>;
 
 const scrollPositionCacheList: Array<ScrollPositionType> = [];
@@ -46,10 +46,10 @@ function getScrollPosition(node: HTMLElement): ScrollPositionType {
     const maxScrollTop = scrollHeight - clientHeight;
 
     const scrollPosition: ScrollPositionType = {
-        scrollHeight,
         clientHeight,
         maxScrollTop,
         node,
+        scrollHeight,
     };
 
     scrollPositionCacheList.push(scrollPosition);
@@ -57,14 +57,14 @@ function getScrollPosition(node: HTMLElement): ScrollPositionType {
     return scrollPosition;
 }
 
-export function updateScrollPositionCache(nodeList: Array<HTMLElement>) {
+export function updateScrollPositionCache(nodeList: Array<HTMLElement>): void {
     // clear array
     scrollPositionCacheList.splice(0);
     // populate array
     nodeList.forEach(getScrollPosition);
 }
 
-export function syncScroll(fromNode: HTMLElement, toNode: HTMLElement) {
+export function syncScroll(fromNode: HTMLElement, toNode: HTMLElement): void {
     const minScrollDeltaHeight = 1;
     const fromScroll = getScrollPosition(fromNode);
     const toScroll = getScrollPosition(toNode);
@@ -78,41 +78,19 @@ export function syncScroll(fromNode: HTMLElement, toNode: HTMLElement) {
     toNode.scrollTo(0, newTopPosition);
 }
 
-// @ts-ignore
-export function debounce<FunctionType>(
-    wrappedFunction: FunctionType,
-    waitInMs: number,
-    isImmediate?: boolean
-): FunctionType {
-    let timeout: TimeoutID | null = null;
+export function debounce<ArgsType extends Array<unknown>>(
+    wrappedFunction: (...args: ArgsType) => unknown,
+    waitInMs: number
+): (...args: ArgsType) => void {
+    let timeout: NodeJS.Timeout | null = null;
 
-    // @ts-ignore
-    return function debouncedFunction() {
-        // eslint-disable-next-line consistent-this, babel/no-invalid-this, unicorn/no-this-assignment
-        const context = this;
-        const argumentList = [...arguments];
-
-        // eslint-disable-next-line unicorn/consistent-function-scoping
-        function callLater() {
-            timeout = null;
-
-            if (!isImmediate) {
-                // @ts-ignore
-                Reflect.apply(wrappedFunction, context, argumentList);
-            }
+    return function debouncedFunction(...args: ArgsType): void {
+        if (timeout !== null) {
+            clearTimeout(timeout);
         }
 
-        const isCallNow = isImmediate && !timeout;
-
-        clearTimeout(timeout);
-
-        timeout = setTimeout(callLater, waitInMs);
-
-        if (!isCallNow) {
-            return;
-        }
-
-        // @ts-ignore
-        Reflect.apply(wrappedFunction, context, argumentList);
+        timeout = setTimeout(() => {
+            wrappedFunction(...args);
+        }, waitInMs);
     };
 }

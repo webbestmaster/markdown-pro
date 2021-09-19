@@ -1,9 +1,8 @@
+/* global describe, it */
+
 import assert from 'assert';
 
-import {describe, it} from 'mocha';
-
-import markdownPro, {markdown} from '../src/markdown';
-import {MarkdownConfigShallowType} from '../src/markdown-type';
+import markdownPro, {markdown, MarkdownConfigShallowType} from '../../library';
 
 import {stringReverse} from './util';
 

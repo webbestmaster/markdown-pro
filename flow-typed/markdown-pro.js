@@ -1,5 +1,8 @@
 // @flow
 
+// TODO: uncomment this
+
+/*
 declare module 'markdown-pro' {
     declare export type MarkdownConfigType = {|
         +useLineBreak?: boolean,
@@ -21,3 +24,4 @@ declare module 'markdown-pro/dist/style.css' {
 
     declare export default typeof style;
 }
+*/

@@ -13,6 +13,7 @@ export function getVariableData(lineContent: string): VariableType | null {
         return null;
     }
 
+    // eslint-disable-next-line prefer-destructuring
     const key = matchData[1];
 
     const value = lineContent.slice(lineContent.indexOf(']:') + 3).trim();

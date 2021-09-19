@@ -20,6 +20,7 @@ And simple text after.
 };
 
 export const fixtureCodeHighlight = {
+    code: fixtureCodeTextCode,
     input: `
     ### I ❤️ Coding Highlight:
 
@@ -30,7 +31,6 @@ ${fixtureCodeTextCode}
 And simple text after.
 `,
     langName: fixtureCodeLangName,
-    code: fixtureCodeTextCode,
     outputDoNotBreakLine:
         '<h3>I ❤️ Coding Highlight:</h3><code data-lang="bash">yppah eb odus $\norp-nwodkram i mpn $</code><p>And simple text after.</p>',
     outputUseBreakLine:
@@ -38,6 +38,7 @@ And simple text after.
 };
 
 export const fixtureCodeHighlightNoLang = {
+    code: fixtureCodeTextCode,
     input: `
     ### I ❤️ Coding Highlight:
 
@@ -48,7 +49,6 @@ ${fixtureCodeTextCode}
 And simple text after.
 `,
     langName: '',
-    code: fixtureCodeTextCode,
     outputDoNotBreakLine:
         '<h3>I ❤️ Coding Highlight:</h3><code>yppah eb odus $\norp-nwodkram i mpn $</code><p>And simple text after.</p>',
     outputUseBreakLine:
