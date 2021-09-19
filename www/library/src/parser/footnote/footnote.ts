@@ -6,7 +6,7 @@ import {getFootnoteById, getFootnoteInlineLineContent, getFootnoteMarkId} from '
 
 function matchToFootnote(match: string): FootnoteType {
     const id = getFootnoteMarkId(match);
-    const descriptionLineData = null;
+    const descriptionLineData: null = null;
     const inlineLineContent = getFootnoteInlineLineContent(match);
 
     if (match.indexOf('[^') === 1) {

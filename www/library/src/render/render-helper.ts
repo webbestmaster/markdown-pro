@@ -22,7 +22,7 @@ export function getHasEndBreakLine(lineContent: string, useLineBreak: boolean): 
     return useLineBreak || breakLineRegExp.test(lineContent);
 }
 
-function imageReplacer(matchedString: string, alt: mixed, src: string, title: mixed): string {
+function imageReplacer(matchedString: string, alt: unknown, src: string, title: unknown): string {
     const titleAttrValue = hasStringNonEmptySymbols(title) ? ' title="' + title + '"' : '';
     const altAttrValue = hasStringNonEmptySymbols(alt) ? ' alt="' + alt + '"' : '';
 
@@ -31,7 +31,7 @@ function imageReplacer(matchedString: string, alt: mixed, src: string, title: mi
 
 function imageReplacerVariable(
     matchedString: string,
-    alt: mixed,
+    alt: unknown,
     srcVariable: string,
     documentMeta: DocumentMetaType
 ): string {
@@ -51,7 +51,7 @@ const findImageVariableRegExpGlobal = /!\[([\S\s]*?)]\[([\S\s]+?)]/g;
 export function makeImage(html: string, documentMeta: DocumentMetaType): string {
     return html
         .replace(findImageRegExpGlobal, imageReplacer)
-        .replace(findImageVariableRegExpGlobal, (matchedString: string, alt: mixed, srcVariable: string): string => {
+        .replace(findImageVariableRegExpGlobal, (matchedString: string, alt: unknown, srcVariable: string): string => {
             return imageReplacerVariable(matchedString, alt, srcVariable, documentMeta);
         });
 }
@@ -73,7 +73,7 @@ const findMailRegExpGlobal = /\[([\S\s]*?)]\((\S+?)(?:\s+"([\S\s]+?)")?(?:\s+"([
 const findLinkRegExpGlobal = /\[([\S\s]*?)]\((\S+?)(?:\s+"([\S\s]+?)")?\)/g;
 const findLinkVariableRegExpGlobal = /\[([\S\s]*?)]\[([\S\s]+?)]/g;
 
-function mailReplacer(matchedString: string, linkText: string, href: string, title: mixed, subject: mixed): string {
+function mailReplacer(matchedString: string, linkText: string, href: string, title: unknown, subject: unknown): string {
     const titleAttrValue = hasStringNonEmptySymbols(title) ? ' title="' + title + '"' : '';
     const subjectValue = hasStringNonEmptySymbols(subject) ? '?subject=' + subject : '';
     const text = linkText.length > 0 ? linkText : href;
@@ -86,7 +86,7 @@ function mailReplacer(matchedString: string, linkText: string, href: string, tit
     return matchedString;
 }
 
-function linkReplacer(matchedString: string, linkText: string, href: string, title: mixed): string {
+function linkReplacer(matchedString: string, linkText: string, href: string, title: unknown): string {
     const titleAttrValue = hasStringNonEmptySymbols(title) ? ' title="' + title + '"' : '';
     const text = linkText.length > 0 ? linkText : href;
 

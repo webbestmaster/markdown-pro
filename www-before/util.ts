@@ -25,10 +25,10 @@ export function formatHtml(html: string): string {
 }
 
 type ScrollPositionType = Readonly<{
-    scrollHeight: number,
-    clientHeight: number,
-    maxScrollTop: number,
-    node: HTMLElement,
+    scrollHeight: number;
+    clientHeight: number;
+    maxScrollTop: number;
+    node: HTMLElement;
 }>;
 
 const scrollPositionCacheList: Array<ScrollPositionType> = [];
@@ -69,7 +69,7 @@ export function syncScroll(fromNode: HTMLElement, toNode: HTMLElement) {
     const fromScroll = getScrollPosition(fromNode);
     const toScroll = getScrollPosition(toNode);
 
-    const newTopPosition = fromScroll.node.scrollTop / fromScroll.maxScrollTop * toScroll.maxScrollTop;
+    const newTopPosition = (fromScroll.node.scrollTop / fromScroll.maxScrollTop) * toScroll.maxScrollTop;
 
     if (Math.abs(newTopPosition - toScroll.node.scrollTop) < minScrollDeltaHeight) {
         return;

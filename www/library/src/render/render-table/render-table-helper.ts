@@ -32,5 +32,5 @@ export function lineToAlign(divideRaw: string): CellAlignType {
 }
 
 export function getAlignList(selector: SelectorType, divideLine: string): Array<CellAlignType> {
-    return divideLine.split(selector).filter(filterEmptyString).map<CellAlignType, mixed>(lineToAlign);
+    return divideLine.split(selector).filter(filterEmptyString).map<CellAlignType>(lineToAlign);
 }

@@ -10,11 +10,11 @@ const useLineBreak = document.querySelector('.js-use-line-break');
 const parseLink = document.querySelector('.js-parse-link');
 
 if (
-    input instanceof HTMLTextAreaElement
-    && output instanceof HTMLDivElement
-    && outputDebug instanceof HTMLPreElement
-    && useLineBreak instanceof HTMLInputElement
-    && parseLink instanceof HTMLInputElement
+    input instanceof HTMLTextAreaElement &&
+    output instanceof HTMLDivElement &&
+    outputDebug instanceof HTMLPreElement &&
+    useLineBreak instanceof HTMLInputElement &&
+    parseLink instanceof HTMLInputElement
 ) {
     input.textContent = defaultMarkdown;
 

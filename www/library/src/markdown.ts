@@ -57,8 +57,8 @@ export function markdown(mdInput: string, config: MarkdownConfigShallowType = de
         return `<li id="${id}">${markdown(mdFootnoteContent, markdownFootnoteConfig)}</li>`;
     });
 
-    const footnoteDescriptionHtml: string
-        = footnoteDescriptionList.length === 0
+    const footnoteDescriptionHtml: string =
+        footnoteDescriptionList.length === 0
             ? ''
             : ['<hr/>', '<ol type="1">', ...footnoteDescriptionList, '</ol>'].join('');
 
@@ -68,13 +68,10 @@ export function markdown(mdInput: string, config: MarkdownConfigShallowType = de
         return fullContent;
     }
 
-    const fullWrapperClassName
-        = wrapperClassNameConfig === wrapperClassNameDefault
+    const fullWrapperClassName =
+        wrapperClassNameConfig === wrapperClassNameDefault
             ? wrapperClassNameDefault
             : `${wrapperClassNameDefault} ${wrapperClassNameConfig}`;
 
     return `<div class="${fullWrapperClassName}">${fullContent}</div>`;
 }
-
-// eslint-disable-next-line import/no-default-export
-export default markdown;

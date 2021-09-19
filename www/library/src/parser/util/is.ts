@@ -1,9 +1,9 @@
-export function hasProperty(object: mixed, propertyName: string): boolean {
+export function hasProperty(object: unknown, propertyName: string): boolean {
     // @ts-ignore
     return Boolean(object) && Reflect.apply(Object.prototype.hasOwnProperty, object, [propertyName]);
 }
 
-export function hasStringNonEmptySymbols(value: mixed): boolean {
+export function hasStringNonEmptySymbols(value: unknown): boolean {
     return typeof value === 'string' && value.trim().length > 0;
 }
 

@@ -48,62 +48,62 @@ export type SelectorType =
 
 export type LineDataType = Readonly<{
     // order number of line, start with 0
-    lineIndex: number,
+    lineIndex: number;
     // left spaces before any content
-    spaceCount: number,
+    spaceCount: number;
     // selector to render as html, example - '###'
-    selector: SelectorType,
+    selector: SelectorType;
     // full line with all symbols, example - '### this is line'
-    line: string,
+    line: string;
     // trimmed line
-    trimmedLine: string,
+    trimmedLine: string;
     // trimmed line without selector, example - 'this is line'
-    lineContent: string,
+    lineContent: string;
     // line children
-    childList: Array<LineDataType>,
+    childList: Array<LineDataType>;
     // additional line list
-    additionalLineList: Array<string>,
-    config: MarkdownConfigType,
+    additionalLineList: Array<string>;
+    config: MarkdownConfigType;
 }>;
 
 export type OlParseDataType = Readonly<{
-    selector: SelectorOlItemType,
-    regExpSearchSelector: RegExp,
-    olAttributeType: OlAttributeType,
+    selector: SelectorOlItemType;
+    regExpSearchSelector: RegExp;
+    olAttributeType: OlAttributeType;
 }>;
 
 export type ShortLineInfoType = Readonly<{
-    selector: SelectorType,
-    lineContent: string,
+    selector: SelectorType;
+    lineContent: string;
 }>;
 
 export type FootnoteTypeType = 'inline' | 'super';
 
 export type FootnoteType = {
-    readonly id: string,
-    readonly type: FootnoteTypeType,
-    readonly inlineLineContent: string,
-    descriptionLineData: LineDataType | null,
+    readonly id: string;
+    readonly type: FootnoteTypeType;
+    readonly inlineLineContent: string;
+    descriptionLineData: LineDataType | null;
 };
 
 export type VariableType = Readonly<{
-    key: string,
-    value: string,
+    key: string;
+    value: string;
 }>;
 
 export type DocumentMetaType = {
-    tableLineData: LineDataType | null,
-    codeLineData: LineDataType | null,
-    readonly config: MarkdownConfigType,
-    readonly footnoteList: Array<FootnoteType>,
+    tableLineData: LineDataType | null;
+    codeLineData: LineDataType | null;
+    readonly config: MarkdownConfigType;
+    readonly footnoteList: Array<FootnoteType>;
     variable: {
-        [key: string]: VariableType,
-    },
+        [key: string]: VariableType;
+    };
 };
 
 export type PairTagSelectorType = Readonly<{
-    selector: string,
-    openTag: string,
-    closeTag: string,
-    equal: RegExp,
+    selector: string;
+    openTag: string;
+    closeTag: string;
+    equal: RegExp;
 }>;

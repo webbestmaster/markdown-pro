@@ -166,12 +166,12 @@ describe('Markdown-pro test', () => {
         };
 
         assert(
-            markdown(fixtureCodeHighlightNoLang.input, configDoNotBreakLine)
-                === fixtureCodeHighlightNoLang.outputDoNotBreakLine
+            markdown(fixtureCodeHighlightNoLang.input, configDoNotBreakLine) ===
+                fixtureCodeHighlightNoLang.outputDoNotBreakLine
         );
         assert(
-            markdown(fixtureCodeHighlightNoLang.input, configUseBreakLine)
-                === fixtureCodeHighlightNoLang.outputUseBreakLine
+            markdown(fixtureCodeHighlightNoLang.input, configUseBreakLine) ===
+                fixtureCodeHighlightNoLang.outputUseBreakLine
         );
     });
 
