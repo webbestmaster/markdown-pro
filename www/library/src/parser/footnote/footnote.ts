@@ -5,12 +5,11 @@ import {getFootnoteById, getFootnoteInlineLineContent, getFootnoteMarkId} from '
 
 function matchToFootnote(match: string): FootnoteType {
     const id = getFootnoteMarkId(match);
-    const descriptionLineData = null;
     const inlineLineContent = getFootnoteInlineLineContent(match);
 
     if (match.indexOf('[^') === 1) {
         return {
-            descriptionLineData,
+            descriptionLineData: null,
             id,
             inlineLineContent,
             type: footnoteTypeMap.super,
@@ -19,7 +18,7 @@ function matchToFootnote(match: string): FootnoteType {
 
     // match.indexOf('^[')
     return {
-        descriptionLineData,
+        descriptionLineData: null,
         id,
         inlineLineContent,
         type: footnoteTypeMap.inline,
@@ -81,13 +80,17 @@ export function addLineData(lineData: LineDataType, toList: Array<FootnoteType>)
 
 export function makeFootnoteSuper(fullLineContent: string, documentMeta: DocumentMetaType): string {
     return fullLineContent.replace(findFootnoteMarkGlobalRegExp, (match: string): string => {
-        const [firstLetter] = match;
+        const charList: Array<string> = [...match];
+        const [firstLetter] = charList;
         const {footnoteList} = documentMeta;
         const id = getFootnoteMarkId(match);
 
         const footnote = getFootnoteById(id, footnoteList);
 
-        // @ts-ignore
+        if (!footnote) {
+            return '';
+        }
+
         return `${firstLetter}<a href="#${id}"><sup>[${footnoteList.indexOf(footnote) + 1}]</sup></a>`;
     });
 }

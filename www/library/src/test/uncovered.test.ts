@@ -13,7 +13,7 @@ import {getOlTypeBySelector} from '../render/render-helper';
 import {olNumericType, selectorHeaderList, selectorList} from '../parser/parser-selector';
 import {getSelectorIndexList} from '../render/render-pair-tag';
 import {defaultMarkdownConfig} from '../markdown-const';
-import {addLineData} from '../parser/footnote/footnote';
+import {addLineData, makeFootnoteSuper} from '../parser/footnote/footnote';
 
 import {defaultLineData} from './fixture/default-data';
 
@@ -73,5 +73,28 @@ describe('Markdown-pro test:uncovered', () => {
         addLineData(lineData, toList);
 
         assert(toList.length === 0);
+    });
+
+    it('makeFootnoteSuper', () => {
+        const documentMeta: DocumentMetaType = {
+            codeLineData: null,
+            config: defaultMarkdownConfig,
+            footnoteList: [],
+            tableLineData: null,
+            variable: {},
+        };
+
+        assert(makeFootnoteSuper('a[^a]', documentMeta) === '');
+    });
+
+    it('getSelectorIndexList', () => {
+        const pairTagSelector: PairTagSelectorType = {
+            closeTag: '',
+            equal: /\s/,
+            openTag: '',
+            selector: '--',
+        };
+
+        assert.deepStrictEqual(getSelectorIndexList('--', pairTagSelector), []);
     });
 });

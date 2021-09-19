@@ -170,8 +170,7 @@ export function renderAdditionalLineList(lineData: LineDataType): string {
     const prefix = hasParentEndBreakLine ? breakLineTag : space;
     const additionalLineListLength = additionalLineList.length;
     const additionalLineLastIndex = additionalLineListLength - 1;
-    // @ts-ignore
-    const lineResult: Array<string> = Array.from({length: additionalLineListLength}).fill('');
+    const lineResult: Array<string> = Array.from<string>({length: additionalLineListLength}).fill('');
 
     // eslint-disable-next-line no-loops/no-loops
     for (let lineIndex = 0; lineIndex < additionalLineListLength; lineIndex += 1) {

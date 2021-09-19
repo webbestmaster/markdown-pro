@@ -9,14 +9,16 @@ export function cleanLine(line: string): string {
 }
 
 export function getIsAllSymbolsEqual(line: string): boolean {
-    if (line.length === 0) {
+    const charList: Array<string> = [...line];
+
+    const [firstSymbol] = charList;
+
+    if (!firstSymbol) {
         return true;
     }
 
-    const [firstSymbol] = line;
-
     // eslint-disable-next-line no-loops/no-loops
-    for (const char of line) {
+    for (const char of charList) {
         if (char !== firstSymbol) {
             return false;
         }

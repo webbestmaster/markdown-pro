@@ -20,9 +20,12 @@ export function getSelectorIndexList(html: string, pairTagSelector: PairTagSelec
 
     // eslint-disable-next-line no-loops/no-loops
     while (indexOfSelector !== -1) {
-        const equalSymbolsMatch = html.slice(indexOfSelector).match(equal);
+        const equalSymbolsMatch: Array<string> | null = html.slice(indexOfSelector).match(equal);
 
-        // @ts-ignore
+        if (!equalSymbolsMatch) {
+            return [];
+        }
+
         const [equalSymbolLine] = equalSymbolsMatch;
         const equalSymbolLineLength = equalSymbolLine.length;
 
