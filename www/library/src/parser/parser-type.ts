@@ -1,4 +1,4 @@
-import {MarkdownConfigType} from '../markdown-type';
+import {MarkdownConfigType} from '../../library';
 
 export type SelectorHeaderType = '# ' | '## ' | '### ' | '#### ' | '##### ' | '###### ';
 export type SelectorBlockquoteType = '> ';

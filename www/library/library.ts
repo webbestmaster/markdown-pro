@@ -1,19 +1,24 @@
-// export type {
-//     ScreenWidthNameEnum,
-//     SystemScreenDataType,
-//     SystemHookType,
-//     RectangleSizeType,
-// } from './src/system-hook-type';
-// export {useSystem} from './src/system-hook';
-// export {useScreenSize} from './src/screen-size-hook';
-// export {useScreenWidth} from './src/screen-width-hook';
-// export {useScreenHeight} from './src/screen-height-hook';
+import './src/markdown.scss';
 
 import {markdown} from './src/markdown';
-import {MarkdownConfigShallowType} from './src/markdown-type';
 import {defaultMarkdownConfig} from './src/markdown-const';
 
-export {markdown, MarkdownConfigShallowType, defaultMarkdownConfig};
+export type MarkdownConfigType = Readonly<{
+    // code highlight
+    codeHighlight: (langName: string, code: string) => string;
+    // https://exmaple.com -> <a href="https://exmaple.com">https://exmaple.com</a>
+    parseLink: boolean;
+    // make \n => <br/>
+    useLineBreak: boolean;
+    // use wrapper <div class="md-pro">...</div>
+    useWrapper: boolean;
+    // additional css class for wrapper
+    wrapperClassName: string;
+}>;
+
+export type MarkdownConfigShallowType = Readonly<Partial<MarkdownConfigType>>;
+
+export {markdown, defaultMarkdownConfig};
 
 // eslint-disable-next-line import/no-default-export
 export default markdown;

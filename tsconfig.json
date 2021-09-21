@@ -41,7 +41,6 @@
         "sourceMap": true,
     },
     "exclude": [
-        "./flow-typed/",
         "./dist/",
         "./tsc-check/",
         "./node_modules/",

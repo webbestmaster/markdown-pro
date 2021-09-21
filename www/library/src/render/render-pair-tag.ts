@@ -11,8 +11,7 @@ export function getSelectorIndexList(html: string, pairTagSelector: PairTagSelec
     const selectorLength = selector.length;
 
     if (selectorLength === 0) {
-        // this string should not be test covered
-        console.error('Selector is empty string');
+        // console.error('Selector is empty string');
         return resultList;
     }
 

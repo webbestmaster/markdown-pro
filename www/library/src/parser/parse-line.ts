@@ -141,8 +141,7 @@ export function parseLine(
     const parentLineData = getParent(lineData, savedLineDataList);
 
     if (!parentLineData) {
-        // this string should not be test covered
-        console.error('Parent not found');
+        // console.error('Parent not found');
         return false;
     }
 

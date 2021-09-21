@@ -1,6 +1,6 @@
 // @flow
 
-// TODO: uncomment this
+// TODO: you should uncomment this
 
 /*
 declare module 'markdown-pro' {
@@ -12,7 +12,7 @@ declare module 'markdown-pro' {
         +useWrapper?: boolean,
     |};
 
-    declare export default function markdownPro(mdInput: string, config?: MarkdownConfigType): string;
+    declare export default function markdown(mdInput: string, config?: MarkdownConfigType): string;
 
     declare export function markdown(mdInput: string, config?: MarkdownConfigType): string;
 }

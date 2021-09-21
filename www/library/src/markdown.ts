@@ -1,8 +1,9 @@
+import {MarkdownConfigShallowType, MarkdownConfigType} from '../library';
+
 import {parseLine} from './parser/parse-line';
 import {DocumentMetaType, FootnoteType, LineDataType} from './parser/parser-type';
 import {emptyString} from './render/render-const';
 import {renderChildList} from './render/render';
-import {MarkdownConfigShallowType, MarkdownConfigType} from './markdown-type';
 import {defaultMarkdownConfig} from './markdown-const';
 import {getMdFootnoteContent} from './parser/footnote/footnote-helper';
 
@@ -70,7 +71,7 @@ export function markdown(mdInput: string, config: MarkdownConfigShallowType = de
         return fullContent;
     }
 
-    const fullWrapperClassName =
+    const fullWrapperClassName: string =
         wrapperClassNameConfig === wrapperClassNameDefault
             ? wrapperClassNameDefault
             : `${wrapperClassNameDefault} ${wrapperClassNameConfig}`;

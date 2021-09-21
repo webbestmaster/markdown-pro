@@ -10,8 +10,7 @@ export function searchSiblingItem(
     const index = lineDataList.indexOf(lineData);
 
     if (index === -1) {
-        // this string should not be test covered
-        console.error('lineDataList should contain lineData');
+        // console.error('lineDataList should contain lineData');
         return null;
     }
 
@@ -51,8 +50,7 @@ export function getParent(lineData: LineDataType, lineDataList: Array<LineDataTy
         }
     }
 
-    // this string should not be test covered
-    console.error('Parent not found');
+    // console.error('Parent not found');
 
     return null;
 }

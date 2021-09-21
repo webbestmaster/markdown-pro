@@ -2,7 +2,7 @@
 
 // import markdownPro from 'markdown-pro';
 // import markdownProStyle from 'markdown-pro/dist/style.css';
-import markdownPro from '../www/library/library';
+import markdownPro from '../library/library';
 
 import {debounce, formatHtml, syncScroll, updateScrollPositionCache} from './util';
 

@@ -144,8 +144,7 @@ export function getOlTypeBySelector(dataLineSelector: SelectorType): OlAttribute
         }
     }
 
-    // this string should not be test covered
-    console.error('Can not detect ol type by selector', dataLineSelector);
+    // console.error('Can not detect ol type by selector', dataLineSelector);
 
     return olNumericType;
 }

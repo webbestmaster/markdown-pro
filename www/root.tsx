@@ -1,14 +1,23 @@
-/* global document */
+/* global document, Event, HTMLTextAreaElement, HTMLDivElement, HTMLPreElement, HTMLInputElement */
 
-import {render} from 'react-dom';
+import {init} from './demo/init';
+import defaultMarkdown from './demo/demo.md';
 
-import {selector} from './const';
-import {ExampleApp} from './component/app/example-app';
+const input = document.querySelector('.js-input');
+const output = document.querySelector('.js-output');
+const outputDebug = document.querySelector('.js-output-debug');
+const useLineBreak = document.querySelector('.js-use-line-break');
+const parseLink = document.querySelector('.js-parse-link');
 
-const nodeWrapper = document.querySelector(selector.appWrapper);
+if (
+    input instanceof HTMLTextAreaElement &&
+    output instanceof HTMLDivElement &&
+    outputDebug instanceof HTMLPreElement &&
+    useLineBreak instanceof HTMLInputElement &&
+    parseLink instanceof HTMLInputElement
+) {
+    input.textContent = defaultMarkdown;
 
-if (nodeWrapper !== null) {
-    render(<ExampleApp />, nodeWrapper);
-} else {
-    console.error('Can not find nodeWrapper');
+    init(input, output, outputDebug, useLineBreak, parseLink);
+    input.dispatchEvent(new Event('input'));
 }
