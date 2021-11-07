@@ -1,6 +1,4 @@
 import './src/markdown.scss';
-import { markdown } from './src/markdown';
-import { defaultMarkdownConfig } from './src/markdown-const';
 export declare type MarkdownConfigType = Readonly<{
     codeHighlight: (langName: string, code: string) => string;
     parseLink: boolean;
@@ -9,8 +7,8 @@ export declare type MarkdownConfigType = Readonly<{
     wrapperClassName: string;
 }>;
 export declare type MarkdownConfigShallowType = Readonly<Partial<MarkdownConfigType>>;
-export { markdown, defaultMarkdownConfig };
-export default markdown;
+export { defaultMarkdownConfig } from './src/markdown-const';
+export { markdown, markdown as default } from './src/markdown';
 
 declare module 'markdown-pro/dist/style.css' {
     type StyleType = Record<string, string>;

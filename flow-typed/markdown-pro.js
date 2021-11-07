@@ -2,6 +2,8 @@
 
 // TODO: you should uncomment this
 
+console.log('TODO: you should uncomment this');
+
 /*
 declare module 'markdown-pro' {
     declare export type MarkdownConfigType = {|

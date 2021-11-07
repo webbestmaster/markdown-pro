@@ -1,8 +1,5 @@
 import './src/markdown.scss';
 
-import {markdown} from './src/markdown';
-import {defaultMarkdownConfig} from './src/markdown-const';
-
 export type MarkdownConfigType = Readonly<{
     // code highlight
     codeHighlight: (langName: string, code: string) => string;
@@ -18,7 +15,6 @@ export type MarkdownConfigType = Readonly<{
 
 export type MarkdownConfigShallowType = Readonly<Partial<MarkdownConfigType>>;
 
-export {markdown, defaultMarkdownConfig};
-
+export {defaultMarkdownConfig} from './src/markdown-const';
 // eslint-disable-next-line import/no-default-export
-export default markdown;
+export {markdown, markdown as default} from './src/markdown';
