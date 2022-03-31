@@ -1,6 +1,6 @@
 import {DocumentMetaType, LineDataType, OlAttributeType, SelectorType} from '../parser/parser-type';
 import {olNumericType, oLParseDataList} from '../parser/parser-selector';
-import {hasEmailSymbol, hasProperty, hasStringNonEmptySymbols} from '../parser/util/is';
+import {hasEmailSymbol, hasStringNonEmptySymbols} from '../parser/util/is';
 import {makeFootnoteSuper} from '../parser/footnote/footnote';
 import {mailPrefix} from '../markdown-const';
 
@@ -38,7 +38,7 @@ function imageReplacerVariable(
     const altAttrValue = hasStringNonEmptySymbols(alt) ? ' alt="' + alt + '"' : '';
     const {variable} = documentMeta;
 
-    if (hasProperty(variable, srcVariable)) {
+    if (srcVariable in variable) {
         return `<img loading="lazy" src="${variable[srcVariable].value}"${altAttrValue}/>`;
     }
 
@@ -105,7 +105,7 @@ function linkReplacerVariable(
 ): string {
     const {variable} = documentMeta;
 
-    if (hasProperty(variable, hrefVariable)) {
+    if (hrefVariable in variable) {
         const href = variable[hrefVariable].value;
         const textVariable = linkText.length > 0 ? linkText : href;
 
