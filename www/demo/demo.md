@@ -48,6 +48,7 @@ _This is italic text_
 ![](https://placekitten.com/100/100)
 ![Cat](https://placekitten.com/110/110)
 ![One more cat](https://placekitten.com/120/120 "The one more cat")
+![One more cat](https://placekitten.com/130/130 "The one more cat" your-attribute="my value")
 
 Also, use image ![](https://placekitten.com/100/25) inline.
 

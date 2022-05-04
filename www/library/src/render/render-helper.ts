@@ -23,10 +23,10 @@ export function getHasEndBreakLine(lineContent: string, useLineBreak: boolean): 
 }
 
 function imageReplacer(matchedString: string, alt: unknown, src: string, title: unknown): string {
-    const titleAttrValue = hasStringNonEmptySymbols(title) ? ' title="' + title + '"' : '';
+    const titleAndOtherAttrValue = hasStringNonEmptySymbols(title) ? ' title="' + title + '"' : '';
     const altAttrValue = hasStringNonEmptySymbols(alt) ? ' alt="' + alt + '"' : '';
 
-    return `<img loading="lazy" src="${src}"${altAttrValue}${titleAttrValue}/>`;
+    return `<img loading="lazy" src="${src}"${altAttrValue}${titleAndOtherAttrValue}/>`;
 }
 
 function imageReplacerVariable(

@@ -12,12 +12,12 @@
 [![GitHub last commit](https://img.shields.io/github/last-commit/webbestmaster/markdown-pro)](https://github.com/webbestmaster/markdown-pro/commits)
 ![npm](https://img.shields.io/npm/dt/markdown-pro.svg)
 [![npm](https://img.shields.io/npm/dm/markdown-pro)](https://www.npmjs.com/package/markdown-pro)
-[![Website](https://img.shields.io/website?url=http%3A%2F%2Fwebbestmaster.github.io%2Fmarkdown-pro%2F)](http://webbestmaster.github.io/markdown-pro/)
+[![Website](https://img.shields.io/website?url=http%3A%2F%2Fwebbestmaster.github.io%2Fmarkdown-pro%2F)](https://webbestmaster.github.io/markdown-pro/)
 [![Install size](https://packagephobia.now.sh/badge?p=markdown-pro)](https://packagephobia.now.sh/result?p=markdown-pro)
 
 -->
 
-**[Live demo](http://webbestmaster.github.io/markdown-pro)**
+**[Live demo](https://webbestmaster.github.io/markdown-pro)**
 
 
 ## Install
@@ -116,10 +116,11 @@ C~2~H~5~OH  ->  C<sub>2</sub>H<sub>5</sub>OH
 #### Images
 
 ```html
-![](https://placekitten.com/100/100)               ->  <img src="https://placekitten.com/100/100"/>
-![Cat](https://placekitten.com/110/110)            ->  <img src="https://placekitten.com/110/110" alt="Cat"/>
-![Cat](https://placekitten.com/120/120 "The cat")  ->  <img src="https://placekitten.com/120/120" alt="Cat" title="The cat"/>
-Image ![](https://placekitten.com/100/25) inline   ->  Image <img src="https://placekitten.com/100/25"/> inline
+![](https://placekitten.com/100/100)                                        ->  <img src="https://placekitten.com/100/100"/>
+![Cat](https://placekitten.com/110/110)                                     ->  <img src="https://placekitten.com/110/110" alt="Cat"/>
+![Cat](https://placekitten.com/120/120 "The cat")                           ->  <img src="https://placekitten.com/120/120" alt="Cat" title="The cat"/>
+![Cat](https://placekitten.com/120/120 "The cat" your-attribute="my value") ->  <img src="https://placekitten.com/120/120" alt="Cat" title="The cat" your-attribute="my value"/>
+Image ![](https://placekitten.com/100/25) inline                            ->  Image <img src="https://placekitten.com/100/25"/> inline
 ```
 
 
