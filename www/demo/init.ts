@@ -1,17 +1,35 @@
-/* global window, HTMLTextAreaElement, HTMLDivElement, HTMLPreElement, HTMLInputElement, HTMLElement, Event */
+/* global window, HTMLTextAreaElement, HTMLDivElement, HTMLPreElement, HTMLInputElement, HTMLElement, HTMLSelectElement, Event */
 
 // import markdownPro from 'markdown-pro';
 // import markdownProStyle from 'markdown-pro/dist/style.css';
-import markdownPro from '../library/library';
+import markdownPro, {ThemeNameEnum} from '../library/library';
 
 import {debounce, formatHtml, syncScroll, updateScrollPositionCache} from './util';
 
+function getThemeName(value: unknown): ThemeNameEnum {
+    switch (value) {
+        case ThemeNameEnum.auto:
+            return ThemeNameEnum.auto;
+        case ThemeNameEnum.dark:
+            return ThemeNameEnum.dark;
+        case ThemeNameEnum.light:
+            return ThemeNameEnum.light;
+        default:
+            console.warn('[getThemeName] can not detect theme name.');
+    }
+
+    console.warn('[getThemeName] use ThemeNameEnum.auto.');
+    return ThemeNameEnum.auto;
+}
+
+// eslint-disable-next-line max-params
 export function init(
     textArea: HTMLTextAreaElement,
     output: HTMLDivElement,
     outputDebug: HTMLPreElement,
     useLineBreak: HTMLInputElement,
-    parseLink: HTMLInputElement
+    parseLink: HTMLInputElement,
+    themeName: HTMLSelectElement
 ): void {
     function refreshResult() {
         updateScrollPositionCache([textArea, output]);
@@ -23,6 +41,7 @@ export function init(
 
         const markdownHtml = markdownPro(inputValue, {
             parseLink: parseLink.checked,
+            themeName: getThemeName(themeName.value),
             useLineBreak: useLineBreak.checked,
         });
 
@@ -59,6 +78,7 @@ export function init(
 
     useLineBreak.addEventListener('change', handleInput, false);
     parseLink.addEventListener('change', handleInput, false);
+    themeName.addEventListener('change', handleInput, false);
 
     window.addEventListener('resize', refreshResult, false);
 }

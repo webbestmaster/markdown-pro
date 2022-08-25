@@ -66,6 +66,14 @@ body {
         font-family: $main-font-family-monospace;
     }
 
+    .setting-label-list {
+        align-items: flex-start;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding-bottom: 8px;
+    }
+
     .setting-label {
         cursor: pointer;
         margin: 0;

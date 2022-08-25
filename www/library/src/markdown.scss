@@ -2,11 +2,9 @@
 /* stylelint-disable selector-no-qualifying-type */
 /* stylelint-disable selector-max-compound-selectors */
 /* stylelint-disable selector-pseudo-class-no-unknown */
+/* stylelint-disable no-duplicate-selectors */
 
-$main-line-height: 1.4;
-$main-font-size: 16px;
-$main-font-family: 'Helvetica', 'Arial', sans-serif;
-$main-font-family-monospace: 'Lucida Console', 'Monaco', monospace;
+/*
 $main-link-color: #0366d6;
 $main-background-color: #fff;
 $main-hr-color: #eee;
@@ -18,13 +16,100 @@ $main-code-border-color: #ccc;
 $main-code-color: #333;
 $main-code-inline-background-color: #f9f2f4;
 $main-code-inline-color: #c7254e;
+*/
+
+// default state
+:global .md-pro {
+    // main variables
+    --main-line-height: 1.4;
+    --main-font-size: 16px;
+    --main-font-family: 'Helvetica', 'Arial', sans-serif;
+    --main-font-family-monospace: 'Lucida Console', 'Monaco', monospace;
+    // theme relation variables
+    --main-text-color: #111;
+    --main-link-color: #0366d6;
+    --main-background-color: #fff;
+    --main-hr-color: #eee;
+    --main-tr-odd-background-color: #f9f9f9;
+    --main-td-border-top-color: #ddd;
+    --main-blockquote-border-left-color: #eee;
+    --main-code-background-color: #f5f5f5;
+    --main-code-border-color: #ccc;
+    --main-code-color: #333;
+    --main-code-inline-background-color: #f9f2f4;
+    --main-code-inline-color: #c7254e;
+}
+
+@media (prefers-color-scheme: light) {
+    :global .md-pro {
+        --main-text-color: #111;
+        --main-link-color: #0366d6;
+        --main-background-color: #fff;
+        --main-hr-color: #eee;
+        --main-tr-odd-background-color: #f9f9f9;
+        --main-td-border-top-color: #ddd;
+        --main-blockquote-border-left-color: #eee;
+        --main-code-background-color: #f5f5f5;
+        --main-code-border-color: #ccc;
+        --main-code-color: #333;
+        --main-code-inline-background-color: #f9f2f4;
+        --main-code-inline-color: #c7254e;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :global .md-pro {
+        --main-text-color: #eee;
+        --main-link-color: #fc9929;
+        --main-background-color: #212121;
+        //--main-hr-color: #111;
+        --main-tr-odd-background-color: #060606;
+        //--main-td-border-top-color: #222;
+        --main-blockquote-border-left-color: #888;
+        --main-code-background-color: #0a0a0a;
+        //--main-code-border-color: #333;
+        --main-code-color: #ccc;
+        --main-code-inline-background-color: #060d0b;
+        --main-code-inline-color: #38dab1;
+    }
+}
+
+:global .md-pro.md-pro-theme-light {
+    --main-text-color: #111;
+    --main-link-color: #0366d6;
+    --main-background-color: #fff;
+    --main-hr-color: #eee;
+    --main-tr-odd-background-color: #f9f9f9;
+    --main-td-border-top-color: #ddd;
+    --main-blockquote-border-left-color: #eee;
+    --main-code-background-color: #f5f5f5;
+    --main-code-border-color: #ccc;
+    --main-code-color: #333;
+    --main-code-inline-background-color: #f9f2f4;
+    --main-code-inline-color: #c7254e;
+}
+
+:global .md-pro.md-pro-theme-dark {
+    --main-text-color: #eee;
+    --main-link-color: #fc9929;
+    --main-background-color: #212121;
+    //--main-hr-color: #111;
+    --main-tr-odd-background-color: #060606;
+    //--main-td-border-top-color: #222;
+    --main-blockquote-border-left-color: #888;
+    --main-code-background-color: #0a0a0a;
+    //--main-code-border-color: #333;
+    --main-code-color: #ccc;
+    --main-code-inline-background-color: #060d0b;
+    --main-code-inline-color: #38dab1;
+}
 
 :global .md-pro {
-    background-color: $main-background-color;
+    background-color: var(--main-background-color);
     display: block;
-    font-family: $main-font-family;
-    font-size: $main-font-size;
-    line-height: $main-line-height;
+    font-family: var(--main-font-family);
+    font-size: var(--main-font-size);
+    line-height: var(--main-line-height);
 
     h1,
     h2,
@@ -53,7 +138,7 @@ $main-code-inline-color: #c7254e;
     ol,
     li,
     img {
-        color: inherit;
+        color: var(--main-text-color);
         font-size: inherit;
         line-height: inherit;
         margin: 0;
@@ -66,7 +151,7 @@ $main-code-inline-color: #c7254e;
     }
 
     a {
-        color: $main-link-color;
+        color: var(--main-link-color);
         text-decoration: underline;
 
         &:hover {
@@ -106,7 +191,7 @@ $main-code-inline-color: #c7254e;
     }
 
     hr {
-        background-color: $main-hr-color;
+        background-color: var(--main-hr-color);
         border: 0;
         height: 1px;
         margin: 1.25em 0;
@@ -184,7 +269,7 @@ $main-code-inline-color: #c7254e;
 
     tbody {
         tr:nth-child(odd) {
-            background-color: $main-tr-odd-background-color;
+            background-color: var(--main-tr-odd-background-color);
         }
     }
 
@@ -199,23 +284,23 @@ $main-code-inline-color: #c7254e;
     }
 
     td {
-        border-top: 1px solid $main-td-border-top-color;
+        border-top: 1px solid var(--main-td-border-top-color);
     }
 
     blockquote {
-        border-left: 5px solid $main-blockquote-border-left-color;
+        border-left: 5px solid var(--main-blockquote-border-left-color);
         font-size: 1.125em;
         margin: 0 0 0.65em;
         padding: 0.5em 1em;
     }
 
     code {
-        background-color: $main-code-background-color;
-        border: 1px solid $main-code-border-color;
+        background-color: var(--main-code-background-color);
+        border: 1px solid var(--main-code-border-color);
         border-radius: 4px;
-        color: $main-code-color;
+        color: var(--main-code-color);
         display: block;
-        font-family: $main-font-family-monospace;
+        font-family: var(--main-font-family-monospace);
         margin: 0 0 0.65em;
         overflow: auto;
         padding: 0.6em;
@@ -223,9 +308,9 @@ $main-code-inline-color: #c7254e;
         word-break: break-all;
 
         &[data-type='inline'] {
-            background-color: $main-code-inline-background-color;
+            background-color: var(--main-code-inline-background-color);
             border-radius: 4px;
-            color: $main-code-inline-color;
+            color: var(--main-code-inline-color);
             display: inline;
             font-size: 0.9em;
             padding: 0.15em 0.3em;

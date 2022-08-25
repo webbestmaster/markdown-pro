@@ -6,6 +6,7 @@ import {emptyString} from './render/render-const';
 import {renderChildList} from './render/render';
 import {defaultMarkdownConfig} from './markdown-const';
 import {getMdFootnoteContent} from './parser/footnote/footnote-helper';
+import {getFullWrapperClassName} from './helper';
 
 export function markdown(mdInput: string, config: MarkdownConfigShallowType = defaultMarkdownConfig): string {
     const markdownConfig: MarkdownConfigType = {
@@ -48,9 +49,6 @@ export function markdown(mdInput: string, config: MarkdownConfigShallowType = de
         parseLine(line, lineIndex, allLineList, structuredLineDataList, savedLineDataList, documentMeta);
     });
 
-    const {wrapperClassName: wrapperClassNameConfig} = markdownConfig;
-    const {wrapperClassName: wrapperClassNameDefault} = defaultMarkdownConfig;
-
     const mainContent = renderChildList(structuredLineDataList, documentMeta);
 
     const footnoteDescriptionList: Array<string> = documentMeta.footnoteList.map((footnote: FootnoteType): string => {
@@ -71,10 +69,7 @@ export function markdown(mdInput: string, config: MarkdownConfigShallowType = de
         return fullContent;
     }
 
-    const fullWrapperClassName: string =
-        wrapperClassNameConfig === wrapperClassNameDefault
-            ? wrapperClassNameDefault
-            : `${wrapperClassNameDefault} ${wrapperClassNameConfig}`;
+    const fullWrapperClassName: string = getFullWrapperClassName(markdownConfig);
 
     return `<div class="${fullWrapperClassName}">${fullContent}</div>`;
 }

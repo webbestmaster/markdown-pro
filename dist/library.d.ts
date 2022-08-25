@@ -1,9 +1,11 @@
 import './src/markdown.scss';
 export { markdown, markdown as default } from './src/markdown';
-export { defaultMarkdownConfig } from './src/markdown-const';
+export { defaultMarkdownConfig, ThemeNameEnum } from './src/markdown-const';
+import { ThemeNameEnum } from './src/markdown-const';
 export declare type MarkdownConfigType = Readonly<{
     codeHighlight: (langName: string, code: string) => string;
     parseLink: boolean;
+    themeName: ThemeNameEnum;
     useLineBreak: boolean;
     useWrapper: boolean;
     wrapperClassName: string;

@@ -28,12 +28,22 @@
             <a class="link" target="_blank" href="https://www.npmjs.com/package/markdown-pro">npm</a>
         </p>
 
-        <label class="setting-label">
-            <input class="js-use-line-break" type="checkbox"/> use line break
-        </label>
-        <label class="setting-label">
-            <input class="js-parse-link" type="checkbox" checked="checked"/> parse link
-        </label>
+        <div class="setting-label-list">
+            <label class="setting-label">
+                Use line break: <input class="js-use-line-break" type="checkbox"/>
+            </label>
+            <label class="setting-label">
+                Parse link: <input class="js-parse-link" type="checkbox" checked="checked"/>
+            </label>
+            <label class="setting-label">
+                Theme name:
+                <select class="js-theme-name">
+                    <option value="auto">auto (use system theme)</option>
+                    <option value="dark">dark</option>
+                    <option value="light">light</option>
+                </select>
+            </label>
+        </div>
     </div>
 
     <div class="text-area-list">

@@ -29,7 +29,7 @@ npm i markdown-pro
 ## Usage examples
 
 ```javascript
-import markdownPro from 'markdown-pro';
+import markdownPro, {ThemeNameEnum} from 'markdown-pro';
 // import styles
 import 'markdown-pro/dist/style.css';
 
@@ -48,6 +48,9 @@ const config = {
     },
     // use wrapper <div class="md-pro">...</div>, default: true, optional
     useWrapper: true,
+    // themeName: light | dark | auto (auto - will use current system theme i.e. light or dark)
+    // needed class will be added to the wrapper div
+    themeName: ThemeNameEnum.auto,
 };
 
 const htmlCodeConfigured = markdownPro('# Markdown Pro', config);
