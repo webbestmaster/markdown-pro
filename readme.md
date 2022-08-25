@@ -48,7 +48,8 @@ const config = {
     },
     // use wrapper <div class="md-pro">...</div>, default: true, optional
     useWrapper: true,
-    // themeName: light | dark | auto (auto - will use current system theme i.e. light or dark)
+    // themeName: light | dark | auto, default: auto, optional
+    // auto - will use current system theme i.e. light or dark
     // needed class will be added to the wrapper div
     themeName: ThemeNameEnum.auto,
 };
