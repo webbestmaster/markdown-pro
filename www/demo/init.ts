@@ -8,14 +8,18 @@ import {debounce, formatHtml, syncScroll, updateScrollPositionCache} from './uti
 
 function getThemeName(value: unknown): ThemeNameEnum {
     switch (value) {
-        case ThemeNameEnum.auto:
+        case ThemeNameEnum.auto: {
             return ThemeNameEnum.auto;
-        case ThemeNameEnum.dark:
+        }
+        case ThemeNameEnum.dark: {
             return ThemeNameEnum.dark;
-        case ThemeNameEnum.light:
+        }
+        case ThemeNameEnum.light: {
             return ThemeNameEnum.light;
-        default:
+        }
+        default: {
             console.warn('[getThemeName] can not detect theme name.');
+        }
     }
 
     console.warn('[getThemeName] use ThemeNameEnum.auto.');
