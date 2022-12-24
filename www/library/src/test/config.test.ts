@@ -1,18 +1,18 @@
-/* global describe, it */
+import assert from 'node:assert/strict';
 
-import assert from 'assert';
+import {describe, test} from '@jest/globals';
 
 import {markdown, defaultMarkdownConfig, ThemeNameEnum} from '../../library';
 import {themeClassNameMap} from '../markdown-const';
 
 describe('Markdown-pro test:config', () => {
-    it('Additional css class', () => {
+    test('Additional css class', () => {
         const additionalCssClass = 'additional-css-class';
 
-        assert(markdown('', {wrapperClassName: additionalCssClass}).includes(additionalCssClass));
-        assert(
-            markdown('') ===
-                `<div class="${defaultMarkdownConfig.wrapperClassName} ${themeClassNameMap[ThemeNameEnum.auto]}"></div>`
+        assert.equal(markdown('', {wrapperClassName: additionalCssClass}).includes(additionalCssClass), true);
+        assert.equal(
+            markdown(''),
+            `<div class="${defaultMarkdownConfig.wrapperClassName} ${themeClassNameMap[ThemeNameEnum.auto]}"></div>`
         );
     });
 });

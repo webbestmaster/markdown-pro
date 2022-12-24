@@ -1,6 +1,6 @@
-/* global describe, it */
+import assert from 'node:assert/strict';
 
-import assert from 'assert';
+import {describe, test} from '@jest/globals';
 
 import markdownPro, {markdown, MarkdownConfigShallowType} from '../../library';
 
@@ -41,76 +41,76 @@ function mdUseBreakLine(input: string): string {
 
 // eslint-disable-next-line max-statements
 describe('Markdown-pro test', () => {
-    it('Import', () => {
-        assert(markdownPro === markdown, 'markdownPro !== {markdown}');
+    test('Import', () => {
+        assert.equal(markdownPro, markdown, 'markdownPro !== {markdown}');
     });
 
-    it('Header', () => {
-        assert(mdDoNotBreakLine(fixtureHeader.input) === fixtureHeader.outputDoNotBreakLine);
-        assert(mdUseBreakLine(fixtureHeader.input) === fixtureHeader.outputUseBreakLine);
+    test('Header', () => {
+        assert.equal(mdDoNotBreakLine(fixtureHeader.input), fixtureHeader.outputDoNotBreakLine);
+        assert.equal(mdUseBreakLine(fixtureHeader.input), fixtureHeader.outputUseBreakLine);
     });
 
-    it('Paragraph', () => {
-        assert(mdDoNotBreakLine(fixtureParagraph.input) === fixtureParagraph.outputDoNotBreakLine);
-        assert(mdUseBreakLine(fixtureParagraph.input) === fixtureParagraph.outputUseBreakLine);
+    test('Paragraph', () => {
+        assert.equal(mdDoNotBreakLine(fixtureParagraph.input), fixtureParagraph.outputDoNotBreakLine);
+        assert.equal(mdUseBreakLine(fixtureParagraph.input), fixtureParagraph.outputUseBreakLine);
     });
 
-    it('Html', () => {
-        assert(mdDoNotBreakLine(fixtureHtml.input) === fixtureHtml.outputDoNotBreakLine);
-        assert(mdUseBreakLine(fixtureHtml.input) === fixtureHtml.outputUseBreakLine);
+    test('Html', () => {
+        assert.equal(mdDoNotBreakLine(fixtureHtml.input), fixtureHtml.outputDoNotBreakLine);
+        assert.equal(mdUseBreakLine(fixtureHtml.input), fixtureHtml.outputUseBreakLine);
     });
 
-    it('Line', () => {
-        assert(mdDoNotBreakLine(fixtureLine.input) === fixtureLine.outputDoNotBreakLine);
-        assert(mdUseBreakLine(fixtureLine.input) === fixtureLine.outputUseBreakLine);
+    test('Line', () => {
+        assert.equal(mdDoNotBreakLine(fixtureLine.input), fixtureLine.outputDoNotBreakLine);
+        assert.equal(mdUseBreakLine(fixtureLine.input), fixtureLine.outputUseBreakLine);
     });
 
-    it('Pair tag', () => {
-        assert(mdDoNotBreakLine(fixturePairTag.input) === fixturePairTag.outputDoNotBreakLine);
-        assert(mdUseBreakLine(fixturePairTag.input) === fixturePairTag.outputUseBreakLine);
+    test('Pair tag', () => {
+        assert.equal(mdDoNotBreakLine(fixturePairTag.input), fixturePairTag.outputDoNotBreakLine);
+        assert.equal(mdUseBreakLine(fixturePairTag.input), fixturePairTag.outputUseBreakLine);
     });
 
-    it('Unordered List', () => {
-        assert(mdDoNotBreakLine(fixtureUnorderedList.input) === fixtureUnorderedList.outputDoNotBreakLine);
-        assert(mdUseBreakLine(fixtureUnorderedList.input) === fixtureUnorderedList.outputUseBreakLine);
+    test('Unordered List', () => {
+        assert.equal(mdDoNotBreakLine(fixtureUnorderedList.input), fixtureUnorderedList.outputDoNotBreakLine);
+        assert.equal(mdUseBreakLine(fixtureUnorderedList.input), fixtureUnorderedList.outputUseBreakLine);
     });
 
-    it('Ordered List', () => {
-        assert(mdDoNotBreakLine(fixtureOrderedList.input) === fixtureOrderedList.outputDoNotBreakLine);
-        assert(mdUseBreakLine(fixtureOrderedList.input) === fixtureOrderedList.outputUseBreakLine);
+    test('Ordered List', () => {
+        assert.equal(mdDoNotBreakLine(fixtureOrderedList.input), fixtureOrderedList.outputDoNotBreakLine);
+        assert.equal(mdUseBreakLine(fixtureOrderedList.input), fixtureOrderedList.outputUseBreakLine);
     });
 
-    it('Image', () => {
-        assert(mdDoNotBreakLine(fixtureImage.input) === fixtureImage.outputDoNotBreakLine);
-        assert(mdUseBreakLine(fixtureImage.input) === fixtureImage.outputUseBreakLine);
+    test('Image', () => {
+        assert.equal(mdDoNotBreakLine(fixtureImage.input), fixtureImage.outputDoNotBreakLine);
+        assert.equal(mdUseBreakLine(fixtureImage.input), fixtureImage.outputUseBreakLine);
     });
 
-    it('Checkbox', () => {
-        assert(mdDoNotBreakLine(fixtureCheckbox.input) === fixtureCheckbox.outputDoNotBreakLine);
-        assert(mdUseBreakLine(fixtureCheckbox.input) === fixtureCheckbox.outputUseBreakLine);
+    test('Checkbox', () => {
+        assert.equal(mdDoNotBreakLine(fixtureCheckbox.input), fixtureCheckbox.outputDoNotBreakLine);
+        assert.equal(mdUseBreakLine(fixtureCheckbox.input), fixtureCheckbox.outputUseBreakLine);
     });
 
-    it('Link', () => {
-        assert(mdDoNotBreakLine(fixtureLink.input) === fixtureLink.outputDoNotBreakLine);
-        assert(mdUseBreakLine(fixtureLink.input) === fixtureLink.outputUseBreakLine);
+    test('Link', () => {
+        assert.equal(mdDoNotBreakLine(fixtureLink.input), fixtureLink.outputDoNotBreakLine);
+        assert.equal(mdUseBreakLine(fixtureLink.input), fixtureLink.outputUseBreakLine);
     });
 
-    it('Mail', () => {
-        assert(mdDoNotBreakLine(fixtureMail.input) === fixtureMail.outputDoNotBreakLine);
-        assert(mdUseBreakLine(fixtureMail.input) === fixtureMail.outputUseBreakLine);
+    test('Mail', () => {
+        assert.equal(mdDoNotBreakLine(fixtureMail.input), fixtureMail.outputDoNotBreakLine);
+        assert.equal(mdUseBreakLine(fixtureMail.input), fixtureMail.outputUseBreakLine);
     });
 
-    it('Blockquote', () => {
-        assert(mdDoNotBreakLine(fixtureBlockquote.input) === fixtureBlockquote.outputDoNotBreakLine);
-        assert(mdUseBreakLine(fixtureBlockquote.input) === fixtureBlockquote.outputUseBreakLine);
+    test('Blockquote', () => {
+        assert.equal(mdDoNotBreakLine(fixtureBlockquote.input), fixtureBlockquote.outputDoNotBreakLine);
+        assert.equal(mdUseBreakLine(fixtureBlockquote.input), fixtureBlockquote.outputUseBreakLine);
     });
 
-    it('Code', () => {
-        assert(mdDoNotBreakLine(fixtureCode.input) === fixtureCode.outputDoNotBreakLine);
-        assert(mdUseBreakLine(fixtureCode.input) === fixtureCode.outputUseBreakLine);
+    test('Code', () => {
+        assert.equal(mdDoNotBreakLine(fixtureCode.input), fixtureCode.outputDoNotBreakLine);
+        assert.equal(mdUseBreakLine(fixtureCode.input), fixtureCode.outputUseBreakLine);
     });
 
-    it('Code highlight', () => {
+    test('Code highlight', () => {
         function codeHighlight(langName: string, code: string): string {
             if (langName !== fixtureCodeHighlight.langName) {
                 throw new Error('codeHighlight: wrong langName');
@@ -134,13 +134,14 @@ describe('Markdown-pro test', () => {
             useWrapper: false,
         };
 
-        assert(
-            markdown(fixtureCodeHighlight.input, configDoNotBreakLine) === fixtureCodeHighlight.outputDoNotBreakLine
+        assert.equal(
+            markdown(fixtureCodeHighlight.input, configDoNotBreakLine),
+            fixtureCodeHighlight.outputDoNotBreakLine
         );
-        assert(markdown(fixtureCodeHighlight.input, configUseBreakLine) === fixtureCodeHighlight.outputUseBreakLine);
+        assert.equal(markdown(fixtureCodeHighlight.input, configUseBreakLine), fixtureCodeHighlight.outputUseBreakLine);
     });
 
-    it('Code highlight: no lang', () => {
+    test('Code highlight: no lang', () => {
         function codeHighlight(langName: string, code: string): string {
             if (langName !== fixtureCodeHighlightNoLang.langName) {
                 throw new Error('codeHighlight - no lang: wrong langName');
@@ -164,27 +165,27 @@ describe('Markdown-pro test', () => {
             useWrapper: false,
         };
 
-        assert(
-            markdown(fixtureCodeHighlightNoLang.input, configDoNotBreakLine) ===
-                fixtureCodeHighlightNoLang.outputDoNotBreakLine
+        assert.equal(
+            markdown(fixtureCodeHighlightNoLang.input, configDoNotBreakLine),
+            fixtureCodeHighlightNoLang.outputDoNotBreakLine
         );
-        assert(
-            markdown(fixtureCodeHighlightNoLang.input, configUseBreakLine) ===
-                fixtureCodeHighlightNoLang.outputUseBreakLine
+        assert.equal(
+            markdown(fixtureCodeHighlightNoLang.input, configUseBreakLine),
+            fixtureCodeHighlightNoLang.outputUseBreakLine
         );
     });
 
-    it('Parse link', () => {
-        assert(mdDoNotBreakLine(fixtureParseLink.input) === fixtureParseLink.outputDoNotBreakLine);
-        assert(mdUseBreakLine(fixtureParseLink.input) === fixtureParseLink.outputUseBreakLine);
+    test('Parse link', () => {
+        assert.equal(mdDoNotBreakLine(fixtureParseLink.input), fixtureParseLink.outputDoNotBreakLine);
+        assert.equal(mdUseBreakLine(fixtureParseLink.input), fixtureParseLink.outputUseBreakLine);
     });
 
-    it('Parse Mail', () => {
-        assert(mdDoNotBreakLine(fixtureParseMail.input) === fixtureParseMail.outputDoNotBreakLine);
-        assert(mdUseBreakLine(fixtureParseMail.input) === fixtureParseMail.outputUseBreakLine);
+    test('Parse Mail', () => {
+        assert.equal(mdDoNotBreakLine(fixtureParseMail.input), fixtureParseMail.outputDoNotBreakLine);
+        assert.equal(mdUseBreakLine(fixtureParseMail.input), fixtureParseMail.outputUseBreakLine);
     });
 
-    it('Do NOT parse link', () => {
+    test('Do NOT parse link', () => {
         const configDoNotBreakLine: MarkdownConfigShallowType = {
             parseLink: false,
             useWrapper: false,
@@ -196,13 +197,17 @@ describe('Markdown-pro test', () => {
             useWrapper: false,
         };
 
-        assert(
-            markdown(fixtureDoNotParseLink.input, configDoNotBreakLine) === fixtureDoNotParseLink.outputDoNotBreakLine
+        assert.equal(
+            markdown(fixtureDoNotParseLink.input, configDoNotBreakLine),
+            fixtureDoNotParseLink.outputDoNotBreakLine
         );
-        assert(markdown(fixtureDoNotParseLink.input, configUseBreakLine) === fixtureDoNotParseLink.outputUseBreakLine);
+        assert.equal(
+            markdown(fixtureDoNotParseLink.input, configUseBreakLine),
+            fixtureDoNotParseLink.outputUseBreakLine
+        );
     });
 
-    it('Do NOT parse mail', () => {
+    test('Do NOT parse mail', () => {
         const configDoNotBreakLine: MarkdownConfigShallowType = {
             parseLink: false,
             useWrapper: false,
@@ -214,30 +219,40 @@ describe('Markdown-pro test', () => {
             useWrapper: false,
         };
 
-        assert(
-            markdown(fixtureDoNotParseMail.input, configDoNotBreakLine) === fixtureDoNotParseMail.outputDoNotBreakLine
+        assert.equal(
+            markdown(fixtureDoNotParseMail.input, configDoNotBreakLine),
+            fixtureDoNotParseMail.outputDoNotBreakLine
         );
-        assert(markdown(fixtureDoNotParseMail.input, configUseBreakLine) === fixtureDoNotParseMail.outputUseBreakLine);
+        assert.equal(
+            markdown(fixtureDoNotParseMail.input, configUseBreakLine),
+            fixtureDoNotParseMail.outputUseBreakLine
+        );
     });
 
-    it('Table', () => {
-        assert(mdDoNotBreakLine(fixtureTable1.input) === fixtureTable1.output);
-        assert(mdUseBreakLine(fixtureTable2.input) === fixtureTable2.output);
-        assert(markdown(fixtureTable3.input, {...fixtureTable3.config, useWrapper: false}) === fixtureTable3.output);
+    test('Table', () => {
+        assert.equal(mdDoNotBreakLine(fixtureTable1.input), fixtureTable1.output);
+        assert.equal(mdUseBreakLine(fixtureTable2.input), fixtureTable2.output);
+        assert.equal(
+            markdown(fixtureTable3.input, {
+                ...fixtureTable3.config,
+                useWrapper: false,
+            }),
+            fixtureTable3.output
+        );
     });
 
-    it('Footnote', () => {
-        assert(mdDoNotBreakLine(fixtureFootnote.input) === fixtureFootnote.outputDoNotBreakLine);
-        assert(mdUseBreakLine(fixtureFootnote.input) === fixtureFootnote.outputUseBreakLine);
+    test('Footnote', () => {
+        assert.equal(mdDoNotBreakLine(fixtureFootnote.input), fixtureFootnote.outputDoNotBreakLine);
+        assert.equal(mdUseBreakLine(fixtureFootnote.input), fixtureFootnote.outputUseBreakLine);
     });
 
-    it('Variables', () => {
-        assert(mdDoNotBreakLine(fixtureVariable.input) === fixtureVariable.outputDoNotBreakLine);
-        assert(mdUseBreakLine(fixtureVariable.input) === fixtureVariable.outputUseBreakLine);
+    test('Variables', () => {
+        assert.equal(mdDoNotBreakLine(fixtureVariable.input), fixtureVariable.outputDoNotBreakLine);
+        assert.equal(mdUseBreakLine(fixtureVariable.input), fixtureVariable.outputUseBreakLine);
     });
 
-    it('Mix 1', () => {
-        assert(mdDoNotBreakLine(fixtureMix1.input) === fixtureMix1.outputDoNotBreakLine);
-        assert(mdUseBreakLine(fixtureMix1.input) === fixtureMix1.outputUseBreakLine);
+    test('Mix 1', () => {
+        assert.equal(mdDoNotBreakLine(fixtureMix1.input), fixtureMix1.outputDoNotBreakLine);
+        assert.equal(mdUseBreakLine(fixtureMix1.input), fixtureMix1.outputUseBreakLine);
     });
 });

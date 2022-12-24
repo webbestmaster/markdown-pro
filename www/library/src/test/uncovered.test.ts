@@ -1,6 +1,6 @@
-/* global describe, it */
+import assert from 'node:assert/strict';
 
-import assert from 'assert';
+import {describe, test} from '@jest/globals';
 
 import {parseLine} from '../parser/parse-line';
 import {DocumentMetaType, FootnoteType, LineDataType, PairTagSelectorType} from '../parser/parser-type';
@@ -18,7 +18,7 @@ import {addLineData, makeFootnoteSuper} from '../parser/footnote/footnote';
 import {defaultLineData} from './fixture/default-data';
 
 describe('Markdown-pro test:uncovered', () => {
-    it('parseLine', () => {
+    test('parseLine', () => {
         const savedDataList: Array<LineDataType> = [defaultLineData];
 
         const documentMeta: DocumentMetaType = {
@@ -29,22 +29,22 @@ describe('Markdown-pro test:uncovered', () => {
             variable: {},
         };
 
-        assert(parseLine('', 0, [], [], savedDataList, documentMeta) === false);
+        assert.equal(parseLine('', 0, [], [], savedDataList, documentMeta), false);
     });
 
-    it('searchSiblingItem', () => {
-        assert(searchSiblingItem(defaultLineData, [], 1) === null);
+    test('searchSiblingItem', () => {
+        assert.equal(searchSiblingItem(defaultLineData, [], 1), null);
     });
 
-    it('getIsAllSymbolsEqual', () => {
-        assert(getIsAllSymbolsEqual(emptyString) === true);
+    test('getIsAllSymbolsEqual', () => {
+        assert.equal(getIsAllSymbolsEqual(emptyString), true);
     });
 
-    it('getOlTypeBySelector', () => {
-        assert(getOlTypeBySelector(selectorList[0]) === olNumericType);
+    test('getOlTypeBySelector', () => {
+        assert.equal(getOlTypeBySelector(selectorList[0]), olNumericType);
     });
 
-    it('getSelectorIndexList', () => {
+    test('getSelectorIndexList', () => {
         const pairTagSelector: PairTagSelectorType = {
             closeTag: '',
             equal: /\s/g,
@@ -52,10 +52,10 @@ describe('Markdown-pro test:uncovered', () => {
             selector: '',
         };
 
-        assert(getSelectorIndexList('', pairTagSelector).length === 0);
+        assert.equal(getSelectorIndexList('', pairTagSelector).length, 0);
     });
 
-    it('addLineData', () => {
+    test('addLineData', () => {
         const lineData: LineDataType = {
             additionalLineList: [],
             childList: [],
@@ -72,10 +72,10 @@ describe('Markdown-pro test:uncovered', () => {
 
         addLineData(lineData, toList);
 
-        assert(toList.length === 0);
+        assert.equal(toList.length, 0);
     });
 
-    it('makeFootnoteSuper', () => {
+    test('makeFootnoteSuper', () => {
         const documentMeta: DocumentMetaType = {
             codeLineData: null,
             config: defaultMarkdownConfig,
@@ -84,10 +84,10 @@ describe('Markdown-pro test:uncovered', () => {
             variable: {},
         };
 
-        assert(makeFootnoteSuper('a[^a]', documentMeta) === '');
+        assert.equal(makeFootnoteSuper('a[^a]', documentMeta), '');
     });
 
-    it('getSelectorIndexList', () => {
+    test('getSelectorIndexList', () => {
         const pairTagSelector: PairTagSelectorType = {
             closeTag: '',
             equal: /\s/,
@@ -95,6 +95,6 @@ describe('Markdown-pro test:uncovered', () => {
             selector: '--',
         };
 
-        assert.deepStrictEqual(getSelectorIndexList('--', pairTagSelector), []);
+        assert.deepEqual(getSelectorIndexList('--', pairTagSelector), []);
     });
 });

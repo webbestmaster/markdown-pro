@@ -1,4 +1,4 @@
-/* global window, HTMLTextAreaElement, HTMLDivElement, HTMLPreElement, HTMLInputElement, HTMLElement, HTMLSelectElement, Event */
+/* global window, HTMLTextAreaElement, HTMLDivElement, HTMLPreElement, HTMLInputElement, HTMLSelectElement, Event */
 
 // import markdownPro from 'markdown-pro';
 // import markdownProStyle from 'markdown-pro/dist/style.css';
@@ -57,8 +57,7 @@ export function init(
     }
 
     function handleScroll(evt: Event) {
-        // @ts-ignore
-        const element: HTMLElement = evt.currentTarget;
+        const element = evt.currentTarget;
 
         if (element === textArea) {
             syncScroll(textArea, output);

@@ -179,18 +179,13 @@ export function renderAdditionalLineList(lineData: LineDataType): string {
         if (hasBreakLine) {
             const additionalLineWithoutBreakLine = additionalLine.replace(breakLineRegExp, emptyString);
 
-            if (lineIndex === additionalLineLastIndex) {
-                lineResult[lineIndex] = additionalLineWithoutBreakLine;
-            } else {
-                lineResult[lineIndex] = additionalLineWithoutBreakLine + breakLineTag;
-            }
+            lineResult[lineIndex] =
+                lineIndex === additionalLineLastIndex
+                    ? additionalLineWithoutBreakLine
+                    : additionalLineWithoutBreakLine + breakLineTag;
         } else {
             // eslint-disable-next-line no-lonely-if
-            if (lineIndex === additionalLineLastIndex) {
-                lineResult[lineIndex] = additionalLine;
-            } else {
-                lineResult[lineIndex] = additionalLine + space;
-            }
+            lineResult[lineIndex] = lineIndex === additionalLineLastIndex ? additionalLine : additionalLine + space;
         }
     }
 
