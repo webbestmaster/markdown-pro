@@ -6,12 +6,12 @@
 ![Known Vulnerabilities](https://snyk.io/test/github/webbestmaster/markdown-pro/badge.svg)
 [![Github CI](https://github.com/webbestmaster/markdown-pro/actions/workflows/github-ci.yml/badge.svg)](https://github.com/webbestmaster/markdown-pro/actions/workflows/github-ci.yml)
 ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/webbestmaster/markdown-pro/github-ci.yml)
-![Libraries.io dependency status for GitHub repo](https://img.shields.io/librariesio/github/webbestmaster/markdown-pro)
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/markdown-pro)
 ![node-current](https://img.shields.io/node/v/markdown-pro)
 ![npm type definitions](https://img.shields.io/npm/types/markdown-pro)
 [![Website](https://img.shields.io/website?url=http%3A%2F%2Fwebbestmaster.github.io%2Fmarkdown-pro%2F)](https://webbestmaster.github.io/markdown-pro/)
 [![GitHub stars](https://img.shields.io/github/stars/webbestmaster/markdown-pro?style=social)](https://github.com/webbestmaster/markdown-pro/)
+<!-- ![Libraries.io dependency status for GitHub repo](https://img.shields.io/librariesio/github/webbestmaster/markdown-pro) -->
 
 
 **[Live demo](https://webbestmaster.github.io/markdown-pro)**
