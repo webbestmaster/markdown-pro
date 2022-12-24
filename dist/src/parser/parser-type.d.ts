@@ -1,25 +1,25 @@
 import { MarkdownConfigType } from '../../library';
-export declare type SelectorHeaderType = '# ' | '## ' | '### ' | '#### ' | '##### ' | '###### ';
-export declare type SelectorBlockquoteType = '> ';
-export declare type SelectorLineType = '___' | '---' | '***';
-export declare type SelectorTableType = '|';
-export declare type SelectorCodeType = '```';
-export declare type SelectorUlItemType = '- ' | '* ' | '+ ';
-export declare type SelectorOlNumericItemType = '0. ';
-export declare type SelectorOlBigRomanNumberItemType = 'I. ';
-export declare type SelectorOlSmallRomanNumberItemType = 'i. ';
-export declare type SelectorOlBigAlphabetItemType = 'A. ';
-export declare type SelectorOlSmallAlphabetItemType = 'a. ';
-export declare type OlTypeNumericType = '1';
-export declare type OlTypeBigRomanNumberType = 'I';
-export declare type OlTypeSmallRomanNumberType = 'i';
-export declare type OlTypeBigAlphabetType = 'A';
-export declare type OlTypeSmallAlphabetType = 'a';
-export declare type OlAttributeType = OlTypeBigAlphabetType | OlTypeBigRomanNumberType | OlTypeNumericType | OlTypeSmallAlphabetType | OlTypeSmallRomanNumberType;
-export declare type SelectorOlItemType = SelectorOlBigAlphabetItemType | SelectorOlBigRomanNumberItemType | SelectorOlNumericItemType | SelectorOlSmallAlphabetItemType | SelectorOlSmallRomanNumberItemType;
-export declare type SelectorParagraphType = '';
-export declare type SelectorType = SelectorBlockquoteType | SelectorCodeType | SelectorHeaderType | SelectorLineType | SelectorOlItemType | SelectorParagraphType | SelectorTableType | SelectorUlItemType;
-export declare type LineDataType = Readonly<{
+export type SelectorHeaderType = '# ' | '## ' | '### ' | '#### ' | '##### ' | '###### ';
+export type SelectorBlockquoteType = '> ';
+export type SelectorLineType = '___' | '---' | '***';
+export type SelectorTableType = '|';
+export type SelectorCodeType = '```';
+export type SelectorUlItemType = '- ' | '* ' | '+ ';
+export type SelectorOlNumericItemType = '0. ';
+export type SelectorOlBigRomanNumberItemType = 'I. ';
+export type SelectorOlSmallRomanNumberItemType = 'i. ';
+export type SelectorOlBigAlphabetItemType = 'A. ';
+export type SelectorOlSmallAlphabetItemType = 'a. ';
+export type OlTypeNumericType = '1';
+export type OlTypeBigRomanNumberType = 'I';
+export type OlTypeSmallRomanNumberType = 'i';
+export type OlTypeBigAlphabetType = 'A';
+export type OlTypeSmallAlphabetType = 'a';
+export type OlAttributeType = OlTypeBigAlphabetType | OlTypeBigRomanNumberType | OlTypeNumericType | OlTypeSmallAlphabetType | OlTypeSmallRomanNumberType;
+export type SelectorOlItemType = SelectorOlBigAlphabetItemType | SelectorOlBigRomanNumberItemType | SelectorOlNumericItemType | SelectorOlSmallAlphabetItemType | SelectorOlSmallRomanNumberItemType;
+export type SelectorParagraphType = '';
+export type SelectorType = SelectorBlockquoteType | SelectorCodeType | SelectorHeaderType | SelectorLineType | SelectorOlItemType | SelectorParagraphType | SelectorTableType | SelectorUlItemType;
+export type LineDataType = Readonly<{
     additionalLineList: Array<string>;
     childList: Array<LineDataType>;
     config: MarkdownConfigType;
@@ -30,27 +30,27 @@ export declare type LineDataType = Readonly<{
     spaceCount: number;
     trimmedLine: string;
 }>;
-export declare type OlParseDataType = Readonly<{
+export type OlParseDataType = Readonly<{
     olAttributeType: OlAttributeType;
     regExpSearchSelector: RegExp;
     selector: SelectorOlItemType;
 }>;
-export declare type ShortLineInfoType = Readonly<{
+export type ShortLineInfoType = Readonly<{
     lineContent: string;
     selector: SelectorType;
 }>;
-export declare type FootnoteTypeType = 'inline' | 'super';
-export declare type FootnoteType = {
+export type FootnoteTypeType = 'inline' | 'super';
+export type FootnoteType = {
     descriptionLineData: LineDataType | null;
     readonly id: string;
     readonly inlineLineContent: string;
     readonly type: FootnoteTypeType;
 };
-export declare type VariableType = Readonly<{
+export type VariableType = Readonly<{
     key: string;
     value: string;
 }>;
-export declare type DocumentMetaType = {
+export type DocumentMetaType = {
     codeLineData: LineDataType | null;
     readonly config: MarkdownConfigType;
     readonly footnoteList: Array<FootnoteType>;
@@ -59,7 +59,7 @@ export declare type DocumentMetaType = {
         [key: string]: VariableType;
     };
 };
-export declare type PairTagSelectorType = Readonly<{
+export type PairTagSelectorType = Readonly<{
     closeTag: string;
     equal: RegExp;
     openTag: string;
