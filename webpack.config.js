@@ -9,6 +9,7 @@ const {alias} = require('./webpack/setting/resolve/alias');
 const {extensions} = require('./webpack/setting/resolve/extensions');
 const {plugins} = require('./webpack/setting/plugins');
 const {devServer} = require('./webpack/setting/dev-server');
+const {watchOptions} = require('./webpack/setting/watch-options');
 
 const {
     pathToStaticFileFolder,
@@ -30,27 +31,28 @@ const configFront = {
         path: path.join(cwd, pathToDist),
         publicPath: isDevelopment ? '/' : pathToStaticFileFolder,
         filename: isDevelopment ? '[name].js' : 'index.js',
-        chunkFilename: isDevelopment ? '[name].chunk.js' : '[name].[hash:6].chunk.js',
+        chunkFilename: isDevelopment ? '[name].chunk.js' : '[name].[fullhash:6].chunk.js',
         assetModuleFilename: isDevelopment
-            ? 'build-asset/[name]----[hash:6][ext][query]'
-            : 'build-asset/[hash:6][ext][query]',
+            ? 'build-asset/[name]----[fullhash:6][ext][query]'
+            : 'build-asset/[fullhash:6][ext][query]',
     },
 
     mode: nodeEnvironment,
-    devtool: isDevelopment ? 'source-map' : false,
+    devtool: 'source-map', // isDevelopment ? 'source-map' : false,
     optimization,
     module: {rules},
     resolve: {alias, extensions},
     plugins,
     devServer,
+    watchOptions,
 };
 
 const configBack = {
     ...configFront,
     entry: ['./server/server.tsx'],
-    optimization: isServerProdBuild ? optimization : {minimize: false},
+    optimization: {minimize: false}, // isServerProdBuild ? optimization : {minimize: false},
     target: 'node',
-    devtool: isServerProdBuild ? false : 'source-map',
+    devtool: 'source-map', // isServerProdBuild ? false : 'source-map',
     externalsPresets,
     externals,
 };
@@ -74,6 +76,7 @@ const configLibraryFront = {
     devServer,
     externalsPresets,
     externals,
+    watchOptions,
 
     /*
     externals: {

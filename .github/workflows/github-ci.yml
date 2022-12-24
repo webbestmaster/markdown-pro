@@ -16,7 +16,8 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [16.x, 18.x, latest]
+#        node-version: [16.x, 18.x, latest]
+        node-version: [latest]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
@@ -25,13 +26,10 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-# disable running for a while
-#    - run: npm install
-#    - run: npm run front:build
-#    - run: npm run back:build
-#    - run: npm run front:build-library
-#    - run: npm run storybook:build
-#    - run: npm run check
-#    - run: npm run test:unit
-#    - name: Upload coverage to Codecov
-#      uses: codecov/codecov-action@v3
+    - run: npm install
+    - run: npm run front:build
+    - run: npm run front:build-library
+    - run: npm run check
+    - run: npm run test:unit
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v3
