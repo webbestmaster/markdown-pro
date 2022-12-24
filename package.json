@@ -9,7 +9,10 @@
   },
   "homepage": "https://github.com/webbestmaster/markdown-pro#readme",
   "license": "MIT",
-  "author": "",
+  "author": {
+    "name": "WebBestMaster",
+    "email": "web.best.master@gmail.com"
+  },
   "version": "1.1.1",
   "description": "Markdown Pro",
   "keywords": [
@@ -26,6 +29,9 @@
   "files": [
     "/dist"
   ],
+  "engines": {
+    "node": ">=16.0.0"
+  },
   "scripts": {
     "start": "cross-env NODE_ENV=development SIDE=front webpack-cli serve --progress",
     "start:transpile-only": "cross-env NODE_ENV=development SIDE=front TS_TRANSPILE_ONLY=true webpack-cli serve --progress",
