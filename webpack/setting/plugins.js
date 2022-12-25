@@ -24,11 +24,16 @@ const definePluginParameters = {
 };
 
 const staticFilesSiteList = [
-    {
-        from: './www/favicon.ico',
-        to: filePathPrefix + 'favicon.ico',
-    },
-];
+    'favicon.ico',
+    'robots.txt',
+    'ads.txt',
+    'gss-0.9.xsl',
+    'manifest.json',
+    // 'index-500.html',
+].map(fileName => ({
+    from: `./www/${fileName}`,
+    to: `${filePathPrefix}${fileName}`,
+}));
 
 const pluginList = [
     new CircularDependencyPlugin({exclude: /node_modules/}),
@@ -40,7 +45,7 @@ const pluginList = [
         // Options similar to the same options in webpackOptions.output
         // both options are optional
         filename: isDevelopment ? '[name].css' : 'style.css',
-        chunkFilename: isDevelopment ? '[id].css' : '[id].[fullhash:6].css',
+        chunkFilename: isDevelopment ? '[id].css' : '[id].[hash:6].css',
     }),
     new HtmlWebpackPlugin({
         minify: {
@@ -70,7 +75,7 @@ const pluginBuildLibraryList = [
         // Options similar to the same options in webpackOptions.output
         // both options are optional
         filename: isDevelopment ? '[name].css' : 'style.css',
-        chunkFilename: isDevelopment ? '[id].css' : '[id].[fullhash:6].css',
+        chunkFilename: isDevelopment ? '[id].css' : '[id].[hash:6].css',
     }),
     /*
         new HtmlWebpackPlugin({

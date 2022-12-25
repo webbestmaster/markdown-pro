@@ -44,8 +44,8 @@ module.exports.rules = [
                 options: {
                     sourceMap: isDevelopment,
                     modules: {
-                        localIdentName: isDevelopment ? '[local]----[fullhash:6]' : '[fullhash:6]', // '[local]----[path]--[name]--[fullhash:6]'
-                        // localIdentName: '[local]', // '[local]----[path]--[name]--[fullhash:6]'
+                        localIdentName: isDevelopment ? '[local]----[hash:6]' : '[hash:6]', // '[local]----[path]--[name]--[hash:6]'
+                        // localIdentName: '[local]', // '[local]----[path]--[name]--[hash:6]'
                     },
                 },
             },
@@ -62,7 +62,7 @@ module.exports.rules = [
                 options: {
                     sourceMap: isDevelopment,
                     modules: {
-                        localIdentName: '[local]', // '[local]----[path]--[name]--[fullhash:6]'
+                        localIdentName: '[local]', // '[local]----[path]--[name]--[hash:6]'
                     },
                 },
             },

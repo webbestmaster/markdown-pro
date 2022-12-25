@@ -8,4 +8,9 @@ const alias = duplicateList.reduce((accumulator, packageName) => {
     return {...accumulator, [packageName]: path.resolve(cwd, `node_modules/${packageName}`)};
 }, {});
 
+if (isProduction && isFront) {
+    // remove ajv from build for prod
+    alias.ajv = path.resolve(cwd, 'www', 'util', 'ajv-fake');
+}
+
 module.exports.alias = alias;
