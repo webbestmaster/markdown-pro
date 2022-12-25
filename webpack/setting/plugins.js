@@ -25,10 +25,10 @@ const definePluginParameters = {
 
 const staticFilesSiteList = [
     'favicon.ico',
-    'robots.txt',
-    'ads.txt',
-    'gss-0.9.xsl',
-    'manifest.json',
+    // 'robots.txt',
+    // 'ads.txt',
+    // 'gss-0.9.xsl',
+    // 'manifest.json',
     // 'index-500.html',
 ].map(fileName => ({
     from: `./www/${fileName}`,

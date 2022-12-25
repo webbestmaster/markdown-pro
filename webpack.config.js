@@ -27,8 +27,8 @@ const {
 const configFront = {
     entry: [
         './www/css/root.scss',
-        'markdown-pro/dist/style.css',
-        'react-audio-player-pro/dist/style.css',
+        // 'markdown-pro/dist/style.css',
+        // 'react-audio-player-pro/dist/style.css',
         './www/root.tsx',
     ],
     output: {
