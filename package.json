@@ -14,11 +14,12 @@
     "email": "web.best.master@gmail.com"
   },
   "version": "1.1.2",
-  "description": "Markdown Pro",
+  "description": "Markdown Pro - the lightest markdown parser",
   "keywords": [
     "markdown",
     "markdown-pro",
     "parser",
+    "lite",
     "typescript",
     "ts",
     "flow",

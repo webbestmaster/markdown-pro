@@ -13,6 +13,7 @@
 [![GitHub stars](https://img.shields.io/github/stars/webbestmaster/markdown-pro?style=social)](https://github.com/webbestmaster/markdown-pro/)
 <!-- ![Libraries.io dependency status for GitHub repo](https://img.shields.io/librariesio/github/webbestmaster/markdown-pro) -->
 
+Markdown Pro - the lightest markdown parser.
 
 **[Live demo](https://webbestmaster.github.io/markdown-pro)**
 
