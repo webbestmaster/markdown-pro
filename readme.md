@@ -1,17 +1,18 @@
 # Markdown Pro
 
 [![GitHub license](https://img.shields.io/npm/l/markdown-pro)](https://github.com/webbestmaster/markdown-pro/blob/master/license)
-[![codecov](https://codecov.io/gh/webbestmaster/markdown-pro/branch/master/graph/badge.svg?token=X5SNICUPUQ)](https://codecov.io/gh/webbestmaster/markdown-pro)
-[![npm version](https://img.shields.io/npm/v/markdown-pro.svg?style=flat)](https://www.npmjs.com/package/markdown-pro)
-![Known Vulnerabilities](https://snyk.io/test/github/webbestmaster/markdown-pro/badge.svg)
+[![codecov](https://codecov.io/gh/webbestmaster/markdown-pro/branch/master/graph/badge.svg)](https://codecov.io/gh/webbestmaster/markdown-pro)
+[![npm version](https://img.shields.io/npm/v/markdown-pro.svg)](https://www.npmjs.com/package/markdown-pro)
+[![Known Vulnerabilities](https://snyk.io/test/github/webbestmaster/markdown-pro/badge.svg)](https://snyk.io/test/github/webbestmaster/markdown-pro)
+[![Dependency count](https://badgen.net/bundlephobia/dependency-count/markdown-pro)](https://libraries.io/npm/markdown-pro)
+[![Libraries.io dependency status for GitHub repo](https://img.shields.io/librariesio/github/webbestmaster/markdown-pro)](https://libraries.io/npm/markdown-pro)
+[![npm bundle size](https://img.shields.io/bundlephobia/minzip/markdown-pro)](https://bundlephobia.com/package/markdown-pro)
+[![nodejs version](https://img.shields.io/node/v/markdown-pro)](https://nodejs.org/en/docs)
 [![Github CI](https://github.com/webbestmaster/markdown-pro/actions/workflows/github-ci.yml/badge.svg)](https://github.com/webbestmaster/markdown-pro/actions/workflows/github-ci.yml)
-![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/webbestmaster/markdown-pro/github-ci.yml)
-![npm bundle size](https://img.shields.io/bundlephobia/minzip/markdown-pro)
-![node-current](https://img.shields.io/node/v/markdown-pro)
-![npm type definitions](https://img.shields.io/npm/types/markdown-pro)
-[![Website](https://img.shields.io/website?url=https%3A%2F%2Fwebbestmaster.github.io%2Fmarkdown-pro%2F)](https://webbestmaster.github.io/markdown-pro/)
-[![GitHub stars](https://img.shields.io/github/stars/webbestmaster/markdown-pro?style=social)](https://github.com/webbestmaster/markdown-pro/)
-<!-- ![Libraries.io dependency status for GitHub repo](https://img.shields.io/librariesio/github/webbestmaster/markdown-pro) -->
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/webbestmaster/markdown-pro/github-ci.yml)](https://github.com/webbestmaster/markdown-pro/actions/workflows/github-ci.yml)
+[![Type definitions](https://img.shields.io/npm/types/markdown-pro)](https://www.typescriptlang.org)
+[![Website](https://img.shields.io/website?url=https://webbestmaster.github.io/markdown-pro)](https://webbestmaster.github.io/markdown-pro)
+[![GitHub stars](https://img.shields.io/github/stars/webbestmaster/markdown-pro?style=social)](https://github.com/webbestmaster/markdown-pro)
 
 Markdown Pro - the lightest markdown parser.
 
