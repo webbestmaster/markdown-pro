@@ -13,7 +13,6 @@
 [![Type definitions](https://img.shields.io/npm/types/markdown-pro)](https://www.typescriptlang.org)
 [![Website](https://img.shields.io/website?url=https://webbestmaster.github.io/markdown-pro)](https://webbestmaster.github.io/markdown-pro)
 [![Package Quality](https://packagequality.com/shield/markdown-pro.svg)](https://packagequality.com/#?package=markdown-pro)
-[![Package Quality](https://packagequality.com/shield/markdown-pro.svg)](https://packagequality.com/#?package=markdown-pro)
 [![GitHub stars](https://img.shields.io/github/stars/webbestmaster/markdown-pro?style=social)](https://github.com/webbestmaster/markdown-pro)
 
 Markdown Pro - the lightest markdown parser.
