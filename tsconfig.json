@@ -40,6 +40,12 @@
         "emitDecoratorMetadata": false,
         "sourceMap": true
     },
+    "ts-node": {
+        "compilerOptions": {
+            "module": "CommonJS",
+            "exactOptionalPropertyTypes": false,
+        }
+    },
     "exclude": [
         "./dist/",
         "./dist-server/",
