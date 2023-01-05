@@ -12,6 +12,7 @@
 [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/webbestmaster/markdown-pro/github-ci.yml)](https://github.com/webbestmaster/markdown-pro/actions/workflows/github-ci.yml)
 [![Type definitions](https://img.shields.io/npm/types/markdown-pro)](https://www.typescriptlang.org)
 [![Website](https://img.shields.io/website?url=https://webbestmaster.github.io/markdown-pro)](https://webbestmaster.github.io/markdown-pro)
+[![CodeFactor](https://www.codefactor.io/repository/github/webbestmaster/markdown-pro/badge)](https://www.codefactor.io/repository/github/webbestmaster/markdown-pro)
 [![Package Quality](https://packagequality.com/shield/markdown-pro.svg)](https://packagequality.com/#?package=markdown-pro)
 [![GitHub stars](https://img.shields.io/github/stars/webbestmaster/markdown-pro?style=social)](https://github.com/webbestmaster/markdown-pro)
 
