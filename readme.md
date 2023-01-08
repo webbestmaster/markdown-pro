@@ -30,7 +30,7 @@ npm i markdown-pro
 ## Usage examples
 
 ```javascript
-import markdownPro, {ThemeNameEnum} from 'markdown-pro';
+import markdownPro, {ThemeNameEnum, classNameMdPro, classNameMdProThemeLight, classNameMdProThemeDark} from 'markdown-pro';
 // import styles
 import 'markdown-pro/dist/style.css';
 
