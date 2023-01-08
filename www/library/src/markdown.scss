@@ -3,6 +3,7 @@
 /* stylelint-disable selector-max-compound-selectors */
 /* stylelint-disable selector-pseudo-class-no-unknown */
 /* stylelint-disable no-duplicate-selectors */
+/* stylelint-disable max-line-length */
 
 /*
 $main-link-color: #0366d6;
@@ -23,7 +24,7 @@ $main-code-inline-color: #c7254e;
     // main variables
     --main-line-height: 1.4;
     --main-font-size: 16px;
-    --main-font-family: 'Helvetica', 'Arial', sans-serif;
+    --main-font-family: -apple-system, blinkmacsystemfont, 'Segoe UI', 'Noto Sans', helvetica, arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
     --main-font-family-monospace: 'Lucida Console', 'Monaco', monospace;
     // theme relation variables
     --main-text-color: #111;
@@ -203,6 +204,7 @@ $main-code-inline-color: #c7254e;
     h4,
     h5,
     h6 {
+        font-weight: 600;
         margin-bottom: 10px;
         margin-top: 1.2em;
     }
