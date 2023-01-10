@@ -57,13 +57,14 @@ body {
         margin: 0;
         min-height: 50vh;
         overflow: auto;
-        padding: 8px;
+        padding: 0;
         resize: none;
         width: calc(100% / 2 - 8px);
     }
 
     .text-area-input {
         font-family: $main-font-family-monospace;
+        padding: 8px;
     }
 
     .setting-label-list {
@@ -109,5 +110,9 @@ body {
         &:hover {
             text-decoration: underline;
         }
+    }
+
+    .md-pro {
+        padding: 8px;
     }
 }
