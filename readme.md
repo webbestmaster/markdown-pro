@@ -5,7 +5,6 @@
 [![npm version](https://img.shields.io/npm/v/markdown-pro.svg)](https://www.npmjs.com/package/markdown-pro)
 [![Known Vulnerabilities](https://snyk.io/test/github/webbestmaster/markdown-pro/badge.svg)](https://snyk.io/test/github/webbestmaster/markdown-pro)
 [![Dependency count](https://badgen.net/bundlephobia/dependency-count/markdown-pro)](https://libraries.io/npm/markdown-pro)
-[![Libraries.io dependency status for GitHub repo](https://img.shields.io/librariesio/github/webbestmaster/markdown-pro)](https://libraries.io/npm/markdown-pro)
 [![npm bundle size](https://img.shields.io/bundlephobia/minzip/markdown-pro)](https://bundlephobia.com/package/markdown-pro)
 [![nodejs version](https://img.shields.io/node/v/markdown-pro)](https://nodejs.org/en/docs)
 [![Github CI](https://github.com/webbestmaster/markdown-pro/actions/workflows/github-ci.yml/badge.svg)](https://github.com/webbestmaster/markdown-pro/actions/workflows/github-ci.yml)
@@ -15,6 +14,10 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/webbestmaster/markdown-pro/badge)](https://www.codefactor.io/repository/github/webbestmaster/markdown-pro)
 [![Package Quality](https://packagequality.com/shield/markdown-pro.svg)](https://packagequality.com/#?package=markdown-pro)
 [![GitHub stars](https://img.shields.io/github/stars/webbestmaster/markdown-pro?style=social)](https://github.com/webbestmaster/markdown-pro)
+
+<!--
+[![Libraries.io dependency status for GitHub repo](https://img.shields.io/librariesio/github/webbestmaster/markdown-pro)](https://libraries.io/npm/markdown-pro)
+-->
 
 Markdown Pro - the lightest markdown parser.
 
