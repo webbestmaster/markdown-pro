@@ -14,6 +14,7 @@ export function getFootnoteInlineLineContent(match: string): string {
 
 // see findFootnoteMarkGlobalRegExp
 export function getFootnoteMarkId(match: string): string {
+    // eslint-disable-next-line unicorn/prefer-string-replace-all
     return getFootnoteInlineLineContent(match).toLowerCase().replace(/\W/g, ' ').trim().replace(/\s+/g, '-');
 }
 

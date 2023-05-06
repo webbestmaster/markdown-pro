@@ -80,7 +80,8 @@ export function addLineData(lineData: LineDataType, toList: Array<FootnoteType>)
 
 export function makeFootnoteSuper(fullLineContent: string, documentMeta: DocumentMetaType): string {
     return fullLineContent.replace(findFootnoteMarkGlobalRegExp, (match: string): string => {
-        const charList: Array<string> = [...match];
+        // eslint-disable-next-line unicorn/prefer-spread
+        const charList: Array<string> = match.split('');
         const [firstLetter] = charList;
         const {footnoteList} = documentMeta;
         const id = getFootnoteMarkId(match);

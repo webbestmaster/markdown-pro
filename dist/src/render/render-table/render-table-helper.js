@@ -6,13 +6,16 @@ export function renderTableCellContent(line, documentMeta) {
     return renderInlineHtml(line, documentMeta).trim();
 }
 export function isTableDivideLine(line) {
+    // eslint-disable-next-line unicorn/prefer-string-replace-all
     return line.replace(/[\s:|-]/g, '') === emptyString;
 }
 export function lineToAlign(divideRaw) {
     const alignMark = ':';
     const divide = divideRaw.trim();
-    const divideCharList = [...divide];
+    // eslint-disable-next-line unicorn/prefer-spread
+    const divideCharList = divide.split('');
     const [firstChar] = divideCharList;
+    // eslint-disable-next-line unicorn/prefer-at
     const lastChar = divide[divide.length - 1];
     if (firstChar === lastChar && firstChar === alignMark) {
         return cellAlignTypeMap.center;

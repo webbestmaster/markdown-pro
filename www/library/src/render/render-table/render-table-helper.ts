@@ -11,14 +11,17 @@ export function renderTableCellContent(line: string, documentMeta: DocumentMetaT
 }
 
 export function isTableDivideLine(line: string): boolean {
+    // eslint-disable-next-line unicorn/prefer-string-replace-all
     return line.replace(/[\s:|-]/g, '') === emptyString;
 }
 
 export function lineToAlign(divideRaw: string): CellAlignType {
     const alignMark = ':';
     const divide: string = divideRaw.trim();
-    const divideCharList: Array<string> = [...divide];
+    // eslint-disable-next-line unicorn/prefer-spread
+    const divideCharList: Array<string> = divide.split('');
     const [firstChar] = divideCharList;
+    // eslint-disable-next-line unicorn/prefer-at
     const lastChar = divide[divide.length - 1];
 
     if (firstChar === lastChar && firstChar === alignMark) {

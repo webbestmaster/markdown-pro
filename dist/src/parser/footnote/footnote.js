@@ -63,7 +63,8 @@ export function addLineData(lineData, toList) {
 }
 export function makeFootnoteSuper(fullLineContent, documentMeta) {
     return fullLineContent.replace(findFootnoteMarkGlobalRegExp, (match) => {
-        const charList = [...match];
+        // eslint-disable-next-line unicorn/prefer-spread
+        const charList = match.split('');
         const [firstLetter] = charList;
         const { footnoteList } = documentMeta;
         const id = getFootnoteMarkId(match);

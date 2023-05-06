@@ -31,20 +31,25 @@ function imageReplacerVariable(matchedString, alt, srcVariable, documentMeta) {
 const findImageRegExpGlobal = /!\[([\S\s]*?)]\((\S+?)(?:\s+"([\S\s]+?)")?\)/g;
 const findImageVariableRegExpGlobal = /!\[([\S\s]*?)]\[([\S\s]+?)]/g;
 export function makeImage(html, documentMeta) {
-    return html
+    return (html
+        // eslint-disable-next-line unicorn/prefer-string-replace-all
         .replace(findImageRegExpGlobal, imageReplacer)
+        // eslint-disable-next-line unicorn/prefer-string-replace-all
         .replace(findImageVariableRegExpGlobal, (matchedString, alt, srcVariable) => {
         return imageReplacerVariable(matchedString, alt, srcVariable, documentMeta);
-    });
+    }));
 }
 const findCheckboxCheckedRegExoGlobal = /\[x]/gi;
 const findCheckboxUncheckedRegExoGlobal = /\[\s]/g;
 export function makeCheckbox(html) {
-    return html
+    return (html
+        // eslint-disable-next-line unicorn/prefer-string-replace-all
         .replace(findCheckboxCheckedRegExoGlobal, '<input type="checkbox" checked="checked" disabled="disabled"/>')
-        .replace(findCheckboxUncheckedRegExoGlobal, '<input type="checkbox" disabled="disabled"/>');
+        // eslint-disable-next-line unicorn/prefer-string-replace-all
+        .replace(findCheckboxUncheckedRegExoGlobal, '<input type="checkbox" disabled="disabled"/>'));
 }
 export function isImageListOnly(lineContent) {
+    // eslint-disable-next-line unicorn/prefer-string-replace-all
     return lineContent.replace(findImageRegExpGlobal, '').trim() === emptyString;
 }
 const findMailRegExpGlobal = /\[([\S\s]*?)]\((\S+?)(?:\s+"([\S\s]+?)")?(?:\s+"([\S\s]+?)")?\)/g;
@@ -79,14 +84,17 @@ function linkReplacerVariable(matchedString, linkText, hrefVariable, documentMet
     return `<a href="${getMailToPrefix(hrefVariable)}${hrefVariable}">${text}</a>`;
 }
 function defineVariables(html, documentMeta) {
+    // eslint-disable-next-line unicorn/prefer-string-replace-all
     return html.replace(findLinkVariableRegExpGlobal, (matchedString, linkText, hrefVariable) => {
         return linkReplacerVariable(matchedString, linkText, hrefVariable, documentMeta);
     });
 }
 export function makeMail(html) {
+    // eslint-disable-next-line unicorn/prefer-string-replace-all
     return html.replace(findMailRegExpGlobal, mailReplacer);
 }
 export function makeLink(html) {
+    // eslint-disable-next-line unicorn/prefer-string-replace-all
     return html.replace(findLinkRegExpGlobal, linkReplacer);
 }
 export function getOlTypeBySelector(dataLineSelector) {

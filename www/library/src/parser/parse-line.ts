@@ -60,7 +60,8 @@ export function parseLine(
     const trimmedLine = line.trim();
     const isEmptyString = trimmedLine === emptyString;
     const rawSpaceCount = isEmptyString
-        ? savedLineDataList[savedLineDataList.length - 1].spaceCount
+        ? // eslint-disable-next-line unicorn/prefer-at
+          savedLineDataList[savedLineDataList.length - 1].spaceCount
         : line.search(/\S/);
     const spaceCount = Math.max(0, rawSpaceCount);
     const defaultSelectorData: ShortLineInfoType = {

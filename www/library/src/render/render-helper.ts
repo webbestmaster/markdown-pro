@@ -49,23 +49,35 @@ const findImageRegExpGlobal = /!\[([\S\s]*?)]\((\S+?)(?:\s+"([\S\s]+?)")?\)/g;
 const findImageVariableRegExpGlobal = /!\[([\S\s]*?)]\[([\S\s]+?)]/g;
 
 export function makeImage(html: string, documentMeta: DocumentMetaType): string {
-    return html
-        .replace(findImageRegExpGlobal, imageReplacer)
-        .replace(findImageVariableRegExpGlobal, (matchedString: string, alt: unknown, srcVariable: string): string => {
-            return imageReplacerVariable(matchedString, alt, srcVariable, documentMeta);
-        });
+    return (
+        html
+            // eslint-disable-next-line unicorn/prefer-string-replace-all
+            .replace(findImageRegExpGlobal, imageReplacer)
+            // eslint-disable-next-line unicorn/prefer-string-replace-all
+            .replace(
+                findImageVariableRegExpGlobal,
+                (matchedString: string, alt: unknown, srcVariable: string): string => {
+                    return imageReplacerVariable(matchedString, alt, srcVariable, documentMeta);
+                }
+            )
+    );
 }
 
 const findCheckboxCheckedRegExoGlobal = /\[x]/gi;
 const findCheckboxUncheckedRegExoGlobal = /\[\s]/g;
 
 export function makeCheckbox(html: string): string {
-    return html
-        .replace(findCheckboxCheckedRegExoGlobal, '<input type="checkbox" checked="checked" disabled="disabled"/>')
-        .replace(findCheckboxUncheckedRegExoGlobal, '<input type="checkbox" disabled="disabled"/>');
+    return (
+        html
+            // eslint-disable-next-line unicorn/prefer-string-replace-all
+            .replace(findCheckboxCheckedRegExoGlobal, '<input type="checkbox" checked="checked" disabled="disabled"/>')
+            // eslint-disable-next-line unicorn/prefer-string-replace-all
+            .replace(findCheckboxUncheckedRegExoGlobal, '<input type="checkbox" disabled="disabled"/>')
+    );
 }
 
 export function isImageListOnly(lineContent: string): boolean {
+    // eslint-disable-next-line unicorn/prefer-string-replace-all
     return lineContent.replace(findImageRegExpGlobal, '').trim() === emptyString;
 }
 
@@ -118,6 +130,7 @@ function linkReplacerVariable(
 }
 
 function defineVariables(html: string, documentMeta: DocumentMetaType): string {
+    // eslint-disable-next-line unicorn/prefer-string-replace-all
     return html.replace(
         findLinkVariableRegExpGlobal,
         (matchedString: string, linkText: string, hrefVariable: string): string => {
@@ -127,10 +140,12 @@ function defineVariables(html: string, documentMeta: DocumentMetaType): string {
 }
 
 export function makeMail(html: string): string {
+    // eslint-disable-next-line unicorn/prefer-string-replace-all
     return html.replace(findMailRegExpGlobal, mailReplacer);
 }
 
 export function makeLink(html: string): string {
+    // eslint-disable-next-line unicorn/prefer-string-replace-all
     return html.replace(findLinkRegExpGlobal, linkReplacer);
 }
 

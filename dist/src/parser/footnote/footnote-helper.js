@@ -9,6 +9,7 @@ export function getFootnoteInlineLineContent(match) {
 }
 // see findFootnoteMarkGlobalRegExp
 export function getFootnoteMarkId(match) {
+    // eslint-disable-next-line unicorn/prefer-string-replace-all
     return getFootnoteInlineLineContent(match).toLowerCase().replace(/\W/g, ' ').trim().replace(/\s+/g, '-');
 }
 export function getMdFootnoteContent(footnote) {
