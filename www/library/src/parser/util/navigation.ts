@@ -10,7 +10,7 @@ export function searchSiblingItem(
     const index = lineDataList.indexOf(lineData);
 
     if (index === -1) {
-        // console.error('lineDataList should contain lineData');
+        // Console.error('lineDataList should contain lineData');
         return null;
     }
 
@@ -23,9 +23,9 @@ export function searchSiblingItem(
     }
 
     if (siblingItem.trimmedLine === emptyString) {
-        const newDirection = direction + (direction >= 0 ? 1 : -1);
+        const updatedDirection = direction + (direction >= 0 ? 1 : -1);
 
-        return searchSiblingItem(lineData, lineDataList, newDirection);
+        return searchSiblingItem(lineData, lineDataList, updatedDirection);
     }
 
     return siblingItem;
@@ -50,7 +50,7 @@ export function getParent(lineData: LineDataType, lineDataList: Array<LineDataTy
         }
     }
 
-    // console.error('Parent not found');
+    // Console.error('Parent not found');
 
     return null;
 }

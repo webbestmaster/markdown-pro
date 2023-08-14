@@ -6,7 +6,7 @@ export function filterEmptyString(line: string): boolean {
 
 export function cleanLine(line: string): string {
     // eslint-disable-next-line unicorn/prefer-string-replace-all
-    return line.trim().replace(/\s+/g, ' ');
+    return line.trim().replace(/\s+/gu, ' ');
 }
 
 export function getIsAllSymbolsEqual(line: string): boolean {

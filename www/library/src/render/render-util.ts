@@ -45,13 +45,13 @@ function getMatchIndexList(html: string, regExp: RegExp): Array<PairNumberArrayT
     return resultList;
 }
 
-const tagSelectorRegExpGlobal = /(<\w+[\S\s]*?>)|(<\/\w+?>)|(<\w+[\S\s]*?\/>)/g;
+const tagSelectorRegExpGlobal = /(<\w+[\S\s]*?>)|(<\/\w+?>)|(<\w+[\S\s]*?\/>)/gu;
 
 export function getTagIndexList(html: string): Array<PairNumberArrayType> {
     return getMatchIndexList(html, tagSelectorRegExpGlobal);
 }
 
-const linkSelectorRegExpGlobal = /(<a\s*?>[\S\s]*?<\/a>)|(<a\s[\S\s]*?>[\S\s]*?<\/a>)|(<a\s+[\S\s]*?\/>)/g;
+const linkSelectorRegExpGlobal = /(<a\s*?>[\S\s]*?<\/a>)|(<a\s[\S\s]*?>[\S\s]*?<\/a>)|(<a\s+[\S\s]*?\/>)/gu;
 
 export function getLinkIndexList(html: string): Array<PairNumberArrayType> {
     return getMatchIndexList(html, linkSelectorRegExpGlobal);

@@ -1,4 +1,4 @@
-export function hasStringNonEmptySymbols(value: unknown): boolean {
+export function hasStringNonEmptySymbols(value: unknown): value is string {
     return typeof value === 'string' && value.trim().length > 0;
 }
 

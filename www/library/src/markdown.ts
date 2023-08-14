@@ -32,8 +32,8 @@ export function markdown(mdInput: string, config: MarkdownConfigShallowType = de
         selector: emptyString,
         spaceCount: -1,
         trimmedLine: '',
-        // isFirst: true,
-        // isLast: true,
+        // IsFirst: true,
+        // IsLast: true,
     };
     const structuredLineDataList: Array<LineDataType> = [mainParent];
     const savedLineDataList: Array<LineDataType> = [mainParent];

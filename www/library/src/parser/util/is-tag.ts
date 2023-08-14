@@ -44,8 +44,8 @@ export function getIsBlockquote(lineData: LineDataType): boolean {
     return selectorBlockquoteList.includes(lineData.selector);
 }
 
-const htmlPairTag = /<(\w+)[^>]*>[\S\s]*?<\/\1>/;
-const htmlSingleTag = /<\w+[^>]*?\s*\/>/;
+const htmlPairTag = /<(\w+)[^>]*>[\S\s]*?<\/\1>/u;
+const htmlSingleTag = /<\w+[^>]*?\s*\/>/u;
 
 export function getIsStartWithHtml(lineData: LineDataType): boolean {
     const {trimmedLine} = lineData;

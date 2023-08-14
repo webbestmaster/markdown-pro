@@ -12,7 +12,7 @@ import {DocumentMetaType, LineDataType} from '../parser/parser-type';
 
 import {getIsEdgeLine} from '../parser/util/navigation';
 import {getIsFootnoteDescription} from '../parser/footnote/footnote-helper';
-// import {makeFootnoteSuper} from '../parser/footnote/footnote';
+// Import {makeFootnoteSuper} from '../parser/footnote/footnote';
 
 import {
     addBreakLine,

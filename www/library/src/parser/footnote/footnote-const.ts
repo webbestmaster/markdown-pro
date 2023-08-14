@@ -5,6 +5,6 @@ export const footnoteTypeMap: {[key in FootnoteTypeType]: FootnoteTypeType} = {
     'super': 'super',
 };
 
-// export const footnotePrefix = 'fn-';
+// Export const footnotePrefix = 'fn-';
 
 export const findFootnoteMarkGlobalRegExp = /\S\[\^[^\]]+?]|\S\^\[[^\]]+?]/g;

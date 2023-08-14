@@ -12,7 +12,7 @@ export function renderTableCellContent(line: string, documentMeta: DocumentMetaT
 
 export function isTableDivideLine(line: string): boolean {
     // eslint-disable-next-line unicorn/prefer-string-replace-all
-    return line.replace(/[\s:|-]/g, '') === emptyString;
+    return line.replace(/[\s:|-]/gu, '') === emptyString;
 }
 
 export function lineToAlign(divideRaw: string): CellAlignType {

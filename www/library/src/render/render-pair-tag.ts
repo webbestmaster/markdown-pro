@@ -11,7 +11,7 @@ export function getSelectorIndexList(html: string, pairTagSelector: PairTagSelec
     const selectorLength = selector.length;
 
     if (selectorLength === 0) {
-        // console.error('Selector is empty string');
+        // Console.error('Selector is empty string');
         return resultList;
     }
 
@@ -54,7 +54,7 @@ function addPairTag(html: string, pairTagSelector: PairTagSelectorType): string 
 
     let selectorIndexList: Array<number> = getSelectorIndexList(html, pairTagSelector);
 
-    // remove indexes into tags, f.e. - <a href="http://ex__am__ple.com">text</a>
+    // Remove indexes into tags, f.e. - <a href="http://ex__am__ple.com">text</a>
     selectorIndexList = selectorIndexList.filter((selectorIndex: number): boolean => {
         // eslint-disable-next-line no-loops/no-loops
         for (const tagPairIndex of tagPairIndexList) {

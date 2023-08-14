@@ -34,7 +34,9 @@ function renderTableRowList(
     documentMeta: DocumentMetaType
 ): string {
     return lineList
-        .map((line: string): string => `<tr>${renderTableRow(lineData, line, alignList, cellName, documentMeta)}</tr>`)
+        .map((line: string): string => {
+            return `<tr>${renderTableRow(lineData, line, alignList, cellName, documentMeta)}</tr>`;
+        })
         .join(emptyString);
 }
 

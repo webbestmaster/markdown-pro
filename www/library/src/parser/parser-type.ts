@@ -47,22 +47,22 @@ export type SelectorType =
     | SelectorUlItemType;
 
 export type LineDataType = Readonly<{
-    // additional line list
+    // Additional line list
     additionalLineList: Array<string>;
-    // line children
+    // Line children
     childList: Array<LineDataType>;
     config: MarkdownConfigType;
-    // full line with all symbols, example - '### this is line'
+    // Full line with all symbols, example - '### this is line'
     line: string;
-    // trimmed line without selector, example - 'this is line'
+    // Trimmed line without selector, example - 'this is line'
     lineContent: string;
-    // order number of line, start with 0
+    // Order number of line, start with 0
     lineIndex: number;
-    // selector to render as html, example - '###'
+    // Selector to render as html, example - '###'
     selector: SelectorType;
-    // left spaces before any content
+    // Left spaces before any content
     spaceCount: number;
-    // trimmed line
+    // Trimmed line
     trimmedLine: string;
 }>;
 
@@ -79,27 +79,25 @@ export type ShortLineInfoType = Readonly<{
 
 export type FootnoteTypeType = 'inline' | 'super';
 
-export type FootnoteType = {
+export interface FootnoteType {
     descriptionLineData: LineDataType | null;
     readonly id: string;
     readonly inlineLineContent: string;
     readonly type: FootnoteTypeType;
-};
+}
 
 export type VariableType = Readonly<{
     key: string;
     value: string;
 }>;
 
-export type DocumentMetaType = {
+export interface DocumentMetaType {
     codeLineData: LineDataType | null;
     readonly config: MarkdownConfigType;
     readonly footnoteList: Array<FootnoteType>;
     tableLineData: LineDataType | null;
-    variable: {
-        [key: string]: VariableType;
-    };
-};
+    variable: Record<string, VariableType>;
+}
 
 export type PairTagSelectorType = Readonly<{
     closeTag: string;

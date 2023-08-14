@@ -90,7 +90,7 @@ describe('Markdown-pro test:uncovered', () => {
     test('getSelectorIndexList', () => {
         const pairTagSelector: PairTagSelectorType = {
             closeTag: '',
-            equal: /\s/,
+            equal: /\s/u,
             openTag: '',
             selector: '--',
         };

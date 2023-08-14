@@ -100,23 +100,23 @@ export function parseLine(
         return true;
     }
 
-    const newFootnoteList = getFootnoteList(lineContent);
+    const updatedFootnoteList = getFootnoteList(lineContent);
     const {footnoteList, tableLineData, variable} = documentMeta;
 
-    fromToFootnoteList(newFootnoteList, footnoteList);
+    fromToFootnoteList(updatedFootnoteList, footnoteList);
 
     if (selectorTableList.includes(selector)) {
         if (tableLineData) {
-            // append new line in current block
+            // Append new line in current block
             // eslint-disable-next-line no-param-reassign
             tableLineData.additionalLineList.push(lineData.line);
             return true;
         }
-        // create new block
+        // Create new block
         // eslint-disable-next-line no-param-reassign
         documentMeta.tableLineData = lineData;
     } else {
-        // close table block
+        // Close table block
         // eslint-disable-next-line no-param-reassign
         documentMeta.tableLineData = null;
     }
@@ -125,8 +125,8 @@ export function parseLine(
 
     if (lineData.selector === emptyString && lineContent.length > 0) {
         const prevItemIndex = savedLineDataList.length - 1;
-        const prevItem = savedLineDataList[prevItemIndex];
-        const isTable = selectorTableList.includes(prevItem.selector);
+        const prevItem = savedLineDataList.at(prevItemIndex);
+        const isTable = prevItem && selectorTableList.includes(prevItem.selector);
 
         if (variableData) {
             // eslint-disable-next-line no-param-reassign

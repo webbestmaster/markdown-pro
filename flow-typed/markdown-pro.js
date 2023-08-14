@@ -1,7 +1,10 @@
 // @flow
 
+/* eslint-disable multiline-comment-style, capitalized-comments, line-comment-position, multiline-comment-style */
+
 // TODO: you should uncomment this
 
+// eslint-disable-next-line jest/require-hook
 console.log('TODO: you should uncomment this');
 
 /*

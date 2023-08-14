@@ -1,11 +1,5 @@
 import {VariableType} from '../parser-type';
 
-/*
-export function getIsVariableLine(lineContent: string): boolean {
-    return /\[[^^][\S\s]+?]:/.test(lineContent);
-}
-*/
-
 export function getVariableData(lineContent: string): VariableType | null {
     const matchData = lineContent.match(/\[([^^][\S\s]+?)]:\s+?\S/);
 

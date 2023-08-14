@@ -15,18 +15,18 @@ import {
 } from './parser-type';
 
 export const selectorHeaderList: Array<SelectorType> = ['# ', '## ', '### ', '#### ', '##### ', '###### '];
-// export const selectorHeaderList: Array<SelectorHeaderType> = ['# ', '## ', '### ', '#### ', '##### ', '###### '];
+// Export const selectorHeaderList: Array<SelectorHeaderType> = ['# ', '## ', '### ', '#### ', '##### ', '###### '];
 export const selectorBlockquoteList: Array<SelectorType> = ['> '];
-// export const selectorBlockquoteList: Array<SelectorBlockquoteType> = ['> '];
+// Export const selectorBlockquoteList: Array<SelectorBlockquoteType> = ['> '];
 export const selectorLineList: Array<SelectorType> = ['---', '***', '___'];
-// export const selectorLineList: Array<SelectorLineType> = ['---', '***', '___'];
+// Export const selectorLineList: Array<SelectorLineType> = ['---', '***', '___'];
 export const selectorTableList: Array<SelectorType> = ['|'];
-// export const selectorTableList: Array<SelectorTableType> = ['|'];
+// Export const selectorTableList: Array<SelectorTableType> = ['|'];
 export const selectorCodeList: Array<SelectorType> = ['```'];
-// export const selectorCodeList: Array<SelectorCodeType> = ['```'];
+// Export const selectorCodeList: Array<SelectorCodeType> = ['```'];
 
 export const selectorULItemList: Array<SelectorType> = ['+ ', '- ', '* '];
-// export const selectorULItemList: Array<SelectorUlItemType> = ['+ ', '- ', '* '];
+// Export const selectorULItemList: Array<SelectorUlItemType> = ['+ ', '- ', '* '];
 
 export const olNumericItemSelector: SelectorOlNumericItemType = '0. ';
 export const olNumericItemRegExp = /^\d+\.\s/;
@@ -83,7 +83,9 @@ export const selectorList: Array<SelectorType> = [
     ...selectorTableList,
     ...selectorCodeList,
     ...selectorBlockquoteList,
-].sort((itemA: SelectorType, itemB: SelectorType): number => itemB.length - itemA.length);
+].sort((itemA: SelectorType, itemB: SelectorType): number => {
+    return itemB.length - itemA.length;
+});
 
 const pairTagSelectorBold: PairTagSelectorType = {
     closeTag: '</b>',
@@ -141,7 +143,7 @@ const pairTagSelectorBoldAndItalic: PairTagSelectorType = {
     selector: '***',
 };
 
-// more long selectors should be first
+// More long selectors should be first
 export const pairTagSelectorList: Array<PairTagSelectorType> = [
     pairTagSelectorBoldAndItalic,
     pairTagSelectorBold,

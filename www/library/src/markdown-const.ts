@@ -7,7 +7,9 @@ export enum ThemeNameEnum {
 }
 
 export const defaultMarkdownConfig: MarkdownConfigType = {
-    codeHighlight: (langName: string, code: string): string => code,
+    codeHighlight: (langName: string, code: string): string => {
+        return code;
+    },
     parseLink: true,
     themeName: ThemeNameEnum.auto,
     useLineBreak: false,
