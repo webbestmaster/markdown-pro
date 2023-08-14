@@ -62,7 +62,7 @@ export function parseLine(
     const rawSpaceCount = isEmptyString
         ? // eslint-disable-next-line unicorn/prefer-at
           savedLineDataList[savedLineDataList.length - 1].spaceCount
-        : line.search(/\S/);
+        : line.search(/\S/u);
     const spaceCount = Math.max(0, rawSpaceCount);
     const defaultSelectorData: ShortLineInfoType = {
         lineContent: emptyString,
@@ -142,7 +142,7 @@ export function parseLine(
     const parentLineData = getParent(lineData, savedLineDataList);
 
     if (!parentLineData) {
-        // console.error('Parent not found');
+        // Console.error('Parent not found');
         return false;
     }
 

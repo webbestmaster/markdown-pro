@@ -16,7 +16,6 @@ function matchToFootnote(match: string): FootnoteType {
         };
     }
 
-    // match.indexOf('^[')
     return {
         descriptionLineData: null,
         id,
@@ -39,7 +38,9 @@ export function fromToFootnoteList(fromList: Array<FootnoteType>, toList: Array<
     // eslint-disable-next-line no-loops/no-loops
     for (const fromItem of fromList) {
         const {id, descriptionLineData} = fromItem;
-        const candidateToExtend = toList.find((toItem: FootnoteType): boolean => toItem.id === id);
+        const candidateToExtend = toList.find((toItem: FootnoteType): boolean => {
+            return toItem.id === id;
+        });
 
         if (candidateToExtend) {
             if (!candidateToExtend.descriptionLineData) {

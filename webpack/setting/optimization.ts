@@ -76,13 +76,6 @@ const optimizationDevelopment: Configuration['optimization'] = {
                 reuseExistingChunk: true,
                 test: /\.s?css$/,
             },
-            // files: {
-            //     chunks: 'all',
-            //     name: 'files',
-            //     priority: -15,
-            //     test: fileRegExp,
-            //     reuseExistingChunk: true,
-            // },
             // eslint-disable-next-line sort-keys
             vendor: {
                 chunks: 'all',

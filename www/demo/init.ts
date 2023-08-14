@@ -1,7 +1,5 @@
 /* global window, HTMLTextAreaElement, HTMLDivElement, HTMLPreElement, HTMLInputElement, HTMLSelectElement, Event */
 
-// import markdownPro from 'markdown-pro';
-// import markdownProStyle from 'markdown-pro/dist/style.css';
 import markdownPro, {ThemeNameEnum} from '../library/library';
 
 import {debounce, formatHtml, syncScroll, updateScrollPositionCache} from './util';

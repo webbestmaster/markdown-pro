@@ -8,8 +8,7 @@ export const selector = {
 function sayHi() {
     const {log} = console;
 
-    // http://patorjk.com/software/taag/#p=display&f=ANSI%20Shadow&t=Empty
-    // Font: ANSI Shadow
+    // http://patorjk.com/software/taag/#p=display&f=ANSI%20Shadow&t=Empty, font: ANSI Shadow
     const hiString = `
 
 
@@ -29,4 +28,5 @@ function sayHi() {
     log('Is production:', IS_PRODUCTION);
 }
 
+// eslint-disable-next-line jest/require-hook
 sayHi();

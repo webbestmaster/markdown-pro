@@ -1,7 +1,6 @@
 /* global NodeJS, setTimeout, clearTimeout, HTMLElement */
 
-// get from stackoverflow
-// https://stackoverflow.com/questions/3913355/how-to-format-tidy-beautify-in-javascript
+// Get from stackoverflow, https://stackoverflow.com/questions/3913355/how-to-format-tidy-beautify-in-javascript
 export function formatHtml(html: string): string {
     const tab = '\t';
 
@@ -14,7 +13,7 @@ export function formatHtml(html: string): string {
             indent = indent.slice(tab.length);
         }
 
-        result += indent + '<' + element + '>\r\n';
+        result += `${indent}<${element}>\r\n`;
 
         if (/^<?\w[^>]*[^/]$/.test(element)) {
             indent += tab;
@@ -58,9 +57,9 @@ function getScrollPosition(node: HTMLElement): ScrollPositionType {
 }
 
 export function updateScrollPositionCache(nodeList: Array<HTMLElement>): void {
-    // clear array
+    // Clear array
     scrollPositionCacheList.splice(0);
-    // populate array
+    // Populate array
     nodeList.forEach(getScrollPosition);
 }
 
@@ -69,13 +68,13 @@ export function syncScroll(fromNode: HTMLElement, toNode: HTMLElement): void {
     const fromScroll = getScrollPosition(fromNode);
     const toScroll = getScrollPosition(toNode);
 
-    const newTopPosition = (fromScroll.node.scrollTop / fromScroll.maxScrollTop) * toScroll.maxScrollTop;
+    const updatedTopPosition = (fromScroll.node.scrollTop / fromScroll.maxScrollTop) * toScroll.maxScrollTop;
 
-    if (Math.abs(newTopPosition - toScroll.node.scrollTop) < minScrollDeltaHeight) {
+    if (Math.abs(updatedTopPosition - toScroll.node.scrollTop) < minScrollDeltaHeight) {
         return;
     }
 
-    toNode.scrollTo(0, newTopPosition);
+    toNode.scrollTo(0, updatedTopPosition);
 }
 
 export function debounce<ArgsType extends Array<unknown>>(
