@@ -13,15 +13,15 @@ export const nodeEnvironment: 'development' | 'production' = isProduction ? mode
 export const isBuildLibrary: boolean = process.env.IS_BUILD_LIBRARY === 'true';
 export const isFront: boolean = process.env.SIDE === 'front';
 export const isBack: boolean = process.env.SIDE === 'back';
-// export const isServerProdBuild: boolean = process.env.IS_SERVER_PROD_BUILD === "true";
+// Export const isServerProdBuild: boolean = process.env.IS_SERVER_PROD_BUILD === "true";
 export const isTsTranspileOnly: boolean = process.env.TS_TRANSPILE_ONLY === 'true';
 
-export const fileRegExp = /\.(svg|webp|png|jpg|jpeg|gif|otf|ttf|woff|woff2|eot|mp3)$/;
+export const fileRegExp = /\.(svg|webp|png|jpg|jpeg|gif|otf|ttf|woff|woff2|eot|mp3)$/u;
 
-const pathToDistributionFront: string | null = isFront ? '/dist' + pathToStaticFileFolder : null;
+const pathToDistributionFront: string | null = isFront ? `/dist${pathToStaticFileFolder}` : null;
 const pathToDistributionBack: string | null = isBack ? '/dist-server/dist/' : null;
 
-export const pathToDistribution: string = pathToDistributionFront || pathToDistributionBack || 'NO PATH DEFINED!!!';
+export const pathToDistribution: string = pathToDistributionFront ?? pathToDistributionBack ?? 'NO PATH DEFINED!!!';
 
 export const webpackDevServerPort = 9090;
 

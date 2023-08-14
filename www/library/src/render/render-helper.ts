@@ -45,8 +45,10 @@ function imageReplacerVariable(
     return `<img loading="lazy" src="${srcVariable}"${altAttrValue}/>`;
 }
 
-const findImageRegExpGlobal = /!\[([\S\s]*?)]\((\S+?)(?:\s+"([\S\s]+?)")?\)/g;
-const findImageVariableRegExpGlobal = /!\[([\S\s]*?)]\[([\S\s]+?)]/g;
+// eslint-disable-next-line optimize-regex/optimize-regex
+const findImageRegExpGlobal = /!\[([\S\s]*?)\]\((\S+?)(?:\s+"([\S\s]+?)")?\)/gu;
+// eslint-disable-next-line optimize-regex/optimize-regex
+const findImageVariableRegExpGlobal = /!\[([\S\s]*?)\]\[([\S\s]+?)\]/gu;
 
 export function makeImage(html: string, documentMeta: DocumentMetaType): string {
     return (
@@ -63,8 +65,10 @@ export function makeImage(html: string, documentMeta: DocumentMetaType): string 
     );
 }
 
-const findCheckboxCheckedRegExoGlobal = /\[x]/gi;
-const findCheckboxUncheckedRegExoGlobal = /\[\s]/g;
+// eslint-disable-next-line optimize-regex/optimize-regex
+const findCheckboxCheckedRegExoGlobal = /\[x\]/giu;
+// eslint-disable-next-line optimize-regex/optimize-regex
+const findCheckboxUncheckedRegExoGlobal = /\[\s\]/gu;
 
 export function makeCheckbox(html: string): string {
     return (
@@ -81,9 +85,12 @@ export function isImageListOnly(lineContent: string): boolean {
     return lineContent.replace(findImageRegExpGlobal, '').trim() === emptyString;
 }
 
-const findMailRegExpGlobal = /\[([\S\s]*?)]\((\S+?)(?:\s+"([\S\s]+?)")?(?:\s+"([\S\s]+?)")?\)/g;
-const findLinkRegExpGlobal = /\[([\S\s]*?)]\((\S+?)(?:\s+"([\S\s]+?)")?\)/g;
-const findLinkVariableRegExpGlobal = /\[([\S\s]*?)]\[([\S\s]+?)]/g;
+// eslint-disable-next-line optimize-regex/optimize-regex
+const findMailRegExpGlobal = /\[([\S\s]*?)\]\((\S+?)(?:\s+"([\S\s]+?)")?(?:\s+"([\S\s]+?)")?\)/gu;
+// eslint-disable-next-line optimize-regex/optimize-regex
+const findLinkRegExpGlobal = /\[([\S\s]*?)\]\((\S+?)(?:\s+"([\S\s]+?)")?\)/gu;
+// eslint-disable-next-line optimize-regex/optimize-regex
+const findLinkVariableRegExpGlobal = /\[([\S\s]*?)\]\[([\S\s]+?)\]/gu;
 
 function mailReplacer(matchedString: string, linkText: string, href: string, title: unknown, subject: unknown): string {
     const titleAttrValue = hasStringNonEmptySymbols(title) ? ` title="${title}"` : '';

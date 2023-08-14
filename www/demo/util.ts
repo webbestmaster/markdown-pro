@@ -8,14 +8,14 @@ export function formatHtml(html: string): string {
 
     let indent = '';
 
-    html.split(/>\s*</).forEach((element: string) => {
-        if (/^\/\w/.test(element)) {
+    html.split(/>\s*</u).forEach((element: string) => {
+        if (/^\/\w/u.test(element)) {
             indent = indent.slice(tab.length);
         }
 
         result += `${indent}<${element}>\r\n`;
 
-        if (/^<?\w[^>]*[^/]$/.test(element)) {
+        if (/^<?\w[^>]*[^/]$/u.test(element)) {
             indent += tab;
         }
     });

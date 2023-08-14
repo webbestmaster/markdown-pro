@@ -29,23 +29,23 @@ export const selectorULItemList: Array<SelectorType> = ['+ ', '- ', '* '];
 // Export const selectorULItemList: Array<SelectorUlItemType> = ['+ ', '- ', '* '];
 
 export const olNumericItemSelector: SelectorOlNumericItemType = '0. ';
-export const olNumericItemRegExp = /^\d+\.\s/;
+export const olNumericItemRegExp = /^\d+\.\s/u;
 export const olNumericType: OlTypeNumericType = '1';
 
 export const olBigRomanNumberItemSelector: SelectorOlBigRomanNumberItemType = 'I. ';
-export const olBigRomanNumberItemRegExp = /^[CDILMVX]+\.\s/;
+export const olBigRomanNumberItemRegExp = /^[CDILMVX]+\.\s/u;
 export const olBigRomanNumberType: OlTypeBigRomanNumberType = 'I';
 
 export const olSmallRomanNumberItemSelector: SelectorOlSmallRomanNumberItemType = 'i. ';
-export const olSmallRomanNumberItemRegExp = /^[cdilmvx]+\.\s/;
+export const olSmallRomanNumberItemRegExp = /^[cdilmvx]+\.\s/u;
 export const olSmallRomanNumberType: OlTypeSmallRomanNumberType = 'i';
 
 export const olBigAlphabetItemSelector: SelectorOlBigAlphabetItemType = 'A. ';
-export const olBigAlphabetItemRegExp = /^[A-Z]+\.\s/;
+export const olBigAlphabetItemRegExp = /^[A-Z]+\.\s/u;
 export const olBigAlphabetType: OlTypeBigAlphabetType = 'A';
 
 export const olSmallAlphabetItemSelector: SelectorOlSmallAlphabetItemType = 'a. ';
-export const olSmallAlphabetItemRegExp = /^[a-z]+\.\s/;
+export const olSmallAlphabetItemRegExp = /^[a-z]+\.\s/u;
 export const olSmallAlphabetType: OlTypeSmallAlphabetType = 'a';
 
 export const oLParseDataList: Array<OlParseDataType> = [
@@ -89,56 +89,56 @@ export const selectorList: Array<SelectorType> = [
 
 const pairTagSelectorBold: PairTagSelectorType = {
     closeTag: '</b>',
-    equal: /\*+/,
+    equal: /\*+/u,
     openTag: '<b>',
     selector: '**',
 };
 const pairTagSelectorUnderline: PairTagSelectorType = {
     closeTag: '</u>',
-    equal: /_+/,
+    equal: /_+/u,
     openTag: '<u>',
     selector: '__',
 };
 const pairTagSelectorStrike: PairTagSelectorType = {
     closeTag: '</strike>',
-    equal: /~+/,
+    equal: /~+/u,
     openTag: '<strike>',
     selector: '~~',
 };
 const pairTagSelectorItalic1: PairTagSelectorType = {
     closeTag: '</i>',
-    equal: /_+/,
+    equal: /_+/u,
     openTag: '<i>',
     selector: '_',
 };
 const pairTagSelectorItalic2: PairTagSelectorType = {
     closeTag: '</i>',
-    equal: /\*+/,
+    equal: /\*+/u,
     openTag: '<i>',
     selector: '*',
 };
 const pairTagSelectorSub: PairTagSelectorType = {
     closeTag: '</sub>',
-    equal: /~+/,
+    equal: /~+/u,
     openTag: '<sub>',
     selector: '~',
 };
 const pairTagSelectorSup: PairTagSelectorType = {
     closeTag: '</sup>',
-    equal: /\^+/,
+    equal: /\^+/u,
     openTag: '<sup>',
     selector: '^',
 };
 const pairTagSelectorInlineCode: PairTagSelectorType = {
     closeTag: '</code>',
-    equal: /`+/,
+    equal: /`+/u,
     openTag: '<code data-type="inline">',
     selector: '`',
 };
 
 const pairTagSelectorBoldAndItalic: PairTagSelectorType = {
     closeTag: '</i></b>',
-    equal: /\*+/,
+    equal: /\*+/u,
     openTag: '<b><i>',
     selector: '***',
 };

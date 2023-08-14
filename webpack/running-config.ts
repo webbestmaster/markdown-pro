@@ -2,7 +2,7 @@ import path from 'node:path';
 
 import {Configuration} from 'webpack';
 import nodeExternals from 'webpack-node-externals';
-// import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
+// Import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 
 import {optimization} from './setting/optimization';
 import {rules} from './setting/module/rules';
@@ -12,28 +12,27 @@ import {plugins} from './setting/plugins';
 import {devServer} from './setting/dev-server';
 import {watchOptions} from './setting/watch-options';
 
-const externals = [nodeExternals()]; // in order to ignore all modules in node_modules folder
-const externalsPresets = {node: true}; // in order to ignore built-in modules like path, fs, etc.
+// In order to ignore all modules in node_modules folder
+const externals = [nodeExternals()];
+// In order to ignore built-in modules like path, fs, etc.
+const externalsPresets = {node: true};
 
 import {
     pathToStaticFileFolder,
     isDevelopment,
-    // isProduction,
     pathToDistribution,
     cwd,
     nodeEnvironment,
     isBuildLibrary,
     isFront,
     isBack,
-    // isServerProdBuild,
 } from './config';
 
 const configFront: Configuration = {
-    devtool: 'source-map', // isDevelopment ? 'source-map' : false,
+    devtool: 'source-map',
     entry: ['./www/css/root.scss', './www/root.tsx'],
     mode: nodeEnvironment,
     module: {rules},
-    // optimization,
     output: {
         assetModuleFilename: isDevelopment
             ? 'build-asset/[name]----[hash:6][ext][query]'
@@ -46,8 +45,6 @@ const configFront: Configuration = {
     },
     plugins,
     resolve: {alias, extensions},
-    // devServer,
-    // watchOptions: watchOptions,
 };
 
 const configBack: Configuration = {
@@ -55,18 +52,16 @@ const configBack: Configuration = {
     entry: ['./server/server.tsx'],
     externals,
     externalsPresets,
-    // optimization: {minimize: false},
     target: 'node',
 };
 
 const configLibraryFront: Configuration = {
-    devtool: 'source-map', // isServerProdBuild ? false : 'source-map',
+    devtool: 'source-map',
     entry: ['./www/library/library.ts'],
     externals,
     externalsPresets,
     mode: nodeEnvironment,
     module: {rules},
-    // optimization,
     output: {
         filename: 'index.js',
         libraryTarget: 'commonjs2',
@@ -74,34 +69,8 @@ const configLibraryFront: Configuration = {
         pathinfo: false,
         publicPath: '',
     },
-    // devServer,
     plugins,
     resolve: {alias, extensions},
-    // watchOptions: watchOptions,
-
-    /*
-    externals: {
-        // Don't bundle react and react-dom
-        react: {
-            commonjs: 'react',
-            commonjs2: 'react',
-            amd: 'React',
-            root: 'React',
-        },
-        'react-dom': {
-            commonjs: 'react-dom',
-            commonjs2: 'react-dom',
-            amd: 'ReactDOM',
-            root: 'ReactDOM',
-        },
-        'react-router-dom': {
-            commonjs: 'react-router-dom',
-            commonjs2: 'react-router-dom',
-            amd: 'ReactRouterDOM',
-            root: 'ReactRouterDOM',
-        },
-    },
-*/
 };
 
 const configLibraryBack: Configuration = {...configLibraryFront};
@@ -127,6 +96,6 @@ const webpackConfig: Configuration = ((): Configuration => {
     throw new Error('Can not detect config');
 })();
 
-// webpackConfig?.plugins?.push(new BundleAnalyzerPlugin());
+// WebpackConfig?.plugins?.push(new BundleAnalyzerPlugin());
 
 export const webpackRunningConfig = {...webpackConfig, devServer, optimization, watchOptions};

@@ -14,14 +14,13 @@ const cssLoader = isProduction ? MiniCssExtractPlugin.loader : styleLoader;
 
 export const rules: Array<RuleSetRule> = [
     {
-        exclude: /node_modules/,
-        test: /\.tsx?$/,
+        exclude: /node_modules/u,
+        test: /\.tsx?$/u,
         use: [
             {
                 loader: 'ts-loader',
                 options: {
                     configFile: isProduction ? path.join(cwd, 'tsconfig.json') : path.join(cwd, 'tsconfig.dev.json'),
-                    // disable type checker for building
                     transpileOnly: isTsTranspileOnly || isProduction,
                 },
             },
@@ -30,14 +29,15 @@ export const rules: Array<RuleSetRule> = [
     {
         parser: {
             dataUrlCondition: {
-                maxSize: 0, // 0 byte
+                // 0 byte
+                maxSize: 0,
             },
         },
         test: fileRegExp,
         type: 'asset',
     },
     {
-        test: /\.scss$/,
+        test: /\.scss$/u,
         use: [
             cssLoader,
             'css-modules-typescript-loader',
@@ -45,8 +45,8 @@ export const rules: Array<RuleSetRule> = [
                 loader: 'css-loader',
                 options: {
                     modules: {
-                        localIdentName: isDevelopment ? '[local]----[hash:6]' : '[hash:6]', // '[local]----[path]--[name]--[hash:6]'
-                        // localIdentName: '[local]', // '[local]----[path]--[name]--[hash:6]'
+                        localIdentName: isDevelopment ? '[local]----[hash:6]' : '[hash:6]',
+                        // LocalIdentName: '[local]', // '[local]----[path]--[name]--[hash:6]'
                     },
                     sourceMap: true,
                 },
@@ -55,7 +55,7 @@ export const rules: Array<RuleSetRule> = [
         ],
     },
     {
-        test: /\.css$/,
+        test: /\.css$/u,
         use: [
             cssLoader,
             'css-modules-typescript-loader',
@@ -63,7 +63,8 @@ export const rules: Array<RuleSetRule> = [
                 loader: 'css-loader',
                 options: {
                     modules: {
-                        localIdentName: '[local]', // '[local]----[path]--[name]--[hash:6]'
+                        // '[local]----[path]--[name]--[hash:6]'
+                        localIdentName: '[local]',
                     },
                     sourceMap: true,
                 },
@@ -71,7 +72,7 @@ export const rules: Array<RuleSetRule> = [
         ],
     },
     {
-        test: /\.(txt|md)$/i,
+        test: /\.(txt|md)$/iu,
         use: 'raw-loader',
     },
 ];
