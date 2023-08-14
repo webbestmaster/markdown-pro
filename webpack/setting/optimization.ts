@@ -1,7 +1,7 @@
 import {Configuration} from 'webpack';
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
 
-// Const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+// ignored const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 import TerserPlugin from 'terser-webpack-plugin';
 
 import {isDevelopment} from '../config';

@@ -1,4 +1,4 @@
-import {Configuration, DefinePlugin, WebpackPluginInstance, Compiler} from 'webpack';
+import {Configuration, ContextReplacementPlugin, DefinePlugin, WebpackPluginInstance, Compiler} from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ScriptExtHtmlWebpackPlugin from 'script-ext-html-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
@@ -20,10 +20,10 @@ const definePluginParameters: Record<string, string> = {
     BUILD_DATE_H: JSON.stringify(date.toISOString()),
     // NODE_ENV: JSON.stringify(NODE_ENV),
     IS_PRODUCTION: JSON.stringify(isProduction),
-
-    // PROJECT_ID: JSON.stringify('my-best-project')
-
-    // IS_DEVELOPMENT: JSON.stringify(IS_DEVELOPMENT)
+    /*
+     * PROJECT_ID: JSON.stringify('my-best-project')
+     * IS_DEVELOPMENT: JSON.stringify(IS_DEVELOPMENT)
+     */
 };
 
 type StaticFilesDataType = Record<'from' | 'to', string>;
@@ -53,6 +53,7 @@ const pluginList: Configuration['plugins'] = [
     new DefinePlugin(definePluginParameters),
     new ScriptExtHtmlWebpackPlugin({defaultAttribute: 'defer'}),
     new MiniCssExtractPlugin({
+        // Options similar to the same options in webpackOptions.output, both options are optional
         chunkFilename: isDevelopment ? '[id].css' : '[id].[hash:6].css',
         filename: isDevelopment ? '[name].css' : 'style.css',
     }),
@@ -71,6 +72,7 @@ const pluginList: Configuration['plugins'] = [
     new CopyWebpackPlugin({
         patterns: staticFilesSiteList,
     }),
+    new ContextReplacementPlugin(/moment[/\\]locale$/u, /en|ru/u),
 ];
 
 const pluginBuildLibraryList: Configuration['plugins'] = [
@@ -78,10 +80,13 @@ const pluginBuildLibraryList: Configuration['plugins'] = [
     duplicateCheckerPluginInstance,
     new CleanWebpackPlugin(),
     new DefinePlugin(definePluginParameters),
+    // ignored new ScriptExtHtmlWebpackPlugin({defaultAttribute: 'defer'}),
     new MiniCssExtractPlugin({
+        // Options similar to the same options in webpackOptions.output, both options are optional
         chunkFilename: isDevelopment ? '[id].css' : '[id].[hash:6].css',
         filename: isDevelopment ? '[name].css' : 'style.css',
     }),
+    new ContextReplacementPlugin(/moment[/\\]locale$/u, /en|ru/u),
 ];
 
 export const plugins = isBuildLibrary ? pluginBuildLibraryList : pluginList;
