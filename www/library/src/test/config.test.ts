@@ -1,17 +1,15 @@
-import assert from 'node:assert/strict';
-
-import {describe, test} from '@jest/globals';
+import {describe, it, expect} from '@jest/globals';
 
 import {markdown, defaultMarkdownConfig, ThemeNameEnum} from '../../library';
 import {themeClassNameMap} from '../markdown-const';
 
-describe('Markdown-pro test:config', () => {
-    test('Additional css class', () => {
+describe('markdown-pro test:config', () => {
+    it('additional css class', () => {
+        expect.assertions(2);
         const additionalCssClass = 'additional-css-class';
 
-        assert.equal(markdown('', {wrapperClassName: additionalCssClass}).includes(additionalCssClass), true);
-        assert.equal(
-            markdown(''),
+        expect(markdown('', {wrapperClassName: additionalCssClass})).toContain(additionalCssClass);
+        expect(markdown('')).toBe(
             `<div class="${defaultMarkdownConfig.wrapperClassName} ${themeClassNameMap[ThemeNameEnum.auto]}"></div>`
         );
     });
