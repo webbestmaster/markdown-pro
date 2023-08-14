@@ -1,6 +1,4 @@
-import assert from 'node:assert/strict';
-
-import {describe, test} from '@jest/globals';
+import {describe, it, expect} from '@jest/globals';
 
 import markdownPro, {markdown, MarkdownConfigShallowType} from '../../library';
 
@@ -40,82 +38,99 @@ function mdUseBreakLine(input: string): string {
 }
 
 // eslint-disable-next-line max-statements
-describe('Markdown-pro test', () => {
-    test('Import', () => {
-        assert.equal(markdownPro, markdown, 'markdownPro !== {markdown}');
+describe('markdown-pro test', () => {
+    it('import', () => {
+        expect.assertions(1);
+        expect(markdownPro).toBe(markdown);
     });
 
-    test('Header', () => {
-        assert.equal(mdDoNotBreakLine(fixtureHeader.input), fixtureHeader.outputDoNotBreakLine);
-        assert.equal(mdUseBreakLine(fixtureHeader.input), fixtureHeader.outputUseBreakLine);
+    it('header', () => {
+        expect.assertions(2);
+        expect(mdDoNotBreakLine(fixtureHeader.input)).toBe(fixtureHeader.outputDoNotBreakLine);
+        expect(mdUseBreakLine(fixtureHeader.input)).toBe(fixtureHeader.outputUseBreakLine);
     });
 
-    test('Paragraph', () => {
-        assert.equal(mdDoNotBreakLine(fixtureParagraph.input), fixtureParagraph.outputDoNotBreakLine);
-        assert.equal(mdUseBreakLine(fixtureParagraph.input), fixtureParagraph.outputUseBreakLine);
+    it('paragraph', () => {
+        expect.assertions(2);
+        expect(mdDoNotBreakLine(fixtureParagraph.input)).toBe(fixtureParagraph.outputDoNotBreakLine);
+        expect(mdUseBreakLine(fixtureParagraph.input)).toBe(fixtureParagraph.outputUseBreakLine);
     });
 
-    test('Html', () => {
-        assert.equal(mdDoNotBreakLine(fixtureHtml.input), fixtureHtml.outputDoNotBreakLine);
-        assert.equal(mdUseBreakLine(fixtureHtml.input), fixtureHtml.outputUseBreakLine);
+    it('html', () => {
+        expect.assertions(2);
+        expect(mdDoNotBreakLine(fixtureHtml.input)).toBe(fixtureHtml.outputDoNotBreakLine);
+        expect(mdUseBreakLine(fixtureHtml.input)).toBe(fixtureHtml.outputUseBreakLine);
     });
 
-    test('Line', () => {
-        assert.equal(mdDoNotBreakLine(fixtureLine.input), fixtureLine.outputDoNotBreakLine);
-        assert.equal(mdUseBreakLine(fixtureLine.input), fixtureLine.outputUseBreakLine);
+    it('line', () => {
+        expect.assertions(2);
+        expect(mdDoNotBreakLine(fixtureLine.input)).toBe(fixtureLine.outputDoNotBreakLine);
+        expect(mdUseBreakLine(fixtureLine.input)).toBe(fixtureLine.outputUseBreakLine);
     });
 
-    test('Pair tag', () => {
-        assert.equal(mdDoNotBreakLine(fixturePairTag.input), fixturePairTag.outputDoNotBreakLine);
-        assert.equal(mdUseBreakLine(fixturePairTag.input), fixturePairTag.outputUseBreakLine);
+    it('pair tag', () => {
+        expect.assertions(2);
+        expect(mdDoNotBreakLine(fixturePairTag.input)).toBe(fixturePairTag.outputDoNotBreakLine);
+        expect(mdUseBreakLine(fixturePairTag.input)).toBe(fixturePairTag.outputUseBreakLine);
     });
 
-    test('Unordered List', () => {
-        assert.equal(mdDoNotBreakLine(fixtureUnorderedList.input), fixtureUnorderedList.outputDoNotBreakLine);
-        assert.equal(mdUseBreakLine(fixtureUnorderedList.input), fixtureUnorderedList.outputUseBreakLine);
+    it('unordered list', () => {
+        expect.assertions(2);
+        expect(mdDoNotBreakLine(fixtureUnorderedList.input)).toBe(fixtureUnorderedList.outputDoNotBreakLine);
+        expect(mdUseBreakLine(fixtureUnorderedList.input)).toBe(fixtureUnorderedList.outputUseBreakLine);
     });
 
-    test('Ordered List', () => {
-        assert.equal(mdDoNotBreakLine(fixtureOrderedList.input), fixtureOrderedList.outputDoNotBreakLine);
-        assert.equal(mdUseBreakLine(fixtureOrderedList.input), fixtureOrderedList.outputUseBreakLine);
+    it('ordered list', () => {
+        expect.assertions(2);
+        expect(mdDoNotBreakLine(fixtureOrderedList.input)).toBe(fixtureOrderedList.outputDoNotBreakLine);
+        expect(mdUseBreakLine(fixtureOrderedList.input)).toBe(fixtureOrderedList.outputUseBreakLine);
     });
 
-    test('Image', () => {
-        assert.equal(mdDoNotBreakLine(fixtureImage.input), fixtureImage.outputDoNotBreakLine);
-        assert.equal(mdUseBreakLine(fixtureImage.input), fixtureImage.outputUseBreakLine);
+    it('image', () => {
+        expect.assertions(2);
+        expect(mdDoNotBreakLine(fixtureImage.input)).toBe(fixtureImage.outputDoNotBreakLine);
+        expect(mdUseBreakLine(fixtureImage.input)).toBe(fixtureImage.outputUseBreakLine);
     });
 
-    test('Checkbox', () => {
-        assert.equal(mdDoNotBreakLine(fixtureCheckbox.input), fixtureCheckbox.outputDoNotBreakLine);
-        assert.equal(mdUseBreakLine(fixtureCheckbox.input), fixtureCheckbox.outputUseBreakLine);
+    it('checkbox', () => {
+        expect.assertions(2);
+        expect(mdDoNotBreakLine(fixtureCheckbox.input)).toBe(fixtureCheckbox.outputDoNotBreakLine);
+        expect(mdUseBreakLine(fixtureCheckbox.input)).toBe(fixtureCheckbox.outputUseBreakLine);
     });
 
-    test('Link', () => {
-        assert.equal(mdDoNotBreakLine(fixtureLink.input), fixtureLink.outputDoNotBreakLine);
-        assert.equal(mdUseBreakLine(fixtureLink.input), fixtureLink.outputUseBreakLine);
+    it('link', () => {
+        expect.assertions(2);
+        expect(mdDoNotBreakLine(fixtureLink.input)).toBe(fixtureLink.outputDoNotBreakLine);
+        expect(mdUseBreakLine(fixtureLink.input)).toBe(fixtureLink.outputUseBreakLine);
     });
 
-    test('Mail', () => {
-        assert.equal(mdDoNotBreakLine(fixtureMail.input), fixtureMail.outputDoNotBreakLine);
-        assert.equal(mdUseBreakLine(fixtureMail.input), fixtureMail.outputUseBreakLine);
+    it('mail', () => {
+        expect.assertions(2);
+        expect(mdDoNotBreakLine(fixtureMail.input)).toBe(fixtureMail.outputDoNotBreakLine);
+        expect(mdUseBreakLine(fixtureMail.input)).toBe(fixtureMail.outputUseBreakLine);
     });
 
-    test('Blockquote', () => {
-        assert.equal(mdDoNotBreakLine(fixtureBlockquote.input), fixtureBlockquote.outputDoNotBreakLine);
-        assert.equal(mdUseBreakLine(fixtureBlockquote.input), fixtureBlockquote.outputUseBreakLine);
+    it('blockquote', () => {
+        expect.assertions(2);
+        expect(mdDoNotBreakLine(fixtureBlockquote.input)).toBe(fixtureBlockquote.outputDoNotBreakLine);
+        expect(mdUseBreakLine(fixtureBlockquote.input)).toBe(fixtureBlockquote.outputUseBreakLine);
     });
 
-    test('Code', () => {
-        assert.equal(mdDoNotBreakLine(fixtureCode.input), fixtureCode.outputDoNotBreakLine);
-        assert.equal(mdUseBreakLine(fixtureCode.input), fixtureCode.outputUseBreakLine);
+    it('code', () => {
+        expect.assertions(2);
+        expect(mdDoNotBreakLine(fixtureCode.input)).toBe(fixtureCode.outputDoNotBreakLine);
+        expect(mdUseBreakLine(fixtureCode.input)).toBe(fixtureCode.outputUseBreakLine);
     });
 
-    test('Code highlight', () => {
+    it('code highlight', () => {
+        expect.assertions(2);
         function codeHighlight(langName: string, code: string): string {
+            // eslint-disable-next-line jest/no-conditional-in-test
             if (langName !== fixtureCodeHighlight.langName) {
                 throw new Error('codeHighlight: wrong langName');
             }
 
+            // eslint-disable-next-line jest/no-conditional-in-test
             if (code !== fixtureCodeHighlight.code) {
                 throw new Error('codeHighlight: wrong code');
             }
@@ -134,19 +149,21 @@ describe('Markdown-pro test', () => {
             useWrapper: false,
         };
 
-        assert.equal(
-            markdown(fixtureCodeHighlight.input, configDoNotBreakLine),
+        expect(markdown(fixtureCodeHighlight.input, configDoNotBreakLine)).toBe(
             fixtureCodeHighlight.outputDoNotBreakLine
         );
-        assert.equal(markdown(fixtureCodeHighlight.input, configUseBreakLine), fixtureCodeHighlight.outputUseBreakLine);
+        expect(markdown(fixtureCodeHighlight.input, configUseBreakLine)).toBe(fixtureCodeHighlight.outputUseBreakLine);
     });
 
-    test('Code highlight: no lang', () => {
+    it('code highlight: no lang', () => {
+        expect.assertions(2);
         function codeHighlight(langName: string, code: string): string {
+            // eslint-disable-next-line jest/no-conditional-in-test
             if (langName !== fixtureCodeHighlightNoLang.langName) {
                 throw new Error('codeHighlight - no lang: wrong langName');
             }
 
+            // eslint-disable-next-line jest/no-conditional-in-test
             if (code !== fixtureCodeHighlightNoLang.code) {
                 throw new Error('codeHighlight - no lang: wrong code');
             }
@@ -165,27 +182,28 @@ describe('Markdown-pro test', () => {
             useWrapper: false,
         };
 
-        assert.equal(
-            markdown(fixtureCodeHighlightNoLang.input, configDoNotBreakLine),
+        expect(markdown(fixtureCodeHighlightNoLang.input, configDoNotBreakLine)).toBe(
             fixtureCodeHighlightNoLang.outputDoNotBreakLine
         );
-        assert.equal(
-            markdown(fixtureCodeHighlightNoLang.input, configUseBreakLine),
+        expect(markdown(fixtureCodeHighlightNoLang.input, configUseBreakLine)).toBe(
             fixtureCodeHighlightNoLang.outputUseBreakLine
         );
     });
 
-    test('Parse link', () => {
-        assert.equal(mdDoNotBreakLine(fixtureParseLink.input), fixtureParseLink.outputDoNotBreakLine);
-        assert.equal(mdUseBreakLine(fixtureParseLink.input), fixtureParseLink.outputUseBreakLine);
+    it('parse link', () => {
+        expect.assertions(2);
+        expect(mdDoNotBreakLine(fixtureParseLink.input)).toBe(fixtureParseLink.outputDoNotBreakLine);
+        expect(mdUseBreakLine(fixtureParseLink.input)).toBe(fixtureParseLink.outputUseBreakLine);
     });
 
-    test('Parse Mail', () => {
-        assert.equal(mdDoNotBreakLine(fixtureParseMail.input), fixtureParseMail.outputDoNotBreakLine);
-        assert.equal(mdUseBreakLine(fixtureParseMail.input), fixtureParseMail.outputUseBreakLine);
+    it('parse mail', () => {
+        expect.assertions(2);
+        expect(mdDoNotBreakLine(fixtureParseMail.input)).toBe(fixtureParseMail.outputDoNotBreakLine);
+        expect(mdUseBreakLine(fixtureParseMail.input)).toBe(fixtureParseMail.outputUseBreakLine);
     });
 
-    test('Do NOT parse link', () => {
+    it('do NOT parse link', () => {
+        expect.assertions(2);
         const configDoNotBreakLine: MarkdownConfigShallowType = {
             parseLink: false,
             useWrapper: false,
@@ -197,17 +215,16 @@ describe('Markdown-pro test', () => {
             useWrapper: false,
         };
 
-        assert.equal(
-            markdown(fixtureDoNotParseLink.input, configDoNotBreakLine),
+        expect(markdown(fixtureDoNotParseLink.input, configDoNotBreakLine)).toBe(
             fixtureDoNotParseLink.outputDoNotBreakLine
         );
-        assert.equal(
-            markdown(fixtureDoNotParseLink.input, configUseBreakLine),
+        expect(markdown(fixtureDoNotParseLink.input, configUseBreakLine)).toBe(
             fixtureDoNotParseLink.outputUseBreakLine
         );
     });
 
-    test('Do NOT parse mail', () => {
+    it('do NOT parse mail', () => {
+        expect.assertions(2);
         const configDoNotBreakLine: MarkdownConfigShallowType = {
             parseLink: false,
             useWrapper: false,
@@ -219,40 +236,41 @@ describe('Markdown-pro test', () => {
             useWrapper: false,
         };
 
-        assert.equal(
-            markdown(fixtureDoNotParseMail.input, configDoNotBreakLine),
+        expect(markdown(fixtureDoNotParseMail.input, configDoNotBreakLine)).toBe(
             fixtureDoNotParseMail.outputDoNotBreakLine
         );
-        assert.equal(
-            markdown(fixtureDoNotParseMail.input, configUseBreakLine),
+        expect(markdown(fixtureDoNotParseMail.input, configUseBreakLine)).toBe(
             fixtureDoNotParseMail.outputUseBreakLine
         );
     });
 
-    test('Table', () => {
-        assert.equal(mdDoNotBreakLine(fixtureTable1.input), fixtureTable1.output);
-        assert.equal(mdUseBreakLine(fixtureTable2.input), fixtureTable2.output);
-        assert.equal(
+    it('table', () => {
+        expect.assertions(3);
+        expect(mdDoNotBreakLine(fixtureTable1.input)).toBe(fixtureTable1.output);
+        expect(mdUseBreakLine(fixtureTable2.input)).toBe(fixtureTable2.output);
+        expect(
             markdown(fixtureTable3.input, {
                 ...fixtureTable3.config,
                 useWrapper: false,
-            }),
-            fixtureTable3.output
-        );
+            })
+        ).toBe(fixtureTable3.output);
     });
 
-    test('Footnote', () => {
-        assert.equal(mdDoNotBreakLine(fixtureFootnote.input), fixtureFootnote.outputDoNotBreakLine);
-        assert.equal(mdUseBreakLine(fixtureFootnote.input), fixtureFootnote.outputUseBreakLine);
+    it('tootnote', () => {
+        expect.assertions(2);
+        expect(mdDoNotBreakLine(fixtureFootnote.input)).toBe(fixtureFootnote.outputDoNotBreakLine);
+        expect(mdUseBreakLine(fixtureFootnote.input)).toBe(fixtureFootnote.outputUseBreakLine);
     });
 
-    test('Variables', () => {
-        assert.equal(mdDoNotBreakLine(fixtureVariable.input), fixtureVariable.outputDoNotBreakLine);
-        assert.equal(mdUseBreakLine(fixtureVariable.input), fixtureVariable.outputUseBreakLine);
+    it('variables', () => {
+        expect.assertions(2);
+        expect(mdDoNotBreakLine(fixtureVariable.input)).toBe(fixtureVariable.outputDoNotBreakLine);
+        expect(mdUseBreakLine(fixtureVariable.input)).toBe(fixtureVariable.outputUseBreakLine);
     });
 
-    test('Mix 1', () => {
-        assert.equal(mdDoNotBreakLine(fixtureMix1.input), fixtureMix1.outputDoNotBreakLine);
-        assert.equal(mdUseBreakLine(fixtureMix1.input), fixtureMix1.outputUseBreakLine);
+    it('mix 1', () => {
+        expect.assertions(2);
+        expect(mdDoNotBreakLine(fixtureMix1.input)).toBe(fixtureMix1.outputDoNotBreakLine);
+        expect(mdUseBreakLine(fixtureMix1.input)).toBe(fixtureMix1.outputUseBreakLine);
     });
 });
