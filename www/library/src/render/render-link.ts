@@ -1,6 +1,6 @@
-import {mailPrefix} from '../markdown-const';
+import {mailPrefix} from "../markdown-const";
 
-import {getLinkIndexList, getTagIndexList, harArrayListOverflow, PairNumberArrayType} from './render-util';
+import {getLinkIndexList, getTagIndexList, harArrayListOverflow, PairNumberArrayType} from "./render-util";
 
 const linkTextRegExpGlobal = /(\w+:\/\/[\w.]+\.\w+[\w+/]*)/giu;
 const mailTextRegExpGlobal = /([\w.-]+@[\w.]+\.\w+[\w+/]*)/giu;
@@ -25,7 +25,7 @@ function linkReplacer(html: string, replacer: RegExp, hrefPrefix: string): strin
 }
 
 export function makeLinkFromText(html: string): string {
-    return linkReplacer(html, linkTextRegExpGlobal, '');
+    return linkReplacer(html, linkTextRegExpGlobal, "");
 }
 
 export function makeMailFromText(html: string): string {

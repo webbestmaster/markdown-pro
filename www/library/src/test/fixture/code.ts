@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 
-const fixtureCodeLangName = 'bash';
-const fixtureCodeTextCode = '$ npm i markdown-pro\n$ sudo be happy';
+const fixtureCodeLangName = "bash";
+const fixtureCodeTextCode = "$ npm i markdown-pro\n$ sudo be happy";
 
 export const fixtureCode = {
     input: `
@@ -48,9 +48,9 @@ ${fixtureCodeTextCode}
 
 And simple text after.
 `,
-    langName: '',
+    langName: "",
     outputDoNotBreakLine:
-        '<h3>I ❤️ Coding Highlight:</h3><code>yppah eb odus $\norp-nwodkram i mpn $</code><p>And simple text after.</p>',
+        "<h3>I ❤️ Coding Highlight:</h3><code>yppah eb odus $\norp-nwodkram i mpn $</code><p>And simple text after.</p>",
     outputUseBreakLine:
-        '<h3>I ❤️ Coding Highlight:</h3><code>yppah eb odus $\norp-nwodkram i mpn $</code><p>And simple text after.</p>',
+        "<h3>I ❤️ Coding Highlight:</h3><code>yppah eb odus $\norp-nwodkram i mpn $</code><p>And simple text after.</p>",
 };

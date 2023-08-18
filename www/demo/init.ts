@@ -1,8 +1,8 @@
 /* global window, HTMLTextAreaElement, HTMLDivElement, HTMLPreElement, HTMLInputElement, HTMLSelectElement, Event */
 
-import markdownPro, {ThemeNameEnum} from '../library/library';
+import markdownPro, {ThemeNameEnum} from "../library/library";
 
-import {debounce, formatHtml, syncScroll, updateScrollPositionCache} from './util';
+import {debounce, formatHtml, syncScroll, updateScrollPositionCache} from "./util";
 
 function getThemeName(value: unknown): ThemeNameEnum {
     switch (value) {
@@ -16,11 +16,11 @@ function getThemeName(value: unknown): ThemeNameEnum {
             return ThemeNameEnum.light;
         }
         default: {
-            console.warn('[getThemeName] can not detect theme name.');
+            console.warn("[getThemeName] can not detect theme name.");
         }
     }
 
-    console.warn('[getThemeName] use ThemeNameEnum.auto.');
+    console.warn("[getThemeName] use ThemeNameEnum.auto.");
     return ThemeNameEnum.auto;
 }
 
@@ -64,12 +64,12 @@ export function init(
         }
     }
 
-    textArea.addEventListener('input', handleInput, false);
+    textArea.addEventListener("input", handleInput, false);
 
-    textArea.addEventListener('scroll', handleScroll, {passive: true});
-    output.addEventListener('scroll', handleScroll, {passive: true});
+    textArea.addEventListener("scroll", handleScroll, {passive: true});
+    output.addEventListener("scroll", handleScroll, {passive: true});
     output.addEventListener(
-        'scroll',
+        "scroll",
         debounce((evt: Event) => {
             updateScrollPositionCache([textArea, output]);
             handleScroll(evt);
@@ -77,9 +77,9 @@ export function init(
         {passive: true}
     );
 
-    useLineBreak.addEventListener('change', handleInput, false);
-    parseLink.addEventListener('change', handleInput, false);
-    themeName.addEventListener('change', handleInput, false);
+    useLineBreak.addEventListener("change", handleInput, false);
+    parseLink.addEventListener("change", handleInput, false);
+    themeName.addEventListener("change", handleInput, false);
 
-    window.addEventListener('resize', refreshResult, false);
+    window.addEventListener("resize", refreshResult, false);
 }

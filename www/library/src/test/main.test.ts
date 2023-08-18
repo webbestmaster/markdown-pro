@@ -1,28 +1,28 @@
-import {describe, it, expect} from '@jest/globals';
+import {describe, it, expect} from "@jest/globals";
 
-import markdownPro, {markdown, MarkdownConfigShallowType} from '../../library';
+import markdownPro, {markdown, MarkdownConfigShallowType} from "../../library";
 
-import {stringReverse} from './util';
+import {stringReverse} from "./util";
 
-import {fixtureHeader} from './fixture/header';
-import {fixtureParagraph} from './fixture/paragraph';
-import {fixtureHtml} from './fixture/html';
-import {fixtureLine} from './fixture/line';
-import {fixturePairTag} from './fixture/pair-tag';
-import {fixtureUnorderedList} from './fixture/unordered-list';
-import {fixtureOrderedList} from './fixture/ordered-list';
-import {fixtureBlockquote} from './fixture/blockquote';
-import {fixtureCode, fixtureCodeHighlight, fixtureCodeHighlightNoLang} from './fixture/code';
-import {fixtureImage} from './fixture/image';
-import {fixtureCheckbox} from './fixture/checkbox';
-import {fixtureLink} from './fixture/link';
-import {fixtureMail} from './fixture/mail';
-import {fixtureTable1, fixtureTable2, fixtureTable3} from './fixture/table';
-import {fixtureDoNotParseLink, fixtureParseLink} from './fixture/parse-link';
-import {fixtureDoNotParseMail, fixtureParseMail} from './fixture/parse-mail';
-import {fixtureMix1} from './fixture/mix-1';
-import {fixtureFootnote} from './fixture/footnote';
-import {fixtureVariable} from './fixture/variables';
+import {fixtureHeader} from "./fixture/header";
+import {fixtureParagraph} from "./fixture/paragraph";
+import {fixtureHtml} from "./fixture/html";
+import {fixtureLine} from "./fixture/line";
+import {fixturePairTag} from "./fixture/pair-tag";
+import {fixtureUnorderedList} from "./fixture/unordered-list";
+import {fixtureOrderedList} from "./fixture/ordered-list";
+import {fixtureBlockquote} from "./fixture/blockquote";
+import {fixtureCode, fixtureCodeHighlight, fixtureCodeHighlightNoLang} from "./fixture/code";
+import {fixtureImage} from "./fixture/image";
+import {fixtureCheckbox} from "./fixture/checkbox";
+import {fixtureLink} from "./fixture/link";
+import {fixtureMail} from "./fixture/mail";
+import {fixtureTable1, fixtureTable2, fixtureTable3} from "./fixture/table";
+import {fixtureDoNotParseLink, fixtureParseLink} from "./fixture/parse-link";
+import {fixtureDoNotParseMail, fixtureParseMail} from "./fixture/parse-mail";
+import {fixtureMix1} from "./fixture/mix-1";
+import {fixtureFootnote} from "./fixture/footnote";
+import {fixtureVariable} from "./fixture/variables";
 
 function mdDoNotBreakLine(input: string): string {
     return markdown(input, {useWrapper: false});
@@ -38,101 +38,101 @@ function mdUseBreakLine(input: string): string {
 }
 
 // eslint-disable-next-line max-statements
-describe('markdown-pro test', () => {
-    it('import', () => {
+describe("markdown-pro test", () => {
+    it("import", () => {
         expect.assertions(1);
         expect(markdownPro).toBe(markdown);
     });
 
-    it('header', () => {
+    it("header", () => {
         expect.assertions(2);
         expect(mdDoNotBreakLine(fixtureHeader.input)).toBe(fixtureHeader.outputDoNotBreakLine);
         expect(mdUseBreakLine(fixtureHeader.input)).toBe(fixtureHeader.outputUseBreakLine);
     });
 
-    it('paragraph', () => {
+    it("paragraph", () => {
         expect.assertions(2);
         expect(mdDoNotBreakLine(fixtureParagraph.input)).toBe(fixtureParagraph.outputDoNotBreakLine);
         expect(mdUseBreakLine(fixtureParagraph.input)).toBe(fixtureParagraph.outputUseBreakLine);
     });
 
-    it('html', () => {
+    it("html", () => {
         expect.assertions(2);
         expect(mdDoNotBreakLine(fixtureHtml.input)).toBe(fixtureHtml.outputDoNotBreakLine);
         expect(mdUseBreakLine(fixtureHtml.input)).toBe(fixtureHtml.outputUseBreakLine);
     });
 
-    it('line', () => {
+    it("line", () => {
         expect.assertions(2);
         expect(mdDoNotBreakLine(fixtureLine.input)).toBe(fixtureLine.outputDoNotBreakLine);
         expect(mdUseBreakLine(fixtureLine.input)).toBe(fixtureLine.outputUseBreakLine);
     });
 
-    it('pair tag', () => {
+    it("pair tag", () => {
         expect.assertions(2);
         expect(mdDoNotBreakLine(fixturePairTag.input)).toBe(fixturePairTag.outputDoNotBreakLine);
         expect(mdUseBreakLine(fixturePairTag.input)).toBe(fixturePairTag.outputUseBreakLine);
     });
 
-    it('unordered list', () => {
+    it("unordered list", () => {
         expect.assertions(2);
         expect(mdDoNotBreakLine(fixtureUnorderedList.input)).toBe(fixtureUnorderedList.outputDoNotBreakLine);
         expect(mdUseBreakLine(fixtureUnorderedList.input)).toBe(fixtureUnorderedList.outputUseBreakLine);
     });
 
-    it('ordered list', () => {
+    it("ordered list", () => {
         expect.assertions(2);
         expect(mdDoNotBreakLine(fixtureOrderedList.input)).toBe(fixtureOrderedList.outputDoNotBreakLine);
         expect(mdUseBreakLine(fixtureOrderedList.input)).toBe(fixtureOrderedList.outputUseBreakLine);
     });
 
-    it('image', () => {
+    it("image", () => {
         expect.assertions(2);
         expect(mdDoNotBreakLine(fixtureImage.input)).toBe(fixtureImage.outputDoNotBreakLine);
         expect(mdUseBreakLine(fixtureImage.input)).toBe(fixtureImage.outputUseBreakLine);
     });
 
-    it('checkbox', () => {
+    it("checkbox", () => {
         expect.assertions(2);
         expect(mdDoNotBreakLine(fixtureCheckbox.input)).toBe(fixtureCheckbox.outputDoNotBreakLine);
         expect(mdUseBreakLine(fixtureCheckbox.input)).toBe(fixtureCheckbox.outputUseBreakLine);
     });
 
-    it('link', () => {
+    it("link", () => {
         expect.assertions(2);
         expect(mdDoNotBreakLine(fixtureLink.input)).toBe(fixtureLink.outputDoNotBreakLine);
         expect(mdUseBreakLine(fixtureLink.input)).toBe(fixtureLink.outputUseBreakLine);
     });
 
-    it('mail', () => {
+    it("mail", () => {
         expect.assertions(2);
         expect(mdDoNotBreakLine(fixtureMail.input)).toBe(fixtureMail.outputDoNotBreakLine);
         expect(mdUseBreakLine(fixtureMail.input)).toBe(fixtureMail.outputUseBreakLine);
     });
 
-    it('blockquote', () => {
+    it("blockquote", () => {
         expect.assertions(2);
         expect(mdDoNotBreakLine(fixtureBlockquote.input)).toBe(fixtureBlockquote.outputDoNotBreakLine);
         expect(mdUseBreakLine(fixtureBlockquote.input)).toBe(fixtureBlockquote.outputUseBreakLine);
     });
 
-    it('code', () => {
+    it("code", () => {
         expect.assertions(2);
         expect(mdDoNotBreakLine(fixtureCode.input)).toBe(fixtureCode.outputDoNotBreakLine);
         expect(mdUseBreakLine(fixtureCode.input)).toBe(fixtureCode.outputUseBreakLine);
     });
 
-    it('code highlight', () => {
+    it("code highlight", () => {
         expect.assertions(2);
         function codeHighlight(langName: string, code: string): string {
             // eslint-disable-next-line jest/no-conditional-in-test
             if (langName !== fixtureCodeHighlight.langName) {
-                throw new Error('codeHighlight: wrong langName');
+                throw new Error("codeHighlight: wrong langName");
             }
 
             // eslint-disable-next-line jest/no-conditional-in-test
             if (code !== fixtureCodeHighlight.code) {
-                throw new Error('codeHighlight: wrong code');
+                throw new Error("codeHighlight: wrong code");
             }
 
             return stringReverse(code);
@@ -155,17 +155,17 @@ describe('markdown-pro test', () => {
         expect(markdown(fixtureCodeHighlight.input, configUseBreakLine)).toBe(fixtureCodeHighlight.outputUseBreakLine);
     });
 
-    it('code highlight: no lang', () => {
+    it("code highlight: no lang", () => {
         expect.assertions(2);
         function codeHighlight(langName: string, code: string): string {
             // eslint-disable-next-line jest/no-conditional-in-test
             if (langName !== fixtureCodeHighlightNoLang.langName) {
-                throw new Error('codeHighlight - no lang: wrong langName');
+                throw new Error("codeHighlight - no lang: wrong langName");
             }
 
             // eslint-disable-next-line jest/no-conditional-in-test
             if (code !== fixtureCodeHighlightNoLang.code) {
-                throw new Error('codeHighlight - no lang: wrong code');
+                throw new Error("codeHighlight - no lang: wrong code");
             }
 
             return stringReverse(code);
@@ -190,19 +190,19 @@ describe('markdown-pro test', () => {
         );
     });
 
-    it('parse link', () => {
+    it("parse link", () => {
         expect.assertions(2);
         expect(mdDoNotBreakLine(fixtureParseLink.input)).toBe(fixtureParseLink.outputDoNotBreakLine);
         expect(mdUseBreakLine(fixtureParseLink.input)).toBe(fixtureParseLink.outputUseBreakLine);
     });
 
-    it('parse mail', () => {
+    it("parse mail", () => {
         expect.assertions(2);
         expect(mdDoNotBreakLine(fixtureParseMail.input)).toBe(fixtureParseMail.outputDoNotBreakLine);
         expect(mdUseBreakLine(fixtureParseMail.input)).toBe(fixtureParseMail.outputUseBreakLine);
     });
 
-    it('do NOT parse link', () => {
+    it("do NOT parse link", () => {
         expect.assertions(2);
         const configDoNotBreakLine: MarkdownConfigShallowType = {
             parseLink: false,
@@ -223,7 +223,7 @@ describe('markdown-pro test', () => {
         );
     });
 
-    it('do NOT parse mail', () => {
+    it("do NOT parse mail", () => {
         expect.assertions(2);
         const configDoNotBreakLine: MarkdownConfigShallowType = {
             parseLink: false,
@@ -244,7 +244,7 @@ describe('markdown-pro test', () => {
         );
     });
 
-    it('table', () => {
+    it("table", () => {
         expect.assertions(3);
         expect(mdDoNotBreakLine(fixtureTable1.input)).toBe(fixtureTable1.output);
         expect(mdUseBreakLine(fixtureTable2.input)).toBe(fixtureTable2.output);
@@ -256,19 +256,19 @@ describe('markdown-pro test', () => {
         ).toBe(fixtureTable3.output);
     });
 
-    it('tootnote', () => {
+    it("tootnote", () => {
         expect.assertions(2);
         expect(mdDoNotBreakLine(fixtureFootnote.input)).toBe(fixtureFootnote.outputDoNotBreakLine);
         expect(mdUseBreakLine(fixtureFootnote.input)).toBe(fixtureFootnote.outputUseBreakLine);
     });
 
-    it('variables', () => {
+    it("variables", () => {
         expect.assertions(2);
         expect(mdDoNotBreakLine(fixtureVariable.input)).toBe(fixtureVariable.outputDoNotBreakLine);
         expect(mdUseBreakLine(fixtureVariable.input)).toBe(fixtureVariable.outputUseBreakLine);
     });
 
-    it('mix 1', () => {
+    it("mix 1", () => {
         expect.assertions(2);
         expect(mdDoNotBreakLine(fixtureMix1.input)).toBe(fixtureMix1.outputDoNotBreakLine);
         expect(mdUseBreakLine(fixtureMix1.input)).toBe(fixtureMix1.outputUseBreakLine);

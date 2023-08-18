@@ -1,7 +1,7 @@
-import {PairTagSelectorType} from '../parser/parser-type';
-import {pairTagSelectorList} from '../parser/parser-selector';
+import {PairTagSelectorType} from "../parser/parser-type";
+import {pairTagSelectorList} from "../parser/parser-selector";
 
-import {getTagIndexList, harArrayOverflow} from './render-util';
+import {getTagIndexList, harArrayOverflow} from "./render-util";
 
 // eslint-disable-next-line complexity, max-statements
 export function getSelectorIndexList(html: string, pairTagSelector: PairTagSelectorType): Array<number> {

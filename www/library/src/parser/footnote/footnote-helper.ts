@@ -1,4 +1,4 @@
-import {FootnoteType} from '../parser-type';
+import {FootnoteType} from "../parser-type";
 
 export function getIsFootnoteDescription(lineContent: string): boolean {
     // eslint-disable-next-line optimize-regex/optimize-regex
@@ -18,7 +18,7 @@ export function getFootnoteInlineLineContent(match: string): string {
 // See findFootnoteMarkGlobalRegExp
 export function getFootnoteMarkId(match: string): string {
     // eslint-disable-next-line unicorn/prefer-string-replace-all, newline-per-chained-call
-    return getFootnoteInlineLineContent(match).toLowerCase().replace(/\W/gu, ' ').trim().replace(/\s+/gu, '-');
+    return getFootnoteInlineLineContent(match).toLowerCase().replace(/\W/gu, " ").trim().replace(/\s+/gu, "-");
 }
 
 export function getMdFootnoteContent(footnote: FootnoteType): string {
@@ -26,9 +26,9 @@ export function getMdFootnoteContent(footnote: FootnoteType): string {
 
     if (descriptionLineData) {
         const {lineContent, additionalLineList} = descriptionLineData;
-        const start = lineContent.indexOf(']:') + 2;
+        const start = lineContent.indexOf("]:") + 2;
 
-        return `${lineContent.slice(start)}\n${additionalLineList.join('\n')}`;
+        return `${lineContent.slice(start)}\n${additionalLineList.join("\n")}`;
     }
 
     return inlineLineContent;

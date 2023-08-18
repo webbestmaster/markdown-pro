@@ -1,17 +1,17 @@
-import {DocumentMetaType, LineDataType, OlAttributeType, SelectorType} from '../parser/parser-type';
-import {olNumericType, oLParseDataList} from '../parser/parser-selector';
-import {hasEmailSymbol, hasStringNonEmptySymbols} from '../parser/util/is';
-import {makeFootnoteSuper} from '../parser/footnote/footnote';
-import {mailPrefix} from '../markdown-const';
+import {DocumentMetaType, LineDataType, OlAttributeType, SelectorType} from "../parser/parser-type";
+import {olNumericType, oLParseDataList} from "../parser/parser-selector";
+import {hasEmailSymbol, hasStringNonEmptySymbols} from "../parser/util/is";
+import {makeFootnoteSuper} from "../parser/footnote/footnote";
+import {mailPrefix} from "../markdown-const";
 
-import {breakLineTag, emptyString, space} from './render-const';
-import {makeLinkFromText, makeMailFromText} from './render-link';
-import {makePairTag} from './render-pair-tag';
+import {breakLineTag, emptyString, space} from "./render-const";
+import {makeLinkFromText, makeMailFromText} from "./render-link";
+import {makePairTag} from "./render-pair-tag";
 
 export const breakLineRegExp = /\s*?\\$/u;
 
 export function addBreakLine(line: string): string {
-    return line.replace(breakLineRegExp, '<br/>');
+    return line.replace(breakLineRegExp, "<br/>");
 }
 
 export function removeEndBreakLine(line: string): string {
@@ -23,8 +23,8 @@ export function getHasEndBreakLine(lineContent: string, useLineBreak: boolean): 
 }
 
 function imageReplacer(matchedString: string, alt: unknown, src: string, title: unknown): string {
-    const titleAndOtherAttrValue = hasStringNonEmptySymbols(title) ? ` title="${title}"` : '';
-    const altAttrValue = hasStringNonEmptySymbols(alt) ? ` alt="${alt}"` : '';
+    const titleAndOtherAttrValue = hasStringNonEmptySymbols(title) ? ` title="${title}"` : "";
+    const altAttrValue = hasStringNonEmptySymbols(alt) ? ` alt="${alt}"` : "";
 
     return `<img loading="lazy" src="${src}"${altAttrValue}${titleAndOtherAttrValue}/>`;
 }
@@ -35,7 +35,7 @@ function imageReplacerVariable(
     srcVariable: string,
     documentMeta: DocumentMetaType
 ): string {
-    const altAttrValue = hasStringNonEmptySymbols(alt) ? ` alt="${alt}"` : '';
+    const altAttrValue = hasStringNonEmptySymbols(alt) ? ` alt="${alt}"` : "";
     const {variable} = documentMeta;
 
     if (srcVariable in variable) {
@@ -82,7 +82,7 @@ export function makeCheckbox(html: string): string {
 
 export function isImageListOnly(lineContent: string): boolean {
     // eslint-disable-next-line unicorn/prefer-string-replace-all
-    return lineContent.replace(findImageRegExpGlobal, '').trim() === emptyString;
+    return lineContent.replace(findImageRegExpGlobal, "").trim() === emptyString;
 }
 
 // eslint-disable-next-line optimize-regex/optimize-regex
@@ -93,8 +93,8 @@ const findLinkRegExpGlobal = /\[([\S\s]*?)\]\((\S+?)(?:\s+"([\S\s]+?)")?\)/gu;
 const findLinkVariableRegExpGlobal = /\[([\S\s]*?)\]\[([\S\s]+?)\]/gu;
 
 function mailReplacer(matchedString: string, linkText: string, href: string, title: unknown, subject: unknown): string {
-    const titleAttrValue = hasStringNonEmptySymbols(title) ? ` title="${title}"` : '';
-    const subjectValue = hasStringNonEmptySymbols(subject) ? `?subject=${subject}` : '';
+    const titleAttrValue = hasStringNonEmptySymbols(title) ? ` title="${title}"` : "";
+    const subjectValue = hasStringNonEmptySymbols(subject) ? `?subject=${subject}` : "";
     const text = linkText.length > 0 ? linkText : href;
 
     if (hasEmailSymbol(matchedString)) {
@@ -106,14 +106,14 @@ function mailReplacer(matchedString: string, linkText: string, href: string, tit
 }
 
 function linkReplacer(matchedString: string, linkText: string, href: string, title: unknown): string {
-    const titleAttrValue = hasStringNonEmptySymbols(title) ? ` title="${title}"` : '';
+    const titleAttrValue = hasStringNonEmptySymbols(title) ? ` title="${title}"` : "";
     const text = linkText.length > 0 ? linkText : href;
 
     return `<a href="${href}"${titleAttrValue}>${text}</a>`;
 }
 
 function getMailToPrefix(href: string): string {
-    return hasEmailSymbol(href) ? mailPrefix : '';
+    return hasEmailSymbol(href) ? mailPrefix : "";
 }
 
 function linkReplacerVariable(
@@ -172,7 +172,7 @@ export function getOlTypeBySelector(dataLineSelector: SelectorType): OlAttribute
 }
 
 export function getOlStart(trimmedLine: string): string {
-    const dotIndex = trimmedLine.indexOf('.');
+    const dotIndex = trimmedLine.indexOf(".");
 
     return trimmedLine.slice(0, dotIndex);
 }
@@ -191,7 +191,7 @@ export function renderAdditionalLineList(lineData: LineDataType): string {
     const prefix = hasParentEndBreakLine ? breakLineTag : space;
     const additionalLineListLength = additionalLineList.length;
     const additionalLineLastIndex = additionalLineListLength - 1;
-    const lineResult: Array<string> = Array.from<string>({length: additionalLineListLength}).fill('');
+    const lineResult: Array<string> = Array.from<string>({length: additionalLineListLength}).fill("");
 
     // eslint-disable-next-line no-loops/no-loops
     for (let lineIndex = 0; lineIndex < additionalLineListLength; lineIndex += 1) {

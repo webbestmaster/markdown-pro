@@ -1,5 +1,5 @@
-import {LineDataType} from '../parser-type';
-import {emptyString} from '../../render/render-const';
+import {LineDataType} from "../parser-type";
+import {emptyString} from "../../render/render-const";
 
 // eslint-disable-next-line complexity
 export function searchSiblingItem(

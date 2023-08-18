@@ -1,3 +1,3 @@
-export const emptyString = '';
-export const space = ' ';
-export const breakLineTag = '<br/>';
+export const emptyString = "";
+export const space = " ";
+export const breakLineTag = "<br/>";

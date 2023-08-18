@@ -7,11 +7,11 @@ import {
     getIsStartWithHtml,
     getIsTable,
     getIsUlItem,
-} from '../parser/util/is-tag';
-import {DocumentMetaType, LineDataType} from '../parser/parser-type';
+} from "../parser/util/is-tag";
+import {DocumentMetaType, LineDataType} from "../parser/parser-type";
 
-import {getIsEdgeLine} from '../parser/util/navigation';
-import {getIsFootnoteDescription} from '../parser/footnote/footnote-helper';
+import {getIsEdgeLine} from "../parser/util/navigation";
+import {getIsFootnoteDescription} from "../parser/footnote/footnote-helper";
 // Import {makeFootnoteSuper} from '../parser/footnote/footnote';
 
 import {
@@ -22,9 +22,9 @@ import {
     removeEndBreakLine,
     renderAdditionalLineList,
     renderInlineHtml,
-} from './render-helper';
-import {emptyString} from './render-const';
-import {renderTable} from './render-table/render-table';
+} from "./render-helper";
+import {emptyString} from "./render-const";
+import {renderTable} from "./render-table/render-table";
 
 export function renderChildList(lineDataList: Array<LineDataType>, documentMeta: DocumentMetaType): string {
     return lineDataList
@@ -55,11 +55,11 @@ export function renderLineData(
     fullLineContent += childListRender;
 
     if (getIsFootnoteDescription(lineContent)) {
-        return '';
+        return "";
     }
 
     if (getIsLine(lineData)) {
-        return '<hr/>';
+        return "<hr/>";
     }
 
     if (getIsTable(lineData)) {
@@ -67,7 +67,7 @@ export function renderLineData(
     }
 
     if (getIsCode(lineData)) {
-        const codeText = codeHighlight(lineContent, additionalLineList.join('\n'));
+        const codeText = codeHighlight(lineContent, additionalLineList.join("\n"));
 
         return lineContent ? `<code data-lang="${lineContent}">${codeText}</code>` : `<code>${codeText}</code>`;
     }
@@ -89,8 +89,8 @@ export function renderLineData(
     if (getIsUlItem(lineData)) {
         const isFirstItem = getIsEdgeLine(lineData, lineDataList, -1);
         const isLastItem = getIsEdgeLine(lineData, lineDataList, 1);
-        const prefix = isFirstItem ? '<ul>' : '';
-        const postfix = isLastItem ? '</ul>' : '';
+        const prefix = isFirstItem ? "<ul>" : "";
+        const postfix = isLastItem ? "</ul>" : "";
 
         return `${prefix}<li>${fullLineContent}</li>${postfix}`;
     }
@@ -101,8 +101,8 @@ export function renderLineData(
         const {selector: lineDataSelector} = lineData;
         const prefix = isFirstItem
             ? `<ol type="${getOlTypeBySelector(lineDataSelector)}" start="${getOlStart(trimmedLine)}">`
-            : '';
-        const postfix = isLastItem ? '</ol>' : '';
+            : "";
+        const postfix = isLastItem ? "</ol>" : "";
 
         return `${prefix}<li>${fullLineContent}</li>${postfix}`;
     }

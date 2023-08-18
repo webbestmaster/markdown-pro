@@ -1,13 +1,13 @@
-import {DocumentMetaType, LineDataType, FootnoteType} from '../parser-type';
+import {DocumentMetaType, LineDataType, FootnoteType} from "../parser-type";
 
-import {findFootnoteMarkGlobalRegExp, footnoteTypeMap} from './footnote-const';
-import {getFootnoteById, getFootnoteInlineLineContent, getFootnoteMarkId} from './footnote-helper';
+import {findFootnoteMarkGlobalRegExp, footnoteTypeMap} from "./footnote-const";
+import {getFootnoteById, getFootnoteInlineLineContent, getFootnoteMarkId} from "./footnote-helper";
 
 function matchToFootnote(match: string): FootnoteType {
     const id = getFootnoteMarkId(match);
     const inlineLineContent = getFootnoteInlineLineContent(match);
 
-    if (match.indexOf('[^') === 1) {
+    if (match.indexOf("[^") === 1) {
         return {
             descriptionLineData: null,
             id,
@@ -83,7 +83,7 @@ export function addLineData(lineData: LineDataType, toList: Array<FootnoteType>)
 export function makeFootnoteSuper(fullLineContent: string, documentMeta: DocumentMetaType): string {
     return fullLineContent.replace(findFootnoteMarkGlobalRegExp, (match: string): string => {
         // eslint-disable-next-line unicorn/prefer-spread
-        const charList: Array<string> = match.split('');
+        const charList: Array<string> = match.split("");
         const [firstLetter] = charList;
         const {footnoteList} = documentMeta;
         const id = getFootnoteMarkId(match);
@@ -91,7 +91,7 @@ export function makeFootnoteSuper(fullLineContent: string, documentMeta: Documen
         const footnote = getFootnoteById(id, footnoteList);
 
         if (!footnote) {
-            return '';
+            return "";
         }
 
         return `${firstLetter}<a href="#${id}"><sup>[${footnoteList.indexOf(footnote) + 1}]</sup></a>`;

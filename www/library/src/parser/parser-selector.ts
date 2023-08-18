@@ -12,41 +12,41 @@ import {
     SelectorOlSmallAlphabetItemType,
     SelectorOlSmallRomanNumberItemType,
     SelectorType,
-} from './parser-type';
+} from "./parser-type";
 
-export const selectorHeaderList: Array<SelectorType> = ['# ', '## ', '### ', '#### ', '##### ', '###### '];
+export const selectorHeaderList: Array<SelectorType> = ["# ", "## ", "### ", "#### ", "##### ", "###### "];
 // Export const selectorHeaderList: Array<SelectorHeaderType> = ['# ', '## ', '### ', '#### ', '##### ', '###### '];
-export const selectorBlockquoteList: Array<SelectorType> = ['> '];
+export const selectorBlockquoteList: Array<SelectorType> = ["> "];
 // Export const selectorBlockquoteList: Array<SelectorBlockquoteType> = ['> '];
-export const selectorLineList: Array<SelectorType> = ['---', '***', '___'];
+export const selectorLineList: Array<SelectorType> = ["---", "***", "___"];
 // Export const selectorLineList: Array<SelectorLineType> = ['---', '***', '___'];
-export const selectorTableList: Array<SelectorType> = ['|'];
+export const selectorTableList: Array<SelectorType> = ["|"];
 // Export const selectorTableList: Array<SelectorTableType> = ['|'];
-export const selectorCodeList: Array<SelectorType> = ['```'];
+export const selectorCodeList: Array<SelectorType> = ["```"];
 // Export const selectorCodeList: Array<SelectorCodeType> = ['```'];
 
-export const selectorULItemList: Array<SelectorType> = ['+ ', '- ', '* '];
+export const selectorULItemList: Array<SelectorType> = ["+ ", "- ", "* "];
 // Export const selectorULItemList: Array<SelectorUlItemType> = ['+ ', '- ', '* '];
 
-export const olNumericItemSelector: SelectorOlNumericItemType = '0. ';
+export const olNumericItemSelector: SelectorOlNumericItemType = "0. ";
 export const olNumericItemRegExp = /^\d+\.\s/u;
-export const olNumericType: OlTypeNumericType = '1';
+export const olNumericType: OlTypeNumericType = "1";
 
-export const olBigRomanNumberItemSelector: SelectorOlBigRomanNumberItemType = 'I. ';
+export const olBigRomanNumberItemSelector: SelectorOlBigRomanNumberItemType = "I. ";
 export const olBigRomanNumberItemRegExp = /^[CDILMVX]+\.\s/u;
-export const olBigRomanNumberType: OlTypeBigRomanNumberType = 'I';
+export const olBigRomanNumberType: OlTypeBigRomanNumberType = "I";
 
-export const olSmallRomanNumberItemSelector: SelectorOlSmallRomanNumberItemType = 'i. ';
+export const olSmallRomanNumberItemSelector: SelectorOlSmallRomanNumberItemType = "i. ";
 export const olSmallRomanNumberItemRegExp = /^[cdilmvx]+\.\s/u;
-export const olSmallRomanNumberType: OlTypeSmallRomanNumberType = 'i';
+export const olSmallRomanNumberType: OlTypeSmallRomanNumberType = "i";
 
-export const olBigAlphabetItemSelector: SelectorOlBigAlphabetItemType = 'A. ';
+export const olBigAlphabetItemSelector: SelectorOlBigAlphabetItemType = "A. ";
 export const olBigAlphabetItemRegExp = /^[A-Z]+\.\s/u;
-export const olBigAlphabetType: OlTypeBigAlphabetType = 'A';
+export const olBigAlphabetType: OlTypeBigAlphabetType = "A";
 
-export const olSmallAlphabetItemSelector: SelectorOlSmallAlphabetItemType = 'a. ';
+export const olSmallAlphabetItemSelector: SelectorOlSmallAlphabetItemType = "a. ";
 export const olSmallAlphabetItemRegExp = /^[a-z]+\.\s/u;
-export const olSmallAlphabetType: OlTypeSmallAlphabetType = 'a';
+export const olSmallAlphabetType: OlTypeSmallAlphabetType = "a";
 
 export const oLParseDataList: Array<OlParseDataType> = [
     {
@@ -88,59 +88,59 @@ export const selectorList: Array<SelectorType> = [
 });
 
 const pairTagSelectorBold: PairTagSelectorType = {
-    closeTag: '</b>',
+    closeTag: "</b>",
     equal: /\*+/u,
-    openTag: '<b>',
-    selector: '**',
+    openTag: "<b>",
+    selector: "**",
 };
 const pairTagSelectorUnderline: PairTagSelectorType = {
-    closeTag: '</u>',
+    closeTag: "</u>",
     equal: /_+/u,
-    openTag: '<u>',
-    selector: '__',
+    openTag: "<u>",
+    selector: "__",
 };
 const pairTagSelectorStrike: PairTagSelectorType = {
-    closeTag: '</strike>',
+    closeTag: "</strike>",
     equal: /~+/u,
-    openTag: '<strike>',
-    selector: '~~',
+    openTag: "<strike>",
+    selector: "~~",
 };
 const pairTagSelectorItalic1: PairTagSelectorType = {
-    closeTag: '</i>',
+    closeTag: "</i>",
     equal: /_+/u,
-    openTag: '<i>',
-    selector: '_',
+    openTag: "<i>",
+    selector: "_",
 };
 const pairTagSelectorItalic2: PairTagSelectorType = {
-    closeTag: '</i>',
+    closeTag: "</i>",
     equal: /\*+/u,
-    openTag: '<i>',
-    selector: '*',
+    openTag: "<i>",
+    selector: "*",
 };
 const pairTagSelectorSub: PairTagSelectorType = {
-    closeTag: '</sub>',
+    closeTag: "</sub>",
     equal: /~+/u,
-    openTag: '<sub>',
-    selector: '~',
+    openTag: "<sub>",
+    selector: "~",
 };
 const pairTagSelectorSup: PairTagSelectorType = {
-    closeTag: '</sup>',
+    closeTag: "</sup>",
     equal: /\^+/u,
-    openTag: '<sup>',
-    selector: '^',
+    openTag: "<sup>",
+    selector: "^",
 };
 const pairTagSelectorInlineCode: PairTagSelectorType = {
-    closeTag: '</code>',
+    closeTag: "</code>",
     equal: /`+/u,
     openTag: '<code data-type="inline">',
-    selector: '`',
+    selector: "`",
 };
 
 const pairTagSelectorBoldAndItalic: PairTagSelectorType = {
-    closeTag: '</i></b>',
+    closeTag: "</i></b>",
     equal: /\*+/u,
-    openTag: '<b><i>',
-    selector: '***',
+    openTag: "<b><i>",
+    selector: "***",
 };
 
 // More long selectors should be first

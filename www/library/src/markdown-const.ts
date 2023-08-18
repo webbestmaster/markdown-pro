@@ -1,9 +1,9 @@
-import {MarkdownConfigType} from '../library';
+import {MarkdownConfigType} from "../library";
 
 export enum ThemeNameEnum {
-    auto = 'auto',
-    dark = 'dark',
-    light = 'light',
+    auto = "auto",
+    dark = "dark",
+    light = "light",
 }
 
 export const defaultMarkdownConfig: MarkdownConfigType = {
@@ -14,7 +14,7 @@ export const defaultMarkdownConfig: MarkdownConfigType = {
     themeName: ThemeNameEnum.auto,
     useLineBreak: false,
     useWrapper: true,
-    wrapperClassName: 'md-pro',
+    wrapperClassName: "md-pro",
 };
 
 export const themeClassNameMap: Record<ThemeNameEnum, string> = {
@@ -23,4 +23,4 @@ export const themeClassNameMap: Record<ThemeNameEnum, string> = {
     [ThemeNameEnum.light]: `${defaultMarkdownConfig.wrapperClassName}-theme-${ThemeNameEnum.light}`,
 };
 
-export const mailPrefix = 'mailto:';
+export const mailPrefix = "mailto:";

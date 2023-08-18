@@ -1,4 +1,4 @@
-import {VariableType} from '../parser-type';
+import {VariableType} from "../parser-type";
 
 export function getVariableData(lineContent: string): VariableType | null {
     // eslint-disable-next-line optimize-regex/optimize-regex
@@ -11,7 +11,7 @@ export function getVariableData(lineContent: string): VariableType | null {
     // eslint-disable-next-line prefer-destructuring
     const key = matchData[1];
 
-    const value = lineContent.slice(lineContent.indexOf(']:') + 3).trim();
+    const value = lineContent.slice(lineContent.indexOf("]:") + 3).trim();
 
     return {
         key,

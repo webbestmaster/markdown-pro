@@ -1,24 +1,24 @@
-import {MarkdownConfigType} from '../../library';
+import {MarkdownConfigType} from "../../library";
 
-export type SelectorHeaderType = '# ' | '## ' | '### ' | '#### ' | '##### ' | '###### ';
-export type SelectorBlockquoteType = '> ';
-export type SelectorLineType = '___' | '---' | '***';
-export type SelectorTableType = '|';
-export type SelectorCodeType = '```';
+export type SelectorHeaderType = "# " | "## " | "### " | "#### " | "##### " | "###### ";
+export type SelectorBlockquoteType = "> ";
+export type SelectorLineType = "___" | "---" | "***";
+export type SelectorTableType = "|";
+export type SelectorCodeType = "```";
 
-export type SelectorUlItemType = '- ' | '* ' | '+ ';
+export type SelectorUlItemType = "- " | "* " | "+ ";
 
-export type SelectorOlNumericItemType = '0. ';
-export type SelectorOlBigRomanNumberItemType = 'I. ';
-export type SelectorOlSmallRomanNumberItemType = 'i. ';
-export type SelectorOlBigAlphabetItemType = 'A. ';
-export type SelectorOlSmallAlphabetItemType = 'a. ';
+export type SelectorOlNumericItemType = "0. ";
+export type SelectorOlBigRomanNumberItemType = "I. ";
+export type SelectorOlSmallRomanNumberItemType = "i. ";
+export type SelectorOlBigAlphabetItemType = "A. ";
+export type SelectorOlSmallAlphabetItemType = "a. ";
 
-export type OlTypeNumericType = '1';
-export type OlTypeBigRomanNumberType = 'I';
-export type OlTypeSmallRomanNumberType = 'i';
-export type OlTypeBigAlphabetType = 'A';
-export type OlTypeSmallAlphabetType = 'a';
+export type OlTypeNumericType = "1";
+export type OlTypeBigRomanNumberType = "I";
+export type OlTypeSmallRomanNumberType = "i";
+export type OlTypeBigAlphabetType = "A";
+export type OlTypeSmallAlphabetType = "a";
 
 export type OlAttributeType =
     | OlTypeBigAlphabetType
@@ -34,7 +34,7 @@ export type SelectorOlItemType =
     | SelectorOlSmallAlphabetItemType
     | SelectorOlSmallRomanNumberItemType;
 
-export type SelectorParagraphType = '';
+export type SelectorParagraphType = "";
 
 export type SelectorType =
     | SelectorBlockquoteType
@@ -77,7 +77,7 @@ export type ShortLineInfoType = Readonly<{
     selector: SelectorType;
 }>;
 
-export type FootnoteTypeType = 'inline' | 'super';
+export type FootnoteTypeType = "inline" | "super";
 
 export interface FootnoteType {
     descriptionLineData: LineDataType | null;

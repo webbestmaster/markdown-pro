@@ -2,11 +2,11 @@
 
 // Get from stackoverflow, https://stackoverflow.com/questions/3913355/how-to-format-tidy-beautify-in-javascript
 export function formatHtml(html: string): string {
-    const tab = '\t';
+    const tab = "\t";
 
-    let result = '';
+    let result = "";
 
-    let indent = '';
+    let indent = "";
 
     html.split(/>\s*</u).forEach((element: string) => {
         if (/^\/\w/u.test(element)) {

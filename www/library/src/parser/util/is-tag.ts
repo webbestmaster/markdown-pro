@@ -1,4 +1,4 @@
-import {LineDataType} from '../parser-type';
+import {LineDataType} from "../parser-type";
 import {
     oLParseDataList,
     selectorBlockquoteList,
@@ -7,7 +7,7 @@ import {
     selectorLineList,
     selectorTableList,
     selectorULItemList,
-} from '../parser-selector';
+} from "../parser-selector";
 
 export function getIsHeader(lineData: LineDataType): boolean {
     return selectorHeaderList.includes(lineData.selector);

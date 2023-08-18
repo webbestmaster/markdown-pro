@@ -2,7 +2,7 @@
 /* eslint-disable id-match */
 
 export const selector = {
-    appWrapper: '.js-app-wrapper',
+    appWrapper: ".js-app-wrapper",
 };
 
 function sayHi() {
@@ -24,8 +24,8 @@ function sayHi() {
 
     log(hiString);
 
-    log('Build date:', BUILD_DATE_H);
-    log('Is production:', IS_PRODUCTION);
+    log("Build date:", BUILD_DATE_H);
+    log("Is production:", IS_PRODUCTION);
 }
 
 // eslint-disable-next-line jest/require-hook

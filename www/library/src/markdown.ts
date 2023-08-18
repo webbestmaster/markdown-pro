@@ -1,12 +1,12 @@
-import {MarkdownConfigShallowType, MarkdownConfigType} from '../library';
+import {MarkdownConfigShallowType, MarkdownConfigType} from "../library";
 
-import {parseLine} from './parser/parse-line';
-import {DocumentMetaType, FootnoteType, LineDataType} from './parser/parser-type';
-import {emptyString} from './render/render-const';
-import {renderChildList} from './render/render';
-import {defaultMarkdownConfig} from './markdown-const';
-import {getMdFootnoteContent} from './parser/footnote/footnote-helper';
-import {getFullWrapperClassName} from './helper';
+import {parseLine} from "./parser/parse-line";
+import {DocumentMetaType, FootnoteType, LineDataType} from "./parser/parser-type";
+import {emptyString} from "./render/render-const";
+import {renderChildList} from "./render/render";
+import {defaultMarkdownConfig} from "./markdown-const";
+import {getMdFootnoteContent} from "./parser/footnote/footnote-helper";
+import {getFullWrapperClassName} from "./helper";
 
 export function markdown(mdInput: string, config: MarkdownConfigShallowType = defaultMarkdownConfig): string {
     const markdownConfig: MarkdownConfigType = {
@@ -27,11 +27,11 @@ export function markdown(mdInput: string, config: MarkdownConfigShallowType = de
         childList: [],
         config: markdownConfig,
         line: emptyString,
-        lineContent: '',
+        lineContent: "",
         lineIndex: -1,
         selector: emptyString,
         spaceCount: -1,
-        trimmedLine: '',
+        trimmedLine: "",
     };
     const structuredLineDataList: Array<LineDataType> = [mainParent];
     const savedLineDataList: Array<LineDataType> = [mainParent];
@@ -43,7 +43,7 @@ export function markdown(mdInput: string, config: MarkdownConfigShallowType = de
         variable: {},
     };
 
-    mdInput.split('\n').forEach((line: string, lineIndex: number, allLineList: Array<string>) => {
+    mdInput.split("\n").forEach((line: string, lineIndex: number, allLineList: Array<string>) => {
         parseLine(line, lineIndex, allLineList, structuredLineDataList, savedLineDataList, documentMeta);
     });
 
@@ -58,10 +58,10 @@ export function markdown(mdInput: string, config: MarkdownConfigShallowType = de
 
     const footnoteDescriptionHtml: string =
         footnoteDescriptionList.length === 0
-            ? ''
-            : ['<hr/>', '<ol type="1">', ...footnoteDescriptionList, '</ol>'].join('');
+            ? ""
+            : ["<hr/>", '<ol type="1">', ...footnoteDescriptionList, "</ol>"].join("");
 
-    const fullContent = [mainContent, footnoteDescriptionHtml].join('');
+    const fullContent = [mainContent, footnoteDescriptionHtml].join("");
 
     if (!useWrapper) {
         return fullContent;

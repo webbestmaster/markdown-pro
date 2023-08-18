@@ -1,4 +1,4 @@
-import {emptyString} from '../../render/render-const';
+import {emptyString} from "../../render/render-const";
 
 export function filterEmptyString(line: string): boolean {
     return line.trim() !== emptyString;
@@ -6,12 +6,12 @@ export function filterEmptyString(line: string): boolean {
 
 export function cleanLine(line: string): string {
     // eslint-disable-next-line unicorn/prefer-string-replace-all
-    return line.trim().replace(/\s+/gu, ' ');
+    return line.trim().replace(/\s+/gu, " ");
 }
 
 export function getIsAllSymbolsEqual(line: string): boolean {
     // eslint-disable-next-line unicorn/prefer-spread
-    const charList: Array<string> = line.split('');
+    const charList: Array<string> = line.split("");
 
     const [firstSymbol] = charList;
 

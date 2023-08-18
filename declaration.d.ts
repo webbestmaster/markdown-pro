@@ -1,27 +1,28 @@
 /* global SVGSVGElement */
 /* eslint-disable import/no-default-export, init-declarations */
 
-declare module '*.svg' {
-    import React = require('react');
+declare module "*.svg" {
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    import React = require("react");
     export const ReactComponent: React.SFC<React.SVGProps<SVGSVGElement>>;
     const content: string;
 
     export default content;
 }
 
-declare module '*.png' {
+declare module "*.png" {
     const content: string;
 
     export default content;
 }
 
-declare module '*.md' {
+declare module "*.md" {
     const content: string;
 
     export default content;
 }
 
-declare module '*.txt' {
+declare module "*.txt" {
     const content: string;
 
     export default content;

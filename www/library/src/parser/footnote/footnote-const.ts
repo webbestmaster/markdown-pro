@@ -1,8 +1,8 @@
-import {FootnoteTypeType} from '../parser-type';
+import {FootnoteTypeType} from "../parser-type";
 
 export const footnoteTypeMap: {[key in FootnoteTypeType]: FootnoteTypeType} = {
-    inline: 'inline',
-    'super': 'super',
+    inline: "inline",
+    "super": "super",
 };
 
 // Export const footnotePrefix = 'fn-';

@@ -1,15 +1,15 @@
-import {describe, it, expect} from '@jest/globals';
+import {describe, it, expect} from "@jest/globals";
 
-import {markdown, defaultMarkdownConfig, ThemeNameEnum} from '../../library';
-import {themeClassNameMap} from '../markdown-const';
+import {markdown, defaultMarkdownConfig, ThemeNameEnum} from "../../library";
+import {themeClassNameMap} from "../markdown-const";
 
-describe('markdown-pro test:config', () => {
-    it('additional css class', () => {
+describe("markdown-pro test:config", () => {
+    it("additional css class", () => {
         expect.assertions(2);
-        const additionalCssClass = 'additional-css-class';
+        const additionalCssClass = "additional-css-class";
 
-        expect(markdown('', {wrapperClassName: additionalCssClass})).toContain(additionalCssClass);
-        expect(markdown('')).toBe(
+        expect(markdown("", {wrapperClassName: additionalCssClass})).toContain(additionalCssClass);
+        expect(markdown("")).toBe(
             `<div class="${defaultMarkdownConfig.wrapperClassName} ${themeClassNameMap[ThemeNameEnum.auto]}"></div>`
         );
     });
