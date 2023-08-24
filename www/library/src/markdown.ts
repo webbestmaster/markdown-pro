@@ -43,7 +43,7 @@ export function markdown(mdInput: string, config: MarkdownConfigShallowType = de
         variable: {},
     };
 
-    mdInput.split("\n").forEach((line: string, lineIndex: number, allLineList: Array<string>) => {
+    mdInput.split("\n").forEach((line: string, lineIndex: number, allLineList: ReadonlyArray<string>) => {
         parseLine(line, lineIndex, allLineList, structuredLineDataList, savedLineDataList, documentMeta);
     });
 

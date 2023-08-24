@@ -52,8 +52,8 @@ function getShortInfo(trimmedLine: string): ShortLineInfoType {
 export function parseLine(
     line: string,
     lineIndex: number,
-    allLineList: Array<string>,
-    structuredLineDataList: Array<LineDataType>,
+    allLineList: ReadonlyArray<string>,
+    structuredLineDataList: ReadonlyArray<LineDataType>,
     savedLineDataList: Array<LineDataType>,
     documentMeta: DocumentMetaType
 ): boolean {
