@@ -1,7 +1,7 @@
-import {MarkdownConfigShallowType, MarkdownConfigType} from "../library";
+import type {MarkdownConfigShallowType, MarkdownConfigType} from "../library";
 
 import {parseLine} from "./parser/parse-line";
-import {DocumentMetaType, FootnoteType, LineDataType} from "./parser/parser-type";
+import type {DocumentMetaType, FootnoteType, LineDataType} from "./parser/parser-type";
 import {emptyString} from "./render/render-const";
 import {renderChildList} from "./render/render";
 import {defaultMarkdownConfig} from "./markdown-const";

@@ -1,7 +1,7 @@
 import {describe, it, expect} from "@jest/globals";
 
 import {parseLine} from "../parser/parse-line";
-import {DocumentMetaType, FootnoteType, LineDataType, PairTagSelectorType} from "../parser/parser-type";
+import type {DocumentMetaType, FootnoteType, LineDataType, PairTagSelectorType} from "../parser/parser-type";
 import {searchSiblingItem} from "../parser/util/navigation";
 
 import {getIsAllSymbolsEqual} from "../parser/util/string";

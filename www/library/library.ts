@@ -1,6 +1,6 @@
 import "./src/markdown.scss";
 
-import {defaultMarkdownConfig, ThemeNameEnum} from "./src/markdown-const";
+import {defaultMarkdownConfig, type ThemeNameEnum} from "./src/markdown-const";
 
 // eslint-disable-next-line import/no-default-export
 export {markdown, markdown as default} from "./src/markdown";

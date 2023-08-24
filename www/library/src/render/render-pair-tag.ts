@@ -1,4 +1,4 @@
-import {PairTagSelectorType} from "../parser/parser-type";
+import type {PairTagSelectorType} from "../parser/parser-type";
 import {pairTagSelectorList} from "../parser/parser-selector";
 
 import {getTagIndexList, harArrayOverflow} from "./render-util";

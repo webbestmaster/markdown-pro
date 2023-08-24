@@ -1,4 +1,4 @@
-import {MarkdownConfigType} from "../library";
+import type {MarkdownConfigType} from "../library";
 
 import {themeClassNameMap, defaultMarkdownConfig} from "./markdown-const";
 

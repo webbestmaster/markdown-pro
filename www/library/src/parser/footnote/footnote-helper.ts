@@ -1,4 +1,4 @@
-import {FootnoteType} from "../parser-type";
+import type {FootnoteType} from "../parser-type";
 
 export function getIsFootnoteDescription(lineContent: string): boolean {
     // eslint-disable-next-line optimize-regex/optimize-regex

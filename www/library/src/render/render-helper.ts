@@ -1,4 +1,4 @@
-import {DocumentMetaType, LineDataType, OlAttributeType, SelectorType} from "../parser/parser-type";
+import type {DocumentMetaType, LineDataType, OlAttributeType, SelectorType} from "../parser/parser-type";
 import {olNumericType, oLParseDataList} from "../parser/parser-selector";
 import {hasEmailSymbol, hasStringNonEmptySymbols} from "../parser/util/is";
 import {makeFootnoteSuper} from "../parser/footnote/footnote";

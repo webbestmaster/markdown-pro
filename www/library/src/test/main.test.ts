@@ -1,6 +1,6 @@
 import {describe, it, expect} from "@jest/globals";
 
-import markdownPro, {markdown, MarkdownConfigShallowType} from "../../library";
+import markdownPro, {markdown, type MarkdownConfigShallowType} from "../../library";
 
 import {stringReverse} from "./util";
 

@@ -1,4 +1,4 @@
-import {VariableType} from "../parser-type";
+import type {VariableType} from "../parser-type";
 
 export function getVariableData(lineContent: string): VariableType | null {
     // eslint-disable-next-line optimize-regex/optimize-regex

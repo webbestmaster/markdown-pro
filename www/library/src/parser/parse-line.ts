@@ -2,7 +2,7 @@ import {emptyString} from "../render/render-const";
 
 import {cleanLine, getIsAllSymbolsEqual} from "./util/string";
 import {getParent} from "./util/navigation";
-import {DocumentMetaType, LineDataType, ShortLineInfoType} from "./parser-type";
+import type {DocumentMetaType, LineDataType, ShortLineInfoType} from "./parser-type";
 import {oLParseDataList, selectorCodeList, selectorLineList, selectorList, selectorTableList} from "./parser-selector";
 import {addLineData, fromToFootnoteList, getFootnoteList} from "./footnote/footnote";
 import {getIsFootnoteDescription} from "./footnote/footnote-helper";

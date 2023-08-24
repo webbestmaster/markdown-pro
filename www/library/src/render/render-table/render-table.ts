@@ -1,10 +1,10 @@
-import {DocumentMetaType, LineDataType} from "../../parser/parser-type";
+import type {DocumentMetaType, LineDataType} from "../../parser/parser-type";
 import {filterEmptyString} from "../../parser/util/string";
 import {emptyString} from "../render-const";
 
 import {getAlignList, isTableDivideLine, renderTableCellContent} from "./render-table-helper";
 import {cellAlignTypeMap, cellTagNameTypeMap} from "./render-table-const";
-import {CellAlignType, CellTagNameType} from "./render-table-type";
+import type {CellAlignType, CellTagNameType} from "./render-table-type";
 
 function renderTableRow(
     lineData: LineDataType,

@@ -1,4 +1,4 @@
-import {LineDataType} from "../parser-type";
+import type {LineDataType} from "../parser-type";
 import {emptyString} from "../../render/render-const";
 
 // eslint-disable-next-line complexity

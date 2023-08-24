@@ -1,4 +1,4 @@
-import {CellAlignType, CellTagNameType} from "./render-table-type";
+import type {CellAlignType, CellTagNameType} from "./render-table-type";
 
 export const cellAlignTypeMap: Record<string, CellAlignType> = {
     center: "center",

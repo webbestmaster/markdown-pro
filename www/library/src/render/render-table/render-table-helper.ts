@@ -1,10 +1,10 @@
-import {DocumentMetaType, SelectorType} from "../../parser/parser-type";
+import type {DocumentMetaType, SelectorType} from "../../parser/parser-type";
 import {filterEmptyString} from "../../parser/util/string";
 import {emptyString} from "../render-const";
 import {renderInlineHtml} from "../render-helper";
 
 import {cellAlignTypeMap} from "./render-table-const";
-import {CellAlignType} from "./render-table-type";
+import type {CellAlignType} from "./render-table-type";
 
 export function renderTableCellContent(line: string, documentMeta: DocumentMetaType): string {
     return renderInlineHtml(line, documentMeta).trim();

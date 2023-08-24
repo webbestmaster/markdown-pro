@@ -1,4 +1,4 @@
-import {FootnoteTypeType} from "../parser-type";
+import type {FootnoteTypeType} from "../parser-type";
 
 export const footnoteTypeMap: {[key in FootnoteTypeType]: FootnoteTypeType} = {
     inline: "inline",

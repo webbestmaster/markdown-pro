@@ -1,4 +1,4 @@
-import {LineDataType} from "../../parser/parser-type";
+import type {LineDataType} from "../../parser/parser-type";
 import {selectorList} from "../../parser/parser-selector";
 import {defaultMarkdownConfig} from "../../markdown-const";
 
