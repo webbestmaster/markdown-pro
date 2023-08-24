@@ -33,12 +33,12 @@ export function init(
     parseLink: HTMLInputElement,
     themeName: HTMLSelectElement
 ): void {
-    function refreshResult() {
+    function refreshResult(): undefined {
         updateScrollPositionCache([textArea, output]);
         syncScroll(textArea, output);
     }
 
-    function handleInput() {
+    function handleInput(): undefined {
         const inputValue = textArea.value;
 
         const markdownHtml = markdownPro(inputValue, {
@@ -54,7 +54,7 @@ export function init(
         refreshResult();
     }
 
-    function handleScroll(evt: Event) {
+    function handleScroll(evt: Event): undefined {
         const element = evt.currentTarget;
 
         if (element === textArea) {

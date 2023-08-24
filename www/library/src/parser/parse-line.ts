@@ -126,7 +126,7 @@ export function parseLine(
     if (lineData.selector === emptyString && lineContent.length > 0) {
         const prevItemIndex = savedLineDataList.length - 1;
         const prevItem = savedLineDataList.at(prevItemIndex);
-        const isTable = prevItem && selectorTableList.includes(prevItem.selector);
+        const isTable = Boolean(prevItem && selectorTableList.includes(prevItem.selector));
 
         if (variableData) {
             // eslint-disable-next-line no-param-reassign

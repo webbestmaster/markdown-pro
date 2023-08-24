@@ -47,7 +47,8 @@ export function renderTable(lineData: LineDataType, documentMeta: DocumentMetaTy
 
     const dividerLine = lineList.find(isTableDivideLine);
 
-    if (!dividerLine) {
+    // eslint-disable-next-line no-undefined
+    if (dividerLine === undefined) {
         const bodyOnlyContent = renderTableRowList(lineData, lineList, [], cellTagNameTypeMap.tdCell, documentMeta);
 
         return `<table><tbody>${bodyOnlyContent}</tbody></table>`;
