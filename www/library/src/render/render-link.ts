@@ -5,7 +5,7 @@ import {getLinkIndexList, getTagIndexList, harArrayListOverflow, type PairNumber
 const linkTextRegExpGlobal = /(\w+:\/\/[\w.]+\.\w+[\w+/]*)/giu;
 const mailTextRegExpGlobal = /([\w.-]+@[\w.]+\.\w+[\w+/]*)/giu;
 
-function linkReplacer(html: string, replacer: RegExp, hrefPrefix: string): string {
+function linkReplacer(html: string, replacer: Readonly<RegExp>, hrefPrefix: string): string {
     const linkPairIndexList = getLinkIndexList(html);
     const tagIndexList = getTagIndexList(html);
 
