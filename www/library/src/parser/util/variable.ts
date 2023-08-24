@@ -2,7 +2,7 @@ import type {VariableType} from "../parser-type";
 
 export function getVariableData(lineContent: string): VariableType | null {
     // eslint-disable-next-line optimize-regex/optimize-regex
-    const matchData = lineContent.match(/\[([^^][\S\s]+?)\]:\s+?\S/u);
+    const matchData = /\[([^^][\S\s]+?)\]:\s+?\S/u.exec(lineContent);
 
     if (!matchData) {
         return null;

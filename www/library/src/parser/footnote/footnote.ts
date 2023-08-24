@@ -55,7 +55,7 @@ export function fromToFootnoteList(fromList: Array<FootnoteType>, toList: Array<
 export function addLineData(lineData: LineDataType, toList: Array<FootnoteType>): void {
     const {lineContent} = lineData;
     // eslint-disable-next-line optimize-regex/optimize-regex
-    const rawMatchId = lineContent.match(/\[\^[^\]]+?\]:/u);
+    const rawMatchId = /\[\^[^\]]+?\]:/u.exec(lineContent);
 
     if (!rawMatchId) {
         return;
