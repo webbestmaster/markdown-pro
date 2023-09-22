@@ -1,4 +1,4 @@
-import { DocumentMetaType, LineDataType, OlAttributeType, SelectorType } from '../parser/parser-type';
+import type { DocumentMetaType, LineDataType, OlAttributeType, SelectorType } from "../parser/parser-type";
 export declare const breakLineRegExp: RegExp;
 export declare function addBreakLine(line: string): string;
 export declare function removeEndBreakLine(line: string): string;

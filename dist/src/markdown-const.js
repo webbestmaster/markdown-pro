@@ -5,17 +5,19 @@ export var ThemeNameEnum;
     ThemeNameEnum["light"] = "light";
 })(ThemeNameEnum || (ThemeNameEnum = {}));
 export const defaultMarkdownConfig = {
-    codeHighlight: (langName, code) => code,
+    codeHighlight: (langName, code) => {
+        return code;
+    },
     parseLink: true,
     themeName: ThemeNameEnum.auto,
     useLineBreak: false,
     useWrapper: true,
-    wrapperClassName: 'md-pro',
+    wrapperClassName: "md-pro",
 };
 export const themeClassNameMap = {
     [ThemeNameEnum.auto]: `${defaultMarkdownConfig.wrapperClassName}-theme-${ThemeNameEnum.auto}`,
     [ThemeNameEnum.dark]: `${defaultMarkdownConfig.wrapperClassName}-theme-${ThemeNameEnum.dark}`,
     [ThemeNameEnum.light]: `${defaultMarkdownConfig.wrapperClassName}-theme-${ThemeNameEnum.light}`,
 };
-export const mailPrefix = 'mailto:';
+export const mailPrefix = "mailto:";
 //# sourceMappingURL=markdown-const.js.map

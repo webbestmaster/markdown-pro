@@ -1,4 +1,4 @@
-import { OlParseDataType, OlTypeBigAlphabetType, OlTypeBigRomanNumberType, OlTypeNumericType, OlTypeSmallAlphabetType, OlTypeSmallRomanNumberType, PairTagSelectorType, SelectorOlBigAlphabetItemType, SelectorOlBigRomanNumberItemType, SelectorOlNumericItemType, SelectorOlSmallAlphabetItemType, SelectorOlSmallRomanNumberItemType, SelectorType } from './parser-type';
+import type { OlParseDataType, OlTypeBigAlphabetType, OlTypeBigRomanNumberType, OlTypeNumericType, OlTypeSmallAlphabetType, OlTypeSmallRomanNumberType, PairTagSelectorType, SelectorOlBigAlphabetItemType, SelectorOlBigRomanNumberItemType, SelectorOlNumericItemType, SelectorOlSmallAlphabetItemType, SelectorOlSmallRomanNumberItemType, SelectorType } from "./parser-type";
 export declare const selectorHeaderList: Array<SelectorType>;
 export declare const selectorBlockquoteList: Array<SelectorType>;
 export declare const selectorLineList: Array<SelectorType>;

@@ -1,7 +1,8 @@
 export const footnoteTypeMap = {
-    inline: 'inline',
-    'super': 'super',
+    inline: "inline",
+    "super": "super",
 };
-// export const footnotePrefix = 'fn-';
-export const findFootnoteMarkGlobalRegExp = /\S\[\^[^\]]+?]|\S\^\[[^\]]+?]/g;
+// Export const footnotePrefix = 'fn-';
+// eslint-disable-next-line optimize-regex/optimize-regex
+export const findFootnoteMarkGlobalRegExp = /\S\[\^[^\]]+?\]|\S\^\[[^\]]+?\]/gu;
 //# sourceMappingURL=footnote-const.js.map

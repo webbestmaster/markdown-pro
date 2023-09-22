@@ -1,7 +1,7 @@
-import { filterEmptyString } from '../../parser/util/string';
-import { emptyString } from '../render-const';
-import { getAlignList, isTableDivideLine, renderTableCellContent } from './render-table-helper';
-import { cellAlignTypeMap, cellTagNameTypeMap } from './render-table-const';
+import { filterEmptyString } from "../../parser/util/string";
+import { emptyString } from "../render-const";
+import { getAlignList, isTableDivideLine, renderTableCellContent } from "./render-table-helper";
+import { cellAlignTypeMap, cellTagNameTypeMap } from "./render-table-const";
 function renderTableRow(lineData, line, alignList, cellName, documentMeta) {
     const { selector } = lineData;
     return line
@@ -15,14 +15,17 @@ function renderTableRow(lineData, line, alignList, cellName, documentMeta) {
 }
 function renderTableRowList(lineData, lineList, alignList, cellName, documentMeta) {
     return lineList
-        .map((line) => `<tr>${renderTableRow(lineData, line, alignList, cellName, documentMeta)}</tr>`)
+        .map((line) => {
+        return `<tr>${renderTableRow(lineData, line, alignList, cellName, documentMeta)}</tr>`;
+    })
         .join(emptyString);
 }
 export function renderTable(lineData, documentMeta) {
     const { selector, additionalLineList, line } = lineData;
     const lineList = [line, ...additionalLineList];
     const dividerLine = lineList.find(isTableDivideLine);
-    if (!dividerLine) {
+    // eslint-disable-next-line no-undefined
+    if (dividerLine === undefined) {
         const bodyOnlyContent = renderTableRowList(lineData, lineList, [], cellTagNameTypeMap.tdCell, documentMeta);
         return `<table><tbody>${bodyOnlyContent}</tbody></table>`;
     }

@@ -1,9 +1,9 @@
-import { parseLine } from './parser/parse-line';
-import { emptyString } from './render/render-const';
-import { renderChildList } from './render/render';
-import { defaultMarkdownConfig } from './markdown-const';
-import { getMdFootnoteContent } from './parser/footnote/footnote-helper';
-import { getFullWrapperClassName } from './helper';
+import { parseLine } from "./parser/parse-line";
+import { emptyString } from "./render/render-const";
+import { renderChildList } from "./render/render";
+import { defaultMarkdownConfig } from "./markdown-const";
+import { getMdFootnoteContent } from "./parser/footnote/footnote-helper";
+import { getFullWrapperClassName } from "./helper";
 export function markdown(mdInput, config = defaultMarkdownConfig) {
     const markdownConfig = {
         ...defaultMarkdownConfig,
@@ -20,13 +20,11 @@ export function markdown(mdInput, config = defaultMarkdownConfig) {
         childList: [],
         config: markdownConfig,
         line: emptyString,
-        lineContent: '',
+        lineContent: "",
         lineIndex: -1,
         selector: emptyString,
         spaceCount: -1,
-        trimmedLine: '',
-        // isFirst: true,
-        // isLast: true,
+        trimmedLine: "",
     };
     const structuredLineDataList = [mainParent];
     const savedLineDataList = [mainParent];
@@ -37,7 +35,7 @@ export function markdown(mdInput, config = defaultMarkdownConfig) {
         tableLineData: null,
         variable: {},
     };
-    mdInput.split('\n').forEach((line, lineIndex, allLineList) => {
+    mdInput.split("\n").forEach((line, lineIndex, allLineList) => {
         parseLine(line, lineIndex, allLineList, structuredLineDataList, savedLineDataList, documentMeta);
     });
     const mainContent = renderChildList(structuredLineDataList, documentMeta);
@@ -47,9 +45,9 @@ export function markdown(mdInput, config = defaultMarkdownConfig) {
         return `<li id="${id}">${markdown(mdFootnoteContent, markdownFootnoteConfig)}</li>`;
     });
     const footnoteDescriptionHtml = footnoteDescriptionList.length === 0
-        ? ''
-        : ['<hr/>', '<ol type="1">', ...footnoteDescriptionList, '</ol>'].join('');
-    const fullContent = [mainContent, footnoteDescriptionHtml].join('');
+        ? ""
+        : ["<hr/>", '<ol type="1">', ...footnoteDescriptionList, "</ol>"].join("");
+    const fullContent = [mainContent, footnoteDescriptionHtml].join("");
     if (!useWrapper) {
         return fullContent;
     }

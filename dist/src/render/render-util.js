@@ -28,11 +28,11 @@ function getMatchIndexList(html, regExp) {
     }
     return resultList;
 }
-const tagSelectorRegExpGlobal = /(<\w+[\S\s]*?>)|(<\/\w+?>)|(<\w+[\S\s]*?\/>)/g;
+const tagSelectorRegExpGlobal = /(<\w+[\S\s]*?>)|(<\/\w+?>)|(<\w+[\S\s]*?\/>)/gu;
 export function getTagIndexList(html) {
     return getMatchIndexList(html, tagSelectorRegExpGlobal);
 }
-const linkSelectorRegExpGlobal = /(<a\s*?>[\S\s]*?<\/a>)|(<a\s[\S\s]*?>[\S\s]*?<\/a>)|(<a\s+[\S\s]*?\/>)/g;
+const linkSelectorRegExpGlobal = /(<a\s*?>[\S\s]*?<\/a>)|(<a\s[\S\s]*?>[\S\s]*?<\/a>)|(<a\s+[\S\s]*?\/>)/gu;
 export function getLinkIndexList(html) {
     return getMatchIndexList(html, linkSelectorRegExpGlobal);
 }

@@ -1,9 +1,9 @@
-import { findFootnoteMarkGlobalRegExp, footnoteTypeMap } from './footnote-const';
-import { getFootnoteById, getFootnoteInlineLineContent, getFootnoteMarkId } from './footnote-helper';
+import { findFootnoteMarkGlobalRegExp, footnoteTypeMap } from "./footnote-const";
+import { getFootnoteById, getFootnoteInlineLineContent, getFootnoteMarkId } from "./footnote-helper";
 function matchToFootnote(match) {
     const id = getFootnoteMarkId(match);
     const inlineLineContent = getFootnoteInlineLineContent(match);
-    if (match.indexOf('[^') === 1) {
+    if (match.indexOf("[^") === 1) {
         return {
             descriptionLineData: null,
             id,
@@ -11,7 +11,6 @@ function matchToFootnote(match) {
             type: footnoteTypeMap.super,
         };
     }
-    // match.indexOf('^[')
     return {
         descriptionLineData: null,
         id,
@@ -30,7 +29,9 @@ export function fromToFootnoteList(fromList, toList) {
     // eslint-disable-next-line no-loops/no-loops
     for (const fromItem of fromList) {
         const { id, descriptionLineData } = fromItem;
-        const candidateToExtend = toList.find((toItem) => toItem.id === id);
+        const candidateToExtend = toList.find((toItem) => {
+            return toItem.id === id;
+        });
         if (candidateToExtend) {
             if (!candidateToExtend.descriptionLineData) {
                 candidateToExtend.descriptionLineData = descriptionLineData;
@@ -43,7 +44,8 @@ export function fromToFootnoteList(fromList, toList) {
 }
 export function addLineData(lineData, toList) {
     const { lineContent } = lineData;
-    const rawMatchId = lineContent.match(/\[\^[^\]]+?]:/);
+    // eslint-disable-next-line optimize-regex/optimize-regex
+    const rawMatchId = /\[\^[^\]]+?\]:/u.exec(lineContent);
     if (!rawMatchId) {
         return;
     }
@@ -64,13 +66,13 @@ export function addLineData(lineData, toList) {
 export function makeFootnoteSuper(fullLineContent, documentMeta) {
     return fullLineContent.replace(findFootnoteMarkGlobalRegExp, (match) => {
         // eslint-disable-next-line unicorn/prefer-spread
-        const charList = match.split('');
+        const charList = match.split("");
         const [firstLetter] = charList;
         const { footnoteList } = documentMeta;
         const id = getFootnoteMarkId(match);
         const footnote = getFootnoteById(id, footnoteList);
         if (!footnote) {
-            return '';
+            return "";
         }
         return `${firstLetter}<a href="#${id}"><sup>[${footnoteList.indexOf(footnote) + 1}]</sup></a>`;
     });

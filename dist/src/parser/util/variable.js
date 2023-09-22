@@ -1,16 +1,12 @@
-/*
-export function getIsVariableLine(lineContent: string): boolean {
-    return /\[[^^][\S\s]+?]:/.test(lineContent);
-}
-*/
 export function getVariableData(lineContent) {
-    const matchData = lineContent.match(/\[([^^][\S\s]+?)]:\s+?\S/);
+    // eslint-disable-next-line optimize-regex/optimize-regex
+    const matchData = /\[([^^][\S\s]+?)\]:\s+?\S/u.exec(lineContent);
     if (!matchData) {
         return null;
     }
     // eslint-disable-next-line prefer-destructuring
     const key = matchData[1];
-    const value = lineContent.slice(lineContent.indexOf(']:') + 3).trim();
+    const value = lineContent.slice(lineContent.indexOf("]:") + 3).trim();
     return {
         key,
         value,

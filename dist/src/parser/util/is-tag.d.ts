@@ -1,4 +1,4 @@
-import { LineDataType } from '../parser-type';
+import type { LineDataType } from "../parser-type";
 export declare function getIsHeader(lineData: LineDataType): boolean;
 export declare function getIsUlItem(lineData: LineDataType): boolean;
 export declare function getIsOlItem(lineData: LineDataType): boolean;

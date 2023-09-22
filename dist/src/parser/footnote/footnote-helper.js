@@ -1,23 +1,26 @@
 export function getIsFootnoteDescription(lineContent) {
-    return /^\[\^[^\]]+]:/.test(lineContent);
+    // eslint-disable-next-line optimize-regex/optimize-regex
+    return /^\[\^[^\]]+\]:/u.test(lineContent);
 }
 export function getFootnoteById(id, list) {
-    return list.find((footnote) => footnote.id === id);
+    return list.find((footnote) => {
+        return footnote.id === id;
+    });
 }
 export function getFootnoteInlineLineContent(match) {
     return match.slice(3, -1).trim();
 }
-// see findFootnoteMarkGlobalRegExp
+// See findFootnoteMarkGlobalRegExp
 export function getFootnoteMarkId(match) {
-    // eslint-disable-next-line unicorn/prefer-string-replace-all
-    return getFootnoteInlineLineContent(match).toLowerCase().replace(/\W/g, ' ').trim().replace(/\s+/g, '-');
+    // eslint-disable-next-line unicorn/prefer-string-replace-all, newline-per-chained-call
+    return getFootnoteInlineLineContent(match).toLowerCase().replace(/\W/gu, " ").trim().replace(/\s+/gu, "-");
 }
 export function getMdFootnoteContent(footnote) {
     const { inlineLineContent, descriptionLineData } = footnote;
     if (descriptionLineData) {
         const { lineContent, additionalLineList } = descriptionLineData;
-        const start = lineContent.indexOf(']:') + 2;
-        return lineContent.slice(start) + '\n' + additionalLineList.join('\n');
+        const start = lineContent.indexOf("]:") + 2;
+        return `${lineContent.slice(start)}\n${additionalLineList.join("\n")}`;
     }
     return inlineLineContent;
 }

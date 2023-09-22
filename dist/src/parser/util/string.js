@@ -1,14 +1,14 @@
-import { emptyString } from '../../render/render-const';
+import { emptyString } from "../../render/render-const";
 export function filterEmptyString(line) {
     return line.trim() !== emptyString;
 }
 export function cleanLine(line) {
     // eslint-disable-next-line unicorn/prefer-string-replace-all
-    return line.trim().replace(/\s+/g, ' ');
+    return line.trim().replace(/\s+/gu, " ");
 }
 export function getIsAllSymbolsEqual(line) {
     // eslint-disable-next-line unicorn/prefer-spread
-    const charList = line.split('');
+    const charList = line.split("");
     const [firstSymbol] = charList;
     if (!firstSymbol) {
         return true;

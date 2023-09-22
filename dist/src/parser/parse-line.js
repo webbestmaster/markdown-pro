@@ -1,10 +1,10 @@
-import { emptyString } from '../render/render-const';
-import { cleanLine, getIsAllSymbolsEqual } from './util/string';
-import { getParent } from './util/navigation';
-import { oLParseDataList, selectorCodeList, selectorLineList, selectorList, selectorTableList } from './parser-selector';
-import { addLineData, fromToFootnoteList, getFootnoteList } from './footnote/footnote';
-import { getIsFootnoteDescription } from './footnote/footnote-helper';
-import { getVariableData } from './util/variable';
+import { emptyString } from "../render/render-const";
+import { cleanLine, getIsAllSymbolsEqual } from "./util/string";
+import { getParent } from "./util/navigation";
+import { oLParseDataList, selectorCodeList, selectorLineList, selectorList, selectorTableList } from "./parser-selector";
+import { addLineData, fromToFootnoteList, getFootnoteList } from "./footnote/footnote";
+import { getIsFootnoteDescription } from "./footnote/footnote-helper";
+import { getVariableData } from "./util/variable";
 // eslint-disable-next-line complexity
 function getShortInfo(trimmedLine) {
     // eslint-disable-next-line no-loops/no-loops
@@ -47,7 +47,7 @@ export function parseLine(line, lineIndex, allLineList, structuredLineDataList, 
     const rawSpaceCount = isEmptyString
         ? // eslint-disable-next-line unicorn/prefer-at
             savedLineDataList[savedLineDataList.length - 1].spaceCount
-        : line.search(/\S/);
+        : line.search(/\S/u);
     const spaceCount = Math.max(0, rawSpaceCount);
     const defaultSelectorData = {
         lineContent: emptyString,
@@ -79,30 +79,30 @@ export function parseLine(line, lineIndex, allLineList, structuredLineDataList, 
         codeLineData.additionalLineList.push(lineData.line);
         return true;
     }
-    const newFootnoteList = getFootnoteList(lineContent);
+    const updatedFootnoteList = getFootnoteList(lineContent);
     const { footnoteList, tableLineData, variable } = documentMeta;
-    fromToFootnoteList(newFootnoteList, footnoteList);
+    fromToFootnoteList(updatedFootnoteList, footnoteList);
     if (selectorTableList.includes(selector)) {
         if (tableLineData) {
-            // append new line in current block
+            // Append new line in current block
             // eslint-disable-next-line no-param-reassign
             tableLineData.additionalLineList.push(lineData.line);
             return true;
         }
-        // create new block
+        // Create new block
         // eslint-disable-next-line no-param-reassign
         documentMeta.tableLineData = lineData;
     }
     else {
-        // close table block
+        // Close table block
         // eslint-disable-next-line no-param-reassign
         documentMeta.tableLineData = null;
     }
     const variableData = getVariableData(lineContent);
     if (lineData.selector === emptyString && lineContent.length > 0) {
         const prevItemIndex = savedLineDataList.length - 1;
-        const prevItem = savedLineDataList[prevItemIndex];
-        const isTable = selectorTableList.includes(prevItem.selector);
+        const prevItem = savedLineDataList.at(prevItemIndex);
+        const isTable = Boolean(prevItem && selectorTableList.includes(prevItem.selector));
         if (variableData) {
             // eslint-disable-next-line no-param-reassign
             variable[variableData.key] = variableData;
@@ -114,7 +114,7 @@ export function parseLine(line, lineIndex, allLineList, structuredLineDataList, 
     }
     const parentLineData = getParent(lineData, savedLineDataList);
     if (!parentLineData) {
-        // console.error('Parent not found');
+        // Console.error('Parent not found');
         return false;
     }
     if (variableData) {

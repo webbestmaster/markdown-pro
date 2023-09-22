@@ -1,9 +1,9 @@
-import { emptyString } from '../../render/render-const';
+import { emptyString } from "../../render/render-const";
 // eslint-disable-next-line complexity
 export function searchSiblingItem(lineData, lineDataList, direction) {
     const index = lineDataList.indexOf(lineData);
     if (index === -1) {
-        // console.error('lineDataList should contain lineData');
+        // Console.error('lineDataList should contain lineData');
         return null;
     }
     const siblingIndex = index + direction;
@@ -12,8 +12,8 @@ export function searchSiblingItem(lineData, lineDataList, direction) {
         return null;
     }
     if (siblingItem.trimmedLine === emptyString) {
-        const newDirection = direction + (direction >= 0 ? 1 : -1);
-        return searchSiblingItem(lineData, lineDataList, newDirection);
+        const updatedDirection = direction + (direction >= 0 ? 1 : -1);
+        return searchSiblingItem(lineData, lineDataList, updatedDirection);
     }
     return siblingItem;
 }
@@ -31,7 +31,7 @@ export function getParent(lineData, lineDataList) {
             return lineDataCandidate;
         }
     }
-    // console.error('Parent not found');
+    // Console.error('Parent not found');
     return null;
 }
 //# sourceMappingURL=navigation.js.map

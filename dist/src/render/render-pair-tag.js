@@ -1,12 +1,12 @@
-import { pairTagSelectorList } from '../parser/parser-selector';
-import { getTagIndexList, harArrayOverflow } from './render-util';
+import { pairTagSelectorList } from "../parser/parser-selector";
+import { getTagIndexList, harArrayOverflow } from "./render-util";
 // eslint-disable-next-line complexity, max-statements
 export function getSelectorIndexList(html, pairTagSelector) {
     const { selector, equal } = pairTagSelector;
     const resultList = [];
     const selectorLength = selector.length;
     if (selectorLength === 0) {
-        // console.error('Selector is empty string');
+        // Console.error('Selector is empty string');
         return resultList;
     }
     let indexOfSelector = html.indexOf(selector, 0);
@@ -36,7 +36,7 @@ function addPairTag(html, pairTagSelector) {
     }
     const tagPairIndexList = getTagIndexList(html);
     let selectorIndexList = getSelectorIndexList(html, pairTagSelector);
-    // remove indexes into tags, f.e. - <a href="http://ex__am__ple.com">text</a>
+    // Remove indexes into tags, f.e. - <a href="http://ex__am__ple.com">text</a>
     selectorIndexList = selectorIndexList.filter((selectorIndex) => {
         // eslint-disable-next-line no-loops/no-loops
         for (const tagPairIndex of tagPairIndexList) {

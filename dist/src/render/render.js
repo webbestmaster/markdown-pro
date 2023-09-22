@@ -1,10 +1,10 @@
-import { getIsBlockquote, getIsCode, getIsHeader, getIsLine, getIsOlItem, getIsStartWithHtml, getIsTable, getIsUlItem, } from '../parser/util/is-tag';
-import { getIsEdgeLine } from '../parser/util/navigation';
-import { getIsFootnoteDescription } from '../parser/footnote/footnote-helper';
-// import {makeFootnoteSuper} from '../parser/footnote/footnote';
-import { addBreakLine, getOlStart, getOlTypeBySelector, isImageListOnly, removeEndBreakLine, renderAdditionalLineList, renderInlineHtml, } from './render-helper';
-import { emptyString } from './render-const';
-import { renderTable } from './render-table/render-table';
+import { getIsBlockquote, getIsCode, getIsHeader, getIsLine, getIsOlItem, getIsStartWithHtml, getIsTable, getIsUlItem, } from "../parser/util/is-tag";
+import { getIsEdgeLine } from "../parser/util/navigation";
+import { getIsFootnoteDescription } from "../parser/footnote/footnote-helper";
+// Import {makeFootnoteSuper} from '../parser/footnote/footnote';
+import { addBreakLine, getOlStart, getOlTypeBySelector, isImageListOnly, removeEndBreakLine, renderAdditionalLineList, renderInlineHtml, } from "./render-helper";
+import { emptyString } from "./render-const";
+import { renderTable } from "./render-table/render-table";
 export function renderChildList(lineDataList, documentMeta) {
     return lineDataList
         .map((lineData, lineDataIndex) => {
@@ -24,16 +24,16 @@ export function renderLineData(lineData, lineDataIndex, lineDataList, documentMe
     fullLineContent = renderInlineHtml(fullLineContent, documentMeta);
     fullLineContent += childListRender;
     if (getIsFootnoteDescription(lineContent)) {
-        return '';
+        return "";
     }
     if (getIsLine(lineData)) {
-        return '<hr/>';
+        return "<hr/>";
     }
     if (getIsTable(lineData)) {
         return renderTable(lineData, documentMeta);
     }
     if (getIsCode(lineData)) {
-        const codeText = codeHighlight(lineContent, additionalLineList.join('\n'));
+        const codeText = codeHighlight(lineContent, additionalLineList.join("\n"));
         return lineContent ? `<code data-lang="${lineContent}">${codeText}</code>` : `<code>${codeText}</code>`;
     }
     if (lineContent === emptyString && childList.length === 0) {
@@ -49,8 +49,8 @@ export function renderLineData(lineData, lineDataIndex, lineDataList, documentMe
     if (getIsUlItem(lineData)) {
         const isFirstItem = getIsEdgeLine(lineData, lineDataList, -1);
         const isLastItem = getIsEdgeLine(lineData, lineDataList, 1);
-        const prefix = isFirstItem ? '<ul>' : '';
-        const postfix = isLastItem ? '</ul>' : '';
+        const prefix = isFirstItem ? "<ul>" : "";
+        const postfix = isLastItem ? "</ul>" : "";
         return `${prefix}<li>${fullLineContent}</li>${postfix}`;
     }
     if (getIsOlItem(lineData)) {
@@ -59,8 +59,8 @@ export function renderLineData(lineData, lineDataIndex, lineDataList, documentMe
         const { selector: lineDataSelector } = lineData;
         const prefix = isFirstItem
             ? `<ol type="${getOlTypeBySelector(lineDataSelector)}" start="${getOlStart(trimmedLine)}">`
-            : '';
-        const postfix = isLastItem ? '</ol>' : '';
+            : "";
+        const postfix = isLastItem ? "</ol>" : "";
         return `${prefix}<li>${fullLineContent}</li>${postfix}`;
     }
     if (lineContent === emptyString || getIsStartWithHtml(lineData) || isImageListOnly(lineContent)) {

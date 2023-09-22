@@ -1,4 +1,4 @@
-import { MarkdownConfigType } from '../library';
+import type { MarkdownConfigType } from "../library";
 export declare enum ThemeNameEnum {
     auto = "auto",
     dark = "dark",

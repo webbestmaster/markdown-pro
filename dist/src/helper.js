@@ -1,4 +1,4 @@
-import { themeClassNameMap, defaultMarkdownConfig } from './markdown-const';
+import { themeClassNameMap, defaultMarkdownConfig } from "./markdown-const";
 export function getFullWrapperClassName(markdownConfig) {
     const { wrapperClassName: wrapperClassNameConfig, themeName } = markdownConfig;
     const { wrapperClassName: wrapperClassNameDefault } = defaultMarkdownConfig;
