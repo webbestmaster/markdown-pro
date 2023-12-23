@@ -2,6 +2,7 @@ import { filterEmptyString } from "../../parser/util/string";
 import { emptyString } from "../render-const";
 import { getAlignList, isTableDivideLine, renderTableCellContent } from "./render-table-helper";
 import { cellAlignTypeMap, cellTagNameTypeMap } from "./render-table-const";
+// eslint-disable-next-line @typescript-eslint/max-params
 function renderTableRow(lineData, line, alignList, cellName, documentMeta) {
     const { selector } = lineData;
     return line
@@ -13,6 +14,7 @@ function renderTableRow(lineData, line, alignList, cellName, documentMeta) {
     })
         .join(emptyString);
 }
+// eslint-disable-next-line @typescript-eslint/max-params
 function renderTableRowList(lineData, lineList, alignList, cellName, documentMeta) {
     return lineList
         .map((line) => {

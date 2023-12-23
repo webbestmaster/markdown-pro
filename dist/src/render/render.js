@@ -14,7 +14,7 @@ export function renderChildList(lineDataList, documentMeta) {
         .map(addBreakLine)
         .join(emptyString);
 }
-// eslint-disable-next-line complexity, sonarjs/cognitive-complexity, max-statements
+// eslint-disable-next-line complexity, sonarjs/cognitive-complexity, max-statements, @typescript-eslint/max-params
 export function renderLineData(lineData, lineDataIndex, lineDataList, documentMeta) {
     const { selector, childList, lineContent, trimmedLine, additionalLineList, config } = lineData;
     const { codeHighlight } = config;

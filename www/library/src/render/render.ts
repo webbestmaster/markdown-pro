@@ -36,7 +36,7 @@ export function renderChildList(lineDataList: Array<LineDataType>, documentMeta:
         .join(emptyString);
 }
 
-// eslint-disable-next-line complexity, sonarjs/cognitive-complexity, max-statements
+// eslint-disable-next-line complexity, sonarjs/cognitive-complexity, max-statements, @typescript-eslint/max-params
 export function renderLineData(
     lineData: LineDataType,
     lineDataIndex: number,

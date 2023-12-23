@@ -22,6 +22,7 @@ export function getHasEndBreakLine(lineContent: string, useLineBreak: boolean): 
     return useLineBreak || breakLineRegExp.test(lineContent);
 }
 
+// eslint-disable-next-line @typescript-eslint/max-params
 function imageReplacer(matchedString: string, alt: unknown, src: string, title: unknown): string {
     const titleAndOtherAttrValue = hasStringNonEmptySymbols(title) ? ` title="${title}"` : "";
     const altAttrValue = hasStringNonEmptySymbols(alt) ? ` alt="${alt}"` : "";
@@ -29,6 +30,7 @@ function imageReplacer(matchedString: string, alt: unknown, src: string, title: 
     return `<img loading="lazy" src="${src}"${altAttrValue}${titleAndOtherAttrValue}/>`;
 }
 
+// eslint-disable-next-line @typescript-eslint/max-params
 function imageReplacerVariable(
     matchedString: string,
     alt: unknown,
@@ -92,6 +94,7 @@ const findLinkRegExpGlobal = /\[([\S\s]*?)\]\((\S+?)(?:\s+"([\S\s]+?)")?\)/gu;
 // eslint-disable-next-line optimize-regex/optimize-regex
 const findLinkVariableRegExpGlobal = /\[([\S\s]*?)\]\[([\S\s]+?)\]/gu;
 
+// eslint-disable-next-line @typescript-eslint/max-params
 function mailReplacer(matchedString: string, linkText: string, href: string, title: unknown, subject: unknown): string {
     const titleAttrValue = hasStringNonEmptySymbols(title) ? ` title="${title}"` : "";
     const subjectValue = hasStringNonEmptySymbols(subject) ? `?subject=${subject}` : "";
@@ -105,6 +108,7 @@ function mailReplacer(matchedString: string, linkText: string, href: string, tit
     return matchedString;
 }
 
+// eslint-disable-next-line @typescript-eslint/max-params
 function linkReplacer(matchedString: string, linkText: string, href: string, title: unknown): string {
     const titleAttrValue = hasStringNonEmptySymbols(title) ? ` title="${title}"` : "";
     const text = linkText.length > 0 ? linkText : href;
@@ -116,6 +120,7 @@ function getMailToPrefix(href: string): string {
     return hasEmailSymbol(href) ? mailPrefix : "";
 }
 
+// eslint-disable-next-line @typescript-eslint/max-params
 function linkReplacerVariable(
     matchedString: string,
     linkText: string,

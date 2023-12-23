@@ -6,6 +6,7 @@ import {getAlignList, isTableDivideLine, renderTableCellContent} from "./render-
 import {cellAlignTypeMap, cellTagNameTypeMap} from "./render-table-const";
 import type {CellAlignType, CellTagNameType} from "./render-table-type";
 
+// eslint-disable-next-line @typescript-eslint/max-params
 function renderTableRow(
     lineData: LineDataType,
     line: string,
@@ -26,6 +27,7 @@ function renderTableRow(
         .join(emptyString);
 }
 
+// eslint-disable-next-line @typescript-eslint/max-params
 function renderTableRowList(
     lineData: LineDataType,
     lineList: Array<string>,

@@ -15,11 +15,13 @@ export function removeEndBreakLine(line) {
 export function getHasEndBreakLine(lineContent, useLineBreak) {
     return useLineBreak || breakLineRegExp.test(lineContent);
 }
+// eslint-disable-next-line @typescript-eslint/max-params
 function imageReplacer(matchedString, alt, src, title) {
     const titleAndOtherAttrValue = hasStringNonEmptySymbols(title) ? ` title="${title}"` : "";
     const altAttrValue = hasStringNonEmptySymbols(alt) ? ` alt="${alt}"` : "";
     return `<img loading="lazy" src="${src}"${altAttrValue}${titleAndOtherAttrValue}/>`;
 }
+// eslint-disable-next-line @typescript-eslint/max-params
 function imageReplacerVariable(matchedString, alt, srcVariable, documentMeta) {
     const altAttrValue = hasStringNonEmptySymbols(alt) ? ` alt="${alt}"` : "";
     const { variable } = documentMeta;
@@ -62,6 +64,7 @@ const findMailRegExpGlobal = /\[([\S\s]*?)\]\((\S+?)(?:\s+"([\S\s]+?)")?(?:\s+"(
 const findLinkRegExpGlobal = /\[([\S\s]*?)\]\((\S+?)(?:\s+"([\S\s]+?)")?\)/gu;
 // eslint-disable-next-line optimize-regex/optimize-regex
 const findLinkVariableRegExpGlobal = /\[([\S\s]*?)\]\[([\S\s]+?)\]/gu;
+// eslint-disable-next-line @typescript-eslint/max-params
 function mailReplacer(matchedString, linkText, href, title, subject) {
     const titleAttrValue = hasStringNonEmptySymbols(title) ? ` title="${title}"` : "";
     const subjectValue = hasStringNonEmptySymbols(subject) ? `?subject=${subject}` : "";
@@ -72,6 +75,7 @@ function mailReplacer(matchedString, linkText, href, title, subject) {
     // Leave it for link
     return matchedString;
 }
+// eslint-disable-next-line @typescript-eslint/max-params
 function linkReplacer(matchedString, linkText, href, title) {
     const titleAttrValue = hasStringNonEmptySymbols(title) ? ` title="${title}"` : "";
     const text = linkText.length > 0 ? linkText : href;
@@ -80,6 +84,7 @@ function linkReplacer(matchedString, linkText, href, title) {
 function getMailToPrefix(href) {
     return hasEmailSymbol(href) ? mailPrefix : "";
 }
+// eslint-disable-next-line @typescript-eslint/max-params
 function linkReplacerVariable(matchedString, linkText, hrefVariable, documentMeta) {
     const { variable } = documentMeta;
     if (hrefVariable in variable) {

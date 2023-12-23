@@ -40,7 +40,7 @@ function getShortInfo(trimmedLine) {
         selector: emptyString,
     };
 }
-// eslint-disable-next-line complexity, max-params, max-statements, sonarjs/cognitive-complexity
+// eslint-disable-next-line complexity, max-params, max-statements, sonarjs/cognitive-complexity, @typescript-eslint/max-params
 export function parseLine(line, lineIndex, allLineList, structuredLineDataList, savedLineDataList, documentMeta) {
     const trimmedLine = line.trim();
     const isEmptyString = trimmedLine === emptyString;

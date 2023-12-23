@@ -24,7 +24,7 @@ function getThemeName(value: unknown): ThemeNameEnum {
     return ThemeNameEnum.auto;
 }
 
-// eslint-disable-next-line max-params
+// eslint-disable-next-line max-params, @typescript-eslint/max-params
 export function init(
     textArea: HTMLTextAreaElement,
     output: HTMLDivElement,

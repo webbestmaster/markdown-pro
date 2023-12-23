@@ -48,7 +48,7 @@ function getShortInfo(trimmedLine: string): ShortLineInfoType {
     };
 }
 
-// eslint-disable-next-line complexity, max-params, max-statements, sonarjs/cognitive-complexity
+// eslint-disable-next-line complexity, max-params, max-statements, sonarjs/cognitive-complexity, @typescript-eslint/max-params
 export function parseLine(
     line: string,
     lineIndex: number,
