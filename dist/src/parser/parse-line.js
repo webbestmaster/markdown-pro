@@ -5,9 +5,7 @@ import { oLParseDataList, selectorCodeList, selectorLineList, selectorList, sele
 import { addLineData, fromToFootnoteList, getFootnoteList } from "./footnote/footnote";
 import { getIsFootnoteDescription } from "./footnote/footnote-helper";
 import { getVariableData } from "./util/variable";
-// eslint-disable-next-line complexity
 function getShortInfo(trimmedLine) {
-    // eslint-disable-next-line no-loops/no-loops
     for (const selector of selectorList) {
         if (trimmedLine.startsWith(selector)) {
             return {
@@ -16,7 +14,6 @@ function getShortInfo(trimmedLine) {
             };
         }
     }
-    // eslint-disable-next-line no-loops/no-loops
     for (const lineSelector of selectorLineList) {
         if (trimmedLine.startsWith(lineSelector) && getIsAllSymbolsEqual(trimmedLine)) {
             return {
@@ -25,7 +22,6 @@ function getShortInfo(trimmedLine) {
             };
         }
     }
-    // eslint-disable-next-line no-loops/no-loops
     for (const oLParseData of oLParseDataList) {
         const { selector, regExpSearchSelector } = oLParseData;
         if (trimmedLine.search(regExpSearchSelector) === 0) {
@@ -40,13 +36,12 @@ function getShortInfo(trimmedLine) {
         selector: emptyString,
     };
 }
-// eslint-disable-next-line complexity, max-params, max-statements, sonarjs/cognitive-complexity, @typescript-eslint/max-params
+// eslint-disable-next-line complexity, max-params, max-statements, @typescript-eslint/max-params
 export function parseLine(line, lineIndex, allLineList, structuredLineDataList, savedLineDataList, documentMeta) {
     const trimmedLine = line.trim();
     const isEmptyString = trimmedLine === emptyString;
     const rawSpaceCount = isEmptyString
-        ? // eslint-disable-next-line unicorn/prefer-at
-            savedLineDataList[savedLineDataList.length - 1].spaceCount
+        ? savedLineDataList[savedLineDataList.length - 1].spaceCount
         : line.search(/\S/u);
     const spaceCount = Math.max(0, rawSpaceCount);
     const defaultSelectorData = {
@@ -67,11 +62,9 @@ export function parseLine(line, lineIndex, allLineList, structuredLineDataList, 
     };
     if (selectorCodeList.includes(selector)) {
         if (documentMeta.codeLineData && lineContent === emptyString) {
-            // eslint-disable-next-line no-param-reassign
             documentMeta.codeLineData = null;
             return true;
         }
-        // eslint-disable-next-line no-param-reassign
         documentMeta.codeLineData = lineData;
     }
     const { codeLineData } = documentMeta;
@@ -85,17 +78,14 @@ export function parseLine(line, lineIndex, allLineList, structuredLineDataList, 
     if (selectorTableList.includes(selector)) {
         if (tableLineData) {
             // Append new line in current block
-            // eslint-disable-next-line no-param-reassign
             tableLineData.additionalLineList.push(lineData.line);
             return true;
         }
         // Create new block
-        // eslint-disable-next-line no-param-reassign
         documentMeta.tableLineData = lineData;
     }
     else {
         // Close table block
-        // eslint-disable-next-line no-param-reassign
         documentMeta.tableLineData = null;
     }
     const variableData = getVariableData(lineContent);
@@ -104,7 +94,6 @@ export function parseLine(line, lineIndex, allLineList, structuredLineDataList, 
         const prevItem = savedLineDataList.at(prevItemIndex);
         const isTable = Boolean(prevItem && selectorTableList.includes(prevItem.selector));
         if (variableData) {
-            // eslint-disable-next-line no-param-reassign
             variable[variableData.key] = variableData;
         }
         if (prevItem && prevItem.lineContent.length > 0 && !isTable && !variableData) {

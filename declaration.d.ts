@@ -1,5 +1,4 @@
 /* global SVGSVGElement */
-/* eslint-disable import/no-default-export, init-declarations */
 
 declare module "*.svg" {
     // eslint-disable-next-line @typescript-eslint/no-require-imports

@@ -18,7 +18,6 @@ export function getIsUlItem(lineData: LineDataType): boolean {
 }
 
 export function getIsOlItem(lineData: LineDataType): boolean {
-    // eslint-disable-next-line no-loops/no-loops
     for (const oLParseData of oLParseDataList) {
         if (oLParseData.selector === lineData.selector) {
             return true;

@@ -6,7 +6,6 @@ export function getIsUlItem(lineData) {
     return selectorULItemList.includes(lineData.selector);
 }
 export function getIsOlItem(lineData) {
-    // eslint-disable-next-line no-loops/no-loops
     for (const oLParseData of oLParseDataList) {
         if (oLParseData.selector === lineData.selector) {
             return true;

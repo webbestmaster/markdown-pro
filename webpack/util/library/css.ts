@@ -47,5 +47,5 @@ async function innerInitialization(): Promise<undefined> {
     console.log("[css util] declaration for css has been added.");
 }
 
-// eslint-disable-next-line unicorn/prefer-top-level-await, @typescript-eslint/no-floating-promises
+// eslint-disable-next-line @typescript-eslint/no-floating-promises
 innerInitialization();

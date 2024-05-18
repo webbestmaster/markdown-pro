@@ -1,5 +1,3 @@
-/* eslint-disable max-len */
-
 export const fixtureMix1 = {
     input: `
     ### Mix 1

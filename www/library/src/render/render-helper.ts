@@ -47,51 +47,36 @@ function imageReplacerVariable(
     return `<img loading="lazy" src="${srcVariable}"${altAttrValue}/>`;
 }
 
-// eslint-disable-next-line optimize-regex/optimize-regex
 const findImageRegExpGlobal = /!\[([\S\s]*?)\]\((\S+?)(?:\s+"([\S\s]+?)")?\)/gu;
-// eslint-disable-next-line optimize-regex/optimize-regex
 const findImageVariableRegExpGlobal = /!\[([\S\s]*?)\]\[([\S\s]+?)\]/gu;
 
 export function makeImage(html: string, documentMeta: DocumentMetaType): string {
-    return (
-        html
-            // eslint-disable-next-line unicorn/prefer-string-replace-all
-            .replace(findImageRegExpGlobal, imageReplacer)
-            // eslint-disable-next-line unicorn/prefer-string-replace-all
-            .replace(
-                findImageVariableRegExpGlobal,
-                (matchedString: string, alt: unknown, srcVariable: string): string => {
-                    return imageReplacerVariable(matchedString, alt, srcVariable, documentMeta);
-                }
-            )
-    );
+    return html
+
+        .replace(findImageRegExpGlobal, imageReplacer)
+
+        .replace(findImageVariableRegExpGlobal, (matchedString: string, alt: unknown, srcVariable: string): string => {
+            return imageReplacerVariable(matchedString, alt, srcVariable, documentMeta);
+        });
 }
 
-// eslint-disable-next-line optimize-regex/optimize-regex
 const findCheckboxCheckedRegExoGlobal = /\[x\]/giu;
-// eslint-disable-next-line optimize-regex/optimize-regex
 const findCheckboxUncheckedRegExoGlobal = /\[\s\]/gu;
 
 export function makeCheckbox(html: string): string {
-    return (
-        html
-            // eslint-disable-next-line unicorn/prefer-string-replace-all
-            .replace(findCheckboxCheckedRegExoGlobal, '<input type="checkbox" checked="checked" disabled="disabled"/>')
-            // eslint-disable-next-line unicorn/prefer-string-replace-all
-            .replace(findCheckboxUncheckedRegExoGlobal, '<input type="checkbox" disabled="disabled"/>')
-    );
+    return html
+
+        .replace(findCheckboxCheckedRegExoGlobal, '<input type="checkbox" checked="checked" disabled="disabled"/>')
+
+        .replace(findCheckboxUncheckedRegExoGlobal, '<input type="checkbox" disabled="disabled"/>');
 }
 
 export function isImageListOnly(lineContent: string): boolean {
-    // eslint-disable-next-line unicorn/prefer-string-replace-all
     return lineContent.replace(findImageRegExpGlobal, "").trim() === emptyString;
 }
 
-// eslint-disable-next-line optimize-regex/optimize-regex
 const findMailRegExpGlobal = /\[([\S\s]*?)\]\((\S+?)(?:\s+"([\S\s]+?)")?(?:\s+"([\S\s]+?)")?\)/gu;
-// eslint-disable-next-line optimize-regex/optimize-regex
 const findLinkRegExpGlobal = /\[([\S\s]*?)\]\((\S+?)(?:\s+"([\S\s]+?)")?\)/gu;
-// eslint-disable-next-line optimize-regex/optimize-regex
 const findLinkVariableRegExpGlobal = /\[([\S\s]*?)\]\[([\S\s]+?)\]/gu;
 
 // eslint-disable-next-line @typescript-eslint/max-params
@@ -142,7 +127,6 @@ function linkReplacerVariable(
 }
 
 function defineVariables(html: string, documentMeta: DocumentMetaType): string {
-    // eslint-disable-next-line unicorn/prefer-string-replace-all
     return html.replace(
         findLinkVariableRegExpGlobal,
         (matchedString: string, linkText: string, hrefVariable: string): string => {
@@ -152,17 +136,14 @@ function defineVariables(html: string, documentMeta: DocumentMetaType): string {
 }
 
 export function makeMail(html: string): string {
-    // eslint-disable-next-line unicorn/prefer-string-replace-all
     return html.replace(findMailRegExpGlobal, mailReplacer);
 }
 
 export function makeLink(html: string): string {
-    // eslint-disable-next-line unicorn/prefer-string-replace-all
     return html.replace(findLinkRegExpGlobal, linkReplacer);
 }
 
 export function getOlTypeBySelector(dataLineSelector: SelectorType): OlAttributeType {
-    // eslint-disable-next-line no-loops/no-loops
     for (const oLParseData of oLParseDataList) {
         const {selector, olAttributeType} = oLParseData;
 
@@ -182,7 +163,6 @@ export function getOlStart(trimmedLine: string): string {
     return trimmedLine.slice(0, dotIndex);
 }
 
-// eslint-disable-next-line complexity, max-statements
 export function renderAdditionalLineList(lineData: LineDataType): string {
     const {additionalLineList, config} = lineData;
     const {lineContent} = lineData;
@@ -198,7 +178,6 @@ export function renderAdditionalLineList(lineData: LineDataType): string {
     const additionalLineLastIndex = additionalLineListLength - 1;
     const lineResult: Array<string> = Array.from<string>({length: additionalLineListLength}).fill("");
 
-    // eslint-disable-next-line no-loops/no-loops
     for (let lineIndex = 0; lineIndex < additionalLineListLength; lineIndex += 1) {
         const additionalLine = additionalLineList[lineIndex];
         const hasBreakLine = getHasEndBreakLine(additionalLine, useLineBreak);
@@ -211,7 +190,6 @@ export function renderAdditionalLineList(lineData: LineDataType): string {
                     ? additionalLineWithoutBreakLine
                     : additionalLineWithoutBreakLine + breakLineTag;
         } else {
-            // eslint-disable-next-line no-lonely-if
             lineResult[lineIndex] = lineIndex === additionalLineLastIndex ? additionalLine : additionalLine + space;
         }
     }

@@ -4,7 +4,6 @@ export function harArrayOverflow(arrayA, arrayB) {
     return !(endA < startB || endB < startA);
 }
 export function harArrayListOverflow(pairNumberArray, arrayList) {
-    // eslint-disable-next-line no-loops/no-loops
     for (const arrayInList of arrayList) {
         if (harArrayOverflow(pairNumberArray, arrayInList)) {
             return true;
@@ -19,7 +18,6 @@ function getMatchIndexList(html, regExp) {
         return [];
     }
     let currentIndex = 0;
-    // eslint-disable-next-line no-loops/no-loops
     for (const matchedString of matchList) {
         const start = html.indexOf(matchedString, currentIndex);
         const end = start + matchedString.length - 1;

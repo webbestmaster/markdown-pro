@@ -1,5 +1,4 @@
 import { emptyString } from "../../render/render-const";
-// eslint-disable-next-line complexity
 export function searchSiblingItem(lineData, lineDataList, direction) {
     const index = lineDataList.indexOf(lineData);
     if (index === -1) {
@@ -24,7 +23,6 @@ export function getIsEdgeLine(lineData, lineDataList, direction) {
 }
 export function getParent(lineData, lineDataList) {
     const linaDataListLength = lineDataList.length;
-    // eslint-disable-next-line no-loops/no-loops
     for (let lineDataIndex = linaDataListLength - 1; lineDataIndex >= 0; lineDataIndex -= 1) {
         const lineDataCandidate = lineDataList[lineDataIndex];
         if (lineDataCandidate.spaceCount < lineData.spaceCount) {

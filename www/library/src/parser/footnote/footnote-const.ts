@@ -7,5 +7,4 @@ export const footnoteTypeMap: {[key in FootnoteTypeType]: FootnoteTypeType} = {
 
 // Export const footnotePrefix = 'fn-';
 
-// eslint-disable-next-line optimize-regex/optimize-regex
 export const findFootnoteMarkGlobalRegExp = /\S\[\^[^\]]+?\]|\S\^\[[^\]]+?\]/gu;

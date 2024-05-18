@@ -8,13 +8,13 @@ import { renderTable } from "./render-table/render-table";
 export function renderChildList(lineDataList, documentMeta) {
     return lineDataList
         .map((lineData, lineDataIndex) => {
-        // eslint-disable-next-line no-use-before-define, @typescript-eslint/no-use-before-define
+        // eslint-disable-next-line @typescript-eslint/no-use-before-define
         return renderLineData(lineData, lineDataIndex, lineDataList, documentMeta);
     })
         .map(addBreakLine)
         .join(emptyString);
 }
-// eslint-disable-next-line complexity, sonarjs/cognitive-complexity, max-statements, @typescript-eslint/max-params
+// eslint-disable-next-line max-statements, @typescript-eslint/max-params
 export function renderLineData(lineData, lineDataIndex, lineDataList, documentMeta) {
     const { selector, childList, lineContent, trimmedLine, additionalLineList, config } = lineData;
     const { codeHighlight } = config;

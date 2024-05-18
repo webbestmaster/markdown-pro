@@ -47,9 +47,8 @@ export function init(
             useLineBreak: useLineBreak.checked,
         });
 
-        // eslint-disable-next-line no-param-reassign
         output.innerHTML = markdownHtml;
-        // eslint-disable-next-line no-param-reassign
+
         outputDebug.textContent = formatHtml(markdownHtml);
         refreshResult();
     }

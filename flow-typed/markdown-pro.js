@@ -1,6 +1,6 @@
 // @flow
 
-/* eslint-disable multiline-comment-style, capitalized-comments, line-comment-position, multiline-comment-style */
+/* eslint-disable capitalized-comments */
 
 // TODO: you should uncomment this
 

@@ -35,7 +35,6 @@ export function getFootnoteList(lineContent: string): Array<FootnoteType> {
 }
 
 export function fromToFootnoteList(fromList: Array<FootnoteType>, toList: Array<FootnoteType>): void {
-    // eslint-disable-next-line no-loops/no-loops
     for (const fromItem of fromList) {
         const {id, descriptionLineData} = fromItem;
         const candidateToExtend = toList.find((toItem: FootnoteType): boolean => {
@@ -54,7 +53,6 @@ export function fromToFootnoteList(fromList: Array<FootnoteType>, toList: Array<
 
 export function addLineData(lineData: LineDataType, toList: Array<FootnoteType>): void {
     const {lineContent} = lineData;
-    // eslint-disable-next-line optimize-regex/optimize-regex
     const rawMatchId = /\[\^[^\]]+?\]:/u.exec(lineContent);
 
     if (!rawMatchId) {
@@ -82,7 +80,6 @@ export function addLineData(lineData: LineDataType, toList: Array<FootnoteType>)
 
 export function makeFootnoteSuper(fullLineContent: string, documentMeta: DocumentMetaType): string {
     return fullLineContent.replace(findFootnoteMarkGlobalRegExp, (match: string): string => {
-        // eslint-disable-next-line unicorn/prefer-spread
         const charList: Array<string> = match.split("");
         const [firstLetter] = charList;
         const {footnoteList} = documentMeta;

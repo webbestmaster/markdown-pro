@@ -3,7 +3,6 @@ import {pairTagSelectorList} from "../parser/parser-selector";
 
 import {getTagIndexList, harArrayOverflow} from "./render-util";
 
-// eslint-disable-next-line complexity, max-statements
 export function getSelectorIndexList(html: string, pairTagSelector: PairTagSelectorType): Array<number> {
     const {selector, equal} = pairTagSelector;
 
@@ -17,7 +16,6 @@ export function getSelectorIndexList(html: string, pairTagSelector: PairTagSelec
 
     let indexOfSelector: number = html.indexOf(selector, 0);
 
-    // eslint-disable-next-line no-loops/no-loops
     while (indexOfSelector !== -1) {
         const equalSymbolsMatch: Array<string> | null = html.slice(indexOfSelector).match(equal);
 
@@ -56,7 +54,6 @@ function addPairTag(html: string, pairTagSelector: PairTagSelectorType): string 
 
     // Remove indexes into tags, f.e. - <a href="http://ex__am__ple.com">text</a>
     selectorIndexList = selectorIndexList.filter((selectorIndex: number): boolean => {
-        // eslint-disable-next-line no-loops/no-loops
         for (const tagPairIndex of tagPairIndexList) {
             const selectorStart = selectorIndex;
             const selectorEnd = selectorIndex + selectorLength - 1;
@@ -77,7 +74,6 @@ function addPairTag(html: string, pairTagSelector: PairTagSelectorType): string 
 
     let resultTagPairedList: string = html.slice(0, selectorIndexList[0]);
 
-    // eslint-disable-next-line no-loops/no-loops
     for (let selectorIndexInList = 1; selectorIndexInList <= selectorIndexListLength; selectorIndexInList += 1) {
         const selectorIndex = selectorIndexList[selectorIndexInList];
         const htmlPart = html.slice(selectorIndexList[selectorIndexInList - 1] + selectorLength, selectorIndex);
@@ -91,7 +87,6 @@ function addPairTag(html: string, pairTagSelector: PairTagSelectorType): string 
 export function makePairTag(html: string): string {
     let result = html;
 
-    // eslint-disable-next-line no-loops/no-loops
     for (const pairTagSelector of pairTagSelectorList) {
         result = addPairTag(result, pairTagSelector);
     }

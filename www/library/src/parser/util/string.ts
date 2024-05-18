@@ -5,12 +5,10 @@ export function filterEmptyString(line: string): boolean {
 }
 
 export function cleanLine(line: string): string {
-    // eslint-disable-next-line unicorn/prefer-string-replace-all
     return line.trim().replace(/\s+/gu, " ");
 }
 
 export function getIsAllSymbolsEqual(line: string): boolean {
-    // eslint-disable-next-line unicorn/prefer-spread
     const charList: Array<string> = line.split("");
 
     const [firstSymbol] = charList;
@@ -19,7 +17,6 @@ export function getIsAllSymbolsEqual(line: string): boolean {
         return true;
     }
 
-    // eslint-disable-next-line no-loops/no-loops
     for (const char of charList) {
         if (char !== firstSymbol) {
             return false;

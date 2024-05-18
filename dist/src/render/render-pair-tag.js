@@ -1,6 +1,5 @@
 import { pairTagSelectorList } from "../parser/parser-selector";
 import { getTagIndexList, harArrayOverflow } from "./render-util";
-// eslint-disable-next-line complexity, max-statements
 export function getSelectorIndexList(html, pairTagSelector) {
     const { selector, equal } = pairTagSelector;
     const resultList = [];
@@ -10,7 +9,6 @@ export function getSelectorIndexList(html, pairTagSelector) {
         return resultList;
     }
     let indexOfSelector = html.indexOf(selector, 0);
-    // eslint-disable-next-line no-loops/no-loops
     while (indexOfSelector !== -1) {
         const equalSymbolsMatch = html.slice(indexOfSelector).match(equal);
         if (!equalSymbolsMatch) {
@@ -38,7 +36,6 @@ function addPairTag(html, pairTagSelector) {
     let selectorIndexList = getSelectorIndexList(html, pairTagSelector);
     // Remove indexes into tags, f.e. - <a href="http://ex__am__ple.com">text</a>
     selectorIndexList = selectorIndexList.filter((selectorIndex) => {
-        // eslint-disable-next-line no-loops/no-loops
         for (const tagPairIndex of tagPairIndexList) {
             const selectorStart = selectorIndex;
             const selectorEnd = selectorIndex + selectorLength - 1;
@@ -53,7 +50,6 @@ function addPairTag(html, pairTagSelector) {
         return html;
     }
     let resultTagPairedList = html.slice(0, selectorIndexList[0]);
-    // eslint-disable-next-line no-loops/no-loops
     for (let selectorIndexInList = 1; selectorIndexInList <= selectorIndexListLength; selectorIndexInList += 1) {
         const selectorIndex = selectorIndexList[selectorIndexInList];
         const htmlPart = html.slice(selectorIndexList[selectorIndexInList - 1] + selectorLength, selectorIndex);
@@ -63,7 +59,6 @@ function addPairTag(html, pairTagSelector) {
 }
 export function makePairTag(html) {
     let result = html;
-    // eslint-disable-next-line no-loops/no-loops
     for (const pairTagSelector of pairTagSelectorList) {
         result = addPairTag(result, pairTagSelector);
     }

@@ -1,5 +1,3 @@
-/* eslint-disable max-len */
-
 export const fixtureLink = {
     input: `
 You can use like this [link](http://example.com)

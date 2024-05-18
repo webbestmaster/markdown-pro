@@ -1,5 +1,3 @@
-/* eslint-disable max-len */
-
 export const fixtureTable1 = {
     input: `
 Table with different cells align

@@ -1,7 +1,6 @@
 import type {FootnoteType} from "../parser-type";
 
 export function getIsFootnoteDescription(lineContent: string): boolean {
-    // eslint-disable-next-line optimize-regex/optimize-regex
     return /^\[\^[^\]]+\]:/u.test(lineContent);
 }
 
@@ -17,7 +16,7 @@ export function getFootnoteInlineLineContent(match: string): string {
 
 // See findFootnoteMarkGlobalRegExp
 export function getFootnoteMarkId(match: string): string {
-    // eslint-disable-next-line unicorn/prefer-string-replace-all, newline-per-chained-call
+    // eslint-disable-next-line newline-per-chained-call
     return getFootnoteInlineLineContent(match).toLowerCase().replace(/\W/gu, " ").trim().replace(/\s+/gu, "-");
 }
 

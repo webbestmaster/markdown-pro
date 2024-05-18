@@ -1,5 +1,3 @@
-/* eslint-disable max-len */
-
 export const fixtureHeader = {
     input: `
     #header 1

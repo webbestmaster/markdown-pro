@@ -1,5 +1,3 @@
-/* eslint-disable max-len */
-
 export const fixtureParseLink = {
     input: `
 var https://example.com - simple link https://example.com.

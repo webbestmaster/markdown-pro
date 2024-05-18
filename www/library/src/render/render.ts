@@ -29,14 +29,14 @@ import {renderTable} from "./render-table/render-table";
 export function renderChildList(lineDataList: Array<LineDataType>, documentMeta: DocumentMetaType): string {
     return lineDataList
         .map((lineData: LineDataType, lineDataIndex: number): string => {
-            // eslint-disable-next-line no-use-before-define, @typescript-eslint/no-use-before-define
+            // eslint-disable-next-line @typescript-eslint/no-use-before-define
             return renderLineData(lineData, lineDataIndex, lineDataList, documentMeta);
         })
         .map(addBreakLine)
         .join(emptyString);
 }
 
-// eslint-disable-next-line complexity, sonarjs/cognitive-complexity, max-statements, @typescript-eslint/max-params
+// eslint-disable-next-line max-statements, @typescript-eslint/max-params
 export function renderLineData(
     lineData: LineDataType,
     lineDataIndex: number,

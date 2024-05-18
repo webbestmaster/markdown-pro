@@ -1,7 +1,6 @@
 import type {LineDataType} from "../parser-type";
 import {emptyString} from "../../render/render-const";
 
-// eslint-disable-next-line complexity
 export function searchSiblingItem(
     lineData: LineDataType,
     lineDataList: Array<LineDataType>,
@@ -41,7 +40,6 @@ export function getIsEdgeLine(lineData: LineDataType, lineDataList: Array<LineDa
 export function getParent(lineData: LineDataType, lineDataList: Array<LineDataType>): LineDataType | null {
     const linaDataListLength = lineDataList.length;
 
-    // eslint-disable-next-line no-loops/no-loops
     for (let lineDataIndex = linaDataListLength - 1; lineDataIndex >= 0; lineDataIndex -= 1) {
         const lineDataCandidate = lineDataList[lineDataIndex];
 

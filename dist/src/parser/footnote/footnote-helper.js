@@ -1,5 +1,4 @@
 export function getIsFootnoteDescription(lineContent) {
-    // eslint-disable-next-line optimize-regex/optimize-regex
     return /^\[\^[^\]]+\]:/u.test(lineContent);
 }
 export function getFootnoteById(id, list) {
@@ -12,7 +11,7 @@ export function getFootnoteInlineLineContent(match) {
 }
 // See findFootnoteMarkGlobalRegExp
 export function getFootnoteMarkId(match) {
-    // eslint-disable-next-line unicorn/prefer-string-replace-all, newline-per-chained-call
+    // eslint-disable-next-line newline-per-chained-call
     return getFootnoteInlineLineContent(match).toLowerCase().replace(/\W/gu, " ").trim().replace(/\s+/gu, "-");
 }
 export function getMdFootnoteContent(footnote) {
