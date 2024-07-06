@@ -1,7 +1,7 @@
 import { filterEmptyString } from "../../parser/util/string";
 import { emptyString } from "../render-const";
-import { getAlignList, isTableDivideLine, renderTableCellContent } from "./render-table-helper";
 import { cellAlignTypeMap, cellTagNameTypeMap } from "./render-table-const";
+import { getAlignList, isTableDivideLine, renderTableCellContent } from "./render-table-helper";
 // eslint-disable-next-line @typescript-eslint/max-params
 function renderTableRow(lineData, line, alignList, cellName, documentMeta) {
     const { selector } = lineData;

@@ -1,5 +1,5 @@
-import type {LineDataType} from "../parser-type";
 import {emptyString} from "../../render/render-const";
+import type {LineDataType} from "../parser-type";
 
 export function searchSiblingItem(
     lineData: LineDataType,

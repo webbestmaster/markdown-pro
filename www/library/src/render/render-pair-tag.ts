@@ -1,6 +1,5 @@
-import type {PairTagSelectorType} from "../parser/parser-type";
 import {pairTagSelectorList} from "../parser/parser-selector";
-
+import type {PairTagSelectorType} from "../parser/parser-type";
 import {getTagIndexList, harArrayOverflow} from "./render-util";
 
 export function getSelectorIndexList(html: string, pairTagSelector: PairTagSelectorType): Array<number> {

@@ -1,7 +1,7 @@
 /* global document, Event, HTMLTextAreaElement, HTMLDivElement, HTMLPreElement, HTMLInputElement, HTMLSelectElement */
 
-import {init} from "./demo/init";
 import defaultMarkdown from "./demo/demo.md";
+import {init} from "./demo/init";
 
 const input = document.querySelector(".js-input");
 const output = document.querySelector(".js-output");

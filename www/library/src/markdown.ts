@@ -1,12 +1,11 @@
 import type {MarkdownConfigShallowType, MarkdownConfigType} from "../library";
-
-import {parseLine} from "./parser/parse-line";
-import type {DocumentMetaType, FootnoteType, LineDataType} from "./parser/parser-type";
-import {emptyString} from "./render/render-const";
-import {renderChildList} from "./render/render";
+import {getFullWrapperClassName} from "./helper";
 import {defaultMarkdownConfig} from "./markdown-const";
 import {getMdFootnoteContent} from "./parser/footnote/footnote-helper";
-import {getFullWrapperClassName} from "./helper";
+import {parseLine} from "./parser/parse-line";
+import type {DocumentMetaType, FootnoteType, LineDataType} from "./parser/parser-type";
+import {renderChildList} from "./render/render";
+import {emptyString} from "./render/render-const";
 
 export function markdown(mdInput: string, config: MarkdownConfigShallowType = defaultMarkdownConfig): string {
     const markdownConfig: MarkdownConfigType = {

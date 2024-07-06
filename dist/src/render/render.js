@@ -1,9 +1,9 @@
+import { getIsFootnoteDescription } from "../parser/footnote/footnote-helper";
 import { getIsBlockquote, getIsCode, getIsHeader, getIsLine, getIsOlItem, getIsStartWithHtml, getIsTable, getIsUlItem, } from "../parser/util/is-tag";
 import { getIsEdgeLine } from "../parser/util/navigation";
-import { getIsFootnoteDescription } from "../parser/footnote/footnote-helper";
+import { emptyString } from "./render-const";
 // Import {makeFootnoteSuper} from '../parser/footnote/footnote';
 import { addBreakLine, getOlStart, getOlTypeBySelector, isImageListOnly, removeEndBreakLine, renderAdditionalLineList, renderInlineHtml, } from "./render-helper";
-import { emptyString } from "./render-const";
 import { renderTable } from "./render-table/render-table";
 export function renderChildList(lineDataList, documentMeta) {
     return lineDataList

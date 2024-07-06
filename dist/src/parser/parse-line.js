@@ -1,9 +1,9 @@
 import { emptyString } from "../render/render-const";
-import { cleanLine, getIsAllSymbolsEqual } from "./util/string";
-import { getParent } from "./util/navigation";
-import { oLParseDataList, selectorCodeList, selectorLineList, selectorList, selectorTableList } from "./parser-selector";
 import { addLineData, fromToFootnoteList, getFootnoteList } from "./footnote/footnote";
 import { getIsFootnoteDescription } from "./footnote/footnote-helper";
+import { oLParseDataList, selectorCodeList, selectorLineList, selectorList, selectorTableList } from "./parser-selector";
+import { getParent } from "./util/navigation";
+import { cleanLine, getIsAllSymbolsEqual } from "./util/string";
 import { getVariableData } from "./util/variable";
 function getShortInfo(trimmedLine) {
     for (const selector of selectorList) {

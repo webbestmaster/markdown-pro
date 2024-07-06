@@ -1,28 +1,26 @@
-import {describe, it, expect} from "@jest/globals";
+import {describe, expect,it} from "@jest/globals";
 
 import markdownPro, {markdown, type MarkdownConfigShallowType} from "../../library";
-
-import {stringReverse} from "./util";
-
-import {fixtureHeader} from "./fixture/header";
-import {fixtureParagraph} from "./fixture/paragraph";
-import {fixtureHtml} from "./fixture/html";
-import {fixtureLine} from "./fixture/line";
-import {fixturePairTag} from "./fixture/pair-tag";
-import {fixtureUnorderedList} from "./fixture/unordered-list";
-import {fixtureOrderedList} from "./fixture/ordered-list";
 import {fixtureBlockquote} from "./fixture/blockquote";
-import {fixtureCode, fixtureCodeHighlight, fixtureCodeHighlightNoLang} from "./fixture/code";
-import {fixtureImage} from "./fixture/image";
 import {fixtureCheckbox} from "./fixture/checkbox";
+import {fixtureCode, fixtureCodeHighlight, fixtureCodeHighlightNoLang} from "./fixture/code";
+import {fixtureFootnote} from "./fixture/footnote";
+import {fixtureHeader} from "./fixture/header";
+import {fixtureHtml} from "./fixture/html";
+import {fixtureImage} from "./fixture/image";
+import {fixtureLine} from "./fixture/line";
 import {fixtureLink} from "./fixture/link";
 import {fixtureMail} from "./fixture/mail";
-import {fixtureTable1, fixtureTable2, fixtureTable3} from "./fixture/table";
+import {fixtureMix1} from "./fixture/mix-1";
+import {fixtureOrderedList} from "./fixture/ordered-list";
+import {fixturePairTag} from "./fixture/pair-tag";
+import {fixtureParagraph} from "./fixture/paragraph";
 import {fixtureDoNotParseLink, fixtureParseLink} from "./fixture/parse-link";
 import {fixtureDoNotParseMail, fixtureParseMail} from "./fixture/parse-mail";
-import {fixtureMix1} from "./fixture/mix-1";
-import {fixtureFootnote} from "./fixture/footnote";
+import {fixtureTable1, fixtureTable2, fixtureTable3} from "./fixture/table";
+import {fixtureUnorderedList} from "./fixture/unordered-list";
 import {fixtureVariable} from "./fixture/variables";
+import {stringReverse} from "./util";
 
 function mdDoNotBreakLine(input: string): string {
     return markdown(input, {useWrapper: false});

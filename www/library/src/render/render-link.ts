@@ -1,5 +1,4 @@
 import {mailPrefix} from "../markdown-const";
-
 import {getLinkIndexList, getTagIndexList, harArrayListOverflow, type PairNumberArrayType} from "./render-util";
 
 const linkTextRegExpGlobal = /(\w+:\/\/[\w.]+\.\w+[\w+/]*)/giu;

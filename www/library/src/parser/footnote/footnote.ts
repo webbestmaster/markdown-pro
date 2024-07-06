@@ -1,5 +1,4 @@
-import type {DocumentMetaType, LineDataType, FootnoteType} from "../parser-type";
-
+import type {DocumentMetaType, FootnoteType,LineDataType} from "../parser-type";
 import {findFootnoteMarkGlobalRegExp, footnoteTypeMap} from "./footnote-const";
 import {getFootnoteById, getFootnoteInlineLineContent, getFootnoteMarkId} from "./footnote-helper";
 

@@ -1,3 +1,5 @@
+import {getIsFootnoteDescription} from "../parser/footnote/footnote-helper";
+import type {DocumentMetaType, LineDataType} from "../parser/parser-type";
 import {
     getIsBlockquote,
     getIsCode,
@@ -8,12 +10,9 @@ import {
     getIsTable,
     getIsUlItem,
 } from "../parser/util/is-tag";
-import type {DocumentMetaType, LineDataType} from "../parser/parser-type";
-
 import {getIsEdgeLine} from "../parser/util/navigation";
-import {getIsFootnoteDescription} from "../parser/footnote/footnote-helper";
+import {emptyString} from "./render-const";
 // Import {makeFootnoteSuper} from '../parser/footnote/footnote';
-
 import {
     addBreakLine,
     getOlStart,
@@ -23,7 +22,6 @@ import {
     renderAdditionalLineList,
     renderInlineHtml,
 } from "./render-helper";
-import {emptyString} from "./render-const";
 import {renderTable} from "./render-table/render-table";
 
 export function renderChildList(lineDataList: Array<LineDataType>, documentMeta: DocumentMetaType): string {

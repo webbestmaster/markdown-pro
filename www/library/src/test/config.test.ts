@@ -1,6 +1,6 @@
-import {describe, it, expect} from "@jest/globals";
+import {describe, expect,it} from "@jest/globals";
 
-import {markdown, defaultMarkdownConfig, ThemeNameEnum} from "../../library";
+import {defaultMarkdownConfig, markdown, ThemeNameEnum} from "../../library";
 import {themeClassNameMap} from "../markdown-const";
 
 describe("markdown-pro test:config", () => {

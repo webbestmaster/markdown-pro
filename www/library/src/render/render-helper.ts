@@ -1,9 +1,8 @@
-import type {DocumentMetaType, LineDataType, OlAttributeType, SelectorType} from "../parser/parser-type";
-import {olNumericType, oLParseDataList} from "../parser/parser-selector";
-import {hasEmailSymbol, hasStringNonEmptySymbols} from "../parser/util/is";
-import {makeFootnoteSuper} from "../parser/footnote/footnote";
 import {mailPrefix} from "../markdown-const";
-
+import {makeFootnoteSuper} from "../parser/footnote/footnote";
+import {olNumericType, oLParseDataList} from "../parser/parser-selector";
+import type {DocumentMetaType, LineDataType, OlAttributeType, SelectorType} from "../parser/parser-type";
+import {hasEmailSymbol, hasStringNonEmptySymbols} from "../parser/util/is";
 import {breakLineTag, emptyString, space} from "./render-const";
 import {makeLinkFromText, makeMailFromText} from "./render-link";
 import {makePairTag} from "./render-pair-tag";

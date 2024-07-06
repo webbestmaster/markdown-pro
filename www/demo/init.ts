@@ -1,7 +1,6 @@
 /* global window, HTMLTextAreaElement, HTMLDivElement, HTMLPreElement, HTMLInputElement, HTMLSelectElement, Event */
 
 import markdownPro, {ThemeNameEnum} from "../library/library";
-
 import {debounce, formatHtml, syncScroll, updateScrollPositionCache} from "./util";
 
 function getThemeName(value: unknown): ThemeNameEnum {

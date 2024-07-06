@@ -1,18 +1,15 @@
-import {describe, it, expect} from "@jest/globals";
+import {describe, expect,it} from "@jest/globals";
 
-import {parseLine} from "../parser/parse-line";
-import type {DocumentMetaType, FootnoteType, LineDataType, PairTagSelectorType} from "../parser/parser-type";
-import {searchSiblingItem} from "../parser/util/navigation";
-
-import {getIsAllSymbolsEqual} from "../parser/util/string";
-import {emptyString} from "../render/render-const";
-
-import {getOlTypeBySelector} from "../render/render-helper";
-import {olNumericType, selectorHeaderList, selectorList} from "../parser/parser-selector";
-import {getSelectorIndexList} from "../render/render-pair-tag";
 import {defaultMarkdownConfig} from "../markdown-const";
 import {addLineData, makeFootnoteSuper} from "../parser/footnote/footnote";
-
+import {parseLine} from "../parser/parse-line";
+import {olNumericType, selectorHeaderList, selectorList} from "../parser/parser-selector";
+import type {DocumentMetaType, FootnoteType, LineDataType, PairTagSelectorType} from "../parser/parser-type";
+import {searchSiblingItem} from "../parser/util/navigation";
+import {getIsAllSymbolsEqual} from "../parser/util/string";
+import {emptyString} from "../render/render-const";
+import {getOlTypeBySelector} from "../render/render-helper";
+import {getSelectorIndexList} from "../render/render-pair-tag";
 import {defaultLineData} from "./fixture/default-data";
 
 describe("markdown-pro test:uncovered", () => {
