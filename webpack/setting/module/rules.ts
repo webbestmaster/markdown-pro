@@ -4,7 +4,7 @@ import {cwd} from "node:process";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import type {RuleSetRule} from "webpack";
 
-import {fileRegExp,isDevelopment, isProduction, isTsTranspileOnly} from "../../config";
+import {fileRegExp, isDevelopment, isProduction, isTsTranspileOnly} from "../../config";
 
 const styleLoader = {
     loader: "style-loader",

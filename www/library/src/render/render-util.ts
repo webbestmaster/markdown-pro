@@ -23,6 +23,7 @@ export function harArrayListOverflow(
 function getMatchIndexList(html: string, regExp: RegExp): Array<PairNumberArrayType> {
     const resultList: Array<PairNumberArrayType> = [];
 
+    // eslint-disable-next-line sonarjs/sonar-prefer-regexp-exec
     const matchList = html.match(regExp);
 
     if (!matchList) {
@@ -43,12 +44,14 @@ function getMatchIndexList(html: string, regExp: RegExp): Array<PairNumberArrayT
     return resultList;
 }
 
+// eslint-disable-next-line sonarjs/slow-regex
 const tagSelectorRegExpGlobal = /(<\w+[\S\s]*?>)|(<\/\w+?>)|(<\w+[\S\s]*?\/>)/gu;
 
 export function getTagIndexList(html: string): Array<PairNumberArrayType> {
     return getMatchIndexList(html, tagSelectorRegExpGlobal);
 }
 
+// eslint-disable-next-line sonarjs/slow-regex
 const linkSelectorRegExpGlobal = /(<a\s*?>[\S\s]*?<\/a>)|(<a\s[\S\s]*?>[\S\s]*?<\/a>)|(<a\s+[\S\s]*?\/>)/gu;
 
 export function getLinkIndexList(html: string): Array<PairNumberArrayType> {

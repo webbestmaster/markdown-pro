@@ -1,4 +1,4 @@
-import {describe, expect,it} from "@jest/globals";
+import {describe, expect, it} from "@jest/globals";
 
 import markdownPro, {markdown, type MarkdownConfigShallowType} from "../../library";
 import {fixtureBlockquote} from "./fixture/blockquote";
@@ -122,6 +122,7 @@ describe("markdown-pro test", () => {
 
     it("code highlight", () => {
         expect.assertions(2);
+
         function codeHighlight(langName: string, code: string): string {
             // eslint-disable-next-line jest/no-conditional-in-test
             if (langName !== fixtureCodeHighlight.langName) {
@@ -155,6 +156,7 @@ describe("markdown-pro test", () => {
 
     it("code highlight: no lang", () => {
         expect.assertions(2);
+
         function codeHighlight(langName: string, code: string): string {
             // eslint-disable-next-line jest/no-conditional-in-test
             if (langName !== fixtureCodeHighlightNoLang.langName) {
@@ -202,6 +204,7 @@ describe("markdown-pro test", () => {
 
     it("do NOT parse link", () => {
         expect.assertions(2);
+
         const configDoNotBreakLine: MarkdownConfigShallowType = {
             parseLink: false,
             useWrapper: false,
@@ -223,6 +226,7 @@ describe("markdown-pro test", () => {
 
     it("do NOT parse mail", () => {
         expect.assertions(2);
+
         const configDoNotBreakLine: MarkdownConfigShallowType = {
             parseLink: false,
             useWrapper: false,

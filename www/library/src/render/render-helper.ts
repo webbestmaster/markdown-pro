@@ -7,6 +7,7 @@ import {breakLineTag, emptyString, space} from "./render-const";
 import {makeLinkFromText, makeMailFromText} from "./render-link";
 import {makePairTag} from "./render-pair-tag";
 
+// eslint-disable-next-line sonarjs/slow-regex
 export const breakLineRegExp = /\s*?\\$/u;
 
 export function addBreakLine(line: string): string {
@@ -74,8 +75,11 @@ export function isImageListOnly(lineContent: string): boolean {
     return lineContent.replace(findImageRegExpGlobal, "").trim() === emptyString;
 }
 
+// eslint-disable-next-line sonarjs/slow-regex
 const findMailRegExpGlobal = /\[([\S\s]*?)\]\((\S+?)(?:\s+"([\S\s]+?)")?(?:\s+"([\S\s]+?)")?\)/gu;
+// eslint-disable-next-line sonarjs/slow-regex
 const findLinkRegExpGlobal = /\[([\S\s]*?)\]\((\S+?)(?:\s+"([\S\s]+?)")?\)/gu;
+// eslint-disable-next-line sonarjs/slow-regex
 const findLinkVariableRegExpGlobal = /\[([\S\s]*?)\]\[([\S\s]+?)\]/gu;
 
 // eslint-disable-next-line @typescript-eslint/max-params

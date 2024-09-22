@@ -16,6 +16,7 @@ export function getSelectorIndexList(html: string, pairTagSelector: PairTagSelec
     let indexOfSelector: number = html.indexOf(selector, 0);
 
     while (indexOfSelector !== -1) {
+        // eslint-disable-next-line sonarjs/sonar-prefer-regexp-exec
         const equalSymbolsMatch: Array<string> | null = html.slice(indexOfSelector).match(equal);
 
         if (!equalSymbolsMatch) {

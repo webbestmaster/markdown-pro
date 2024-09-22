@@ -1,4 +1,4 @@
-import {describe, expect,it} from "@jest/globals";
+import {describe, expect, it} from "@jest/globals";
 
 import {defaultMarkdownConfig} from "../markdown-const";
 import {addLineData, makeFootnoteSuper} from "../parser/footnote/footnote";
@@ -15,6 +15,7 @@ import {defaultLineData} from "./fixture/default-data";
 describe("markdown-pro test:uncovered", () => {
     it("parseLine", () => {
         expect.assertions(1);
+
         const savedDataList: Array<LineDataType> = [defaultLineData];
 
         const documentMeta: DocumentMetaType = {
@@ -45,6 +46,7 @@ describe("markdown-pro test:uncovered", () => {
 
     it("getSelectorIndexList by empty string", () => {
         expect.assertions(1);
+
         const pairTagSelector: PairTagSelectorType = {
             closeTag: "",
             equal: /\s/gu,
@@ -57,6 +59,7 @@ describe("markdown-pro test:uncovered", () => {
 
     it("getSelectorIndexList by double dash", () => {
         expect.assertions(1);
+
         const pairTagSelector: PairTagSelectorType = {
             closeTag: "",
             equal: /\s/gu,
@@ -69,6 +72,7 @@ describe("markdown-pro test:uncovered", () => {
 
     it("addLineData", () => {
         expect.assertions(1);
+
         const lineData: LineDataType = {
             additionalLineList: [],
             childList: [],
@@ -90,6 +94,7 @@ describe("markdown-pro test:uncovered", () => {
 
     it("makeFootnoteSuper", () => {
         expect.assertions(1);
+
         const documentMeta: DocumentMetaType = {
             codeLineData: null,
             config: defaultMarkdownConfig,

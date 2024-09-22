@@ -43,7 +43,9 @@ export function getIsBlockquote(lineData: LineDataType): boolean {
     return selectorBlockquoteList.includes(lineData.selector);
 }
 
+// eslint-disable-next-line sonarjs/slow-regex
 const htmlPairTag = /<(\w+)[^>]*>[\S\s]*?<\/\1>/u;
+// eslint-disable-next-line sonarjs/slow-regex
 const htmlSingleTag = /<\w+[^>]*?\s*\/>/u;
 
 export function getIsStartWithHtml(lineData: LineDataType): boolean {

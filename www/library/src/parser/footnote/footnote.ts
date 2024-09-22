@@ -1,4 +1,4 @@
-import type {DocumentMetaType, FootnoteType,LineDataType} from "../parser-type";
+import type {DocumentMetaType, FootnoteType, LineDataType} from "../parser-type";
 import {findFootnoteMarkGlobalRegExp, footnoteTypeMap} from "./footnote-const";
 import {getFootnoteById, getFootnoteInlineLineContent, getFootnoteMarkId} from "./footnote-helper";
 
@@ -24,6 +24,7 @@ function matchToFootnote(match: string): FootnoteType {
 }
 
 export function getFootnoteList(lineContent: string): Array<FootnoteType> {
+    // eslint-disable-next-line sonarjs/sonar-prefer-regexp-exec
     const matchedList = lineContent.match(findFootnoteMarkGlobalRegExp);
 
     if (!matchedList) {

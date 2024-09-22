@@ -2,7 +2,7 @@ import "./src/markdown.scss";
 
 import {defaultMarkdownConfig, type ThemeNameEnum} from "./src/markdown-const";
 
-export {markdown as default,markdown} from "./src/markdown";
+export {markdown as default, markdown} from "./src/markdown";
 export {defaultMarkdownConfig, ThemeNameEnum} from "./src/markdown-const";
 
 export const classNameMdProThemeDark = "md-pro-theme-dark";

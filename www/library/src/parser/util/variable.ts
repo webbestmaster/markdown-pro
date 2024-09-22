@@ -1,6 +1,7 @@
 import type {VariableType} from "../parser-type";
 
 export function getVariableData(lineContent: string): VariableType | null {
+    // eslint-disable-next-line sonarjs/slow-regex
     const matchData = /\[([^^][\S\s]+?)\]:\s+?\S/u.exec(lineContent);
 
     if (!matchData) {

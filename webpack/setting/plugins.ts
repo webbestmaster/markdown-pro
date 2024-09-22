@@ -13,7 +13,7 @@ import {
     type WebpackPluginInstance,
 } from "webpack";
 
-import {isBuildLibrary,isDevelopment, isProduction} from "../config";
+import {isBuildLibrary, isDevelopment, isProduction} from "../config";
 
 const filePathPrefix = isProduction ? "./../" : "./";
 
